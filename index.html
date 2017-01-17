@@ -382,7 +382,7 @@
 <li>宏中三个符号</li>
 </ol>
 <ul>
-<li>x##y 表示连接 #define con(x,y) x##y  int n=con(4,5);  n的值为45</li>
+<li>x##y 表示连接 #define con(x,y)    x##y  int n=con(4,5);  n的值为45</li>
 <li>#@x  表示给x加上’’,使其变为一个const char</li>
 <li>#x   表示给x加上””,使其变为一个字符串<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#define tochar(x) #@x</div><div class="line">#define tostr(y)  #y</div><div class="line">void main()&#123;</div><div class="line">  char c = tochar(c);</div><div class="line">	char* str = tostr(sdfg);</div><div class="line">	printf(&quot;%c %s&quot;,c,str);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
@@ -701,7 +701,7 @@
 <p>引用<br>符号与文本见得空格</p>
 </blockquote>
 <h4 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h4><p><a href="http://www.baidu.com" target="_blank" rel="external">百度</a></p>
-<p>####插入图片<br>！<a href="http://mouapp.com/Mou_128.png" target="_blank" rel="external">Mou icon</a></p>
+<p>####插入图片<br>！[star butterfly] (<a href="http://i1.piimg.com/567571/68c0b1e3c3625b76.jpg" target="_blank" rel="external">http://i1.piimg.com/567571/68c0b1e3c3625b76.jpg</a>)</p>
 <p><strong>粗体</strong></p>
 <p><em>斜体</em></p>
 <table>

@@ -94,7 +94,7 @@
 <meta property="og:description" content="C中define的用法
 简单用法#define MAX 5+5在预编译阶段在程序中发现MAX即将其替换为5+5,  不会对宏体做任何运算。如果有语句int a=NN;a的值应为5+55+5=35
 带参数的宏定义#define add(x,y) x+y如果要用define实现一个加法函数，上述做法是错误的，正确做法是：#define add(x,y) ((x)+(y)) 如果用宏实现类似函数的功能，">
-<meta property="og:updated_time" content="2017-01-17T06:02:57.702Z">
+<meta property="og:updated_time" content="2017-01-17T07:22:40.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Advanced C">
 <meta name="twitter:description" content="C中define的用法
@@ -382,7 +382,7 @@
 <li>宏中三个符号</li>
 </ol>
 <ul>
-<li>x##y 表示连接 #define con(x,y) x##y  int n=con(4,5);  n的值为45</li>
+<li>x##y 表示连接 #define con(x,y)    x##y  int n=con(4,5);  n的值为45</li>
 <li>#@x  表示给x加上’’,使其变为一个const char</li>
 <li>#x   表示给x加上””,使其变为一个字符串<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#define tochar(x) #@x</div><div class="line">#define tostr(y)  #y</div><div class="line">void main()&#123;</div><div class="line">  char c = tochar(c);</div><div class="line">	char* str = tostr(sdfg);</div><div class="line">	printf(&quot;%c %s&quot;,c,str);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
