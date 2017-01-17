@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Markdown," />
+  <meta name="keywords" content="Linux,C/C++," />
 
 
 
@@ -84,127 +84,22 @@
 
 
 
-<meta name="description" content="一级标题二级标题###无序列表
-
-1
-2
-3
-
-###有序列表
-
-1
-2
-3
-
-
-引用符号与文本见得空格
-
-插入链接百度
-####插入图片！Mou icon
-粗体
-斜体
-
-
-
-name
-age
-
-
-
-
-UUZ
-17
-
-
-
-`
-  #include 
-  #include 
-  int main()  {    int value=10000;    string str;
-stringstream">
+<meta name="description" content="C中define的用法
+简单用法#define MAX 5+5在预编译阶段在程序中发现MAX即将其替换为5+5,  不会对宏体做任何运算。如果有语句int a=NN;a的值应为5+55+5=35
+带参数的宏定义#define add(x,y) x+y如果要用define实现一个加法函数，上述做法是错误的，正确做法是：#define add(x,y) ((x)+(y)) 如果用宏实现类似函数的功能，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tools-MarkDown">
-<meta property="og:url" content="http://Crepuscule.com/2017/01/12/newwin10demo/index.html">
+<meta property="og:title" content="Advanced C">
+<meta property="og:url" content="http://Crepuscule.com/2017/01/17/Advanced-C/index.html">
 <meta property="og:site_name" content="Crepuscule">
-<meta property="og:description" content="一级标题二级标题###无序列表
-
-1
-2
-3
-
-###有序列表
-
-1
-2
-3
-
-
-引用符号与文本见得空格
-
-插入链接百度
-####插入图片！Mou icon
-粗体
-斜体
-
-
-
-name
-age
-
-
-
-
-UUZ
-17
-
-
-
-`
-  #include 
-  #include 
-  int main()  {    int value=10000;    string str;
-stringstream">
-<meta property="og:updated_time" content="2017-01-12T09:38:34.448Z">
+<meta property="og:description" content="C中define的用法
+简单用法#define MAX 5+5在预编译阶段在程序中发现MAX即将其替换为5+5,  不会对宏体做任何运算。如果有语句int a=NN;a的值应为5+55+5=35
+带参数的宏定义#define add(x,y) x+y如果要用define实现一个加法函数，上述做法是错误的，正确做法是：#define add(x,y) ((x)+(y)) 如果用宏实现类似函数的功能，">
+<meta property="og:updated_time" content="2017-01-17T06:02:57.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tools-MarkDown">
-<meta name="twitter:description" content="一级标题二级标题###无序列表
-
-1
-2
-3
-
-###有序列表
-
-1
-2
-3
-
-
-引用符号与文本见得空格
-
-插入链接百度
-####插入图片！Mou icon
-粗体
-斜体
-
-
-
-name
-age
-
-
-
-
-UUZ
-17
-
-
-
-`
-  #include 
-  #include 
-  int main()  {    int value=10000;    string str;
-stringstream">
+<meta name="twitter:title" content="Advanced C">
+<meta name="twitter:description" content="C中define的用法
+简单用法#define MAX 5+5在预编译阶段在程序中发现MAX即将其替换为5+5,  不会对宏体做任何运算。如果有语句int a=NN;a的值应为5+55+5=35
+带参数的宏定义#define add(x,y) x+y如果要用define实现一个加法函数，上述做法是错误的，正确做法是：#define add(x,y) ((x)+(y)) 如果用宏实现类似函数的功能，">
 
 
 
@@ -232,13 +127,13 @@ stringstream">
 
 
 
-  <link rel="canonical" href="http://Crepuscule.com/2017/01/12/newwin10demo/"/>
+  <link rel="canonical" href="http://Crepuscule.com/2017/01/17/Advanced-C/"/>
 
 
 
 
 
-  <title> Tools-MarkDown | Crepuscule </title>
+  <title> Advanced C | Crepuscule </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
@@ -361,7 +256,7 @@ stringstream">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/12/newwin10demo/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/17/Advanced-C/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -385,7 +280,7 @@ stringstream">
             
             
               
-                Tools-MarkDown
+                Advanced C
               
             
           </h1>
@@ -400,8 +295,8 @@ stringstream">
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T11:34:57+08:00">
-                2017-01-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T09:45:52+08:00">
+                2017-01-17
               </time>
             
 
@@ -423,8 +318,30 @@ stringstream">
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Kernel/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Kernel</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Kernel/Basic-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Basic C</span>
                   </a>
                 </span>
 
@@ -458,48 +375,19 @@ stringstream">
       
 
       
-        <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>###无序列表</p>
-<ul>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ul>
-<p>###有序列表</p>
-<ol>
-<li>1</li>
-<li>2</li>
-<li>3</li>
+        <h3 id="C中define的用法"><a href="#C中define的用法" class="headerlink" title="C中define的用法"></a>C中define的用法</h3><ol>
+<li>简单用法<br>#define MAX 5+5<br>在预编译阶段在程序中发现MAX即将其替换为5+5,  不会对宏体做任何运算。<br>如果有语句int a=N<em>N;a的值应为5+5</em>5+5=35</li>
+<li>带参数的宏定义<br>#define add(x,y) x+y<br>如果要用define实现一个加法函数，上述做法是错误的，正确做法是：#define add(x,y) ((x)+(y)) 如果用宏实现类似函数的功能，必须将每一个参数和整个宏体都加上括号。</li>
+<li>多行宏定义<br>如同多数命令行一样，在行末尾加一个反斜杠”\”，即可在下一行继续书写宏定义。</li>
+<li>宏中三个符号</li>
 </ol>
-<blockquote>
-<p>引用<br>符号与文本见得空格</p>
-</blockquote>
-<h4 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h4><p><a href="http://www.baidu.com" target="_blank" rel="external">百度</a></p>
-<p>####插入图片<br>！<a href="http://mouapp.com/Mou_128.png" target="_blank" rel="external">Mou icon</a></p>
-<p><strong>粗体</strong></p>
-<p><em>斜体</em></p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th style="text-align:center">age</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UUZ</td>
-<td style="text-align:center">17</td>
-</tr>
-</tbody>
-</table>
-<p>`</p>
-<p>  #include <iostream></iostream></p>
-<p>  #include <sstream></sstream></p>
-<p>  int main()<br>  {<br>    int value=10000;<br>    string str;</p>
-<pre><code>stringstream ss;
-ss&lt;&lt;value;
-ss&gt;&gt;str;
-cout&lt;&lt;str&lt;&lt;endl;
-</code></pre><p>  }<br>`</p>
+<ul>
+<li>x##y 表示连接 #define con(x,y) x##y  int n=con(4,5);  n的值为45</li>
+<li>#@x  表示给x加上’’,使其变为一个const char</li>
+<li>#x   表示给x加上””,使其变为一个字符串<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#define tochar(x) #@x</div><div class="line">#define tostr(y)  #y</div><div class="line">void main()&#123;</div><div class="line">  char c = tochar(c);</div><div class="line">	char* str = tostr(sdfg);</div><div class="line">	printf(&quot;%c %s&quot;,c,str);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意，#@是微软的编译器专属，对于gcc没有这个用法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Stringizing operator (#) Causes the corresponding actual argument to be enclosed in double quotation marks</div><div class="line"></div><div class="line">Charizing operator (#@) Causes the corresponding argument to be enclosed in single quotation marks and to be treated as a character (Microsoft Specific！！！)</div><div class="line"></div><div class="line">Token-pasting operator (##) Allows tokens used as actual arguments to be concatenated to form other tokens</div><div class="line">                          ---by MSDN</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -523,7 +411,9 @@ cout&lt;&lt;str&lt;&lt;endl;
       
         <div class="post-tags">
           
-            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/C-C/" rel="tag"># C/C++</a>
           
         </div>
       
@@ -532,8 +422,8 @@ cout&lt;&lt;str&lt;&lt;endl;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/17/ProcessManager/" rel="next" title="ProcessManager">
-                <i class="fa fa-chevron-left"></i> ProcessManager
+              <a href="/2017/01/15/Compiler-Basics-Chapter-1/" rel="next" title="Compiler Basics Chapter 1">
+                <i class="fa fa-chevron-left"></i> Compiler Basics Chapter 1
               </a>
             
           </div>
@@ -541,10 +431,6 @@ cout&lt;&lt;str&lt;&lt;endl;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/15/Compiler-Basics-Chapter-1/" rel="prev" title="Compiler Basics Chapter 1">
-                Compiler Basics Chapter 1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -667,7 +553,7 @@ cout&lt;&lt;str&lt;&lt;endl;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一级标题"><span class="nav-number">1.</span> <span class="nav-text">一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二级标题"><span class="nav-number">1.1.</span> <span class="nav-text">二级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入链接"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">插入链接</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C中define的用法"><span class="nav-number">1.</span> <span class="nav-text">C中define的用法</span></a></li></ol></div>
             
 
           </div>
