@@ -374,8 +374,7 @@
 
       
         
-          
-            <h3 id="C中define的用法"><a href="#C中define的用法" class="headerlink" title="C中define的用法"></a>C中define的用法</h3><ol>
+          <h3 id="C中define的用法"><a href="#C中define的用法" class="headerlink" title="C中define的用法"></a>C中define的用法</h3><ol>
 <li>简单用法<br>#define MAX 5+5<br>在预编译阶段在程序中发现MAX即将其替换为5+5,  不会对宏体做任何运算。<br>如果有语句int a=N<em>N;a的值应为5+5</em>5+5=35</li>
 <li>带参数的宏定义<br>#define add(x,y) x+y<br>如果要用define实现一个加法函数，上述做法是错误的，正确做法是：#define add(x,y) ((x)+(y)) 如果用宏实现类似函数的功能，必须将每一个参数和整个宏体都加上括号。</li>
 <li>多行宏定义<br>如同多数命令行一样，在行末尾加一个反斜杠”\”，即可在下一行继续书写宏定义。</li>
@@ -384,12 +383,14 @@
 <ul>
 <li>x##y 表示连接 #define con(x,y)    x##y  int n=con(4,5);  n的值为45</li>
 <li>#@x  表示给x加上’’,使其变为一个const char</li>
-<li>#x   表示给x加上””,使其变为一个字符串<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#define tochar(x) #@x</div><div class="line">#define tostr(y)  #y</div><div class="line">void main()&#123;</div><div class="line">  char c = tochar(c);</div><div class="line">	char* str = tostr(sdfg);</div><div class="line">	printf(&quot;%c %s&quot;,c,str);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注意，#@是微软的编译器专属，对于gcc没有这个用法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Stringizing operator (#) Causes the corresponding actual argument to be enclosed in double quotation marks</div><div class="line"></div><div class="line">Charizing operator (#@) Causes the corresponding argument to be enclosed in single quotation marks and to be treated as a character (Microsoft Specific！！！)</div><div class="line"></div><div class="line">Token-pasting operator (##) Allows tokens used as actual arguments to be concatenated to form other tokens</div><div class="line">                          ---by MSDN</div></pre></td></tr></table></figure></p>
-
-          
+<li>#x   表示给x加上””,使其变为一个字符串
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/17/Advanced-C/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -538,15 +539,15 @@
 
       
         
-          
-            <h2 id="Chapter-1-编译简介"><a href="#Chapter-1-编译简介" class="headerlink" title="Chapter 1 编译简介"></a>Chapter 1 编译简介</h2><h3 id="1-1编译器"><a href="#1-1编译器" class="headerlink" title="1.1编译器"></a>1.1编译器</h3><p>编译器是一种程序，它读入某种源语言编写的程序，将其翻译成一个与之等价的以另一种目标语言编写的程序</p>
-<h4 id="编译的分析-综合模型"><a href="#编译的分析-综合模型" class="headerlink" title="编译的分析-综合模型"></a>编译的分析-综合模型</h4><p>分析部分将源程序分为基本块并形成中间表示，综合部分将中间表示转换为目标程序。综合部分技术性更强。在分析中，源程序蕴含的操作被确定为语法树，树的一个节点表示操作，它的子节点表示该操作的参数。</p>
-<h3 id="1-2源程序分析"><a href="#1-2源程序分析" class="headerlink" title="1.2源程序分析"></a>1.2源程序分析</h3><p>源程序分析共有三个过程：1.线性分析 从左至右读取字符流，将它们分为记号（token），token是具有整体含义的字符序列。2.层次分析 字符串和token划分为具有一定层次的多个嵌套组，每一个组具有整体含义。3.语义分析 进行检查，确定每个组成部分是有意义地组合在一起的。</p>
-<h4 id="词法分析（线性分析，扫描）"><a href="#词法分析（线性分析，扫描）" class="headerlink" title="词法分析（线性分析，扫描）"></a>词法分析（线性分析，扫描）</h4><p>对于语句position = inital + rate <em> 60，执行过程如下：<br>1.标识符 position 2.赋值符 = 3.标识符 inital 4.加 + 5.标识符 rate 6.乘号 </em> 7.数字 60</p>
-<h4 id="语法分析（层次分析，parsing）"><a href="#语法分析（层次分析，parsing）" class="headerlink" title="语法分析（层次分析，parsing）"></a>语法分析（层次分析，parsing）</h4><p>层次分析将源程序的token进一步分组，产生用于生成代码的语法短语。而这个过程常常通过递归规则实现，这也是词法与语法分析的界限。语法分析可以分析源语言的表达式和语句，词法分析不可以。<br>语法分析通过递归规则实现的原因是程序的层次结构通常由递归表达：<br>如语句的定义：1.若i1为标识符，e2为表达式，则i1=e2是一个语句 2.若e1为表达式，s2为语句，则：<br>while（e1)do s2   if(e1) then s2  是语句</p>
-<h4 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h4><p>语义分析检查源程序语义错误，并收集代码生成阶段用到的类型信息。它利用语法分析阶段确定的层次结构来识别表达式和语句中的操作符与操作数。类型检查是语义分析重要组成部分，</p>
-<h3 id="编译器的各阶段"><a href="#编译器的各阶段" class="headerlink" title="编译器的各阶段"></a>编译器的各阶段</h3>
-          
+          <h2 id="Chapter-1-编译简介"><a href="#Chapter-1-编译简介" class="headerlink" title="Chapter 1 编译简介"></a>Chapter 1 编译简介</h2><h3 id="1-1编译器"><a href="#1-1编译器" class="headerlink" title="1.1编译器"></a>1.1编译器</h3><p>编译器是一种程序，它读入某种源语言编写的程序，将其翻译成一个与之等价的以另一种目标语言编写的程序</p>
+<h4 id="编译的分析-综合模型"><a href="#编译的分析-综合模型" class="headerlink" title="编译的分析-综合模型"></a>编译的分析-综合模型</h4><p>分析部分将源程序分为基本块并形成中间表示，综合部分将中间表示转换为目标程序。综合部分技术性更强。在分析中，源程序蕴含的操作被确定为语法树，树的一个节点表示操作，它的子节点表示该操作的参数。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/15/Compiler-Basics-Chapter-1/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -684,8 +685,7 @@
 
       
         
-          
-            <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>###无序列表</p>
+          <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>###无序列表</p>
 <ul>
 <li>1</li>
 <li>2</li>
@@ -695,40 +695,14 @@
 <ol>
 <li>1</li>
 <li>2</li>
-<li>3</li>
-</ol>
-<blockquote>
-<p>引用<br>符号与文本见得空格</p>
-</blockquote>
-<h4 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h4><p><a href="http://www.baidu.com" target="_blank" rel="external">百度</a></p>
-<p>####插入图片<br>！[star butterfly] (<a href="http://i1.piimg.com/567571/68c0b1e3c3625b76.jpg" target="_blank" rel="external">http://i1.piimg.com/567571/68c0b1e3c3625b76.jpg</a>)</p>
-<p><strong>粗体</strong></p>
-<p><em>斜体</em></p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th style="text-align:center">age</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UUZ</td>
-<td style="text-align:center">17</td>
-</tr>
-</tbody>
-</table>
-<p>`</p>
-<p>  #include <iostream></iostream></p>
-<p>  #include <sstream></sstream></p>
-<p>  int main()<br>  {<br>    int value=10000;<br>    string str;</p>
-<pre><code>stringstream ss;
-ss&lt;&lt;value;
-ss&gt;&gt;str;
-cout&lt;&lt;str&lt;&lt;endl;
-</code></pre><p>  }<br>`</p>
-
-          
+<li>3
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/12/newwin10demo/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
