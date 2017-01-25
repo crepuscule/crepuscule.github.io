@@ -1,0 +1,179 @@
+2017 Jan 21  10:50
+contents of the experiences about the days after insatll fedora24
+system :
+eassy 1.lvm磁盘分区的使用，查看卷组等
+			引导修复
+essay 2.rime 的安装配置 -> 配置为简体”ctrl+ `“
+*3.chrome -> 配置卡顿，似乎没有遇到
+essay 4.安装qt5&qt creater -> 对于.run文件 先改变其运行属性，即 chmod +x
+5.lamp
+-----------------------------------------
+安装 Apache
+
+Apache 是一款开源的 web 服务框架。完全支持 CGI, SSL。
+
+切换到 root 账户：
+
+su
+
+Fedora 23/22 输入以下命令来安装Apache：
+
+dnf install httpd -y
+
+Fedora 21 及更早的版本：
+
+yum install httpd -y
+
+启动httpd服务，以在每次系统启动服务：
+
+systemctl enable httpd
+
+使用以下命令来启动httpd服务：
+
+systemctl start httpd
+
+如果遇到问题：检查www文件夹是否正确，权限是否足够
+----------------------------------
+安装 MariaDB
+
+Fedora 23/22 用户安装命令：
+
+dnf install mariadb mariadb-server -y
+
+Fedora 21 及早前版本命令：
+
+yum install mariadb mariadb-server -y
+
+随系统自动启动命令：
+
+systemctl enable mariadb
+
+启动数据库服务器：
+
+systemctl start mariadb
+
+设置 MariaDB root 账户密码，默认情况下mysql root用户的密码为空。因此，以防止未经授权的访问MySQL数据库，我们设置需要root用户密码：
+
+mysql_secure_installation
+用户：root
+密码：12345678
+登录方法和mysql完全一样
+
+--------------------------------------
+安装 php
+
+Fedora 23/22 用户命令：
+
+dnf install php -y
+
+Fedora 21 及早期版本：
+
+yum install php -y
+
+测试PHP是否运行：
+
+vi /var/www/html/testphp.php
+
+输入以下内容：
+?
+1
+2
+
+<?phpphpinfo();
+?>
+
+重启 Http 服务：
+
+systemctl restart httpd
+
+浏览器输入看看：
+
+phpinfo-Google-Chrome_006
+安装PHP模块
+
+搜索模块并安装：
+
+Fedora 23/22 用户：
+dnf search php
+
+Fedora 22及早期版本：
+yum search php
+
+现在安装你所选择所需模块，例如php-mysql，使用以下命令：
+
+Fedora 23/22 用户：
+
+dnf install php-mysql -y
+
+Fedora 22及早期版本：
+
+yum install php-mysql -y
+
+重启 HTTP 服务：
+
+systemctl restart httpd
+
+浏览器查看模块安装是否成功：
+
+phpinfo-Google-Chrome_007
+安装 phpMyAdmin
+
+phpmyadmin 用于管理数据库：
+Fedora 23/22 用户：
+
+dnf install phpmyadmin -y
+
+Fedora 22及早期版本：
+
+yum install phpmyadmin -y
+
+缺省情况下，phpMyAdmin 只能从本地主机进行访问。若要从远程系统访问您的网络中，请执行下列操作步骤。
+
+vi /etc/httpd/conf.d/phpMyAdmin.conf
+
+查找并注释掉127.0.0.1 和请求 ip ::1 lines。然后添加一个额外的行要求所有授予略低于为注释行。
+
+这是我的更改后的 phpMyAdmin.conf 文件。这些变化以粗体标记。
+
+-----------------------------------------------------
+
+
+app:
+1.hexo (node.js,--git --)
+2.atom 1.可在fedy上直接安装，也可以在个github上下载rpm包，然后本地安装 downloads/atom.x86_64.rpm
+3.安装shodsocks -qt5  https://github.com/shadowsocks/shadowsocks-qt5/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97
+4.lamp (apache mysql php5)
+5.网页云音乐 需要添加rpmfusion源
+添加rpmfusion源
+#rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
+#rpm -ivh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
+然后本地安装downloads/netease-cloud-music-0.9.0-1.fc24.x86_64.rpm
+
+			##其他又用的国内源
+			1.参考:1.http://mirrors.ustc.edu.cn/
+			2.http://mirrors.fedoraproject.org/publiclist#CN
+			3.http://mirrors.neusoft.edu.cn/
+			4.http://blog.sina.com.cn/s/blog_69a3dde9010180bw.html
+			2.自动选择最快插件
+
+			#yum install yum-fastestmirror
+			3.rpmfusion源
+			#rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
+			#rpm -ivh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
+			4.flash源
+			#rpm -ivh http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
+			#yum install flash-plugin
+
+			5.163源,sohu源,北交通,开源中国的直接可以用
+
+			#cd /etc/yum.repos.d
+			#wget http://mirrors.163.com/.help/fedora-163.repo
+			#wget http://mirrors.163.com/.help/fedora-updates-163.repo
+			#wget http://mirrors.sohu.com/help/fedora-sohu.repo
+			#wget http://mirrors.sohu.com/help/fedora-updates-sohu.repo
+			#wget http://mirror.bjtu.edu.cn/fedora-bjtu.repo
+			#wget http://mirror.bjtu.edu.cn/fedora-updates-bjtu.repo
+			#wget http://mirrors.oschina.net/help/fedora-oschina.repo
+			#wget http://mirrors.oschina.net/help/fedora-updates-oschina.repo
+			#yum makecache
+6.
