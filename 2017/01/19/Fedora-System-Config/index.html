@@ -84,28 +84,19 @@
 
 
 
-<meta name="description" content="Fedora System Config &amp;amp; RepairLVMLVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。
-
-首先需要了解一些LVM术语：
-
-物理卷 PV （Physical Volume）指磁盘分">
+<meta name="description" content="Fedora System Config &amp;amp; Repair系统更新1[root@localhost ~]#dnf update
+RPM Fusion库由于版权问题，许多软件在Fedora中是没有的，如果想安装，需要添加RPM Fusion库,有两个RPM Fusion提供：免费和非免费。1234Free RPM Fusion[root@localhost ~]#dnf install --">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fedora System Config">
 <meta property="og:url" content="http://Crepuscule.com/2017/01/19/Fedora-System-Config/index.html">
 <meta property="og:site_name" content="Crepuscule">
-<meta property="og:description" content="Fedora System Config &amp;amp; RepairLVMLVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。
-
-首先需要了解一些LVM术语：
-
-物理卷 PV （Physical Volume）指磁盘分">
-<meta property="og:updated_time" content="2017-01-24T12:32:47.208Z">
+<meta property="og:description" content="Fedora System Config &amp;amp; Repair系统更新1[root@localhost ~]#dnf update
+RPM Fusion库由于版权问题，许多软件在Fedora中是没有的，如果想安装，需要添加RPM Fusion库,有两个RPM Fusion提供：免费和非免费。1234Free RPM Fusion[root@localhost ~]#dnf install --">
+<meta property="og:updated_time" content="2017-01-29T12:53:18.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fedora System Config">
-<meta name="twitter:description" content="Fedora System Config &amp;amp; RepairLVMLVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。
-
-首先需要了解一些LVM术语：
-
-物理卷 PV （Physical Volume）指磁盘分">
+<meta name="twitter:description" content="Fedora System Config &amp;amp; Repair系统更新1[root@localhost ~]#dnf update
+RPM Fusion库由于版权问题，许多软件在Fedora中是没有的，如果想安装，需要添加RPM Fusion库,有两个RPM Fusion提供：免费和非免费。1234Free RPM Fusion[root@localhost ~]#dnf install --">
 
 
 
@@ -335,8 +326,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Config/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Config</span>
+                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Use Skills</span>
                   </a>
                 </span>
 
@@ -346,8 +337,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Config/Fedora/" itemprop="url" rel="index">
-                    <span itemprop="name">Fedora</span>
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                    <span itemprop="name">Fedora System Config & Repair</span>
                   </a>
                 </span>
 
@@ -381,38 +372,14 @@
       
 
       
-        <h2 id="Fedora-System-Config-amp-Repair"><a href="#Fedora-System-Config-amp-Repair" class="headerlink" title="Fedora System Config &amp; Repair"></a>Fedora System Config &amp; Repair</h2><h3 id="LVM"><a href="#LVM" class="headerlink" title="LVM"></a>LVM</h3><p>LVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。</p>
-<blockquote>
-<p>首先需要了解一些LVM术语：</p>
-<ul>
-<li>物理卷 PV （Physical Volume）<br>指磁盘分区或从逻辑上与磁盘分区具有同样功能的设备（如RAID），是LVM的基本存储逻辑块，但和基本的物理存储介质（如分区、磁盘等）比较，却包含有与LVM相关的管理参数</li>
-<li>物理块 PE （Physical Extent）<br>每一个物理卷PV被划分为称为PE（Physical Extents）的基本单元，具有唯一编号的PE是可以被LVM寻址的最小单元。PE的大小是可配置的，默认为4MB。所以物理卷（PV）由大小等同的基本单元PE组成</li>
-<li>逻辑块 LE （Logical Extent）<br>逻辑卷LV也被划分为可被寻址的基本单位，称为LE。在同一个卷组中，LE的大小和PE是相同的，并且一一对应</li>
-<li>卷组 VG （Volume Group）<br>类似于非LVM系统中的物理磁盘，其由一个或多个物理卷PV组成。可以在卷组上创建一个或多个LV（逻辑卷）</li>
-<li>逻辑卷 LV （Logical Volume）<br>类似于非LVM系统中的磁盘分区，逻辑卷建立在卷组VG之上。在逻辑卷LV之上可以建立文件系统（比如/home或者/usr等）<br>LVM就是允许不连续的PV组成一个逻辑上的磁盘（即VG），然后在VG上实现类似非LVM的磁盘分区，显然这样在逻辑上划分分区就更加灵活。<a id="more"></a>
-</li>
-</ul>
-</blockquote>
-<p>常用命令:</p>
-<ul>
-<li><p>物理卷 pv</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">将/dev/sda3创建为物理卷</div><div class="line">[root@localhost ~]<span class="comment">#pvcreate /dev/sda3</span></div><div class="line">查看设备中所有物理卷的信息</div><div class="line">[root@localhost ~]<span class="comment">#pvs</span></div><div class="line">查看pv详细信息,后面可以加具体PV以查看单个PV</div><div class="line">[root@localhost ~]<span class="comment">#pvdisplay</span></div><div class="line">删除pv</div><div class="line">[root@localhost ~]<span class="comment">#pvremove /dev/sda3</span></div><div class="line">将pv数据移动到其他pv</div><div class="line">[root@localhost ~]<span class="comment">#pvmove /dev/sda1 /dev/sda4</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>卷组 VG</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">将/dev/sda3，/dev/sda5两个PV合并为一个卷组，卷组的名字可以随意指定</div><div class="line">[root@localhost ~]<span class="comment">#vgcreate vgname /dev/sda&#123;3,5&#125;</span></div><div class="line">如果PV包括不同的设备，则不能使用&#123;&#125;，如将/dev/sda3，/dev/sdb合并为一个卷组</div><div class="line">[root@localhost ~]<span class="comment">#vgcreate vgname /dev/sda3 /dev/sdb</span></div><div class="line">查看设备中所有VG的信息</div><div class="line">[root@localhost ~]<span class="comment">#vgs</span></div><div class="line">查看pv详细信息,后面可以加具体VG以查看单个VG</div><div class="line">[root@localhost ~]<span class="comment">#vgdisplay</span></div><div class="line">删除VG</div><div class="line">[root@localhost ~]<span class="comment">#vgremove vgname</span></div><div class="line">拓展VG，将一个PV加进一个卷组</div><div class="line">[root@localhost ~]<span class="comment">#vgextend vgname /dev/sda5</span></div><div class="line">缩减VG，将一个PV移出一个卷组,注意要先备份重要数据</div><div class="line">[root@localhost ~]<span class="comment">#vgreduce vgname /dev/sda5</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>逻辑卷 LV</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">在卷组vgname上创建一个名为lv01，大小20GiB的</div><div class="line">[root@localhost ~]<span class="comment">#lvcreate -L 20GiB  -n lv01 /dev/vgname</span></div><div class="line">查看设备中所有物理卷的信息</div><div class="line">[root@localhost ~]<span class="comment">#pvs</span></div><div class="line">查看pv详细信息,后面可以加具体PV以查看单个PV</div><div class="line">[root@localhost ~]<span class="comment">#pvdisplay</span></div><div class="line">删除pv</div><div class="line">[root@localhost ~]<span class="comment">#pvremove /dev/sda3</span></div><div class="line">将pv数据移动到其他pv</div><div class="line">[root@localhost ~]<span class="comment">#pvmove /dev/sda1 /dev/sda4</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="系统更新"><a href="#系统更新" class="headerlink" title="系统更新"></a>系统更新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf update</span></div></pre></td></tr></table></figure>
+        <h2 id="Fedora-System-Config-amp-Repair"><a href="#Fedora-System-Config-amp-Repair" class="headerlink" title="Fedora System Config &amp; Repair"></a>Fedora System Config &amp; Repair</h2><h3 id="系统更新"><a href="#系统更新" class="headerlink" title="系统更新"></a>系统更新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf update</span></div></pre></td></tr></table></figure>
 <h3 id="RPM-Fusion库"><a href="#RPM-Fusion库" class="headerlink" title="RPM Fusion库"></a>RPM Fusion库</h3><p>由于版权问题，许多软件在Fedora中是没有的，如果想安装，需要添加RPM Fusion库,有两个RPM Fusion提供：免费和非免费。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Free RPM Fusion</div><div class="line">[root@localhost ~]<span class="comment">#dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-24.noarch.rpm</span></div><div class="line">Non-Free RPM Fusion</div><div class="line">[root@localhost ~]<span class="comment">#dnf install --nogpgcheck http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-24.noarch.rpm</span></div></pre></td></tr></table></figure></p>
 <h3 id="Fedy-Tool"><a href="#Fedy-Tool" class="headerlink" title="Fedy Tool"></a>Fedy Tool</h3><p>Fedy Tool可以让你安装多媒体和附加软件，如MP3、Adobe Flash、java等。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#bash -c 'su -c "curl http://folkswithhats.org/fedy-installer -o fedy-installer &amp;amp;&amp;amp; chmod +x fedy-installer &amp;amp;&amp;amp; ./fedy-installer"'</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>安装成功完成，启动Fedy Tool。在应用程序选项列表中点击需要安装的软件。我们也可以安装常用的软件包像adobe flash player, Drop Box, Google Chrome, Multimedia codecs, skype, steam, oracle java, telegram, Wps office等。</p>
 </blockquote>
 <h3 id="MP3插件"><a href="#MP3插件" class="headerlink" title="MP3插件"></a>MP3插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf install gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-ugly gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free gstreamer1-plugins-bad-freeworld gstreamer1-plugins-bad-free-extras ffmpeg</span></div></pre></td></tr></table></figure>
-<!--more-->
+<a id="more"></a>
 <h3 id="VLC播放器"><a href="#VLC播放器" class="headerlink" title="VLC播放器"></a>VLC播放器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf install vlc</span></div></pre></td></tr></table></figure>
 <h3 id="wine"><a href="#wine" class="headerlink" title="wine"></a>wine</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf install wine</span></div></pre></td></tr></table></figure>
 <h3 id="JAVA插件"><a href="#JAVA插件" class="headerlink" title="JAVA插件"></a>JAVA插件</h3><p>java插件是java运行环境（JRE）的一个组成部分。JRE允许用java编程语言编写的程序运行在不同的浏览器。<br>IcedTea-Web是一个免费的java web start和java web浏览器插件的RedHat软件实现。我们可以通过使用下面的命令安装Web插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf install icedtea-web java-openjdk</span></div></pre></td></tr></table></figure></p>
@@ -461,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/17/Advanced-C/" rel="next" title="Advanced C">
-                <i class="fa fa-chevron-left"></i> Advanced C
+              <a href="/2017/01/17/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -543,7 +510,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -552,7 +519,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -561,7 +528,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -596,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fedora-System-Config-amp-Repair"><span class="nav-number">1.</span> <span class="nav-text">Fedora System Config & Repair</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM"><span class="nav-number">1.1.</span> <span class="nav-text">LVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统更新"><span class="nav-number">1.2.</span> <span class="nav-text">系统更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPM-Fusion库"><span class="nav-number">1.3.</span> <span class="nav-text">RPM Fusion库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fedy-Tool"><span class="nav-number">1.4.</span> <span class="nav-text">Fedy Tool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MP3插件"><span class="nav-number">1.5.</span> <span class="nav-text">MP3插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VLC播放器"><span class="nav-number">1.6.</span> <span class="nav-text">VLC播放器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wine"><span class="nav-number">1.7.</span> <span class="nav-text">wine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA插件"><span class="nav-number">1.8.</span> <span class="nav-text">JAVA插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地RPM包的安装方法"><span class="nav-number">1.9.</span> <span class="nav-text">本地RPM包的安装方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fedora-System-Config-amp-Repair"><span class="nav-number">1.</span> <span class="nav-text">Fedora System Config & Repair</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统更新"><span class="nav-number">1.1.</span> <span class="nav-text">系统更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPM-Fusion库"><span class="nav-number">1.2.</span> <span class="nav-text">RPM Fusion库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fedy-Tool"><span class="nav-number">1.3.</span> <span class="nav-text">Fedy Tool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MP3插件"><span class="nav-number">1.4.</span> <span class="nav-text">MP3插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VLC播放器"><span class="nav-number">1.5.</span> <span class="nav-text">VLC播放器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wine"><span class="nav-number">1.6.</span> <span class="nav-text">wine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA插件"><span class="nav-number">1.7.</span> <span class="nav-text">JAVA插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地RPM包的安装方法"><span class="nav-number">1.8.</span> <span class="nav-text">本地RPM包的安装方法</span></a></li></ol></li></ol></div>
             
 
           </div>

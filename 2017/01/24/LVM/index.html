@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="C/C++,C11," />
+  <meta name="keywords" content="Linux,LVM," />
 
 
 
@@ -84,16 +84,28 @@
 
 
 
-<meta name="description" content="my individual blog">
+<meta name="description" content="LVM (Logical Volume Manager)LVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。
+
+首先需要了解一些LVM术语：
+
+物理卷 PV （Physical Volume）指磁盘分区或从逻辑上与磁">
 <meta property="og:type" content="article">
-<meta property="og:title" content="New C++ Standard">
-<meta property="og:url" content="http://Crepuscule.com/2017/01/21/New-Cpp-Standard/index.html">
+<meta property="og:title" content="LVM">
+<meta property="og:url" content="http://Crepuscule.com/2017/01/24/LVM/index.html">
 <meta property="og:site_name" content="Crepuscule">
-<meta property="og:description" content="my individual blog">
-<meta property="og:updated_time" content="2017-01-21T13:15:27.648Z">
+<meta property="og:description" content="LVM (Logical Volume Manager)LVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。
+
+首先需要了解一些LVM术语：
+
+物理卷 PV （Physical Volume）指磁盘分区或从逻辑上与磁">
+<meta property="og:updated_time" content="2017-01-29T12:57:15.921Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="New C++ Standard">
-<meta name="twitter:description" content="my individual blog">
+<meta name="twitter:title" content="LVM">
+<meta name="twitter:description" content="LVM (Logical Volume Manager)LVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。
+
+首先需要了解一些LVM术语：
+
+物理卷 PV （Physical Volume）指磁盘分区或从逻辑上与磁">
 
 
 
@@ -121,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://Crepuscule.com/2017/01/21/New-Cpp-Standard/"/>
+  <link rel="canonical" href="http://Crepuscule.com/2017/01/24/LVM/"/>
 
 
 
 
 
-  <title> New C++ Standard | Crepuscule </title>
+  <title> LVM | Crepuscule </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
@@ -250,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/21/New-Cpp-Standard/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/24/LVM/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -274,7 +286,7 @@
             
             
               
-                New C++ Standard
+                LVM
               
             
           </h1>
@@ -289,8 +301,8 @@
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-21T21:10:18+08:00">
-                2017-01-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-24T21:08:20+08:00">
+                2017-01-24
               </time>
             
 
@@ -323,8 +335,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Kernel</span>
+                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Use Skills</span>
                   </a>
                 </span>
 
@@ -334,8 +346,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/Basic-C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Basic C/C++</span>
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                    <span itemprop="name">Fedora System Config & Repair</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/Disk-Partition/" itemprop="url" rel="index">
+                    <span itemprop="name">Disk Partition</span>
                   </a>
                 </span>
 
@@ -369,7 +392,31 @@
       
 
       
-        
+        <h3 id="LVM-Logical-Volume-Manager"><a href="#LVM-Logical-Volume-Manager" class="headerlink" title="LVM (Logical Volume Manager)"></a>LVM (Logical Volume Manager)</h3><p>LVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。</p>
+<blockquote>
+<p>首先需要了解一些LVM术语：</p>
+<ul>
+<li>物理卷 PV （Physical Volume）<br>指磁盘分区或从逻辑上与磁盘分区具有同样功能的设备（如RAID），是LVM的基本存储逻辑块，但和基本的物理存储介质（如分区、磁盘等）比较，却包含有与LVM相关的管理参数</li>
+<li>物理块 PE （Physical Extent）<br>每一个物理卷PV被划分为称为PE（Physical Extents）的基本单元，具有唯一编号的PE是可以被LVM寻址的最小单元。PE的大小是可配置的，默认为4MB。所以物理卷（PV）由大小等同的基本单元PE组成</li>
+<li>逻辑块 LE （Logical Extent）<br>逻辑卷LV也被划分为可被寻址的基本单位，称为LE。在同一个卷组中，LE的大小和PE是相同的，并且一一对应</li>
+<li>卷组 VG （Volume Group）<br>类似于非LVM系统中的物理磁盘，其由一个或多个物理卷PV组成。可以在卷组上创建一个或多个LV（逻辑卷）</li>
+<li>逻辑卷 LV （Logical Volume）<br>类似于非LVM系统中的磁盘分区，逻辑卷建立在卷组VG之上。在逻辑卷LV之上可以建立文件系统（比如/home或者/usr等）<br>LVM就是允许不连续的PV组成一个逻辑上的磁盘（即VG），然后在VG上实现类似非LVM的磁盘分区，显然这样在逻辑上划分分区就更加灵活。<a id="more"></a>
+</li>
+</ul>
+</blockquote>
+<p>常用命令:</p>
+<ul>
+<li><p>物理卷 pv</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">将/dev/sda3创建为物理卷</div><div class="line">[root@localhost ~]<span class="comment">#pvcreate /dev/sda3</span></div><div class="line">查看设备中所有物理卷的信息</div><div class="line">[root@localhost ~]<span class="comment">#pvs</span></div><div class="line">查看pv详细信息,后面可以加具体PV以查看单个PV</div><div class="line">[root@localhost ~]<span class="comment">#pvdisplay</span></div><div class="line">删除pv</div><div class="line">[root@localhost ~]<span class="comment">#pvremove /dev/sda3</span></div><div class="line">将pv数据移动到其他pv</div><div class="line">[root@localhost ~]<span class="comment">#pvmove /dev/sda1 /dev/sda4</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>卷组 VG</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">将/dev/sda3，/dev/sda5两个PV合并为一个卷组，卷组的名字可以随意指定</div><div class="line">[root@localhost ~]<span class="comment">#vgcreate vgname /dev/sda&#123;3,5&#125;</span></div><div class="line">如果PV包括不同的设备，则不能使用&#123;&#125;，如将/dev/sda3，/dev/sdb合并为一个卷组</div><div class="line">[root@localhost ~]<span class="comment">#vgcreate vgname /dev/sda3 /dev/sdb</span></div><div class="line">查看设备中所有VG的信息</div><div class="line">[root@localhost ~]<span class="comment">#vgs</span></div><div class="line">查看pv详细信息,后面可以加具体VG以查看单个VG</div><div class="line">[root@localhost ~]<span class="comment">#vgdisplay</span></div><div class="line">删除VG</div><div class="line">[root@localhost ~]<span class="comment">#vgremove vgname</span></div><div class="line">拓展VG，将一个PV加进一个卷组</div><div class="line">[root@localhost ~]<span class="comment">#vgextend vgname /dev/sda5</span></div><div class="line">缩减VG，将一个PV移出一个卷组,注意要先备份重要数据</div><div class="line">[root@localhost ~]<span class="comment">#vgreduce vgname /dev/sda5</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>逻辑卷 LV</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">在卷组vgname上创建一个名为lv01，大小20GiB的</div><div class="line">[root@localhost ~]<span class="comment">#lvcreate -L 20GiB  -n lv01 /dev/vgname</span></div><div class="line">查看设备中所有物理卷的信息</div><div class="line">[root@localhost ~]<span class="comment">#pvs</span></div><div class="line">查看pv详细信息,后面可以加具体PV以查看单个PV</div><div class="line">[root@localhost ~]<span class="comment">#pvdisplay</span></div><div class="line">删除pv</div><div class="line">[root@localhost ~]<span class="comment">#pvremove /dev/sda3</span></div><div class="line">将pv数据移动到其他pv</div><div class="line">[root@localhost ~]<span class="comment">#pvmove /dev/sda1 /dev/sda4</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
     </div>
 
@@ -392,9 +439,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C-C/" rel="tag"># C/C++</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/C11/" rel="tag"># C11</a>
+            <a href="/tags/LVM/" rel="tag"># LVM</a>
           
         </div>
       
@@ -403,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/21/Fedora-App-installation/" rel="next" title="Fedora App installation">
-                <i class="fa fa-chevron-left"></i> Fedora App installation
+              <a href="/2017/01/21/New-Cpp-Standard/" rel="next" title="New C++ Standard">
+                <i class="fa fa-chevron-left"></i> New C++ Standard
               </a>
             
           </div>
@@ -413,8 +460,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/24/LVM/" rel="prev" title="LVM">
-                LVM <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/29/Fedora-Grub2-Repair/" rel="prev" title="Fedora Grub2 Repair">
+                Fedora Grub2 Repair <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -462,8 +509,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
@@ -519,6 +575,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM-Logical-Volume-Manager"><span class="nav-number">1.</span> <span class="nav-text">LVM (Logical Volume Manager)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
