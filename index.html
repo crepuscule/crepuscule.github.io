@@ -251,6 +251,191 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/04/Grub2-Theme-Replacement/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/04/Grub2-Theme-Replacement/" itemprop="url">
+                  Grub2 Theme Replacement
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T18:58:41+08:00">
+                2017-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Use Skills</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                    <span itemprop="name">Fedora System Config & Repair</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/Boot-Config/" itemprop="url" rel="index">
+                    <span itemprop="name">Boot Config</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="美化Grub2引导菜单"><a href="#美化Grub2引导菜单" class="headerlink" title="美化Grub2引导菜单"></a>美化Grub2引导菜单</h3><p>Grub黑黑的引导菜单和如今绚丽的系统启动界面格格不入。可以通过改变Grub的主题来美化Grub引导菜单。</p>
+<ul>
+<li>首先，要找到一款适合的主题，这里推荐网站<a href="https://www.gnome-look.org/" target="_blank" rel="external">GNOME-LOOK.ORG</a>，虽然是gonme主题的网站，但是其中的grub主题都是各发行版本通用的，而且其grub主题也有不少精品。<a href="https://dl.opendesktop.org/api/files/download/id/1465809108/171217-Breeze-GRUB2.tar.gz" target="_blank" rel="external">这里</a>有一款人气不错的主题。<br><img src="http://p1.bpimg.com/567571/fdc9db6dce1f2a95.png" alt="Breeze Grub2 Theme"></li>
+<li>下载好主题解压之后如果发现有install.sh等脚本安装安文件<br>在该目录下打开终端执行”./install.sh”安装即可，执行后就可以重启查看效果了。</li>
+<li>如果没有脚本安装文件</li>
+</ul>
+<ol>
+<li>将主题包放到/boot/grub2/theme文件夹下，并确保该主题包内有theme.txt文件。</li>
+<li>更改/etc/default/grub文件，添加GRUB_THEME=”/boot/grub2/theme/主题包文件夹名称/theme.txt”，其实就是theme.txt的路径名。另外注释掉GRUB_TERMINAL_OUTPUT=”console”这一行。</li>
+<li>更新grub设置，即执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/03/Cpp-Library-String-Type/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1564,7 +1749,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/17/Advanced-C/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/17/hello-world/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1589,8 +1774,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/17/Advanced-C/" itemprop="url">
-                  Advanced C
+                <a class="post-title-link" href="/2017/01/17/hello-world/" itemprop="url">
+                  Hello World
                 </a>
               
             
@@ -1606,7 +1791,7 @@
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T09:45:52+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T20:19:21+08:00">
                 2017-01-17
               </time>
             
@@ -1617,50 +1802,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Kernel</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/Basic-C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Basic C/C++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1687,180 +1828,20 @@
 
       
         
-          <h3 id="C中define的用法"><a href="#C中define的用法" class="headerlink" title="C中define的用法"></a>C中define的用法</h3><ol>
-<li>简单用法<br>#define MAX 5+5<br>在预编译阶段在程序中发现MAX即将其替换为5+5,  不会对宏体做任何运算。<br>如果有语句int a=N<em>N;a的值应为5+5</em>5+5=35</li>
-<li>带参数的宏定义<br>#define add(x,y) x+y<br>如果要用define实现一个加法函数，上述做法是错误的，正确做法是：#define add(x,y) ((x)+(y)) 如果用宏实现类似函数的功能，必须将每一个参数和整个宏体都加上括号。</li>
-<li>多行宏定义<br>如同多数命令行一样，在行末尾加一个反斜杠”\”，即可在下一行继续书写宏定义。</li>
-<li>宏中三个符号</li>
-</ol>
-<ul>
-<li>x##y 表示连接 #define con(x,y)    x##y  int n=con(4,5);  n的值为45</li>
-<li>#@x  表示给x加上’’,使其变为一个const char</li>
-<li>#x   表示给x加上””,使其变为一个字符串
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/17/Advanced-C/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=745137&auto=0&height=66"></iframe>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/15/Compiler-Basics-Chapter-1/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="crepuscule">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Crepuscule">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/15/Compiler-Basics-Chapter-1/" itemprop="url">
-                  Compiler Basics Chapter 1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-15T11:32:14+08:00">
-                2017-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Basic-Computer-Theory/" itemprop="url" rel="index">
-                    <span itemprop="name">Basic Computer Theory</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Basic-Computer-Theory/Compiling-Fundamentals/" itemprop="url" rel="index">
-                    <span itemprop="name">Compiling Fundamentals</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Chapter-1-编译简介"><a href="#Chapter-1-编译简介" class="headerlink" title="Chapter 1 编译简介"></a>Chapter 1 编译简介</h2><h3 id="1-1编译器"><a href="#1-1编译器" class="headerlink" title="1.1编译器"></a>1.1编译器</h3><p>编译器是一种程序，它读入某种源语言编写的程序，将其翻译成一个与之等价的以另一种目标语言编写的程序</p>
-<h4 id="编译的分析-综合模型"><a href="#编译的分析-综合模型" class="headerlink" title="编译的分析-综合模型"></a>编译的分析-综合模型</h4><p>分析部分将源程序分为基本块并形成中间表示，综合部分将中间表示转换为目标程序。综合部分技术性更强。在分析中，源程序蕴含的操作被确定为语法树，树的一个节点表示操作，它的子节点表示该操作的参数。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/15/Compiler-Basics-Chapter-1/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1935,7 +1916,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
