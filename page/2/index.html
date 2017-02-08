@@ -691,6 +691,11 @@
 <li>2</li>
 <li>3</li>
 </ul>
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
 <p>###有序列表</p>
 <ol>
 <li>1</li>
@@ -739,7 +744,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2016/11/17/ProcessManager/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2016/11/17/ProcessManager-I-cpp-time/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -764,8 +769,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/17/ProcessManager/" itemprop="url">
-                  ProcessManager
+                <a class="post-title-link" href="/2016/11/17/ProcessManager-I-cpp-time/" itemprop="url">
+                  ProcessManager I cpp time
                 </a>
               
             
@@ -783,6 +788,176 @@
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-17T11:35:11+08:00">
                 2016-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/C-C-Project/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++ Project</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/C-C-Project/ProcessManager/" itemprop="url" rel="index">
+                    <span itemprop="name">ProcessManager</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Coding-of-ProcessManager（1）C-C-时间"><a href="#Coding-of-ProcessManager（1）C-C-时间" class="headerlink" title="Coding of ProcessManager（1）C/C++时间"></a>Coding of ProcessManager（1）C/C++时间</h2><hr>
+<h3 id="ProcessManager-中时间问题的解决："><a href="#ProcessManager-中时间问题的解决：" class="headerlink" title="ProcessManager 中时间问题的解决："></a>ProcessManager 中时间问题的解决：</h3><p>先使用time()获取系统时间，然后根据已获取系统时间的time_t得到tm类型结构体，再从中获取时，分，秒等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">time_t timep;   //定义time_t型timep</div><div class="line">time(&amp;timep);   //获取系统时间，其实这里time_t获取的是从1970年到现在经过了多少秒</div><div class="line">tm * temp;</div><div class="line">temp=localtime(&amp;timep);</div><div class="line">cout&lt;&lt;temp-&gt;tm_hour&lt;&lt;&quot;:&quot;&lt;&lt;temp-&gt;tm_min&lt;&lt;endl;</div></pre></td></tr></table></figure></p>
+<h3 id="C-C-time-h-主要内容"><a href="#C-C-time-h-主要内容" class="headerlink" title="C/C++ time.h 主要内容"></a>C/C++ time.h 主要内容</h3><h4 id="1-time-t"><a href="#1-time-t" class="headerlink" title="1.time_t"></a>1.time_t</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * A type for storing the current time and date. This is the number of</div><div class="line"> * seconds since midnight Jan 1, 1970.</div><div class="line"> * NOTE: This is also defined in non-ISO sys/types.h.</div><div class="line"> */</div><div class="line">#ifndef _TIME32_T_DEFINED</div><div class="line">typedef __int32 __time32_t;</div><div class="line">#define _TIME32_T_DEFINED</div><div class="line">#endif</div><div class="line"></div><div class="line">#ifndef __STRICT_ANSI__</div><div class="line">/* A 64-bit time_t to get to Y3K */</div><div class="line">#ifndef _TIME64_T_DEFINED</div><div class="line">typedef __int64 __time64_t;</div><div class="line">#define _TIME64_T_DEFINED</div><div class="line">#endif</div><div class="line">#endif</div><div class="line"></div><div class="line">#ifndef _TIME_T_DEFINED</div><div class="line">/* FIXME __STRICT_ANSI__ ! */</div><div class="line">#if __MSVCRT_VERSION__ &gt;= 0x0800</div><div class="line">#ifndef _USE_32BIT_TIME_T</div><div class="line">typedef	__time64_t time_t;</div><div class="line">#else</div><div class="line">typedef	__time32_t time_t;</div><div class="line">#endif /* !_USE_32BIT_TIME_T */</div><div class="line">#else</div><div class="line">typedef	__time32_t time_t;</div><div class="line">#endif /* __MSVCRT_VERSION__ &gt;= 0x0800 */</div><div class="line">#define _TIME_T_DEFINED</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>time.h中定义了<strong>time32_t,</strong>time64_t两种time_t类型以在不同时机适应不同的机器，实际使用中只需要使用time_t类型即可。同时也可以看出time_t其实也就是一种int类型，只不过是长整形(int32或是int64)。<br>time_t实际是从1970年1月1日开始时刻到当前时刻的秒数。<br>此类型对应的函数time()原型为：<br>time_t time(time_t *t);<br>可以通过它来获取系统当前time_t类型时间（日历时间 calender time）</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/17/ProcessManager-I-cpp-time/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2016/09/27/hello-world/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/27/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-27T20:35:38+08:00">
+                2016-09-27
               </time>
             
 
@@ -818,16 +993,20 @@
 
       
         
-          <h2 id="Coding-of-ProcessManager（1）"><a href="#Coding-of-ProcessManager（1）" class="headerlink" title="Coding of ProcessManager（1）"></a>Coding of ProcessManager（1）</h2><hr>
-<p>在编写 ProcessManager 中遇到的功能性问题解决：<br>1.获取系统时间并从中获取特定字段<br>先获取系统时间，然后从中获取时和分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  time_t timep;//定义time_t型timep（其实就是int64 无误）</div><div class="line">  time(&amp;timep);//获取系统时间，其实这里time_t获取的是从1970年到现在经过了多少秒</div><div class="line">  tm * temp;</div><div class="line">  temp=localtime(&amp;timep);</div><div class="line">  cout&lt;&lt;temp-&gt;tm_hour&lt;&lt;&quot;:&quot;&lt;&lt;temp-&gt;tm_min&lt;&lt;endl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/17/ProcessManager/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=745137&auto=0&height=66"></iframe>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+          
         
       
     </div>
@@ -902,7 +1081,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -911,7 +1090,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -920,7 +1099,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

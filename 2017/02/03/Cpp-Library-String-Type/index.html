@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="C++,C++ Primer,C++ Strings," />
+  <meta name="keywords" content="C/C++,C++ Primer,C++ Strings," />
 
 
 
@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Crepuscule">
 <meta property="og:description" content="3.2 Library String Type使用string类型时需要加进头文件，还要使用using std::string;来声明命名空间。
 定义和初始化string类型数据1234string s1; // default initialization; s1 is the empty stringstring s2 = s1; // s2 is a copy of s1string s3">
-<meta property="og:updated_time" content="2017-02-03T12:30:05.695Z">
+<meta property="og:updated_time" content="2017-02-08T12:15:24.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cpp Library String Type">
 <meta name="twitter:description" content="3.2 Library String Type使用string类型时需要加进头文件，还要使用using std::string;来声明命名空间。
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
 
@@ -326,7 +326,7 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/Strings/" itemprop="url" rel="index">
+                  <a href="/categories/C-C/Strings/" itemprop="url" rel="index">
                     <span itemprop="name">Strings</span>
                   </a>
                 </span>
@@ -363,7 +363,23 @@
       
         <h3 id="3-2-Library-String-Type"><a href="#3-2-Library-String-Type" class="headerlink" title="3.2 Library String Type"></a>3.2 Library String Type</h3><p>使用string类型时需要加进<string>头文件，还要使用using std::string;来声明命名空间。</string></p>
 <h4 id="定义和初始化string类型数据"><a href="#定义和初始化string类型数据" class="headerlink" title="定义和初始化string类型数据"></a>定义和初始化string类型数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">string s1; // default initialization; s1 is the empty string</div><div class="line">string s2 = s1; // s2 is a copy of s1</div><div class="line">string s3 = &quot;hiya&quot;; // s3 is a copy of the string literal</div><div class="line">string s4(10, &apos;c&apos;); // s4 is cccccccccc</div></pre></td></tr></table></figure>
-<p>几种初始化string类型的方法:<br>string s1;      //默认空字符串<br>string s2(s1);  //复制构造函数<br>string s2=s1;   //对=重载，同上<br>string s3(“value”); //<br>string s3=”value”;<br>string s4(n,’c’);</p>
+<p>总节几种初始化string类型的方法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">string s1;      //默认空字符串</div><div class="line">string s2(s1);  //复制构造函数</div><div class="line">string s2=s1;   //对=重载，同上</div><div class="line">string s3(&quot;value&quot;); //直接使用字符串初始化</div><div class="line">string s3=&quot;value&quot;;  //对=重载，同上</div><div class="line">string s4(n,&apos;c&apos;);   //用n个&apos;C&apos;初始化</div></pre></td></tr></table></figure></p>
+<p>复制初始化和直接初始化(cpoy initialization &amp;&amp; direct initialization)<br>当初始化时只有一个初始化参数时可以复制初始化，但参数有多个时必须直接初始化。比如下方s7<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">string s5 = &quot;hiya&quot;; // copy initialization</div><div class="line">string s6(&quot;hiya&quot;); // direct initialization</div><div class="line">string s7(10, &apos;c&apos;); // direct initialization; s7 is cccccccccc</div></pre></td></tr></table></figure></p>
+<p>也可以用这种方式达到s7地复制初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">string s8 = string(10, &apos;c&apos;); // copy initialization; s8 is cccccccccc</div><div class="line">其实上面依然没有和原则冲突，上面和下面等价：</div><div class="line">string temp(10, &apos;c&apos;); // temp is cccccccccc</div><div class="line">string s8 = temp; // copy temp into s8</div><div class="line">不过，这毫无意义</div></pre></td></tr></table></figure></p>
+<h4 id="string类型的操作"><a href="#string类型的操作" class="headerlink" title="string类型的操作"></a>string类型的操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">string s;</div><div class="line">getline(in,s);    //read a line of input,only stop in  1)eof,2)fixed Delimiter(界定符),3)MAX</div><div class="line">s.empty();        //return true if is empty</div><div class="line">s.size();         //return nums in s</div><div class="line">s[n];             /return reference to the char at postion in n</div></pre></td></tr></table></figure>
+<ul>
+<li><p>cin<br>cin&gt;&gt;s;   //The string input operator reads and<br>discards any leading whitespace (e.g., spaces, newlines, tabs).  cin读入但是抛弃所有不可见字符<br>对于cin使用以下方法读入并随即输出未知长度的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int main()</div><div class="line">&#123;</div><div class="line">string word;</div><div class="line">while (cin &gt;&gt; word) // read until end-of-file</div><div class="line">cout &lt;&lt; word &lt;&lt; endl; // write each word followed by a new line</div><div class="line">return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>getline()<br>当不想忽略空格符时应该使用getline(),getline()将读取的第一行存入字符串，即遇到回车停止</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">int main()</div><div class="line">&#123;</div><div class="line">string line;</div><div class="line">// read input a line at a time until end-of-file</div><div class="line">while (getline(cin, line))</div><div class="line">cout &lt;&lt; line &lt;&lt; endl;</div><div class="line">return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>string::size_type<br>string.size() 是int或是unsigned型？不是，试试<br>auto len = line.size(); 就会发现len是string::size_type类型。<br>string及其他库类型都定义了不少伴随类型。因为string型经常存储包含很多字符的一串字符，而一篇文章的字符的数量用int存储一定不合理，string::size_type这种类型其实类似于unsigned类型以存储足够大的数。</p>
+</li>
+<li><p>string +</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">string s1 = &quot;hello&quot;, s2 = &quot;world&quot;; // no punctuation in s1 or s2</div><div class="line">string s3 = s1 + &quot;, &quot; + s2 + &apos;\n&apos;;</div><div class="line">When we mix strings and string or character literals, at least one operand to each</div><div class="line">+ operator must be of string type:</div><div class="line">(当使用+时，每一个+应该至少有一个是string类型)</div><div class="line">string s4 = s1 + &quot;, &quot;; // ok: adding a string and a literal</div><div class="line">string s5 = &quot;hello&quot; + &quot;, &quot;; // error: no string operand 完全没有string类型数据</div><div class="line">string s6 = s1 + &quot;, &quot; + &quot;world&quot;; // ok: each + has a string operand 因为上面语句定价于 string s6 = (s1 + &quot;, &quot;) + &quot;world&quot;;</div><div class="line">string s7 = &quot;hello&quot; + &quot;, &quot; + s2; // error: can&apos;t add string literals 常量字符串不可在前面</div></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
@@ -387,7 +403,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C++</a>
+            <a href="/tags/C-C/" rel="tag"># C/C++</a>
           
             <a href="/tags/C-Primer/" rel="tag"># C++ Primer</a>
           
@@ -482,7 +498,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -491,7 +507,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -500,7 +516,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -535,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Library-String-Type"><span class="nav-number">1.</span> <span class="nav-text">3.2 Library String Type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义和初始化string类型数据"><span class="nav-number">1.1.</span> <span class="nav-text">定义和初始化string类型数据</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Library-String-Type"><span class="nav-number">1.</span> <span class="nav-text">3.2 Library String Type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义和初始化string类型数据"><span class="nav-number">1.1.</span> <span class="nav-text">定义和初始化string类型数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#string类型的操作"><span class="nav-number">1.2.</span> <span class="nav-text">string类型的操作</span></a></li></ol></li></ol></div>
             
 
           </div>
