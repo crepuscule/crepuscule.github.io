@@ -1,0 +1,743 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C/C++~/.codeblocks," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="subset (子集和数问题)题目要求从subset文件夹内读取文件，文件分1000-100000个数字的5种规模和1000，100000，10000000三种数量级。以1000个数字为例：先求出这1000个数的和sum，接着取 r 在0~1之间，并在1000个数中构造一个子集，得这个子集所有数的和c（c强制为整数）满足：c=r*sum(0&amp;lt;r&amp;lt;1)
+数据结构定义size存储数的个数，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SubSet">
+<meta property="og:url" content="http://Crepuscule.com/2017/02/22/SubSet/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="subset (子集和数问题)题目要求从subset文件夹内读取文件，文件分1000-100000个数字的5种规模和1000，100000，10000000三种数量级。以1000个数字为例：先求出这1000个数的和sum，接着取 r 在0~1之间，并在1000个数中构造一个子集，得这个子集所有数的和c（c强制为整数）满足：c=r*sum(0&amp;lt;r&amp;lt;1)
+数据结构定义size存储数的个数，">
+<meta property="og:updated_time" content="2017-03-02T09:18:19.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SubSet">
+<meta name="twitter:description" content="subset (子集和数问题)题目要求从subset文件夹内读取文件，文件分1000-100000个数字的5种规模和1000，100000，10000000三种数量级。以1000个数字为例：先求出这1000个数的和sum，接着取 r 在0~1之间，并在1000个数中构造一个子集，得这个子集所有数的和c（c强制为整数）满足：c=r*sum(0&amp;lt;r&amp;lt;1)
+数据结构定义size存储数的个数，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/2017/02/22/SubSet/"/>
+
+
+
+
+
+  <title> SubSet | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/22/SubSet/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SubSet
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T11:27:58+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C-Project/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++ Project</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="subset-子集和数问题"><a href="#subset-子集和数问题" class="headerlink" title="subset (子集和数问题)"></a>subset (子集和数问题)</h2><h3 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h3><p>从subset文件夹内读取文件，文件分1000-100000个数字的5种规模和1000，100000，10000000三种数量级。<br>以1000个数字为例：先求出这1000个数的和sum，接着取 r 在0~1之间，并在1000个数中构造一个子集，得这个子集所有数的和c（c强制为整数）满足：c=r*sum(0&lt;r&lt;1)</p>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>定义size存储数的个数，动态定义一个二维数组存储这size个数，设置长整形存储1000规模的1000个数（只是这个规模）,设置r为float存储sum的系数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> SubSet&#123;</div><div class="line">    <span class="keyword">public</span>:</div><div class="line">        SubSet(<span class="keyword">char</span>* path);        </div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">showtest</span><span class="params">()</span></span>;</div><div class="line">    <span class="keyword">private</span>:</div><div class="line">        <span class="keyword">int</span> size;</div><div class="line">        <span class="keyword">float</span> r;</div><div class="line">        <span class="keyword">long</span> SUM;</div><div class="line">        <span class="keyword">int</span> (* SET)[<span class="number">2</span>];</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="大体的实现思路"><a href="#大体的实现思路" class="headerlink" title="大体的实现思路"></a>大体的实现思路</h3><h4 id="寻找最优解的方法：（包含数量最少的子集）"><a href="#寻找最优解的方法：（包含数量最少的子集）" class="headerlink" title="寻找最优解的方法：（包含数量最少的子集）"></a>寻找最优解的方法：（包含数量最少的子集）</h4><ol>
+<li>在构造函数中，首先通过从文件中读取第一行第一个数赋值给size，确定该动态二维数组的大小（第二维为2，0列存储wi，1列存储pi列），在读取每一行时顺便累加出SUM的值。</li>
+<li>在将所有的数全部加载到内存中之后，开始对数组进行排序，初步确定使用 堆排序 （速度较快，占用空间较少）按从大到小的顺序排序。</li>
+<li>排序完成后，根据具体的c=r*SUM值，按从上到下找到第一个小于c值的数，记录该数为c1，存入动态链表；再从该数下方开始寻找第一个小于 c-c1 的数，记为c2同样存入动态的链表，直到c被这些数减为0则动态链表中的数则为需要寻找的集合。<h4 id="寻找全部解的方法：-使用递归函数做"><a href="#寻找全部解的方法：-使用递归函数做" class="headerlink" title="寻找全部解的方法：(使用递归函数做)"></a>寻找全部解的方法：(使用递归函数做)</h4></li>
+<li>设置递归函数void seek(int head,int c);</li>
+<li>如果head=0(已经遍历到最后了)，或者c==0（已经凑够了需要实现的数）则直接return上一级告知完成</li>
+<li><p>…在set数组中设置一个键值used，=1时标识该数也被当作head使用，但当作head只能有一次。…(这个功能其实在for语句中就已经实现了，所以不需要了)从最小值min=1开始（如果其head为0就）检查它是否&gt;c，大于是肯定不行的直接return上一级告知完成</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">min=<span class="number">1</span>;</div><div class="line"><span class="keyword">while</span>(<span class="built_in">set</span>[min].used!=<span class="number">0</span>)min++; <span class="comment">//最小可用值</span></div><div class="line"><span class="keyword">if</span>(<span class="built_in">set</span>[min].wi&gt;c)<span class="keyword">return</span>;    <span class="comment">//最小可用值比c还大不行</span></div><div class="line">只需要下面这样：</div><div class="line"><span class="keyword">if</span>(<span class="built_in">set</span>[<span class="number">1</span>].wi&gt;c)<span class="keyword">return</span>;    <span class="comment">//默认最小值为1，因为所有试探的数均从大往小尝试</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>开始修改c值，使用while循环寻找第一个小于c的值令c减去它，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> max=head;</div><div class="line"><span class="keyword">while</span>(max&gt;=<span class="number">1</span>)&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="built_in">set</span>[max].wi&lt;=c<span class="comment">/*&amp;&amp;set[max].used==0*/</span>)<span class="keyword">break</span>;</div><div class="line">  max--；</div><div class="line">&#125;</div><div class="line">c=c-<span class="built_in">set</span>[max].wi；</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果修改后的c值可以在max后面较小的元素中找到<br>设置函数int finded(int c);<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">finded</span><span class="params">(<span class="keyword">int</span> c)</span></span>&#123;</div><div class="line">  <span class="comment">//从max后面开始找值为c的数</span></div><div class="line">  <span class="comment">//函数返回寻找到的值为c的序号，没找到返回0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>即finded()返回值非0则表示这条路径可行，令count++；[关于如何输出路径的问题待会再做讨论]<br>5.</p>
+<ul>
+<li>当上面c为0时，说明这条路径可以走通了（=&gt;是不是可以在最上面限制，c=0时返回并计数）</li>
+<li>当上面找到c时候，说明只能向下一层寻找更小的数来凑成c的’余数‘，开始递归：seek(finded(c)-1，c)即从找到的c余数位置后开始找，寻找可以凑成c的小一点的数。</li>
+<li>如果找不到c，则只能从max后面一个数开始寻找 seek(max-1，c)即从原来的max位置后开始找，寻找可以凑成c的小一点的数。<h3 id="实现中的问题解决"><a href="#实现中的问题解决" class="headerlink" title="实现中的问题解决"></a>实现中的问题解决</h3>第3步实现方法：</li>
+</ul>
+<ol>
+<li>首先需要一个可以动态存储的链表来存储子集数，设计节点类型为setlist，存储SET节点的地址和下一个节点的指针</li>
+<li>比较遍历中每一个元素与C值的大小，如果比C小则C减它直到C为0</li>
+</ol>
+<h3 id="完整代码："><a href="#完整代码：" class="headerlink" title="完整代码："></a>完整代码：</h3><p>版本1 刚刚完成功能<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> SET&#123;</div><div class="line">    <span class="keyword">int</span> id;</div><div class="line">    <span class="keyword">int</span> wi;</div><div class="line">    <span class="keyword">int</span> pi;</div><div class="line">    <span class="keyword">bool</span> used;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> setlist&#123;                         <span class="comment">//先不用</span></div><div class="line">    SET * link;</div><div class="line">    setlist * next;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">class</span> SubSet&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    SubSet(<span class="keyword">char</span>* path);                 <span class="comment">//构造函数，使用文件路径初始化</span></div><div class="line">    ~SubSet();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(SET * a,SET * b)</span></span>;           <span class="comment">//堆排序</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">shift</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> m)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">createC</span><span class="params">()</span></span>;                     <span class="comment">//创建随机的r值</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">seek</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">finded</span><span class="params">(<span class="keyword">long</span> c,<span class="keyword">int</span> max)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">seek</span><span class="params">(<span class="keyword">int</span> head,<span class="keyword">long</span> c)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showsubset</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//tools</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showtest</span><span class="params">()</span></span>;                    <span class="comment">//显示读入的数字</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">checksum</span><span class="params">()</span></span>;                    <span class="comment">//检查和，确定排序的正确</span></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">less</span><span class="params">(SET a,SET b)</span></span>;             <span class="comment">//快速比较SET类型变量</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> size;                           <span class="comment">//数据量</span></div><div class="line">    <span class="keyword">float</span> r;                            <span class="comment">//SUM的参数r的值</span></div><div class="line">    <span class="keyword">long</span> C;                             <span class="comment">//子集和</span></div><div class="line">    <span class="keyword">long</span> SUM;                           <span class="comment">//全集和</span></div><div class="line">    SET * <span class="built_in">set</span>;</div><div class="line">    setlist * subset;</div><div class="line">    <span class="keyword">long</span> res;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">SubSet::SubSet(<span class="keyword">char</span> * path)&#123;</div><div class="line">    <span class="function">ifstream <span class="title">infile</span><span class="params">(path,ios::in)</span></span>;</div><div class="line">    <span class="keyword">if</span>(!infile)<span class="built_in">cerr</span>&lt;&lt;<span class="string">"ERORR when opening file!"</span>;</div><div class="line">    infile&gt;&gt;<span class="keyword">this</span>-&gt;size;</div><div class="line">    <span class="built_in">set</span>=<span class="keyword">new</span> SET[size+<span class="number">1</span>];</div><div class="line"></div><div class="line">    <span class="comment">//SET=new int[size+1][2];</span></div><div class="line">    <span class="built_in">set</span>[<span class="number">0</span>].pi=<span class="built_in">set</span>[<span class="number">0</span>].wi=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> count=<span class="number">1</span>;</div><div class="line">    SUM=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(!infile.eof())&#123;</div><div class="line">        infile&gt;&gt;<span class="built_in">set</span>[count].id;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">set</span>[count].id==count)&#123;</div><div class="line">            infile&gt;&gt;<span class="built_in">set</span>[count].wi;</div><div class="line">            SUM+=<span class="built_in">set</span>[count].wi;</div><div class="line">            infile&gt;&gt;<span class="built_in">set</span>[count].pi;</div><div class="line">            <span class="built_in">set</span>[count++].used=<span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(count&gt;size+<span class="number">1</span>)<span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    res=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">SubSet::~SubSet()&#123;</div><div class="line">    <span class="keyword">delete</span> []<span class="built_in">set</span>;</div><div class="line">    <span class="comment">/* setlist * p=subset-&gt;next;</span></div><div class="line">    while(p!=NULL)&#123;</div><div class="line">        subset-&gt;next=p-&gt;next;</div><div class="line">        delete p;</div><div class="line">        p=subset-&gt;next;</div><div class="line">    &#125;</div><div class="line">    delete subset;* /</div><div class="line">    cout&lt;&lt;"delete successfully!"&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::showtest()&#123;</div><div class="line">    cout&lt;&lt;size&lt;&lt;endl;</div><div class="line">    for(int i=0;i&lt;=size;i++)&#123;</div><div class="line">        cout&lt;&lt;i&lt;&lt;" "&lt;&lt;"id= "&lt;&lt;set[i].id&lt;&lt;setw(10)&lt;&lt;" "&lt;&lt;set[i].wi&lt;&lt;setw(10)&lt;&lt;" "&lt;&lt;set[i].pi&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    cout&lt;&lt;" SUM= "&lt;&lt;SUM&lt;&lt;endl;</div><div class="line">    cout&lt;&lt;"---------------------------------------------------------------"&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::checksum()&#123;</div><div class="line">    long checksum=0;</div><div class="line">    for(int i=0;i&lt;=size;i++)&#123;</div><div class="line">        checksum+=set[i].wi;</div><div class="line">    &#125;</div><div class="line">    cout&lt;&lt;"check the sum!"&lt;&lt;checksum&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool SubSet::less(SET a,SET b)&#123;</div><div class="line">    if(a.wi&lt;=b.wi)</div><div class="line">        return 1;</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::swap(SET * a,SET * b)&#123;</div><div class="line">    SET temp;</div><div class="line">    temp.id=a-&gt;id;</div><div class="line">    temp.wi=a-&gt;wi;</div><div class="line">    temp.pi=a-&gt;pi;</div><div class="line">    temp.used=a-&gt;used;</div><div class="line">    a-&gt;id=b-&gt;id;</div><div class="line">    a-&gt;wi=b-&gt;wi;</div><div class="line">    a-&gt;pi=b-&gt;pi;</div><div class="line">    a-&gt;used=b-&gt;used;</div><div class="line">    b-&gt;id=temp.id;</div><div class="line">    b-&gt;wi=temp.wi;</div><div class="line">    b-&gt;pi=temp.pi;</div><div class="line">    b-&gt;used=temp.used;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::shift(int k,int m)&#123;</div><div class="line">    int i=k;int j=2*i;</div><div class="line">    while(j&lt;=m)</div><div class="line">    &#123;</div><div class="line">        if(j&lt;m&amp;&amp;j+1&lt;=m&amp;&amp;less(set[j],set[j+1]))j++;     //为防止j+1超出数组范围越界，需要加一个条件</div><div class="line">        if(less(set[j],set[i]))break;</div><div class="line">        else &#123;</div><div class="line">            swap(&amp;set[i],&amp;set[j]);</div><div class="line">            i=j;j=2*i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::heapSort()&#123;</div><div class="line">    //首先，对初始关键词序列进行调整以形成大根堆</div><div class="line">    for(int i=size/2;i&gt;=1;i--)         //最先的一次排序是定位到第n/2个元素，这是最后一个叶子节点对应的根节点</div><div class="line">        shift(i,size);</div><div class="line">    int flag=size;                //堆区末尾指示器</div><div class="line">    for(int i=1;i&lt;size;i++)&#123;</div><div class="line">        swap(&amp;set[1],&amp;set[flag]);       //一开始是将最后一个元素和第一个元素交换，因为全是堆区</div><div class="line">        shift(1,--flag);            //再次调整的时候就是堆区末尾向前移动一个位置了</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::createC()&#123;</div><div class="line">    r=(float)(rand()%100)/100;</div><div class="line">    r=1;</div><div class="line">    C=long(r*SUM);</div><div class="line"></div><div class="line">    cout&lt;&lt;"r= "&lt;&lt;r&lt;&lt;" C="&lt;&lt;C&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::seek()&#123;</div><div class="line">    for(int i=size;i&gt;=1;i--)&#123;</div><div class="line">        cout&lt;&lt;"i= "&lt;&lt;i&lt;&lt;" ";seek(i,C);</div><div class="line">    &#125;</div><div class="line">    cout&lt;&lt;"seek("&lt;&lt;size&lt;&lt;","&lt;&lt;C&lt;&lt;")"&lt;&lt;endl;</div><div class="line">    cout&lt;&lt;"there are "&lt;&lt;res&lt;&lt;" subsets to meet the sum "&lt;&lt;C&lt;&lt;endl;</div><div class="line"> /*   long tempC=C;</div><div class="line">    subset=new setlist;</div><div class="line">    subset-&gt;next=NULL;</div><div class="line">    for(int i=size;i&gt;=1;i--)&#123;</div><div class="line">        if(tempC==0)break;</div><div class="line">        if(set[i].wi&lt;=tempC)&#123;                    //如果比C小或等于C就拿C去减，并将此数入链表</div><div class="line">            tempC-=set[i].wi;</div><div class="line">            cout&lt;&lt;"::seek::"&lt;&lt;C&lt;&lt;endl;</div><div class="line">            setlist \*p=new setlist;</div><div class="line">            p-&gt;link=&amp;set[i];</div><div class="line">            p-&gt;next=subset-&gt;next;</div><div class="line">            subset-&gt;next=p;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if(tempC==0)cout&lt;&lt;"已寻找到子集"&lt;&lt;endl;</div><div class="line">    else cout&lt;&lt;"未找到到子集"&lt;&lt;endl;</div><div class="line">* /</div><div class="line">&#125;</div><div class="line"></div><div class="line">int SubSet::finded(long c,int max)&#123;</div><div class="line">    for(int i=max;i&gt;=1;i--)&#123;</div><div class="line">        if(/* set[i].used==0&amp;&amp;* /set[i].wi==c)return i;</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">    //从max后面开始找值为c的数</div><div class="line">   //函数返回寻找到的值为c的序号，没找到返回0</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::seek(int head,long c)&#123;</div><div class="line">    if(head==0||c==0)return ;</div><div class="line">    int min=1;</div><div class="line">    /* while(set[min].used!=0)min++;* /   //最小可用值序号</div><div class="line">    if(set[min].wi&gt;c)return;</div><div class="line"></div><div class="line">    int max=head;</div><div class="line">    while(max&gt;=1)&#123;</div><div class="line">      if(set[max].wi&lt;=c/* &amp;&amp;set[max].used==0*/)<span class="keyword">break</span>;</div><div class="line">      max--;</div><div class="line">    &#125;</div><div class="line">    c=c-<span class="built_in">set</span>[max].wi;</div><div class="line">    <span class="comment">///cout&lt;&lt;"the max ="&lt;&lt;max&lt;&lt;endl;</span></div><div class="line">    <span class="comment">///cout&lt;&lt;"the outter c="&lt;&lt;c&lt;&lt;endl;</span></div><div class="line">    <span class="keyword">if</span>(c==<span class="number">0</span>)&#123;</div><div class="line">        res++;</div><div class="line">        <span class="comment">///cout&lt;&lt;"in ifc==0 "&lt;&lt;" c: "&lt;&lt;c&lt;&lt;" max-1 "&lt;&lt;max-1&lt;&lt;endl;</span></div><div class="line">        <span class="comment">//seek(finded(c,max-1)-1,c);</span></div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(finded(c,max<span class="number">-1</span>))&#123;</div><div class="line">        res++;</div><div class="line">        <span class="comment">///cout&lt;&lt;"in iffinedc==1 "&lt;&lt;" c: "&lt;&lt;c&lt;&lt;" max-1 "&lt;&lt;max-1&lt;&lt;" finded(c) "&lt;&lt;finded(c,max-1)-1&lt;&lt;endl;</span></div><div class="line">        seek(finded(c,max<span class="number">-1</span>)<span class="number">-1</span>,c);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> seek(max<span class="number">-1</span>,c);</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line">void SubSet::showsubset()&#123;</div><div class="line">    long checkC=0;</div><div class="line">    int count=0;</div><div class="line">    setlist *p=subset-&gt;next;</div><div class="line">    while(p!=NULL)&#123;</div><div class="line">        cout&lt;&lt;(p-&gt;link)-&gt;id&lt;&lt;"  "&lt;&lt;(p-&gt;link)-&gt;wi&lt;&lt;endl;</div><div class="line">        checkC+=(p-&gt;link)-&gt;wi;</div><div class="line">        p=p-&gt;next;</div><div class="line">        count++;</div><div class="line">    &#125;</div><div class="line">    if(checkC==C)&#123;</div><div class="line">        cout&lt;&lt;"the C: "&lt;&lt;checkC&lt;&lt; " has been checked !"&lt;&lt;endl;</div><div class="line">        cout&lt;&lt;"r is "&lt;&lt;this-&gt;r&lt;&lt;endl;</div><div class="line">        cout&lt;&lt;"there are "&lt;&lt;count&lt;&lt;" numbers in the subset"&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    else cout&lt;&lt;"the C : "&lt;&lt;checkC&lt;&lt; " is not right !"&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="function">SubSet <span class="title">test</span><span class="params">(<span class="string">"/home/crepuscule/Documents/DS/subset/1000/1000/test.01.in"</span>)</span></span>;</div><div class="line">    <span class="comment">//SubSet test("D:\\Data structure\\DS xunlian\\subset\\1000\\1000\\test.01.in");</span></div><div class="line">    <span class="comment">//SubSet test("easy.txt");</span></div><div class="line">    <span class="comment">//test.showtest();</span></div><div class="line">    test.heapSort();</div><div class="line">    test.showtest();</div><div class="line">    test.checksum();</div><div class="line">    test.createC();</div><div class="line">    test.seek();</div><div class="line">    <span class="comment">//test.showsubset();</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>版本2 在功能不变的基础上进行优化<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> SET&#123;</div><div class="line">    <span class="keyword">int</span> id;</div><div class="line">    <span class="keyword">int</span> wi;</div><div class="line">    <span class="keyword">int</span> pi;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> ListSet&#123;</div><div class="line">  SET * link;</div><div class="line">  ListSet * lchild;</div><div class="line">  ListSet * rchild;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">class</span> SubSet&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    SubSet(<span class="keyword">char</span>* path);                 <span class="comment">//构造函数，使用文件路径初始化</span></div><div class="line">    ~SubSet();</div><div class="line"><span class="comment">//HeapSort</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(SET * a,SET * b)</span></span>;           <span class="comment">//堆排序</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">shift</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> m)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">()</span></span>;</div><div class="line"><span class="comment">//Seek the answer</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">createC</span><span class="params">()</span></span>;                     <span class="comment">//创建随机的C值</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">seek</span><span class="params">(<span class="keyword">int</span> head,<span class="keyword">long</span> c)</span></span>;         <span class="comment">//用于类调用的递归函数</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">seek</span><span class="params">()</span></span>;                        <span class="comment">//用于用户调用的用户友好函数</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">finded</span><span class="params">(<span class="keyword">long</span> c,<span class="keyword">int</span> max)</span></span>;         <span class="comment">//用于在表中max之后的元素中寻找剩下的c</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showsubset</span><span class="params">()</span></span>;                  <span class="comment">//增强行功能版本中添加的用于输出可用路径的函数</span></div><div class="line"></div><div class="line"><span class="comment">//tools</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showtest</span><span class="params">()</span></span>;                    <span class="comment">//显示读入的数字</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">checksort</span><span class="params">()</span></span>;                   <span class="comment">//检查和，确定排序的正确</span></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">less</span><span class="params">(SET a,SET b)</span></span>;             <span class="comment">//快速比较SET类型变量</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minhead</span><span class="params">()</span></span>;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> size;                           <span class="comment">//数据量</span></div><div class="line">    <span class="keyword">float</span> r;                            <span class="comment">//SUM的参数r的值</span></div><div class="line">    <span class="keyword">long</span> C;                             <span class="comment">//子集和</span></div><div class="line">    <span class="keyword">long</span> SUM;                           <span class="comment">//全集和</span></div><div class="line">    SET * <span class="built_in">set</span>;                           <span class="comment">//存储集合的用于动态分配数组的指针</span></div><div class="line">    <span class="keyword">long</span> res;                           <span class="comment">//统计共有多少满足条件的集合</span></div><div class="line">    ListSet * subset;                    <span class="comment">//存储路径链表的的透支真</span></div><div class="line">    <span class="built_in">string</span> ableaddress=<span class="string">"able"</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">SubSet::SubSet(<span class="keyword">char</span>* path)&#123;</div><div class="line">    <span class="function">ifstream <span class="title">infile</span><span class="params">(path,ios::in)</span></span>;</div><div class="line">    <span class="keyword">if</span>(!infile)<span class="built_in">cerr</span>&lt;&lt;<span class="string">"ERORR when opening file!"</span>;</div><div class="line">    infile&gt;&gt;<span class="keyword">this</span>-&gt;size;</div><div class="line">    <span class="built_in">set</span>=<span class="keyword">new</span> SET[size+<span class="number">1</span>];</div><div class="line">    <span class="built_in">set</span>[<span class="number">0</span>].pi=<span class="built_in">set</span>[<span class="number">0</span>].wi=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> count=<span class="number">1</span>;SUM=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(!infile.eof())&#123;</div><div class="line">        infile&gt;&gt;<span class="built_in">set</span>[count].id;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">set</span>[count].id==count)&#123;           <span class="comment">//检查标号，只有一致时才输入</span></div><div class="line">            infile&gt;&gt;<span class="built_in">set</span>[count].wi;</div><div class="line">            SUM+=<span class="built_in">set</span>[count].wi;             <span class="comment">//顺便统计SUM值</span></div><div class="line">            infile&gt;&gt;<span class="built_in">set</span>[count].pi;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="built_in">cerr</span>&lt;&lt;<span class="string">"数组中第 "</span>&lt;&lt;<span class="built_in">set</span>[count].id&lt;&lt;<span class="string">" 和文件中的第 "</span>&lt;&lt;count&lt;&lt;<span class="string">" 条数据序号不正确匹配!（如果是size+1条数据不正确，请忽视！)"</span>;</div><div class="line">        <span class="keyword">if</span>(count&gt;size+<span class="number">1</span>)<span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    res=<span class="number">0</span>;                                  <span class="comment">//千万不要忘记这里结果归0方便后面累加</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">SubSet::~SubSet()&#123;</div><div class="line">    <span class="keyword">delete</span> []<span class="built_in">set</span>;</div><div class="line">    <span class="comment">/* ListSet * p=subset-&gt;next;              //当使用功能记录可用路径时需要打开</span></div><div class="line">    while(p!=NULL)&#123;</div><div class="line">        subset-&gt;next=p-&gt;next;</div><div class="line">        delete p;</div><div class="line">        p=subset-&gt;next;</div><div class="line">    &#125;</div><div class="line">    delete subset;* /</div><div class="line">    cout&lt;&lt;"delete successfully!"&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">void SubSet::swap(SET * a,SET * b)&#123;</div><div class="line">    SET temp;</div><div class="line">    temp.id=a-&gt;id;</div><div class="line">    temp.wi=a-&gt;wi;</div><div class="line">    temp.pi=a-&gt;pi;</div><div class="line"></div><div class="line">    a-&gt;id=b-&gt;id;</div><div class="line">    a-&gt;wi=b-&gt;wi;</div><div class="line">    a-&gt;pi=b-&gt;pi;</div><div class="line"></div><div class="line">    b-&gt;id=temp.id;</div><div class="line">    b-&gt;wi=temp.wi;</div><div class="line">    b-&gt;pi=temp.pi;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::shift(int k,int m)&#123;</div><div class="line">    int i=k;int j=2*i;</div><div class="line">    while(j&lt;=m)</div><div class="line">    &#123;</div><div class="line">        if(j&lt;m&amp;&amp;j+1&lt;=m&amp;&amp;less(set[j],set[j+1]))j++;     //为防止j+1超出数组范围越界，需要加一个条件</div><div class="line">        if(less(set[j],set[i]))break;</div><div class="line">        else &#123;</div><div class="line">            swap(&amp;set[i],&amp;set[j]);</div><div class="line">            i=j;j=2*i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SubSet::heapSort()&#123;</div><div class="line">    //首先，对初始关键词序列进行调整以形成大根堆</div><div class="line">    for(int i=size/2;i&gt;=1;i--)         //最先的一次排序是定位到第n/2个元素，这是最后一个叶子节点对应的根节点</div><div class="line">        shift(i,size);</div><div class="line">    int flag=size;                //堆区末尾指示器</div><div class="line">    for(int i=1;i&lt;size;i++)&#123;</div><div class="line">        swap(&amp;set[1],&amp;set[flag]);       //一开始是将最后一个元素和第一个元素交换，因为全是堆区</div><div class="line">        shift(1,--flag);            //再次调整的时候就是堆区末尾向前移动一个位置了</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//Seek answers</div><div class="line">void SubSet::createC()&#123;</div><div class="line">    r=(float)(rand()%100)/100;</div><div class="line">    r=0.5;</div><div class="line">    C=long(r*SUM);</div><div class="line">    cout&lt;&lt;"r= "&lt;&lt;r&lt;&lt;" C="&lt;&lt;C&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line">///已使用二分查找优化</div><div class="line">int SubSet::finded(long c,int max)&#123; //这里的max已被减过1</div><div class="line">    int low=1;int high=max;int mid;         //从max后面开始找值为c的数</div><div class="line">    while(low&lt;=high)&#123;</div><div class="line">        mid=(low+high)/2;</div><div class="line">        if(c&lt;set[mid].wi)high=mid-1;</div><div class="line">        else if(c&gt;set[mid].wi)low=mid+1;</div><div class="line">        else return mid;</div><div class="line">    &#125;</div><div class="line">    return 0;                              //函数返回寻找到的值为c的序号，没找到返回0</div><div class="line"></div><div class="line">&#125;</div><div class="line">///使用res增减优化</div><div class="line">void SubSet::seek()&#123;</div><div class="line"></div><div class="line">    for(int i=size;i&gt;=minhead();i--)&#123;</div><div class="line">        /*cout&lt;&lt;"i= "&lt;&lt;i&lt;&lt;endl;*/</div><div class="line">        seek(i,C);</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"i= "</span>&lt;&lt;i&lt;&lt;<span class="string">" res: "</span>&lt;&lt;res&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"seek("</span>&lt;&lt;size&lt;&lt;<span class="string">","</span>&lt;&lt;C&lt;&lt;<span class="string">")"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"there are "</span>&lt;&lt;res&lt;&lt;<span class="string">" subsets to meet the sum "</span>&lt;&lt;C&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"> <span class="comment">/*   long tempC=C;</span></div><div class="line">    subset=new ListSet;</div><div class="line">    subset-&gt;next=NULL;</div><div class="line">    for(int i=size;i&gt;=1;i--)&#123;</div><div class="line">        if(tempC==0)break;</div><div class="line">        if(set[i].wi&lt;=tempC)&#123;                    //如果比C小或等于C就拿C去减，并将此数入链表</div><div class="line">            tempC-=set[i].wi;</div><div class="line">            cout&lt;&lt;"::seek::"&lt;&lt;C&lt;&lt;endl;</div><div class="line">            ListSet * p=new ListSet;</div><div class="line">            p-&gt;link=&amp;set[i];</div><div class="line">            p-&gt;next=subset-&gt;next;</div><div class="line">            subset-&gt;next=p;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if(tempC==0)cout&lt;&lt;"已寻找到子集"&lt;&lt;endl;</div><div class="line">    else cout&lt;&lt;"未找到到子集"&lt;&lt;endl;* /</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">void SubSet::seek(int head,long c)&#123;</div><div class="line">    if(c==0)&#123;                       //如果c为0，则说明这条路径可行，res应加1</div><div class="line">        res++;///cout&lt;&lt;"in if(c==0)"&lt;&lt;" c: "&lt;&lt;c&lt;&lt;" max-1: "&lt;&lt;max-1&lt;&lt;endl;</div><div class="line">        return ;</div><div class="line">    &#125;</div><div class="line">    if(head==0||set[1].wi&gt;c)return ; //当c！=0 时，而head=0,或者最小数比c还大，那一定没戏了，此路不通</div><div class="line"></div><div class="line">    int max=head;                    //开始寻找最大的比c小得数</div><div class="line">    while(max&gt;=1)&#123;</div><div class="line">      if(set[max].wi&lt;=c/*&amp;&amp;set[max].used==0*/)<span class="keyword">break</span>;<span class="comment">//在有顺序的从大到小的表中从头往后开始找，如果有一个数小于c，它就是最大的小于c的值</span></div><div class="line">      max--;</div><div class="line">    &#125;</div><div class="line">    c=c-<span class="built_in">set</span>[max].wi;</div><div class="line">    <span class="comment">///cout&lt;&lt;"the max = "&lt;&lt;max&lt;&lt;endl;</span></div><div class="line">    <span class="comment">///cout&lt;&lt;"the outter c= "&lt;&lt;c&lt;&lt;endl;</span></div><div class="line">    <span class="keyword">if</span>(finded(c,max<span class="number">-1</span>))&#123;</div><div class="line">        res++;</div><div class="line">        <span class="comment">///cout&lt;&lt;"in if(finded(c,max-1)) "&lt;&lt;" c: "&lt;&lt;c&lt;&lt;" max-1 "&lt;&lt;max-1&lt;&lt;" finded(c) "&lt;&lt;finded(c,max-1)-1&lt;&lt;endl;</span></div><div class="line">        seek(finded(c,max<span class="number">-1</span>)<span class="number">-1</span>,c);          <span class="comment">//既然可以找到一个值满足，那么是不是有几个更小的数加起来=这个数set（max）从而满足</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> seek(max<span class="number">-1</span>,c);                     <span class="comment">//找不到只能再往下找了</span></div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line">void SubSet::showsubset()&#123;</div><div class="line">    long checkC=0;</div><div class="line">    int count=0;</div><div class="line">    ListSet * p=subset-&gt;next;</div><div class="line">    while(p!=NULL)&#123;</div><div class="line">        cout&lt;&lt;(p-&gt;link)-&gt;id&lt;&lt;"  "&lt;&lt;(p-&gt;link)-&gt;wi&lt;&lt;endl;</div><div class="line">        checkC+=(p-&gt;link)-&gt;wi;</div><div class="line">        p=p-&gt;next;</div><div class="line">        count++;</div><div class="line">    &#125;</div><div class="line">    if(checkC==C)&#123;</div><div class="line">        cout&lt;&lt;"the C: "&lt;&lt;checkC&lt;&lt; " has been checked !"&lt;&lt;endl;</div><div class="line">        cout&lt;&lt;"r is "&lt;&lt;this-&gt;r&lt;&lt;endl;</div><div class="line">        cout&lt;&lt;"there are "&lt;&lt;count&lt;&lt;" numbers in the subset"&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    else cout&lt;&lt;"the C : "&lt;&lt;checkC&lt;&lt; " is not right !"&lt;&lt;endl;</div><div class="line">&#125; */</div><div class="line"></div><div class="line"><span class="comment">//Tools:</span></div><div class="line"><span class="keyword">void</span> SubSet::showtest()&#123;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;size&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=size;i++)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="string">"id= "</span>&lt;&lt;<span class="built_in">set</span>[i].id&lt;&lt;setw(<span class="number">10</span>)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="built_in">set</span>[i].wi&lt;&lt;setw(<span class="number">10</span>)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="built_in">set</span>[i].pi&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">" SUM= "</span>&lt;&lt;SUM&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"---------------------------------------------------------------"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::checksort()&#123;</div><div class="line">    <span class="keyword">long</span> checksum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=size;i++)&#123;</div><div class="line">        checksum+=<span class="built_in">set</span>[i].wi;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"check the sum!"</span>&lt;&lt;checksum&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">bool</span> SubSet::less(SET a,SET b)&#123;</div><div class="line">    <span class="keyword">if</span>(a.wi&lt;=b.wi)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> SubSet::minhead()&#123;             <span class="comment">//limit the head from size to this return value</span></div><div class="line">    <span class="keyword">int</span> remain=<span class="number">0</span>;<span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=size;i++)&#123;</div><div class="line">        remain+=<span class="built_in">set</span>[i].wi;</div><div class="line">        <span class="keyword">if</span>(remain&gt;=C)<span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> i;               <span class="comment">//the smallest head</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">//SubSet test("/home/crepuscule/Documents/DS/almost/1000/1000/test.01.in");</span></div><div class="line">    <span class="function">SubSet <span class="title">test</span><span class="params">(<span class="string">"D:\\Data structure\\DS xunlian\\subset\\1000\\1000\\test.01.in"</span>)</span></span>;</div><div class="line">    <span class="comment">//SubSet test("easy.txt");</span></div><div class="line">    test.showtest();</div><div class="line">    test.heapSort();</div><div class="line">    test.showtest();</div><div class="line">    test.checksort();</div><div class="line">    test.createC();</div><div class="line">    test.seek();</div><div class="line">    <span class="comment">//test.showsubset();</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>关于上述问题的补充：<br>head问题，如果r过小，则会出现过小的几个数多次作为第一个递减值的情况，<br>解决办法：设置一个统计每一个数集合数量的容器</p>
+<h3 id="回溯法的改进方法："><a href="#回溯法的改进方法：" class="headerlink" title="回溯法的改进方法："></a>回溯法的改进方法：</h3><p>现在在每一层中共有三个功能：</p>
+<ol>
+<li>检查条件是否满足，C值可否继续被减，表是否已经到头</li>
+<li>正常减去一个数，交由下一层试探效果</li>
+<li>尝试其他所有可被减去的数，使用for循环，从第一个比c小的max-1开始，遍历到动态minhead（c）用c值加起来的最少子集和，这样就可以整个都用递归做了<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> SubSet::findmax(<span class="keyword">int</span> head,<span class="keyword">int</span> c)&#123;</div><div class="line">  <span class="keyword">int</span> max=head;                    <span class="comment">//开始寻找最大的比c小得数</span></div><div class="line">  <span class="keyword">while</span>(max&gt;=<span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">set</span>[max].wi&lt;=c)<span class="keyword">break</span>;<span class="comment">//在有顺序的从大到小的表中从头往后开始找，如果有一个数小于c，它就是最大的小于c的值</span></div><div class="line">    max--;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> max;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::seek(max,c)&#123;</div><div class="line">  <span class="keyword">if</span>(c==<span class="number">0</span>)&#123;</div><div class="line">    res++;<span class="keyword">return</span> ;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(max&lt;=<span class="number">0</span>||<span class="built_in">set</span>[<span class="number">1</span>].wi&gt;c)<span class="keyword">return</span> ;</div><div class="line"></div><div class="line">  max=findmax(max);</div><div class="line">  c=c-<span class="built_in">set</span>[max].wi;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=findmax(max,c),i&gt;=minhead(c),i--)&#123;</div><div class="line">    seek(i,c);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="关于subset算法的用于测试的实现方式："><a href="#关于subset算法的用于测试的实现方式：" class="headerlink" title="关于subset算法的用于测试的实现方式："></a>关于subset算法的用于测试的实现方式：</h3><p>每个元素均有两种可能存在与不存在，所以所有可能子集为：2^n-1个（空集不算）<br>穷举结果用于测试。这样够成二叉树：每一个元素加入或不加入。<br>首先从最小值开始分叉，有为左孩子，无为右孩子，有则将该数加入C集合中，传递给其左子树，没有则直接将C传给右孩子，这样叶子共有2^n个，结果也有这么多，遍历这些结果，如果C值满足需求则记录该子树路径，</p>
+<h4 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> Node&#123;</div><div class="line">  <span class="keyword">int</span> data;       <span class="comment">//这个深度的节点均为set[depth].wi，主要用于遍历时好打出值</span></div><div class="line">  <span class="keyword">int</span> res;        <span class="comment">//用于存储这个节点结果如何是否满足C值，遍历叶子节点即可统计所有可用结果</span></div><div class="line">  Node * lchild;</div><div class="line">  Node * rchild;</div><div class="line">  Node * parent; <span class="comment">//用于在定位改节点后回溯寻找双亲节点</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="创建和析构二叉树方法"><a href="#创建和析构二叉树方法" class="headerlink" title="创建和析构二叉树方法"></a>创建和析构二叉树方法</h4><p>函数设计思路为：传入需要修改的节点（用于修改当前指针指向的节点），C的值（用于向该节点中输入值和增加该值），决策（0或1）1为通知该层加上值，0为不加，深度depth（用于定位不同深度节点应该，根节点深度为0，双亲指针（用于给当前深度节点添加双亲（在上一层））<br>每一层需要做的事情时：<br>判断深度是否为size+1，<br>  若 不是 则接受上一个深度传过来的决策，<br>    若 为1 则将对应set[depth].wi数值加入data数据，并将传过来的C值根据data数据域决定加或不加该层数值。<br>    若 为0 则data置0，C直接继承<br>  若 是 则直接将传过来的指针置为NULL<br>接着开始着手下一深度<br>  先将刚才处理的指针指向的节点的双亲，令其双亲数据域=传过来的值<br>  向下递归左右子树，左子树总是决策1，右子树总是决策0<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node * <span class="title">create</span><span class="params">(Node * bt,Node * parent,<span class="keyword">int</span> decision,<span class="keyword">int</span> c,<span class="keyword">int</span> depth)</span></span>&#123;    <span class="comment">//内部类调用</span></div><div class="line">  <span class="keyword">if</span>(depth&gt;=size+<span class="number">1</span>)bt=<span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    bt=<span class="keyword">new</span> Node;</div><div class="line">    <span class="keyword">if</span>(decision)&#123;</div><div class="line">      bt-&gt;data=<span class="built_in">set</span>[depth].wi;</div><div class="line">      bt-&gt;res=c+bt-&gt;data;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">      bt-&gt;data=<span class="number">0</span>;</div><div class="line">      bt-&gt;res=c;</div><div class="line">    &#125;</div><div class="line">    bt-&gt;parent=parent;</div><div class="line">    bt-&gt;lchild=create(bt-&gt;lchild,bt,<span class="number">1</span>,bt-&gt;res,depth+<span class="number">1</span>);</div><div class="line">    bt-&gt;rchild=create(bt-&gt;rchild,bt,<span class="number">0</span>,bt-&gt;res,depth+<span class="number">1</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> bt;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Biseek</span><span class="params">()</span></span>&#123;                                                        <span class="comment">//外部用户调用</span></div><div class="line">  root=Biseek(root);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">release</span><span class="params">(Node * bt)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(bt!=<span class="literal">NULL</span>)&#123;</div><div class="line">    release(bt-&gt;lchild);</div><div class="line">    release(bt-&gt;rchild);</div><div class="line">    <span class="keyword">delete</span> bt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">deletetree</span><span class="params">()</span></span>&#123;release(root);<span class="built_in">cout</span>&lt;&lt;<span class="string">"delete successfully!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div></pre></td></tr></table></figure>
+<h4 id="搜存合适解函数"><a href="#搜存合适解函数" class="headerlink" title="搜存合适解函数"></a>搜存合适解函数</h4><p>使用seek函数搜寻合适解，搜寻方法为：<br>遍历所有叶子节点（lchild和rchild均为NULL），如果res==c则结果数量加一，并将所有合适叶子节点的指针存在一个链表里（使用链表动态构建一个大小为res的动态数组用以存储和之后的判断）。<br>用于存储叶子节点信息的链表结构体<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> ListSet&#123;</div><div class="line">  Node * link;</div><div class="line">  ListSet * next;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>寻找符合的叶子节点，有链表头指针：ListSet * subset=NULL;<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Biseek</span><span class="params">(Node * bt)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(bt-&gt;lchild==bt-&gt;rchild==<span class="literal">NULL</span>)&#123;     <span class="comment">//说明它是叶子节点，应该检查它的res值</span></div><div class="line">    <span class="keyword">if</span>(bt-&gt;res==C)&#123;</div><div class="line">      ListSet * p=<span class="keyword">new</span> ListSet;          <span class="comment">//生成可用节点信息</span></div><div class="line">      p-&gt;link=bt;</div><div class="line">      p-&gt;next=subset-&gt;next;</div><div class="line">      subset-&gt;next=p;</div><div class="line"></div><div class="line">      <span class="keyword">this</span>-&gt;res++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    Biseek(bt-&gt;lchild);</div><div class="line">    Biseek(bt-&gt;rchild);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="comment">/*声明：只能用于30以内个数求子集和数，不过所有需要的子集和中间的构造过程均可被提取*/</span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> SET&#123;             <span class="comment">//存储读文件数据</span></div><div class="line">    <span class="keyword">int</span> id;</div><div class="line">    <span class="keyword">int</span> wi;</div><div class="line">    <span class="keyword">int</span> pi;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> Node&#123;            <span class="comment">//主要的二叉树节点结构</span></div><div class="line">    <span class="keyword">int</span> data;</div><div class="line">    <span class="keyword">int</span> res;</div><div class="line">    Node * lchild;</div><div class="line">    Node * rchild;</div><div class="line">    Node * parent;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> ListSet&#123;         <span class="comment">//存储结果集的链表节点结构</span></div><div class="line">  Node * link;</div><div class="line">  ListSet * next;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">class</span> SubSet&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    SubSet(<span class="keyword">char</span>* path);                 <span class="comment">//构造函数，使用文件路径初始化</span></div><div class="line">    ~SubSet();</div><div class="line"><span class="comment">//HeapSort</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(SET * a,SET * b)</span></span>;           <span class="comment">//堆排序</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">shift</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> m)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">()</span></span>;</div><div class="line"><span class="comment">//Seek the answer</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">createC</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">createC</span><span class="params">(<span class="keyword">int</span> c)</span></span>;</div><div class="line">    <span class="function">Node * <span class="title">create</span><span class="params">(Node * bt,Node * parent,<span class="keyword">int</span> decision,<span class="keyword">int</span> c,<span class="keyword">int</span> depth)</span></span>;        <span class="comment">//inner call</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">create</span><span class="params">()</span></span>&#123;root=create(root,<span class="literal">NULL</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);&#125;                                <span class="comment">//outter call</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">release</span><span class="params">(Node * bt)</span></span>;                                                     <span class="comment">//inner call</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">release</span><span class="params">()</span></span>&#123;release(root);<span class="built_in">cout</span>&lt;&lt;<span class="string">"delete tree successfully!"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;           <span class="comment">//outter call</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Biseek</span><span class="params">(Node * bt)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Biseek</span><span class="params">()</span></span>&#123;Biseek(root);&#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showsubset</span><span class="params">()</span></span>;                  <span class="comment">//增强行功能版本中添加的用于输出可用路径的函数</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showparent</span><span class="params">(Node * bt)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//tools</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showtest</span><span class="params">()</span></span>;                    <span class="comment">//显示读入的数字</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">checksort</span><span class="params">()</span></span>;                   <span class="comment">//检查和，确定排序的正确</span></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">less</span><span class="params">(SET a,SET b)</span></span>;             <span class="comment">//快速比较SET类型变量</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxhead</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minhead</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">preorder</span><span class="params">(Node * bt,<span class="keyword">int</span> depth)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">preorder</span><span class="params">()</span></span>&#123;preorder(root,<span class="number">0</span>);&#125;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> size;                           <span class="comment">//数据量</span></div><div class="line">    <span class="keyword">float</span> r;                            <span class="comment">//SUM的参数r的值</span></div><div class="line">    <span class="keyword">long</span> C;                             <span class="comment">//子集和</span></div><div class="line">    <span class="keyword">long</span> SUM;                           <span class="comment">//全集和</span></div><div class="line">    SET * <span class="built_in">set</span>;                           <span class="comment">//存储集合的用于动态分配数组的指针</span></div><div class="line">    <span class="keyword">long</span> res;                           <span class="comment">//统计共有多少满足条件的集合</span></div><div class="line">    ListSet * subset;                    <span class="comment">//存储路径链表的的透支真</span></div><div class="line">    Node * root;</div><div class="line">    <span class="keyword">int</span> maxdepth;</div><div class="line">&#125;;</div><div class="line"><span class="comment">///-------------------constructer&amp;deconstructer---------------------///</span></div><div class="line">SubSet::SubSet(<span class="keyword">char</span>* path)&#123;</div><div class="line">    <span class="function">ifstream <span class="title">infile</span><span class="params">(path,ios::in)</span></span>;</div><div class="line">    <span class="keyword">if</span>(!infile)<span class="built_in">cerr</span>&lt;&lt;<span class="string">"ERORR when opening file!"</span>;</div><div class="line">    infile&gt;&gt;<span class="keyword">this</span>-&gt;size;</div><div class="line">    <span class="built_in">set</span>=<span class="keyword">new</span> SET[size+<span class="number">1</span>];</div><div class="line">    <span class="built_in">set</span>[<span class="number">0</span>].pi=<span class="built_in">set</span>[<span class="number">0</span>].wi=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> count=<span class="number">1</span>;SUM=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(!infile.eof())&#123;</div><div class="line">        infile&gt;&gt;<span class="built_in">set</span>[count].id;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">set</span>[count].id==count)&#123;           <span class="comment">//检查标号，只有一致时才输入</span></div><div class="line">            infile&gt;&gt;<span class="built_in">set</span>[count].wi;</div><div class="line">            SUM+=<span class="built_in">set</span>[count].wi;             <span class="comment">//顺便统计SUM值</span></div><div class="line">            infile&gt;&gt;<span class="built_in">set</span>[count].pi;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="built_in">cerr</span>&lt;&lt;<span class="string">"数组中第 "</span>&lt;&lt;<span class="built_in">set</span>[count].id&lt;&lt;<span class="string">" 和文件中的第 "</span>&lt;&lt;count&lt;&lt;<span class="string">" 条数据序号不正确匹配!（如果是size+1条数据不正确，请忽视！)"</span>;</div><div class="line">        <span class="keyword">if</span>(count&gt;size+<span class="number">1</span>)<span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    res=<span class="number">0</span>;                                  <span class="comment">//千万不要忘记这里结果归0方便后面累加</span></div><div class="line">    root=<span class="literal">NULL</span>;</div><div class="line">    subset=<span class="keyword">new</span> ListSet;subset-&gt;next=<span class="literal">NULL</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::release(Node * bt)&#123;</div><div class="line">  <span class="keyword">if</span>(bt!=<span class="literal">NULL</span>)&#123;</div><div class="line">    release(bt-&gt;lchild);</div><div class="line">    release(bt-&gt;rchild);</div><div class="line">    <span class="keyword">delete</span> bt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">SubSet::~SubSet()&#123;</div><div class="line">    <span class="keyword">delete</span> []<span class="built_in">set</span>;</div><div class="line"></div><div class="line">    ListSet * p=subset-&gt;next;              <span class="comment">//当使用功能记录可用路径时需要打开，析构存储子集地址</span></div><div class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</div><div class="line">        subset-&gt;next=p-&gt;next;</div><div class="line">        <span class="keyword">delete</span> p;</div><div class="line">        p=subset-&gt;next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">delete</span> subset;</div><div class="line"></div><div class="line">	release();                            <span class="comment">//析构二叉树</span></div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"delete successfully!"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">///-------------------heap sort---------------------------///</span></div><div class="line"><span class="keyword">void</span> SubSet::swap(SET * a,SET * b)&#123;</div><div class="line">    SET temp;</div><div class="line">    temp.id=a-&gt;id;</div><div class="line">    temp.wi=a-&gt;wi;</div><div class="line">    temp.pi=a-&gt;pi;</div><div class="line"></div><div class="line">    a-&gt;id=b-&gt;id;</div><div class="line">    a-&gt;wi=b-&gt;wi;</div><div class="line">    a-&gt;pi=b-&gt;pi;</div><div class="line"></div><div class="line">    b-&gt;id=temp.id;</div><div class="line">    b-&gt;wi=temp.wi;</div><div class="line">    b-&gt;pi=temp.pi;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::shift(<span class="keyword">int</span> k,<span class="keyword">int</span> m)&#123;</div><div class="line">    <span class="keyword">int</span> i=k;<span class="keyword">int</span> j=<span class="number">2</span>*i;</div><div class="line">    <span class="keyword">while</span>(j&lt;=m)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(j&lt;m&amp;&amp;j+<span class="number">1</span>&lt;=m&amp;&amp;less(<span class="built_in">set</span>[j],<span class="built_in">set</span>[j+<span class="number">1</span>]))j++;     <span class="comment">//为防止j+1超出数组范围越界，需要加一个条件</span></div><div class="line">        <span class="keyword">if</span>(less(<span class="built_in">set</span>[j],<span class="built_in">set</span>[i]))<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            swap(&amp;<span class="built_in">set</span>[i],&amp;<span class="built_in">set</span>[j]);</div><div class="line">            i=j;j=<span class="number">2</span>*i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::heapSort()&#123;</div><div class="line">    <span class="comment">//首先，对初始关键词序列进行调整以形成大根堆</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=size/<span class="number">2</span>;i&gt;=<span class="number">1</span>;i--)         <span class="comment">//最先的一次排序是定位到第n/2个元素，这是最后一个叶子节点对应的根节点</span></div><div class="line">        shift(i,size);</div><div class="line">    <span class="keyword">int</span> flag=size;                <span class="comment">//堆区末尾指示器</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;size;i++)&#123;</div><div class="line">        swap(&amp;<span class="built_in">set</span>[<span class="number">1</span>],&amp;<span class="built_in">set</span>[flag]);       <span class="comment">//一开始是将最后一个元素和第一个元素交换，因为全是堆区</span></div><div class="line">        shift(<span class="number">1</span>,--flag);            <span class="comment">//再次调整的时候就是堆区末尾向前移动一个位置了</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">///---------------------------seek answers--------------------------------------///</span></div><div class="line"><span class="keyword">void</span> SubSet::createC()&#123;</div><div class="line">    r=(<span class="keyword">float</span>)(rand()%<span class="number">100</span>)/<span class="number">100</span>;</div><div class="line">    r=<span class="number">0.5</span>;</div><div class="line">    C=<span class="keyword">long</span>(r*SUM);</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"r= "</span>&lt;&lt;r&lt;&lt;<span class="string">" C="</span>&lt;&lt;C&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">void</span> SubSet::createC(<span class="keyword">int</span> c)&#123;</div><div class="line">    C=c;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"the input C="</span>&lt;&lt;C&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// create the bi tree to store all results</span></div><div class="line">Node * SubSet::create(Node * bt,Node * parent,<span class="keyword">int</span> decision,<span class="keyword">int</span> c,<span class="keyword">int</span> depth)&#123;</div><div class="line">  <span class="keyword">if</span>(depth&gt;=size+<span class="number">1</span>)bt=<span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    bt=<span class="keyword">new</span> Node;</div><div class="line">    <span class="keyword">if</span>(decision)&#123;</div><div class="line">      bt-&gt;data=<span class="built_in">set</span>[depth].wi;</div><div class="line">      bt-&gt;res=c+bt-&gt;data;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">      bt-&gt;data=<span class="number">0</span>;</div><div class="line">      bt-&gt;res=c;</div><div class="line">    &#125;</div><div class="line">    bt-&gt;parent=parent;</div><div class="line">    bt-&gt;lchild=create(bt-&gt;lchild,bt,<span class="number">1</span>,bt-&gt;res,depth+<span class="number">1</span>);</div><div class="line">    bt-&gt;rchild=create(bt-&gt;rchild,bt,<span class="number">0</span>,bt-&gt;res,depth+<span class="number">1</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> bt;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::Biseek(Node * bt)&#123;</div><div class="line">  <span class="keyword">if</span>(bt-&gt;lchild==<span class="number">0</span> &amp;&amp; bt-&gt;rchild==<span class="number">0</span>)&#123;     <span class="comment">//说明它是叶子节点，应该检查它的res值</span></div><div class="line">    <span class="keyword">if</span>(bt-&gt;res==C)&#123;</div><div class="line">      ListSet * p=<span class="keyword">new</span> ListSet;          <span class="comment">//生成可用节点信息</span></div><div class="line">      p-&gt;link=bt;</div><div class="line">      p-&gt;next=subset-&gt;next;</div><div class="line">      subset-&gt;next=p;</div><div class="line"></div><div class="line">      <span class="keyword">this</span>-&gt;res++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    Biseek(bt-&gt;lchild);</div><div class="line">    Biseek(bt-&gt;rchild);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::showparent(Node * bt)&#123;</div><div class="line">    Node * p= <span class="keyword">new</span> Node;</div><div class="line">    p=bt;</div><div class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</div><div class="line">        <span class="keyword">if</span>(p-&gt;data)<span class="built_in">cout</span>&lt;&lt;p-&gt;data&lt;&lt;<span class="string">"+"</span>;</div><div class="line">        p=p-&gt;parent;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::showsubset()&#123;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"there are "</span>&lt;&lt;res&lt;&lt;<span class="string">" subsets to meet the C "</span>&lt;&lt;C&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    ListSet * p=<span class="keyword">new</span> ListSet;</div><div class="line">    p=subset-&gt;next;</div><div class="line">    <span class="keyword">int</span> count=<span class="number">0</span>;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"num"</span>&lt;&lt;<span class="string">"\t"</span>&lt;&lt;<span class="string">"subset"</span>&lt;&lt;<span class="string">"\t"</span>&lt;&lt;<span class="string">"C"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;++count&lt;&lt;<span class="string">"\t"</span>;</div><div class="line">        showparent(p-&gt;link);</div><div class="line">        p=p-&gt;next;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">///----------------------------------Tools------------------------------------------///</span></div><div class="line"><span class="keyword">void</span> SubSet::showtest()&#123;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;size&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=size;i++)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="string">"id= "</span>&lt;&lt;<span class="built_in">set</span>[i].id&lt;&lt;setw(<span class="number">10</span>)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="built_in">set</span>[i].wi&lt;&lt;setw(<span class="number">10</span>)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="built_in">set</span>[i].pi&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">" SUM= "</span>&lt;&lt;SUM&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"---------------------------------------------------------------"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::checksort()&#123;</div><div class="line">    <span class="keyword">long</span> checksum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=size;i++)&#123;</div><div class="line">        checksum+=<span class="built_in">set</span>[i].wi;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"check the sum!"</span>&lt;&lt;checksum&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">bool</span> SubSet::less(SET a,SET b)&#123;</div><div class="line">    <span class="keyword">if</span>(a.wi&lt;=b.wi)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> SubSet::maxhead()&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;size;i++)</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">set</span>[i].wi&gt;C)<span class="keyword">break</span>;</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> SubSet::minhead()&#123;             <span class="comment">//limit the head from size to this return value</span></div><div class="line">    <span class="keyword">int</span> remain=<span class="number">0</span>;<span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=size;i++)&#123;</div><div class="line">        remain+=<span class="built_in">set</span>[i].wi;</div><div class="line">        <span class="keyword">if</span>(remain&gt;=C)<span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> i;               <span class="comment">//the smallest head</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SubSet::preorder(Node * bt,<span class="keyword">int</span> depth)&#123;</div><div class="line">    <span class="keyword">if</span>(bt==<span class="literal">NULL</span>)<span class="keyword">return</span> ;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">if</span>(depth&gt;=<span class="number">10</span>&amp;&amp;bt-&gt;res==C)<span class="built_in">cout</span>&lt;&lt;depth&lt;&lt;<span class="string">" sub: "</span>&lt;&lt;bt-&gt;data&lt;&lt;<span class="string">'\t'</span>&lt;&lt;<span class="string">" C "</span>&lt;&lt;bt-&gt;res&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    preorder(bt-&gt;lchild,depth+<span class="number">1</span>);</div><div class="line">    preorder(bt-&gt;rchild,depth+<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">//SubSet test("/home/crepuscule/Documents/DS/almost/1000/1000/test.01.in");</span></div><div class="line">    <span class="comment">//SubSet test("D:\\Data structure\\DS xunlian\\subset\\1000\\1000\\test.01.in");</span></div><div class="line">    <span class="function">SubSet <span class="title">test</span><span class="params">(<span class="string">"test.01.in"</span>)</span></span>;</div><div class="line">    test.showtest();</div><div class="line">    test.heapSort();</div><div class="line">    test.showtest();</div><div class="line">    test.checksort();</div><div class="line">    test.createC();</div><div class="line">    test.create();</div><div class="line">    <span class="comment">//test.preorder();</span></div><div class="line">    test.Biseek();</div><div class="line">    test.showsubset();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>–二叉树方法完成–只能完成20个以内的数的用于标准对比，切不可处理50以个数<br>二叉树遍历方法优化：<br>因为较小的minhead（）之后的数不可直接当head，所以可以将没有在minhead（）之前的任何head的分支取消建造</p>
+<p>二叉树遍历方法的应用：<br>将结果集排序，看出规律来更好地研究回溯法<br>定义指向Node指针的指针，用于生成动态数组来存储Node型节点的指针</p>
+<h4 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h4><p>因为C值有时很大，排序后一些很小的数是不能当head的，所以<br>2.strongly pi=wi+const当满足上述问题1的同时满足pi对应集合和最大y<br>如果上面的问题1不需要保存可行集合中的数的话，那么者一题就必须保存集合中的数了，因为它求最优解，首先要有这个解中的所有数字<br>但是如果更改思路呢？求最优的思路</p>
+<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>题目要求在求出所有的解集后需要找到子集中对应的pi的和最大，换句话说也就是子集中数越多，（因为子集wi值均相等，不同的只是pi对应的集合），对应pi和值越大<br>好像必须要记录子集了！！！</p>
+<ul>
+<li>记录子集方法<br>在head不同的每一次递归中分析这个问题：<br>如果head固定，则会从大到小减去C值减完后即寻找在max后面的数据中是否存在和c匹配的数<br>这样的话：每一次减set[max]时候的max对应值都需要记录，然后如果找到了余下的c直接将此记录写入固定链表<br>如果直接找不到，再进行下一次循环，这次减去的max对应值作为上一次的直接节点直到c==0<br>经过少量数据验证，所形成的是一个二叉树。那么只要设计二叉树即可，右孩子专门来存储find到的数据，左孩子用于max分支。<br>总结一下：在循环之前生成一个数组用于存储这些二叉树的根节点，用minhead计算，会生成head从size到minhead之间数量个的二叉树头指针动态数组。<br>开始循环：在每次减去max对应数据时记录在该二叉树左子树中，接着如果有finded到c余值，则将该数记录在右子树中，接着将其下一个递归过程中得到的数据写在左子树<br>写一个函数，用于插在左或右子树<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">insertl</span><span class="params">(ListSet * root,SET * inserter,<span class="keyword">int</span> isable)</span></span>&#123;    <span class="comment">//传入根节点，传入需要记录的值，返回正确是否  </span></div><div class="line">  ListSet * p=root;         <span class="comment">//工作指针，root已经在上面的数组中被定义过</span></div><div class="line">  <span class="keyword">while</span>(p-&gt;lchild!=<span class="literal">NULL</span>)&#123;</div><div class="line">    p=p-&gt;lchild;</div><div class="line">  &#125;                         <span class="comment">//此时p=NULL，开始往p上添加左子树</span></div><div class="line">  ListSet * n=<span class="keyword">new</span> ListSet;</div><div class="line">  n-&gt;link=inserter;</div><div class="line">  p-&gt;lchild=n;</div><div class="line">  n-&gt;lchild=n-&gt;lchild=<span class="literal">NULL</span>;</div><div class="line"></div><div class="line">  ifables?(n-&gt;isable=<span class="number">1</span>):(n-&gt;isable=<span class="number">0</span>);</div><div class="line">  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果没有找到，则继续seek下面，如果有res++的路径，那么在最后加入一个节点作为判断依据,只需要在insetl中加入isable=1的选项<br>在res++的地方运行insertl<br>在直接return的地方运行insertl-isable=1选项。</p>
+<p>*<br>在ListSet数据结构中</p>
+<h3 id="数据结构-2"><a href="#数据结构-2" class="headerlink" title="数据结构"></a>数据结构</h3><p>构造一个用于存储子集的数据结构<br>struct ListSet{<br>  SET <em> link;<br>  ListSet </em> lchild;<br>  ListSet * rchild;<br>  bool isable;<br>};</p>
+<h3 id="实现中的问题"><a href="#实现中的问题" class="headerlink" title="实现中的问题"></a>实现中的问题</h3><h3 id="strong-问题新思路"><a href="#strong-问题新思路" class="headerlink" title="strong 问题新思路"></a>strong 问题新思路</h3><p>既然strong是为了求最优解，那么也不必为了输出所有子集而苦恼，因为最后的结果只有一个，无论重复还是子集过多。<br>所有的pi行均比wi多10，而所有子集中每一个wi的值加起来均是C值，所以pi行之和就是C+n*10，即去掉pi中wi的和，就只有n个10的问题。那么pi和的大小就是n的多少了。<br>所以子集结果中元素最多的子集就是pi和最大的子集合。<br>所以，只要每次都把当前最小的元素加到集合中，再检查是否满足C值，得到的一定为pi最大的子集<br>3.invest pi=wi-const当满足上述问题1的同时满足pi对应集合和最大y<br>和上一个问题类似</p>
+<h3 id="大体思路"><a href="#大体思路" class="headerlink" title="大体思路"></a>大体思路</h3><p>首先用当前可见得最大的数减c，如果减到最后不行，那么从最后一个不成功的数开始回溯，寻找下一个索引对应的数，看能不能分成几个数来凑。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">void seek()&#123;</div><div class="line">  int tempC=C; int i;</div><div class="line">  for(i=size;i&gt;=1;i--)&#123;</div><div class="line">      if(tempC==0)break;</div><div class="line">      if(set[1].wi&gt;tempC)break;</div><div class="line">      if(set[i].wi&lt;=tempC)&#123;                    //如果比C小或等于C就拿C去减，并将此数入链表</div><div class="line">          tempC-=set[i].wi;</div><div class="line">          cout&lt;&lt;"the temp C: "&lt;&lt;tempC&lt;&lt;" set[i].wi= "&lt;&lt;set[i].wi&lt;&lt;endl;</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  if(tempC==0)cout&lt;&lt;"已寻找到最优子集"&lt;&lt;endl;</div><div class="line">  else find(tempC+set[i-1].wi,i);                 [find(8,5);]</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">void find()</div><div class="line"></div><div class="line">void SubSet::seek(int head,long c)&#123;</div><div class="line">    if(c==0)&#123;                       //如果c为0，则说明这条路径可行，res应加1</div><div class="line">        res++;///cout&lt;&lt;"in if(c==0)"&lt;&lt;" c: "&lt;&lt;c&lt;&lt;" max-1: "&lt;&lt;max-1&lt;&lt;endl;</div><div class="line">        return ;</div><div class="line">    &#125;</div><div class="line">    if(head==0||set[1].wi&gt;c)return ; //当c！=0 时，而head=0,或者最小数比c还大，那一定没戏了，此路不通</div><div class="line"></div><div class="line">    int max=head;                    //开始寻找最大的比c小得数</div><div class="line">    while(max&gt;=1)&#123;</div><div class="line">      if(set[max].wi&lt;=c/*&amp;&amp;set[max].used==0*/)break;//在有顺序的从大到小的表中从头往后开始找，如果有一个数小于c，它就是最大的小于c的值</div><div class="line">      max--;</div><div class="line">    &#125;</div><div class="line">    c=c-set[max].wi;</div><div class="line">    ///cout&lt;&lt;"the max = "&lt;&lt;max&lt;&lt;endl;</div><div class="line">    ///cout&lt;&lt;"the outter c= "&lt;&lt;c&lt;&lt;endl;</div><div class="line">    if(finded(c,max-1))&#123;</div><div class="line">        res++;</div><div class="line">        ///cout&lt;&lt;"in if(finded(c,max-1)) "&lt;&lt;" c: "&lt;&lt;c&lt;&lt;" max-1 "&lt;&lt;max-1&lt;&lt;" finded(c) "&lt;&lt;finded(c,max-1)-1&lt;&lt;endl;</div><div class="line">        seek(finded(c,max-1)-1,c);          //既然可以找到一个值满足，那么是不是有几个更小的数加起来=这个数set（max）从而满足</div><div class="line">    &#125;</div><div class="line">    else seek(max-1,c);                     //找不到只能再往下找了</div><div class="line">    return ;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面的做法不一定可以成功，不过可以试试基于subset的链表比较方法<br>共两个链表指针：<br>invest链表（用于存放当前认为最短的子集），对应链表长度（即树的深度）investlength<br>swap链表（用于存放当前刚刚构造好的子集），对应链表长度swaplength</p>
+<p>使用其递归结构构造链表，并统计链表的长度。<br>当最后return ture时最后加入一个验证信息，最后return flase时直接delete这个链表。<br>当下次有长度短于当前链表的链表出现时，覆盖当前链表，即delete当前指针对应的链表，将swap赋给invest<br>若长于则delete 这个swap链表，使头指针为空<br>当仅有单独返回时按正常方式return 返回需要修改的指针；但如果在文件末尾有两个返回值，则需要指定需要添加的头节点中的isadd为1，在每次响应添加请求时需要遍历头指针链表，检查每一个的isadd域，如果为1，插入新节点并将isadd重新置1。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div></pre></td><td class="code"><pre><div class="line">定义异型头节点</div><div class="line"><span class="keyword">struct</span> investHead&#123;</div><div class="line">  <span class="keyword">int</span> depth;</div><div class="line">  <span class="keyword">bool</span> isadd;</div><div class="line">  investHead * next;</div><div class="line">  invest * sons;</div><div class="line">&#125;; -----&gt;investHead * Record;</div><div class="line"><span class="keyword">struct</span> invest&#123;</div><div class="line">  SET * link;</div><div class="line">  <span class="keyword">int</span> res;</div><div class="line">  invest * next;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">bool</span> * isadd;</div><div class="line">isadd=<span class="keyword">new</span> <span class="keyword">bool</span>;</div><div class="line">* isadd=<span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">insetToTail</span><span class="params">(investHead * head,SET * data,<span class="keyword">int</span> res)</span></span>&#123;</div><div class="line">  invest * p=head-&gt;sons;        <span class="comment">//工作指针</span></div><div class="line">  invest * n=<span class="keyword">new</span> invest;        <span class="comment">//头插法</span></div><div class="line">  n-&gt;link=data;</div><div class="line">  n-&gt;res=c;</div><div class="line">  n-&gt;next=head-&gt;sons;</div><div class="line">  head-&gt;sons=n;</div><div class="line">  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteHead</span><span class="params">(investHead * head)</span></span>&#123;</div><div class="line">  investHead * q=head-&gt;next;</div><div class="line">  <span class="keyword">while</span>(q!=<span class="literal">NULL</span>)&#123;           <span class="comment">//遍历每一个头节点</span></div><div class="line">    invest * p=q-&gt;sons;     <span class="comment">//析构子节点链表</span></div><div class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</div><div class="line">      q-&gt;sons=p-&gt;next;</div><div class="line">      <span class="keyword">delete</span> p;</div><div class="line">      p=q-&gt;sons;</div><div class="line">    &#125;                       <span class="comment">//本头节点的所有子节点全部析构完毕</span></div><div class="line">    head-&gt;next=q-&gt;next;     <span class="comment">//开始析构头节点</span></div><div class="line">    <span class="keyword">delete</span> q;</div><div class="line">    q=head-&gt;next;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">investHead * SubSet::seek(<span class="keyword">int</span> max,<span class="keyword">int</span> c,<span class="keyword">int</span> depth)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;out&lt;&lt;<span class="string">"&gt;&gt;&gt; in seek("</span>&lt;&lt;max&lt;&lt;<span class="string">","</span>&lt;&lt;c&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">if</span>(c==<span class="number">0</span>)&#123;         <span class="comment">//开始发出构造请求</span></div><div class="line">    res++;</div><div class="line">    investHead * pointer;</div><div class="line">    <span class="keyword">if</span>(Record==<span class="literal">NULL</span>)&#123;       <span class="comment">//用于保险而已，我们其实在构造函数中应该构造好该节点使其深度为0，其余值为NULL</span></div><div class="line">      Record =<span class="keyword">new</span> investHead;</div><div class="line">      Record-&gt;depth=depth;</div><div class="line">      Record-&gt;sons=<span class="literal">NULL</span>;</div><div class="line">      Record-&gt;next=<span class="literal">NULL</span>;</div><div class="line">      pointer=Record;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">if</span>(Record-&gt;depth&gt;depth)</div><div class="line">        pointer=<span class="literal">NULL</span>;</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span>(Record-&gt;depth==depth)&#123;      <span class="comment">//同深度头节点，返回isadd要求加入第二个节点</span></div><div class="line">        investHead * n=<span class="keyword">new</span> investHead;</div><div class="line">        n-&gt;depth=depth;</div><div class="line">        n-&gt;next=Record-&gt;next;</div><div class="line">        Record-&gt;next=n;</div><div class="line">        pointer=n;</div><div class="line"></div><div class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(Record-&gt;depth&lt;depth)&#123;</div><div class="line">        deleteHead(Record);</div><div class="line">        Record-&gt;depth=depth;</div><div class="line">        Record-&gt;next=<span class="literal">NULL</span>;</div><div class="line">        Record-&gt;sons=<span class="literal">NULL</span>;</div><div class="line">        pointer=Record;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;out&lt;&lt;<span class="string">"&lt;&lt;&lt; return true"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> pointer;  </div><div class="line">    <span class="comment">//将首头节点的深度与其深度进行比较，</span></div><div class="line">      如果深度小于头节点存储深度，<span class="keyword">return</span> <span class="literal">NULL</span>不让程序在返回后链接节点</div><div class="line">      如果深度等于本深度，构造异性头节点，在首头节点后连接该头节点，<span class="keyword">return</span> 刚刚构造的头节点的指针</div><div class="line">      如果深度大于本深度，析构所有头节点，构造新的头节点，将新头节点连在首头节点之后<span class="keyword">return</span> 刚刚构造的头节点的指针</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(max&lt;=<span class="number">0</span>||<span class="built_in">set</span>[<span class="number">1</span>].wi&gt;c)&#123;</div><div class="line">    <span class="comment">//删除整条链表</span></div><div class="line">    <span class="built_in">cout</span>&lt;&lt;out&lt;&lt;<span class="string">"&lt;&lt;&lt; return NULL"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">               <span class="built_in">cout</span>&lt;&lt;out&lt;&lt;<span class="string">"1 check c status: "</span>&lt;&lt;c&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">  max=findmax(max,c);         <span class="comment">//返回最大的可减值索引</span></div><div class="line">  c=c-<span class="built_in">set</span>[max].wi;</div><div class="line">               <span class="built_in">cout</span>&lt;&lt;out&lt;&lt;<span class="string">"2 the max: "</span>&lt;&lt;max&lt;&lt;<span class="string">" the max-&gt;: "</span>&lt;&lt;<span class="built_in">set</span>[max].wi&lt;&lt;<span class="string">" the c: "</span>&lt;&lt;c&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">               <span class="built_in">cout</span>&lt;&lt;out&lt;&lt;<span class="string">"3 next seek ("</span>&lt;&lt;max<span class="number">-1</span>&lt;&lt;<span class="string">","</span>&lt;&lt;c&lt;&lt;<span class="string">")"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">   investHead * flag1=seek(max<span class="number">-1</span>,c,depth+<span class="number">1</span>);     <span class="comment">//响应构建</span></div><div class="line">   <span class="keyword">if</span>(flag1)&#123;</div><div class="line">     insetToTail(flag1,&amp;<span class="built_in">set</span>[max],c);</div><div class="line">     <span class="keyword">if</span>(isadd)&#123;</div><div class="line">       investHead * p=head;</div><div class="line">       <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</div><div class="line">         insetToTail(p,&amp;<span class="built_in">set</span>[begain],originc);</div><div class="line">         p=p-&gt;next;</div><div class="line">       &#125;</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//添加判断逻辑，</span></div><div class="line">     若为<span class="literal">NULL</span>，不执行操作</div><div class="line">     若不为<span class="literal">NULL</span>，将上面max对应<span class="built_in">set</span>[max]的指针封装在invest中链接到该链表中，使用insertToTail()函数自动完成</div><div class="line">     <span class="built_in">cout</span>&lt;&lt;out&lt;&lt;<span class="string">"4 the check status: the findmax("</span>&lt;&lt;max<span class="number">-1</span>&lt;&lt;<span class="string">","</span>&lt;&lt;c+<span class="built_in">set</span>[max].wi&lt;&lt;<span class="string">") "</span>&lt;&lt;findmax(max<span class="number">-1</span>,c+<span class="built_in">set</span>[max].wi)&lt;&lt;<span class="string">" the minhead("</span>&lt;&lt;c+<span class="built_in">set</span>[max].wi&lt;&lt;<span class="string">") "</span>&lt;&lt;minhead(c+<span class="built_in">set</span>[max].wi)&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> originc=c+<span class="built_in">set</span>[max].wi;</div><div class="line">  <span class="keyword">int</span> begain=findmax(max<span class="number">-1</span>,originc);</div><div class="line">  <span class="keyword">if</span>(begain&gt;=minhead(originc))&#123;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;out&lt;&lt;<span class="string">"the same level seek: ("</span>&lt;&lt;max<span class="number">-1</span>&lt;&lt;<span class="string">","</span>&lt;&lt;c&lt;&lt;<span class="string">")"</span>&lt;&lt;<span class="built_in">endl</span>;;</div><div class="line">    invest * flag2=seek(begain,originc,depth);      <span class="comment">//直接升到一层，不许构建，因为深度相同</span></div><div class="line">  <span class="comment">/*  if(flag2)&#123;</span></div><div class="line">      insetToTail(flag2,&amp;set[begain],originc);</div><div class="line">      if(isadd)&#123;</div><div class="line">        investHead * p=head;</div><div class="line">        while(p!=NULL)&#123;</div><div class="line">          insetToTail(p,&amp;set[begain],originc);</div><div class="line">          p=p-&gt;next;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125; * /</div><div class="line">  cout&lt;&lt;out&lt;&lt;"&lt;&lt;&lt; end"&lt;&lt;endl;</div><div class="line"></div><div class="line">  if(flag1&amp;&amp;flag2)&#123;</div><div class="line">    * isadd =1;      //当有两个请求时，置isadd为1，让上级给所有头节点均插入新节点。</div><div class="line">    return flag1;</div><div class="line">  &#125;</div><div class="line">  else if(flag1)return flag1;</div><div class="line">  else if(flag2)return flag2;</div><div class="line">  else return NULL:</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最大深度显示最多数量的子集，所以在每次return ture之前建立 请求构建子集结构体 存储该子集的深度（长度），作为异型头节点引导接下来的子集元素链表。<br>这些异型头节点存储在一个动态链表中。如果在另一次的return ture时发现两者深度相同，那么将构造一个异型头节点穿在第一个头节点后形成链表。但是如果发现一个return ture的深度比当前所有异型头节点的深度要深，那么析构所有已有的头节点，重新构造深度更深的头节点<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>4.alomst pi=wi+-const当满足上述问题1的同时满足pi对应集合和最大y</p>
+<p>np问题 计算机不可求解问题</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C-codeblocks/" rel="tag"># C/C++~/.codeblocks</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/21/Random-number/" rel="next" title="Cpp Random number">
+                <i class="fa fa-chevron-left"></i> Cpp Random number
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/23/Python-Learning-1/" rel="prev" title="Python Learning 1">
+                Python Learning 1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule" />
+          <p class="site-author-name" itemprop="name">crepuscule</p>
+          <p class="site-description motion-element" itemprop="description">my individual blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#subset-子集和数问题"><span class="nav-number">1.</span> <span class="nav-text">subset (子集和数问题)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目要求"><span class="nav-number">1.1.</span> <span class="nav-text">题目要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大体的实现思路"><span class="nav-number">1.3.</span> <span class="nav-text">大体的实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找最优解的方法：（包含数量最少的子集）"><span class="nav-number">1.3.1.</span> <span class="nav-text">寻找最优解的方法：（包含数量最少的子集）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找全部解的方法：-使用递归函数做"><span class="nav-number">1.3.2.</span> <span class="nav-text">寻找全部解的方法：(使用递归函数做)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现中的问题解决"><span class="nav-number">1.4.</span> <span class="nav-text">实现中的问题解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码："><span class="nav-number">1.5.</span> <span class="nav-text">完整代码：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回溯法的改进方法："><span class="nav-number">1.6.</span> <span class="nav-text">回溯法的改进方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于subset算法的用于测试的实现方式："><span class="nav-number">1.7.</span> <span class="nav-text">关于subset算法的用于测试的实现方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构-1"><span class="nav-number">1.7.1.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建和析构二叉树方法"><span class="nav-number">1.7.2.</span> <span class="nav-text">创建和析构二叉树方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜存合适解函数"><span class="nav-number">1.7.3.</span> <span class="nav-text">搜存合适解函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法"><span class="nav-number">1.7.4.</span> <span class="nav-text">分治法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思路"><span class="nav-number">1.8.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构-2"><span class="nav-number">1.9.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现中的问题"><span class="nav-number">1.10.</span> <span class="nav-text">实现中的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#strong-问题新思路"><span class="nav-number">1.11.</span> <span class="nav-text">strong 问题新思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大体思路"><span class="nav-number">1.12.</span> <span class="nav-text">大体思路</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

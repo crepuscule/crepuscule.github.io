@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="PHP,Laravel," />
 
 
 
@@ -84,25 +84,25 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+<meta name="description" content="HTTP 控制器
+基本控制器
 
-
-Qui">
+下面是一个基本控制器类的例子。所有的Laravel控制器应该继承自Laravel自带的控制器基类Controller：1234567891011121314151617181920&amp;lt;?phpnamespace App\Http\Controllers;use App\User;use App\Http\Controllers\Controller;class">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://Crepuscule.com/2017/01/17/hello-world/index.html">
+<meta property="og:title" content="Laravel controller">
+<meta property="og:url" content="http://Crepuscule.com/2017/02/13/Laravel-controller/index.html">
 <meta property="og:site_name" content="Crepuscule">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+<meta property="og:description" content="HTTP 控制器
+基本控制器
 
-
-Qui">
-<meta property="og:updated_time" content="2017-01-17T12:19:21.218Z">
+下面是一个基本控制器类的例子。所有的Laravel控制器应该继承自Laravel自带的控制器基类Controller：1234567891011121314151617181920&amp;lt;?phpnamespace App\Http\Controllers;use App\User;use App\Http\Controllers\Controller;class">
+<meta property="og:updated_time" content="2017-02-21T05:39:34.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+<meta name="twitter:title" content="Laravel controller">
+<meta name="twitter:description" content="HTTP 控制器
+基本控制器
 
-
-Qui">
+下面是一个基本控制器类的例子。所有的Laravel控制器应该继承自Laravel自带的控制器基类Controller：1234567891011121314151617181920&amp;lt;?phpnamespace App\Http\Controllers;use App\User;use App\Http\Controllers\Controller;class">
 
 
 
@@ -130,13 +130,13 @@ Qui">
 
 
 
-  <link rel="canonical" href="http://Crepuscule.com/2017/01/17/hello-world/"/>
+  <link rel="canonical" href="http://Crepuscule.com/2017/02/13/Laravel-controller/"/>
 
 
 
 
 
-  <title> Hello World | Crepuscule </title>
+  <title> Laravel controller | Crepuscule </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
@@ -259,7 +259,7 @@ Qui">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/17/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/13/Laravel-controller/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -283,7 +283,7 @@ Qui">
             
             
               
-                Hello World
+                Laravel controller
               
             
           </h1>
@@ -298,8 +298,8 @@ Qui">
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T20:19:21+08:00">
-                2017-01-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-13T10:20:32+08:00">
+                2017-02-13
               </time>
             
 
@@ -308,6 +308,50 @@ Qui">
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/PHP/Laravel/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -334,17 +378,34 @@ Qui">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=745137&auto=0&height=66"></iframe>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="HTTP-控制器"><a href="#HTTP-控制器" class="headerlink" title="HTTP 控制器"></a>HTTP 控制器</h2><ol>
+<li>基本控制器</li>
+</ol>
+<p>下面是一个基本控制器类的例子。所有的Laravel控制器应该继承自Laravel自带的控制器基类Controller：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Http\Controllers;</div><div class="line"></div><div class="line">use App\User;</div><div class="line">use App\Http\Controllers\Controller;</div><div class="line"></div><div class="line">class UserController extends Controller</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * 为指定用户显示详情</div><div class="line">     *</div><div class="line">     * @param  int  $id</div><div class="line">     * @return Response</div><div class="line">     */</div><div class="line">    public function showProfile($id)</div><div class="line">    &#123;</div><div class="line">        return view(&apos;user.profile&apos;, [&apos;user&apos; =&gt; User::findOrFail($id)]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们可以像这样定义指向该控制器动作的路由：</p>
+<p>Route::get(‘user/{id}’, ‘UserController@showProfile’);</p>
+<p>现在，如果一个请求匹配上面的路由URI，UserController的showProfile方法就会被执行。当然，路由参数也会被传递给这个方法。</p>
+<ul>
+<li>命名控制器路由</li>
+</ul>
+<p>和闭包路由一样，可以指定控制器路由的名字：</p>
+<p>Route::get(‘foo’, [‘uses’ =&gt; ‘FooController@method’, ‘as’ =&gt; ‘name’]);</p>
+<p>设置好控制器路由后，就可以使用帮助函数action很方便地为控制器动作生成对应的URL：</p>
+<p>$url = action(‘FooController@method’);</p>
+<p>你还可以使用帮助函数route来为已命名的控制器路由生成对应的URL：</p>
+<p>$url = route(‘name’);</p>
+<ol>
+<li>RESTful资源控制器<br>例如，你可能想要在应用中创建一个控制器，用于处理关于图片存储的HTTP请求，使用Artisan命令make:controller，我们可以快速创建这样的控制器：<br>php artisan make:controller PhotoController<br>该Artisan命令将会生成一个控制器文件app/Http/Controllers/PhotoController.php，这个控制器包含了每一个资源操作对应的方法<br>接下来，可以为该控制器注册一个资源路由：</li>
+</ol>
+<p>Route::resource(‘photo’, ‘PhotoController’);</p>
+<p>这个路由声明包含了处理图片资源RESTful动作的多个路由，相应地，Artisan生成的控制器也已经为这些动作设置了对应的处理方法。</p>
+<p>方法     路径     动作     路由名称<br>GET     /photo     index     photo.index<br>GET     /photo/create     create     photo.create<br>POST     /photo     store     photo.store<br>GET     /photo/{photo}     show     photo.show<br>GET     /photo/{photo}/edit     edit     photo.edit<br>PUT/PATCH     /photo/{photo}     update     photo.update<br>DELETE     /photo/{photo}     destroy     photo.destroy</p>
+<ul>
+<li>只定义部分资源路由</li>
+</ul>
+<p>声明资源路由时可以指定该路由处理的动作子集：</p>
+<p>Route::resource(‘photo’, ‘PhotoController’,<br>                [‘only’ =&gt; [‘index’, ‘show’]]);</p>
+<p>Route::resource(‘photo’, ‘PhotoController’,<br>                [‘except’ =&gt; [‘create’, ‘store’, ‘update’, ‘destroy’]]);</p>
 
       
     </div>
@@ -366,13 +427,21 @@ Qui">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/Laravel/" rel="tag"># Laravel</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/17/Advanced-C/" rel="next" title="Advanced C">
-                <i class="fa fa-chevron-left"></i> Advanced C
+              <a href="/2017/02/13/Laravel-middleware/" rel="next" title="Laravel middleware">
+                <i class="fa fa-chevron-left"></i> Laravel middleware
               </a>
             
           </div>
@@ -381,8 +450,8 @@ Qui">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/19/Fedora-System-Config/" rel="prev" title="Fedora System Config">
-                Fedora System Config <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/18/Basic-CMD-Command/" rel="prev" title="Basic CMD Command">
+                Basic CMD Command <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -453,7 +522,7 @@ Qui">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -462,7 +531,7 @@ Qui">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -471,7 +540,7 @@ Qui">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -506,7 +575,7 @@ Qui">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-控制器"><span class="nav-number">1.</span> <span class="nav-text">HTTP 控制器</span></a></li></ol></div>
             
 
           </div>
