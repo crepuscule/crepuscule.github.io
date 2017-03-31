@@ -251,7 +251,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/21/New-Cpp-Standard/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/12/WEB/PHP/Laravel-Routes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -276,8 +276,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/21/New-Cpp-Standard/" itemprop="url">
-                  New C++ Standard
+                <a class="post-title-link" href="/2017/02/12/WEB/PHP/Laravel-Routes/" itemprop="url">
+                  Laravel Routes
                 </a>
               
             
@@ -293,8 +293,245 @@
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-21T21:10:18+08:00">
-                2017-01-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-12T21:45:11+08:00">
+                2017-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/PHP/Laravel/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="HTTP-路由"><a href="#HTTP-路由" class="headerlink" title="HTTP 路由"></a>HTTP 路由</h2><ol>
+<li>基本路由<br>路由是用来匹配用户请求和相应逻辑处理文件的函数<br>大部分路由都定义在被<code>App\Providers\RouteServiceProvider</code>类载入的<code>app/Http/routes.php</code>文件中。<br>基本路由接收一个URI地址和一个闭包<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> view(<span class="string">'welcome'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>多个动作的路由<br>以使用Route门面的match方法来实现注册一个路由来响应多个不同的HTTP动作<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::match([<span class="string">'get'</span>, <span class="string">'post'</span>], <span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">'welcome'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>或者，还可以使用any方法注册一个路由响应所有HTTP动作：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::any(<span class="string">'foo'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">'welcome'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>生成路由对应的URLs，可以使用帮助函数url来生成路由对应的URLs<br><code>$url = url(&#39;foo&#39;);</code></p>
+<ol>
+<li>参数</li>
+</ol>
+<ul>
+<li>必须参数<br>有时我们需要在路由中捕获URI片段，比如，如果想要从URL中捕获用户ID，可以通过如下方式定义路由参数：<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">分别在url地址和闭包参数中定义想要获取的uri片段</div><div class="line">Route::get(<span class="string">'user/&#123;id&#125;'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($id)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'User '</span>.$id;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>路由参数总是通过花括号进行包裹，参数在路由被执行时会被传递到路由的闭包。<br>可以按需要定义在路由中定义多个路由参数：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'posts/&#123;post&#125;/comments/&#123;comment&#125;'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($postId, $commentId)</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>可选参数<br>有时候可能需要指定路由参数，并且使得该路由参数是可选的，可以通过在参数名后加一个？来标记</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'user/&#123;name?&#125;'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($name = null)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> $name;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Route::get(<span class="string">'user/&#123;name?&#125;'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($name = <span class="string">'John'</span>)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> $name;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>正则约束<br>可以使用路由实例上的where方法来约束路由参数的格式。where方法接收参数名和一个正则表达式来定义该参数如何被约束：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'user/&#123;name&#125;'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($name)</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;)-&gt;where(<span class="string">'name'</span>, <span class="string">'[A-Za-z]+'</span>);</div><div class="line"></div><div class="line">Route::get(<span class="string">'user/&#123;id&#125;'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($id)</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;)-&gt;where(<span class="string">'id'</span>, <span class="string">'[0-9]+'</span>);</div><div class="line"></div><div class="line">Route::get(<span class="string">'user/&#123;id&#125;/&#123;name&#125;'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($id, $name)</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;)-&gt;where([<span class="string">'id'</span> =&gt; <span class="string">'[0-9]+'</span>, <span class="string">'name'</span> =&gt; <span class="string">'[a-z]+'</span>]);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>全局约束可使用pattern方法，在RouteServiceProvider类的boot方法中定义约束模式<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 定义路由模型绑定，模式过滤器等</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span>  \Illuminate\Routing\Router  $router</div><div class="line"> * <span class="doctag">@return</span> void</div><div class="line"> * <span class="doctag">@translator</span>  http://laravelacademy.org</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span><span class="params">(Router $router)</span></span>&#123;</div><div class="line">    $router-&gt;pattern(<span class="string">'id'</span>, <span class="string">'[0-9]+'</span>);</div><div class="line">    <span class="keyword">parent</span>::boot($router);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>命名路由<br>命名路由使生成URLs或者重定向到指定路由变得很方便，在定义路由时指定路由名称，然后使用数组键as指定路由别名：<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'user/profile'</span>, [<span class="string">'as'</span> =&gt; <span class="string">'profile'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;]);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>还可以为控制器动作指定路由名称：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'user/profile'</span>, [</div><div class="line">    <span class="string">'as'</span> =&gt; <span class="string">'profile'</span>, <span class="string">'uses'</span> =&gt; <span class="string">'UserController@showProfile'</span></div><div class="line">]);</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>路由分组 &amp; 命名路由<br>如果你在使用路由分组，可以在路由分组属性数组中指定as关键字来为分组中的路由设置一个共用的路由名前缀：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Route::group([<span class="string">'as'</span> =&gt; <span class="string">'admin::'</span>], <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    Route::get(<span class="string">'dashboard'</span>, [<span class="string">'as'</span> =&gt; <span class="string">'dashboard'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 路由被命名为 "admin::dashboard"</span></div><div class="line">    &#125;]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>为命名路由生成URLs<br>一旦你为给定路由分配了名字，通过route函数生成URLs时就可以使用路由名字：</p>
+</li>
+</ul>
+<p>$url = route(‘profile’); //之前使用$url=url(‘/‘);<br>$redirect = redirect()-&gt;route(‘profile’);</p>
+<p>如果路由定义了参数，可以将路由参数作为第二个参数传递给route函数。给定的路由参数将会自动插入URL中：</p>
+<p>Route::get(‘user/{id}/profile’, [‘as’ =&gt; ‘profile’, function ($id) {<br>    //<br>}]);<br>$url = route(‘profile’, [‘id’ =&gt; 1]);</p>
+<ol>
+<li>路由分组</li>
+</ol>
+<ul>
+<li>中间件<br>要分配中间件给分组中的所有路由，可以在分组属性数组中使用middleware键。中间件将会按照数组中定义的顺序依次执行：</li>
+</ul>
+<p>Route::group([‘middleware’ =&gt; ‘auth’], function (){<br>    Route::get(‘/‘, function ()    {<br>        // 使用 Auth 中间件<br>    });</p>
+<pre><code>Route::get(&apos;user/profile&apos;, function () {
+    // 使用 Auth 中间件
+});
+</code></pre><p>});</p>
+<ul>
+<li>命名空间<br>另一个通用的例子是路由分组分配同一个PHP命名空间给多个控制器，可以在分组属性数组中使用namespace参数来指定分组中控制器的命名空间：</li>
+</ul>
+<p>Route::group([‘namespace’ =&gt; ‘Admin’], function(){<br>    // 控制器在 “App\Http\Controllers\Admin” 命名空间下</p>
+<pre><code>Route::group([&apos;namespace&apos; =&gt; &apos;User&apos;], function()
+{
+    // 控制器在 &quot;App\Http\Controllers\Admin\User&quot; 命名空间下
+});
+</code></pre><p>});</p>
+<p>RouteServiceProvider包含routes.php并指定其所在命名空间，因此，我们只需要指定命名空间的App\Http\Controllers之后的一部分。</p>
+<ul>
+<li>子域名路由<br>路由分组还可以被用于子域名路由通配符，子域名可以像URIs一样被分配给路由参数，从而允许捕获子域名的部分用于路由或者控制器，子域名可以通过分组属性数组中的domain键来指定：</li>
+</ul>
+<p>Route::group([‘domain’ =&gt; ‘{account}.myapp.com’], function () {<br>    Route::get(‘user/{id}’, function ($account, $id) {<br>        //<br>    });<br>});</p>
+<ul>
+<li>路由前缀</li>
+</ul>
+<p>属性prefix可以用来为分组中每个给定URI添加一个前缀，比如，你想要为所有路由URIs前面添加前缀admin：</p>
+<p>Route::group([‘prefix’ =&gt; ‘admin’], function () {<br>    Route::get(‘users’, function ()    {<br>        // 匹配 “/admin/users” URL<br>    });<br>});</p>
+<p>你还可以使用prefix参数为分组路由指定公共参数：</p>
+<p>Route::group([‘prefix’ =&gt; ‘accounts/{account_id}’], function () {<br>    Route::get(‘detail’, function ($account_id)    {<br>        // 匹配 accounts/{account_id}/detail URL<br>    });<br>});</p>
+<ol>
+<li>表单方法伪造</li>
+</ol>
+<p>HTML表单不支持PUT、PATCH或者DELETE动作，因此，当定义被HTML表单调用的PUT、PATCH或DELETE路由时，需要添加一个隐藏的_method字段到给表单中，其值被用作HTTP请求方法名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;/foo/bar&quot; method=&quot;POST&quot;&gt;</div><div class="line">    &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;PUT&quot;&gt;</div><div class="line">    &lt;input type=&quot;hidden&quot; name=&quot;_token&quot; value=&quot;&#123;&#123; csrf_token() &#125;&#125;&quot;&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/10/Linux/Travel-Linux-Kernel-the-base-application-layers/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/10/Linux/Travel-Linux-Kernel-the-base-application-layers/" itemprop="url">
+                  Travel Linux Kernel the base & application layers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-10T12:31:27+08:00">
+                2017-02-10
               </time>
             
 
@@ -334,17 +571,6 @@
 
                 
                 
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/Basic-C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Basic C/C++</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -375,181 +601,21 @@
       
         
           
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/19/Fedora-System-Config/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="crepuscule">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Crepuscule">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/19/Fedora-System-Config/" itemprop="url">
-                  Fedora System Config
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-19T10:01:07+08:00">
-                2017-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Use Skills</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
-                    <span itemprop="name">Fedora System Config & Repair</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Fedora-System-Config-amp-Repair"><a href="#Fedora-System-Config-amp-Repair" class="headerlink" title="Fedora System Config &amp; Repair"></a>Fedora System Config &amp; Repair</h2><h3 id="系统更新"><a href="#系统更新" class="headerlink" title="系统更新"></a>系统更新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf update</span></div></pre></td></tr></table></figure>
-<h3 id="RPM-Fusion库"><a href="#RPM-Fusion库" class="headerlink" title="RPM Fusion库"></a>RPM Fusion库</h3><p>由于版权问题，许多软件在Fedora中是没有的，如果想安装，需要添加RPM Fusion库,有两个RPM Fusion提供：免费和非免费。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Free RPM Fusion</div><div class="line">[root@localhost ~]<span class="comment">#dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-24.noarch.rpm</span></div><div class="line">Non-Free RPM Fusion</div><div class="line">[root@localhost ~]<span class="comment">#dnf install --nogpgcheck http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-24.noarch.rpm</span></div></pre></td></tr></table></figure></p>
-<h3 id="Fedy-Tool"><a href="#Fedy-Tool" class="headerlink" title="Fedy Tool"></a>Fedy Tool</h3><p>Fedy Tool可以让你安装多媒体和附加软件，如MP3、Adobe Flash、java等。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#bash -c 'su -c "curl http://folkswithhats.org/fedy-installer -o fedy-installer &amp;amp;&amp;amp; chmod +x fedy-installer &amp;amp;&amp;amp; ./fedy-installer"'</span></div></pre></td></tr></table></figure></p>
+            <h2 id="内核的基础层和应用层"><a href="#内核的基础层和应用层" class="headerlink" title="内核的基础层和应用层"></a>内核的基础层和应用层</h2><h3 id="内核基础层提供的服务"><a href="#内核基础层提供的服务" class="headerlink" title="内核基础层提供的服务"></a>内核基础层提供的服务</h3><p>操作系统通常提供的服务是：内存管理，进程管理，设备管理，文件系统。内核基础层指内存管理，进程管理，和其他内核提供的基础软件设施（工作队列，tasklet等）等。</p>
+<h4 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h4><p>内核提供了两种内存分配接口：从伙伴系统分配，从slab系统分配。伙伴系统是最底层的内存管理机制，提供页式内存管理，slab提供基于对象的内存管理。<br>从伙伴系统分配内存获得页面地址使用alloc_pages,然后使用page_address来获得内存地址。从伙伴系统分配内存而且直接获得能使用的内存地址则使用__get_free_pages。</p>
 <blockquote>
-<p>安装成功完成，启动Fedy Tool。在应用程序选项列表中点击需要安装的软件。我们也可以安装常用的软件包像adobe flash player, Drop Box, Google Chrome, Multimedia codecs, skype, steam, oracle java, telegram, Wps office等。</p>
+<p>内存管理中的伙伴系统 ————from wikipedia &amp; baidu百科<br>伙伴内存分配技术是将内存分区以便尽可能合理地满足内存需求的一种内存分配算法。该系统后可将内存块分为两块来给出最佳适配。它支持有限但高效的分割和合并内存块。<br>为了减少在频繁的申请释放内存中产生的内存碎片，Linux内核中引入了伙伴系统算法(buddy system)。把所有的空闲页框分组为11个块链表，每个块链表分别包含大小为1，2，4，8，16，32，64，128，256，512和1024个连续页框的页框块。最大可以申请1024个连续页框，对应4MB大小的连续内存。每个页框块的第一个页框的物理地址是该块大小的整数倍。<br>按照上述规则，所有符合条件的连续页框块将会分别形成一个链表，共形成11个。在申请一定数量内存块过程中，会先检索大于等于对应内存块数量的最小数量内存块链表，如果该表内有空闲的内存块则直接分配该内存块。如果没有则向上检索较大的内存块链表，如果有空闲的内存块则将其一分为二，一半分配给应用程序使用，另一半则归于下一阶的块链表中，如果找不到则继续检索更高阶的内存块链表，以此类推。而这两个被分开的连续内存被称为伙伴，在应用程序使用完内存释放内存时，该内存会和其伙伴内存块合并为高一阶的内存块。<br>假设要申请一个256个页框的块，先从256个页框的链表中查找空闲块，如果没有，就去512个页框的链表中找，找到了则将页框块分为2个256个页框的块，一个分配给应用，另外一个移到256个页框的链表中。如果512个页框的链表中仍没有空闲块，继续向1024个页框的链表查找，如果仍然没有，则返回错误。</p>
 </blockquote>
-<h3 id="MP3插件"><a href="#MP3插件" class="headerlink" title="MP3插件"></a>MP3插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf install gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-ugly gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free gstreamer1-plugins-bad-freeworld gstreamer1-plugins-bad-free-extras ffmpeg</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/19/Fedora-System-Config/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>关于伙伴系统的工作过程的其他描述参考这位博友的<a href="http://blog.csdn.net/vanbreaker/article/details/7605367" target="_blank" rel="external">Linux伙伴系统（一）</a>，和这位博友的<a href="http://blog.chinaunix.net/uid-28236237-id-3527605.html" target="_blank" rel="external">内存管理伙伴系统分析</a><br>第二种能自动地构造和析构对象的内存管理机制就是slab内存管理。从slab申请内存需要使用kmem_cache_create创建slab对象，它可以提供对象的名字，大小，构造，析构函数。之后使用kmem_cache_alloc和kmem_cache_free来申请和释放内存。</p>
+<blockquote>
+<p>内存管理的slab机制 </p>
+</blockquote>
+<p>创建一个slab对象,这里使用了内核中已经定义好的buffer_head结构体来示例：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">my_cachep = kmem_cache_create(</div><div class="line">              <span class="string">"buffer_head"</span>,                <span class="comment">/*name 该内核中创建了一个buffer_head对象*/</span></div><div class="line">              <span class="keyword">sizeof</span>（<span class="keyword">struct</span> buffer_head),  <span class="comment">/*object size*/</span></div><div class="line">              <span class="number">0</span>,                            <span class="comment">/*alignment*/</span></div><div class="line">              (SLAB_RECLAIM_ACOOUNT|SLAB_PANIC|SLAB_MEM_SPREAD),<span class="comment">/*flags*/</span></div><div class="line">              init_buffer_head,             <span class="comment">/*constructor 这是buffer_head结构体的构造函数*/</span></div><div class="line">              <span class="literal">NULL</span>);                        <span class="comment">/*deconstructor*/</span></div></pre></td></tr></table></figure></p>
+<p>在创建一个slab对象时已指定了对象的大小，现在申请，释放一个slab对象：<br><!--在书中为什么要初始化一个buffer_head指针来记录分配的内存。--><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">printk(<span class="string">"cache name is %s\n"</span>,kmem_cache_name(my_cachep));</div><div class="line">printk(<span class="string">"cache object sizw is %d\n"</span>,kmem_cache_size(my_cachep));</div><div class="line"><span class="keyword">struct</span> buffer_head * ret = kmem_cache_alloc(my_cachep,gfp_flags);</div><div class="line"><span class="keyword">if</span>(ret)&#123;</div><div class="line">  kmem_cache_free(my_cachep,ret);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在确保执行销毁操作过程中，不从缓存中分配对象时才能销毁此对象：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(my_cachep)kmem_cache_destory(my_cachep);</div></pre></td></tr></table></figure></p>
+<p>最后，vmalloc也是一个内存分配调用函数，其作用是将物理地址不连续的内存页面拼凑为逻辑地址连续的内存空间。</p>
+
+          
         
       
     </div>
@@ -586,7 +652,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/17/Advanced-C/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/08/C_Cpp/C-Cpp-Useful-Methods/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -611,8 +677,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/17/Advanced-C/" itemprop="url">
-                  Advanced C
+                <a class="post-title-link" href="/2017/02/08/C_Cpp/C-Cpp-Useful-Methods/" itemprop="url">
+                  C/Cpp Useful Methods
                 </a>
               
             
@@ -628,8 +694,8 @@
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T09:45:52+08:00">
-                2017-01-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-08T22:00:16+08:00">
+                2017-02-08
               </time>
             
 
@@ -651,8 +717,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
 
@@ -662,19 +728,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Kernel</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/Basic-C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Basic C/C++</span>
+                  <a href="/categories/C-C/C-C-Useful-Methods/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++ Useful Methods</span>
                   </a>
                 </span>
 
@@ -709,23 +764,315 @@
 
       
         
-          <h3 id="C中define的用法"><a href="#C中define的用法" class="headerlink" title="C中define的用法"></a>C中define的用法</h3><ol>
-<li>简单用法<br>#define MAX 5+5<br>在预编译阶段在程序中发现MAX即将其替换为5+5,  不会对宏体做任何运算。<br>如果有语句int a=N<em>N;a的值应为5+5</em>5+5=35</li>
-<li>带参数的宏定义<br>#define add(x,y) x+y<br>如果要用define实现一个加法函数，上述做法是错误的，正确做法是：#define add(x,y) ((x)+(y)) 如果用宏实现类似函数的功能，必须将每一个参数和整个宏体都加上括号。</li>
-<li>多行宏定义<br>如同多数命令行一样，在行末尾加一个反斜杠”\”，即可在下一行继续书写宏定义。</li>
-<li>宏中三个符号</li>
-</ol>
-<ul>
-<li>x##y 表示连接 #define con(x,y)    x##y  int n=con(4,5);  n的值为45</li>
-<li>#@x  表示给x加上’’,使其变为一个const char</li>
-<li>#x   表示给x加上””,使其变为一个字符串
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/17/Advanced-C/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>/<em>statements:<br>this c++ file includes many method to handle some specific programming problems,they<br>has been classified to some categories</em>/</p>
+<p>#content<br>1.整数算法总结<br>(1)求最大公因数与最小公倍数 15-67<br>(2)素数的判断 68-173<br>(3)随机函数的运用 174<br>(4)<br>2.指针算法总结<br>(1)删除字符子串 179-242<br>(2)字符串排序 243-270<br>(3)字符型数字化为整形数据 271-288<br>(4)字符数组与字符指针的区别 300-310<br>(5)二维数组的动态内存问题 315-484<br>(5)拷贝函数的动态内存问题 深拷贝与浅拷贝  484-<br>(6)平方根倒数<br>3.磁盘文件操作<br>(1)将字符串存入磁盘文件<br>//…………………………………………………………………………………//</p>
+<p>#include <iostream></iostream></p>
+<p>using namespace std;</p>
+<p>//Integer Algorithm（整数算法总结）<br>//$$$ get GCD $$$<br>/<em>directions:<br>use my way to access GCD</em>/<br>//method1<br>//Date 7*7  Thur<br>int GCD(int a,int b)  //质因数分解法<br>{<br>    int gcd;<br>    for(int i=1;i&lt;(a&lt;b?a:b);i++)<br>    {<br>        if(a%i==0&amp;&amp;b%i==0)<br>           gcd=i;<br>    }<br>    return gcd;<br>}</p>
+<p>//method2<br>//Date 7*7  Thur<br>int GCD_Euclidea(int a,int b)  //辗转相除法<br>{<br>    int x=a,y=b;<br>    if(x&lt;y){int temp=y;y=x;x=temp;}<br>    int remain=x%y;<br>    if(remain==0)<br>        return y;<br>    else<br>       GCD_Euclidea(b,remain);<br>}</p>
+<p>int GCD_Euclidea(int a,int b)  //化简的辗转算法，要求(a&gt;b)<br>{return b==0?a:GCD(b,a%b);}</p>
+<p>//method3<br>//Date 7<em>7 Thur<br>int cicu(int a,int b,int count)<br>{<br>    if(abs(a-b)==b)<br>      return count==0?b:(b</em>int(pow(2,count)));<br>    else<br>      cicu(b,abs(a-b),count);<br>}<br>int GCD_Stein(int a,int b)  //更相损减法<br>{<br>    int count=0;<br>    while(a%2==0&amp;&amp;b%2==0)<br>    {<br>       a=a/2;b=b/2;<br>       count++;<br>    }<br>    cicu(a,b,count);<br> }</p>
+<p>//tell a number is a prime or not</p>
+<p>//method1:<br>//Date:7<em>20 weds<br>/</em>directions:<br>被誉为笨蛋做法，最不动脑子的做法*/<br>int isprime(int n)<br>{<br>    if(n&lt;2) return 0; //小于2的不是素数，即1不是素数<br>    for(int i=2;i&lt;n/2+1;i++)  //注意，这里i&lt;n/2+1或者i&lt;=n/2不然4会误判为素数<br>        if(n%i==0)return 0;<br>    return 1;<br>}</p>
+<p>//method2:<br>//Date:7<em>20 weds<br>/</em>directions:<br>比较好的一般优化，可供长期使用<em>/<br>int isprime(int n)<br>{<br>    if(n&lt;2)  return 0;<br>    for(int i = 2; i</em>i &lt;= n; ++i)    //for(int i = 2; i &lt;= sqrt(n); ++i),另外i*i&lt;=n 而不是&lt;n<br>       if(n%i == 0)return 0;<br>    return 1;<br>}  </p>
+<p>poished:</p>
+<p>int isprime(int n)<br>{<br>  if(n &lt; 2) return 0;<br>  if(n == 2) return 1;<br>  for(int i = 3 ; i*i &lt;= n  ; i+=2)  //for(int i = 3;  i &lt;= sqrt(n);  ++i)<br>    if(n%1 == 0) return 0;<br>  return 1;<br>}<br>//这里 的 i+=2，是因为，偶数除了2之外，是不可能是素数的、 所以从3开始，直接 +2 。进一步优化。<br>//这个大概就是 朴素判断素数 方法的最佳优化了。</p>
+<p>//method3:<br>//Date:07<em>20 weds<br>/</em>directions:<br>标准的爱拉托逊斯筛选法(the Sieve of Eratosthenes)<br>具体做法是：先把N个自然数按次序排列起来。1不是质数，也不是合数，要划去。第二个数2是质数留下来，<br>而把2后面所有能被2整除的数都划去。2后面第一 个没划去的数是3，把3留下，再把3后面所有能被3整除的数都划去。<br>3后面第一个没划去的数是5，把5留下，再把5后面所有能被5整除的数都划去。这样一 直做下去，<br>就会把不超过N的全部合数都筛掉，留下的就是不超过N的全部质数。因为希腊人是把数写在涂腊的板上，<br>每要划去一个数，就在上面记以小点，寻求质 数的工作完毕后，这许多小点就像一个筛子，<br>所以就把埃拉托斯特尼的方法叫做“埃拉托斯特尼筛”，简称“筛法”。<br>*/</p>
+<p>#define MAX 10007<br>bool isprime[MAX]; //素数表，存放真假值<br>void TheSieveofEratosthees()<br>{<br>    int i,j;<br>    for (i=2;i&lt;MAX;i++)     //1既不是素数，也不是合数，不予判断，所以先假设2及其后面的数全是素数<br>       isprime[i]=1;<br>    for (i=2;i&lt;MAX;i++)     //开始筛选<br>    {<br>      if (isprime[i])         //如果该数是未被筛选的，将后面的该数的倍数划去，即赋值为0（从2开始，2是素数）<br>         for (j=i+i;j&lt;MAX;j+=i)  //倍数置0<br>            isprime[j]=0;<br>    }<br>}</p>
+<p>polished：</p>
+<p>#define MAX 10007 bool isprime[MAX];<br>int p[MAX];<br>void prime(int n)<br>{<br>    memset(isprime, 0, sizeof isprime);<br>    memset(p, 0, sizeof p);<br>    int np = 0;<br>    for (int i = 2; i &lt;= n; i++)<br>    {<br>       if (!isprime[i]) p[np++] = i;<br>       for (int j = 0; j &lt; np &amp;&amp; p[j]<em>i &lt;= n; j++)<br>        {<br>            isprime[p[j]</em>i] = 1;<br>            if( i % p[j] == 0) break;<br>        }<br>   }<br>} </p>
+<p>//method4<br>/<em>两种方法结合起来：</em>/</p>
+<p>void prime(int n) {<br>    memset(isprime, 0, sizeof isprime);<br>    memset(p, 0, sizeof p);<br>    np = 0;<br>    for (int i = 2; i &lt;= n; i++) {<br>        if (!isprime[i]) p[np++] = i;<br>        for (int j = 0; j &lt; np &amp;&amp; p[j]<em>i &lt;= n; j++)    {<br>            isprime[p[j]</em>i] = 1;<br>            if( i % p[j] == 0) break;         }<br>   }<br>}<br>bool Brute_Force3(int n) {<br> for (int i=0;p[i]*p[i]&lt;=n;i++)<br>   if (n%p[i]==0)  return false;<br>   return true;<br>}</p>
+<p>//srand 随机数序列产生：<br>/<em>srand和rand()配合使用产生伪随机数序列。rand函数在产生随机数前，<br>需要系统提供的生成伪随机数序列的种子，rand根据这个种子的值产生一系列随机数。<br>如果系统提供的种子没有变化，每次调用rand函数生成的伪随机数序列都是一样的。<br>srand(unsigned seed)通过参数seed改变系统提供的种子值，从而可以使得每次调用<br>rand函数生成的伪随机数序列不同，从而实现真正意义上的“随机”。通常可以利用系<br>统时间来改变系统的种子值，即srand(time(NULL))，可以为rand函数提供不同的种<br>子值，进而产生不同的随机数序列</em>/</p>
+<p>#include<iostream></iostream></p>
+<p>#include<ctime></ctime></p>
+<p>#include<cstdlib><br>using namespace std;<br>double random(double,double);-&gt;//真正的随机函数</cstdlib></p>
+<p>int main()<br>{<br>srand( unsigned( time(0) ) );//srand(time(NULL));<br>for(int j = 0; j &lt; 10; j++)<br>cout &lt;&lt; “No.” &lt;&lt; j+1 &lt;&lt; “:” &lt;&lt; int(random(0,10)) &lt;&lt; endl;<br>return 0;<br>}</p>
+<p>double random(double start,double end)<br>{<br>return start + (end - start) * rand() / (RAND_MAX + 1.0);<br>}</p>
+<p>//pointer Algorithm（指针算法总结）<br>//$$$ remove the characters from the string $$$</p>
+<p>//method 1:<br>//Date: 5<em>21 sat<br>/</em>directions:<br>this function remove the same character from string ,using pointer<br>        void removechar(char <em>,char)<br>the  char in back has default value ‘ ‘
+</em>/<br>void removechar(char <em>str,char ch=’ ‘)<br>{<br>    char </em>p=0,<em>q=0;<br>    for(p=str;</em>p!=’\0’;p++)<br>    {<br>        q=p;<br>        if(<em>p==ch)<br>        {<br>            while(</em>q!=’\0’)<br>              {<br>                  <em>q=</em>(q+1);<br>                   q++;<br>              }<br>            –p; //necessary illustration: with this –p,we can’t miss more characters<br>        }</p>
+<pre><code>}
+</code></pre><p>}</p>
+<p>//this function remove the same sub string from string</p>
+<p>char *delete(char str1[80],char str2[80]){<br>    int len1,len2,l;//l记录出现字符相同的起始位置<br>    len1=strlen(str1);<br>    len2=strlen(str2);<br>    for(int i=0;str1[i]!=’\0’;i++){<br>            if(str1[i]==str2[0]){<br>                l=i;//记下相同字符出现的位置</p>
+<pre><code>        int num=0;
+        for(int k=0;k&lt;len2;k++){
+            if(str1[l]==str2[k]){
+                num++;
+                l++;
+            }
+        }    //判断是不是完全相同
+
+        //接下来，从i开始，使所有的字符都向前移动三位；
+        if(num==len2){//如果符合子串，那么把后面的字符往前推进，挤掉子串
+            for(int k=i;str1[k]!=&apos;\0&apos;;k++)
+                    str1[k]=str1[k+num];
+        }
+    }
+}
+return str1[80];
+</code></pre><p>}</p>
+<p>//method 2:<br>//Date:5<em>21 sat<br>/</em>directions:<br>this function remove character by using a very creative ways,</p>
+<p>*/</p>
+<p>//$$$ sort the char array or string $$$<br>//Date:5<em>21 sat<br>/</em>directions:<br>this function meant for the sorting of char array or string ,using [ ],and selection sort<br>method,<em>/<br>void stringsort(char </em>str)<br>{<br>    for(int i=0;str[i]!=’\0’;i++)<br>        for(int j=i+1;str[j]!=’\0’;j++)<br>            if(str[i]&gt;str[j])<br>           {<br>            char temp=str[i];<br>            str[i]=str[j];<br>            str[j]=temp;<br>           }<br>}</p>
+<p>int main()<br>{<br>    char str[50]=”b y d k d hhhhhhh     a”;<br>    removechar(str,’h’);<br>    cout &lt;<str<< endl;="" stringsort(str);="" cout="" <<str<<="" return="" 0;="" }="" $$$="" change="" the="" char="" string="" into="" int="" num="" date="" :07*11="" mon="" *="" directions:="" of="" num*="" string_int(char="" *s)="" *t="s;" 卓越的算法，指针的魅力="" sum="0,r=1;" while(*t!="\0" )t++;="" t--;="" for="" (;t!="s;t--){" if(*t="">=48&amp;&amp;<em>t&lt;=57)<br>         {<br>             sum=(</em>t-‘0’)<em>r+sum;<br>             r=r</em>10;<br>         }<br>    }<br>    return sum;<br>}</str<<></p>
+<p>//字符指针与字符数组<br>/*</p>
+<p>char <em>str, </em>str1=”This is another string.”;<br>char string[100]=”This is a string.”;</p>
+<p>则在程序中，可以使用如下语句：<br>str++;                           //指针str加1 ，即改变指向<br>str = “This is a NEW string.”;  //使指针指向新的字符串常量,改变指向<br>str = str1;                     // 改变指针str的指向<br>strcpy( string, “This is a NEW string.”) // 改变字符数组中字符串的的内容<br>strcat( string, str) // 对string字符数组进行串连接操作</p>
+<p>在程序中，不能进行如下操作<br>string++;                         /<em> 不能对数组名进行++运算<br>string = “This is a NEW string.”; /</em> 错误的串操作，不可改变字符数组名的指向<br>string = str1;                    /<em> 对数组名不能进行赋值 ，不可改变字符数组名的指向<br>strcat(str, “This is a NEW string.”) /</em> 不能在str的后面进行串连接<br>strcpy(str, string)              /<em> string不是const，不能作为基底给str进行串复制
+</em>/</p>
+<p>//二维数组的动态内存分配问题<br>//Date：7*22 Fri</p>
+<p>//一．动态申请列大小固定的二维数组<br>/<em>首先如果二维数组的列大小固定，那么很简单，<br>可以用申请一维数数组再其指针强制转化成为二维数组指针即可。详见代码：</em>/<br>//列大小固定的二维数组可以申请一维数据并将指针强转成二维数组</p>
+<p>int main()<br>{<br>    //列值固定<br>    const int MAXCOL = 3;</p>
+<pre><code>int nRow;
+cin&gt;&gt;nRow;
+
+//申请一维数据并将其转成二维数组指针
+int *pp_arr = new int[nRow * MAXCOL];
+int (*p)[MAXCOL] = (int(*)[MAXCOL])pp_arr;
+
+//为二维数组赋值
+int i, j;
+for (i = 0; i &lt; nRow; i++)
+    for (j = 0; j &lt; MAXCOL; j++)
+        p[i][j] = i + j;
+
+//输出二维数组
+for (i = 0; i &lt; nRow; i++)
+{
+    for (j = 0; j &lt; MAXCOL; j++)
+        printf(&quot;%5d&quot;, p[i][j]);
+    cout&lt;&lt;endl;
+}
+
+//释放资源
+delete[] pp_arr;
+return 0;
+</code></pre><p>}<br>//二.动态申请行列均为未知的二维数组<br>//C语言中动态的申请二维数组 malloc free</p>
+<p>#include <stdio.h></stdio.h></p>
+<p>#include <stdlib.h></stdlib.h></p>
+<p>#include <string.h><br>//动态申请二维数组<br>template <typename t=""><br>T<strong> malloc_Array2D(int row, int col)<br>{<br>    int size = sizeof(T);<br>    int point_size = sizeof(T<em>);<br>    //先申请内存，其中point_size </em> row表示存放row个行指针<br>    T </strong>arr = (T <strong>) malloc(point_size <em> row + size </em> row <em> col);  //前面的point_size</em>row(二维数组的行数*每个元素的所占空间）–是引导区信息<br>    //c++ 中这样写： T </strong>arr=new （T<em>） [point_size </em> row + size <em> row </em> col];<br>    if (arr != NULL)<br>    {<br>        memset(arr, 0, point_size <em> row + size </em> row <em> col);      //元素置零<br>        T </em>head = (T<em>)((int)arr + point_size </em> row);<br>        while (row–)<br>            arr[row] = (T<em>)((int)head + row </em> col <em> size);<br>    }<br>    return (T<em>*)arr;<br>}<br>//释放二维数组<br>void free_Aarray2D(void </em></em>arr)<br>{<br>    if (arr != NULL)<br>        free(arr);<br>}</typename></string.h></p>
+<p>int main()<br>{<br>        //动态申请连续的二维数组<br>    int **p = malloc_Array2D<int>(nRow, nCol);</int></p>
+<pre><code>//为二维数组赋值
+int i, j;
+for (i = 0; i &lt; nRow; i++)
+    for (j = 0; j &lt; nCol; j++)
+        p[i][j] = i + j;
+
+//输出二维数组
+for (i = 0; i &lt; nRow; i++)
+{
+    for (j = 0; j &lt; nCol; j++)
+        printf(&quot;%4d &quot;, p[i][j]);
+    putchar(&apos;\n&apos;);
+}
+
+free_Aarray2D((void**)p);
+return 0;
+</code></pre><p>}</p>
+<p>//三．C++语言中动态申请连续的二维数组<br>//可以看出我们已经成功实现了在C语言中动态申请连续的二维数组，如果上面的程序不使用int类型而使用string类这种类型，那会有什么后果了？肯定的说，由于没有调用构造函数和析构函数，程序绝对会造成内存泄露。因此要做下改进，下面给出在C++语言中动态申请连续的二维数组的代码，有些C++语法可能平时见得少，但其实这些语法在STL里面运用还是比较多的，有兴趣的童鞋应该掌握下。</p>
+<p>//C++语言中动态的申请二维数组 new delete</p>
+<p>#include <new></new></p>
+<p>#include <cstdio></cstdio></p>
+<p>#include <cstdlib></cstdlib></p>
+<p>#include <string><br>using namespace std;<br>//动态申请二维数组<br>template <typename t=""><br>T<strong> new_Array2D(int row, int col)<br>{<br>    int size = sizeof(T);<br>    int point_size = sizeof(T<em>);<br>    //先申请内存，其中sizeof(T</em>) * row表示存放row个行指针<br>    T </strong>arr = (T <strong>) malloc(point_size <em> row + size </em> row <em> col);<br>    if (arr != NULL)<br>    {<br>        T </em>head = (T<em>)((int)arr + point_size </em> row);<br>        for (int i = 0; i &lt; row; ++i)<br>        {<br>            arr[i] =  (T<em>)((int)head + i </em> col * size);<br>            for (int j = 0; j &lt; col; ++j)<br>                new (&amp;arr[i][j]) T;<br>        }<br>    }<br>    return (T</strong>)arr;<br>}<br>//释放二维数组<br>template <typename t=""><br>void delete_Array2D(T <strong>arr, int row, int col)<br>{<br>    for (int i = 0; i &lt; row; ++i)<br>        for (int j = 0; j &lt; col; ++j)<br>            arr[i][j].~T();<br>    if (arr != NULL)<br>        free((void</strong>)arr);<br>}<br>int main()<br>{<br>    printf(“  C++语言中动态的申请二维数组 new delete\n”);<br>    printf(“ – by MoreWindows( <a href="http://blog.csdn.net/MoreWindows" target="_blank" rel="external">http://blog.csdn.net/MoreWindows</a> ) –\n\n”);</typename></typename></string></p>
+<pre><code>printf(&quot;请输入行列(以空格分开): &quot;);
+int nRow, nCol;
+scanf(&quot;%d %d&quot;, &amp;nRow, &amp;nCol);
+
+//动态申请连续的二维数组
+string **p = new_Array2D&lt;string&gt;(nRow, nCol);
+
+//为二维数组赋值
+int i, j;
+for (i = 0; i &lt; nRow; i++)
+    for (j = 0; j &lt; nCol; j++)
+    {
+        char szTemp[30];
+        sprintf(szTemp, &quot;(第%d行,第%d列)&quot;, i, j);
+        p[i][j] = szTemp;
+    }
+
+//输出二维数组
+for (i = 0; i &lt; nRow; i++)
+{
+    for (j = 0; j &lt; nCol; j++)
+        printf(&quot;%s &quot;, p[i][j].c_str());
+    putchar(&apos;\n&apos;);
+}
+
+delete_Array2D&lt;string&gt;(p, nRow, nCol);
+return 0;
+</code></pre><p>}</p>
+<p>/*浅拷贝与深拷贝<br>对象的构造，也可以由拷贝构造函数完成，即用一个对象的内容去初始化另一个对象的内容。</p>
+<p>此时，若对象使用了堆空间（注意和“堆对象”区分），就有深、浅拷贝的问题，不清楚则很容易出错。</p>
+<p>1、什么是浅拷贝？</p>
+<p>2、浅拷贝可能带来什么问题？</p>
+<p>3、什么是深拷贝？</p>
+<p>4、深拷贝的实现方法？</p>
+<p>什么是浅拷贝</p>
+<p>缺省拷贝构造函数：用一个对象的内容初始化另一个同类对象，也称为缺省的按成员拷贝，不是对整个类对象的按位拷贝。这种拷贝称为浅拷贝。</p>
+<p>class CGoods{</p>
+<pre><code>char *Name; //不同与char Name[21] ?
+
+int  Amount;
+
+float Price; float Total_value;
+</code></pre><p>public： CGoods(){Name=new char[21];}</p>
+<p> CGoods(CGoods &amp; other){ //缺省拷贝构造内容：</p>
+<pre><code> this-&gt;Name=other.Name;
+
+ this-&gt;Amount=other.Amount;
+
+ this-&gt;Price=other.Price;
+
+this-&gt;Total_value=&quot;/blog/other.Total_value;}
+</code></pre><p>~CGoods(){delete Name;}//析构函数<br>};  //类声明结束</p>
+<p>浅拷贝带来的问题</p>
+<p>void main(){</p>
+<pre><code>CGoods pc;  //调用缺省构造函数
+</code></pre><p>   CGoods pc1(pc);   //调用拷贝构造函数</p>
+<p>} //程序执行完，对象pc1和pc将被析构，此时出错。</p>
+<p>析构时，如用缺省的析构函数，则动态分配的堆空</p>
+<pre><code>间不能回收。
+</code></pre><p>如果用有“delete Name;”语句的析构函数，则先</p>
+<pre><code> 析构pc1时，堆空间已经释放，然后再析构pc
+
+时出现了二次释放的问题。
+</code></pre><p>这时就要重新定义拷贝构造函数，给每个对象独</p>
+<pre><code>立分配一个堆字符串，称深拷贝。
+</code></pre><p>深拷贝——自定义拷贝构造</p>
+<p>CGoods(CGoods &amp; other){ //自定义拷贝构造</p>
+<pre><code>this-&gt;Name=new char[21];
+
+strcpy(this-&gt;Name,other.Name);
+
+this-&gt;Amount=other.Amount;
+
+this-&gt;Price=other.Price;
+
+this-&gt;Total_value=&quot;/blog/other.Total_value;}
+</code></pre><p>例子：定义copy structor和拷贝赋值操作符(copy Assignment Operator）实现深拷贝。<br>//学生类定义：</p>
+<p>class student{</p>
+<pre><code>char *pName; //指针成员
+</code></pre><p>public:</p>
+<pre><code>student();
+
+student(char *pname);
+
+student(student &amp;s); //拷贝构造函数
+
+~student();
+
+student &amp; operator=(student &amp;s);
+
+                               //拷贝赋值操作符
+</code></pre><p>};</p>
+<p>//缺省构造函数：</p>
+<p>student::student()</p>
+<p> {   pName=NULL; cout&lt;&lt;“Constructor缺省/n”;  }</p>
+<p>//带参数构造函数：</p>
+<p>student::student(char *pname){</p>
+<pre><code>if(pName=new char[strlen(pname)+1])
+
+       strcpy(pName,pname);
+
+cout &lt;&lt;&quot;Constructor&quot; &lt;&lt;pName&lt;&lt;endl;}
+</code></pre><p>//拷贝构造函数：</p>
+<p>student::student(student &amp;s){</p>
+<pre><code>if(s.pName!=NULL){
+
+    if(pName=new char[strlen(s.pName)+1])
+
+           strcpy(pName,s.pName); }
+</code></pre><p>  //加1不可少，否则串结束符冲了其他信息，析构会出错！</p>
+<pre><code>else pName=NULL;
+
+cout &lt;&lt;&quot;Copy Constructor&quot; &lt;&lt;pName&lt;&lt;endl;}
+</code></pre><p>//析构函数：</p>
+<p>student::~student(){</p>
+<pre><code>cout&lt;&lt;&quot;Destructor&quot;&lt;&lt;pName&lt;&lt;endl;
+
+if(pName) delete[ ]pName;} //释放字符串
+</code></pre><p>//拷贝赋值操作符：</p>
+<p>student &amp; student::operator=(student &amp;s){</p>
+<pre><code>if(pName) delete[ ]pName;
+
+if(s.pName){
+
+   if(pName=new char[strlen(s.pName)+1])
+
+         strcpy(pName,s.pName);}
+
+else pName=NULL;
+</code></pre><p>cout &lt;&lt;”Copy Assign operator” &lt;&lt;pName&lt;&lt;‘/n’;</p>
+<pre><code>return *this;}
+</code></pre><p>堆内存是最常用的需要自定义拷贝构造函数的资源，但不是唯一的，如打开文件等也需要。</p>
+<p>   如果类需要析构函数来释放某些资源，则类也需要一个自定义的拷贝构造函数。此时，对象的拷贝就是深拷贝了。</p>
+<p>*/</p>
+<p>//求平方根倒数：</p>
+<p>#include <iostream></iostream></p>
+<p>#include <cmath><br>using namespace std;<br>float _Q_rsqrt( float number ) {<br>double i=number;<br>   /<em> long i; float x2, y; const float threehalfs = 1.5F;<br>    x2 = number </em> 0.5F;<br>    y = number;<br>    i = <em> ( long </em> ) &y; // evil floating point bit level hacking   <em>/<br>    i = 0x5f3759df - ( i &gt;&gt; 1 ); // what the fuck?<br>    /</em>y = <em> ( float </em> ) &i;<br>    y = y <em> ( threehalfs - ( x2 </em> y <em> y ) ); // 1st iteration<br>    // y = y </em> ( threehalfs - ( x2 <em> y </em> y ) ); // 2nd iteration, this can be removed</cmath></p>
+<pre><code>#ifndef Q3_VM #
+#ifdef __linux__ assert( !isnan(y) ); // bk010122 - FPE?
+#endif
+#endif return y;   */
+return i;
+</code></pre><p>}</p>
+<p>/*<br>float Q_rsqrt( float number )<br>{<br>    long i;<br>    float x2, y;<br>    const float threehalfs = 1.5F;</p>
+<pre><code>x2 = number * 0.5F;
+y  = number;
+i  = * ( long * ) &amp;y;                       // evil floating point bit level hacking
+i  = 0x5f3759df - ( i &gt;&gt; 1 );               // what the fuck?
+y  = * ( float * ) &amp;i;
+y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+return 2*y;
+</code></pre><p>}<br>*/</p>
+<p>//磁盘文件操作！！</p>
+<p>#include <iostream></iostream></p>
+<p>#include <fstream></fstream></p>
+<p>#include <cstdlib></cstdlib></p>
+<p>#include <cstring><br>using namespace std;<br>//说明：若前两个参数均给出，则不会cout完成操作返回1<br>//若给出地址则单独弹窗提示输入字符串<br>//一个参数都不给就全弹窗提示<br>int write_to_file(char <em>address=0,char </em>lines=0,int size_of_lines=50)<br>{<br>    char s[20];                    //建立数据池<br>    char *c;<br>    c=new char [size_of_lines+1];<br>    int size=0;</cstring></p>
+<pre><code>if(address==0)
+{
+   cout&lt;&lt;&quot;please input the address of the file&quot;&lt;&lt;endl
+       &lt;&lt;&quot;(if no files found ,a new file will be build):&quot;&lt;&lt;endl;
+   cin.getline(s,20);
+}
+else
+   strcpy(s,address);
+
+fstream outfile(s,ios::out);    //打开/建立文件
+if(!outfile)
+{
+    cerr&lt;&lt;&quot;open error!&quot;&lt;&lt;endl;
+    return 0;
+}
+
+if(lines==0)                       //获取要存的数据
+{
+    cout&lt;&lt;&quot;input the char you want put into:&quot;&lt;&lt;endl;  //用于其他用途可以去掉这句话
+    cin.getline(c,50);
+}
+else
+    strcpy(c,lines);
+
+size=strlen(c);                  //存储数据
+for(int i=0;i&lt;strlen(c);i++)
+   {
+      outfile.put(c[i]);
+      if(lines==0)cout&lt;&lt;c[i];
+   }
+outfile.close();
+if(c)delete []c;
+return 1;
+</code></pre><p>}</p>
+
+          
         
       
     </div>
@@ -762,7 +1109,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/15/Compiler-Basics-Chapter-1/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/08/CppProject/ProcessManager-II-sstream/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -787,8 +1134,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/15/Compiler-Basics-Chapter-1/" itemprop="url">
-                  Compiler Basics Chapter 1
+                <a class="post-title-link" href="/2017/02/08/CppProject/ProcessManager-II-sstream/" itemprop="url">
+                  ProcessManager II sstream
                 </a>
               
             
@@ -804,329 +1151,8 @@
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-15T11:32:14+08:00">
-                2017-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Basic-Computer-Theory/" itemprop="url" rel="index">
-                    <span itemprop="name">Basic Computer Theory</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Basic-Computer-Theory/Compiling-Fundamentals/" itemprop="url" rel="index">
-                    <span itemprop="name">Compiling Fundamentals</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Chapter-1-编译简介"><a href="#Chapter-1-编译简介" class="headerlink" title="Chapter 1 编译简介"></a>Chapter 1 编译简介</h2><h3 id="1-1编译器"><a href="#1-1编译器" class="headerlink" title="1.1编译器"></a>1.1编译器</h3><p>编译器是一种程序，它读入某种源语言编写的程序，将其翻译成一个与之等价的以另一种目标语言编写的程序</p>
-<h4 id="编译的分析-综合模型"><a href="#编译的分析-综合模型" class="headerlink" title="编译的分析-综合模型"></a>编译的分析-综合模型</h4><p>分析部分将源程序分为基本块并形成中间表示，综合部分将中间表示转换为目标程序。综合部分技术性更强。在分析中，源程序蕴含的操作被确定为语法树，树的一个节点表示操作，它的子节点表示该操作的参数。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/15/Compiler-Basics-Chapter-1/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/12/newwin10demo/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="crepuscule">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Crepuscule">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/12/newwin10demo/" itemprop="url">
-                  Tools-MarkDown
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T11:34:57+08:00">
-                2017-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p><code># 一级标题</code></p>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p><code>## 二级标题</code></p>
-<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><ul>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ul>
-<p><code>* 1</code><br><code>* 2</code><br><code>* 3</code></p>
-<ul>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ul>
-<p><code>- 1</code><br><code>- 2</code><br><code>- 3</code></p>
-<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ol>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ol>
-<p><code>1. 1</code><br><code>2. 2</code><br><code>3. 3</code></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/12/newwin10demo/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2016/11/17/ProcessManager-I-cpp-time/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="crepuscule">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Crepuscule">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/17/ProcessManager-I-cpp-time/" itemprop="url">
-                  ProcessManager I cpp time
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-17T11:35:11+08:00">
-                2016-11-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-08T20:08:36+08:00">
+                2017-02-08
               </time>
             
 
@@ -1206,13 +1232,202 @@
 
       
         
-          <h2 id="Coding-of-ProcessManager（1）C-C-时间"><a href="#Coding-of-ProcessManager（1）C-C-时间" class="headerlink" title="Coding of ProcessManager（1）C/C++时间"></a>Coding of ProcessManager（1）C/C++时间</h2><hr>
-<h3 id="ProcessManager-中时间问题的解决："><a href="#ProcessManager-中时间问题的解决：" class="headerlink" title="ProcessManager 中时间问题的解决："></a>ProcessManager 中时间问题的解决：</h3><p>先使用time()获取系统时间，然后根据已获取系统时间的time_t得到tm类型结构体，再从中获取时，分，秒等。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">time_t</span> timep;   <span class="comment">//定义time_t型timep</span></div><div class="line">time(&amp;timep);   <span class="comment">//获取系统时间，其实这里time_t获取的是从1970年到现在经过了多少秒</span></div><div class="line">tm * temp;</div><div class="line">temp=localtime(&amp;timep);</div><div class="line"><span class="built_in">cout</span>&lt;&lt;temp-&gt;tm_hour&lt;&lt;<span class="string">":"</span>&lt;&lt;temp-&gt;tm_min&lt;&lt;<span class="built_in">endl</span>;</div></pre></td></tr></table></figure></p>
-<h3 id="C-C-time-h-主要内容"><a href="#C-C-time-h-主要内容" class="headerlink" title="C/C++ time.h 主要内容"></a>C/C++ time.h 主要内容</h3><h4 id="1-time-t"><a href="#1-time-t" class="headerlink" title="1.time_t"></a>1.time_t</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</div><div class="line"> * A type for storing the current time and date. This is the number of</div><div class="line"> * seconds since midnight Jan 1, 1970.</div><div class="line"> * <span class="doctag">NOTE:</span> This is also defined in non-ISO sys/types.h.</div><div class="line"> */</span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _TIME32_T_DEFINED</span></div><div class="line"><span class="keyword">typedef</span> __int32 <span class="keyword">__time32_t</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _TIME32_T_DEFINED</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __STRICT_ANSI__</span></div><div class="line"><span class="comment">/* A 64-bit time_t to get to Y3K */</span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _TIME64_T_DEFINED</span></div><div class="line"><span class="keyword">typedef</span> __int64 <span class="keyword">__time64_t</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _TIME64_T_DEFINED</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _TIME_T_DEFINED</span></div><div class="line"><span class="comment">/* FIXME __STRICT_ANSI__ ! */</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __MSVCRT_VERSION__ &gt;= 0x0800</span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _USE_32BIT_TIME_T</span></div><div class="line"><span class="keyword">typedef</span>	<span class="keyword">__time64_t</span> <span class="keyword">time_t</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="keyword">typedef</span>	<span class="keyword">__time32_t</span> <span class="keyword">time_t</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* !_USE_32BIT_TIME_T */</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="keyword">typedef</span>	<span class="keyword">__time32_t</span> <span class="keyword">time_t</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __MSVCRT_VERSION__ &gt;= 0x0800 */</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _TIME_T_DEFINED</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
-<p>time.h中定义了<strong>time32_t,</strong>time64_t两种time_t类型以在不同时机适应不同的机器，实际使用中只需要使用time_t类型即可。同时也可以看出time_t其实也就是一种int类型，只不过是长整形(int32或是int64)。<br>time_t实际是从1970年1月1日开始时刻到当前时刻的秒数。<br>此类型对应的函数time()原型为：<br>time_t time(time_t *t);<br>可以通过它来获取系统当前time_t类型时间（日历时间 calender time）</p>
+          
+            <h2 id="sstream的使用"><a href="#sstream的使用" class="headerlink" title="sstream的使用"></a>sstream的使用</h2><p>c++的sstream标准库中的三个类ostringstream,istringstream,stringstream均需要加入sstream文件。它们三个分别用于输入，输出和输入输出操作，<br>istringstream类是从istream（输入流类）和stringstreambase（c++字符串流基类）派生而来，ostringstream是从ostream（输出流类）和stringstreambase（c++字符串流基类）派生而来，stringstream则是从iostream(输入输出流类)和和stringstreambase（c++字符串流基类）派生而来。</p>
+<h3 id="istringstream"><a href="#istringstream" class="headerlink" title="istringstream"></a>istringstream</h3><p>istringstream由string对象构造而来。其函数原型为istringstream::istringstream(string str);<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">istringstream</span> istring;</div><div class="line">istring.str(<span class="string">"字符串"</span>);</div><div class="line"><span class="comment">//也可以使用下面的方式简写初始化</span></div><div class="line"><span class="function"><span class="built_in">istringstream</span> <span class="title">istr</span><span class="params">(<span class="string">"字符串"</span>)</span></span>;</div><div class="line"><span class="built_in">cout</span>&lt;&lt;istr.str()&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">//str()函数可以让istringstream对象返回一个string字符串，可以用cout输出</span></div></pre></td></tr></table></figure></p>
+<p>sstream的主要用处之一就是实现string和int，float等类型之间的转化，下面使用空格作为分界，将字符串的前后部分分别赋给整形和浮点型数据<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">istringstream</span> <span class="title">istr</span><span class="params">(<span class="string">"34 1.7"</span>)</span></span>; </div><div class="line"><span class="built_in">cout</span> &lt;&lt;istr.str()&lt;&lt;<span class="built_in">endl</span>; </div><div class="line"><span class="keyword">int</span>  a; </div><div class="line"><span class="keyword">float</span>  b; </div><div class="line">istr&gt;&gt;a; </div><div class="line"><span class="built_in">cout</span> &lt;&lt;a&lt;&lt;<span class="built_in">endl</span>; </div><div class="line">istr&gt;&gt;b; </div><div class="line"><span class="built_in">cout</span> &lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</div></pre></td></tr></table></figure></p>
+<p>上面的程序可以将34，1.7分别赋给a，b两个非string类型。</p>
+<h3 id="ostringstream"><a href="#ostringstream" class="headerlink" title="ostringstream"></a>ostringstream</h3><p>ostringstream的函数原型为：ostringstream::ostringstream(string str); 可以通过put()方法来向下面的ostr变量不断插入单个字符，或使用”&lt;&lt;”不断插入字符串。但当构造的时候对象内已经存在字符串数据的时候，那么增长操作的时候不会从结尾开始增加,而是修改原有数据,超出的部分增长。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">ostringstream</span> ostr; </div><div class="line"><span class="comment">//ostr.str("abc");//构造时设置了字符串参数,那么增长操作的时候不会从结尾开始增加,而是修改原有数据 </span></div><div class="line">ostr.put(<span class="string">'d'</span>); </div><div class="line">ostr.put(<span class="string">'e'</span>); </div><div class="line">ostr&lt;&lt;<span class="string">"fg"</span>; </div><div class="line"><span class="built_in">string</span>  result=ostr.str(); </div><div class="line"><span class="built_in">cout</span>&lt;&lt;result;</div></pre></td></tr></table></figure></p>
+<h4 id="stringstream"><a href="#stringstream" class="headerlink" title="stringstream"></a>stringstream</h4><p>对于stringstream最简单的解释就是它是上面两种类型的整合版本。它的函数原型为：stringstream::stringstream(string str);<br>它可以使用上面两种类的方法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="built_in">stringstream</span> <span class="title">ostr</span><span class="params">(<span class="string">"123"</span>)</span></span>; </div><div class="line"> ostr.put(<span class="string">'d'</span>); </div><div class="line"> ostr.put(<span class="string">'e'</span>); </div><div class="line"> ostr&lt;&lt;<span class="string">"fg"</span>; </div><div class="line"> <span class="keyword">char</span> a;</div><div class="line"> ostr&gt;&gt;a; </div><div class="line"> <span class="built_in">cout</span> &lt;&lt;a&lt;&lt;<span class="built_in">endl</span>; </div><div class="line">输出结果为 d</div></pre></td></tr></table></figure></p>
+<p>最后，是stringstream最为常用的用法，即string和各种内置类型数据之间的转换：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">stringstream</span> ss;</div><div class="line"><span class="keyword">int</span> a=<span class="number">100</span>;</div><div class="line"><span class="built_in">string</span> result;</div><div class="line">ss&lt;&lt;a; ss&gt;&gt;result;</div><div class="line"><span class="built_in">cout</span>&lt;&lt;result&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">//到这里完成了一次int到string的转化</span></div><div class="line">ss.clear();</div><div class="line"><span class="built_in">string</span> strname=<span class="string">"mabel"</span>;</div><div class="line"><span class="keyword">char</span> charname[<span class="number">20</span>];</div><div class="line">ss&lt;&lt;strname;</div><div class="line">ss&gt;&gt;cname;</div><div class="line"><span class="built_in">cout</span>&lt;&lt;cname;</div><div class="line"><span class="comment">//到这里完成了一次string到char[](不可以是不加任何处理的char *)的转化</span></div></pre></td></tr></table></figure></p>
+<p>上面两个功能中间使用了一次clear()方法，下面阐述为什么：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">stringstream</span> ss;</div><div class="line"><span class="keyword">int</span> a=<span class="number">100</span>;<span class="keyword">double</span> b=<span class="number">534.33</span>;</div><div class="line"><span class="built_in">string</span> result;</div><div class="line">ss&lt;&lt;a;</div><div class="line">ss&gt;&gt;result;</div><div class="line"><span class="built_in">cout</span>&lt;&lt;result&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">ss&lt;&lt;b;</div><div class="line">ss&gt;&gt;result;</div><div class="line"><span class="built_in">cout</span>&lt;&lt;result&lt;&lt;<span class="built_in">endl</span>;</div></pre></td></tr></table></figure></p>
+<p>我想要的是ss持续接收a和b的值，result一直在增加长度，即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">100</div><div class="line">100534.33</div></pre></td></tr></table></figure></p>
+<p>但结果是均为100，原因是stringstream再完成一次转化之后就不再改变其值了，除非使用clear()方法。但即使使用clear方法，上面的结果也是100   534.33。<br>所以如果想要往结果字符串中加入若干类型的几个值，必须先持续地向stringstream类型地中间变量中赋值，最后再将值一次性赋给目标字符串。</p>
+<blockquote>
+<p>关于实现int转化为string型数据还有一个sprintf()函数可以使用，其实这个函数和C常用的printf()大体一致，以上两者都需要加入stdio.h</p>
+</blockquote>
+<p>sprintf()函数用于将格式化的数据写入字符串，其原型为：<br>int sprintf(char <em>str, char </em> format [, argument, …]);<br>str为要写入的字符串，format为格式化字符串，与printf()函数相同，argument为变量<br>只要足够熟悉C的printf()函数，那么使用sprintf()也会非常简单顺手<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX　10</span></div><div class="line"> <span class="keyword">int</span> value=<span class="number">10000</span>;</div><div class="line"> <span class="built_in">string</span> str;</div><div class="line"> <span class="keyword">char</span> buf[MAX];</div><div class="line"></div><div class="line"> <span class="built_in">sprintf</span>(buf,<span class="string">"%d"</span>,value);</div><div class="line"> str=buf;</div><div class="line"> <span class="built_in">cout</span>&lt;&lt;str&lt;&lt;<span class="built_in">endl</span>;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/04/Linux/Fedora-Common-Software-Installation/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/04/Linux/Fedora-Common-Software-Installation/" itemprop="url">
+                  Fedora Common Software Installation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T20:20:59+08:00">
+                2017-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Use Skills</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-Software-Installation/" itemprop="url" rel="index">
+                    <span itemprop="name">Fedora Software Installation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="fedora常用软件的安装"><a href="#fedora常用软件的安装" class="headerlink" title="fedora常用软件的安装"></a>fedora常用软件的安装</h2><h3 id="Input-Methods"><a href="#Input-Methods" class="headerlink" title="Input Methods"></a>Input Methods</h3><h4 id="Rime-中州韵"><a href="#Rime-中州韵" class="headerlink" title="Rime(中州韵)"></a>Rime(中州韵)</h4><ul>
+<li><p>ibus-rime<br>fedora自带的输入法管理器是ibus，个人认为gnome桌面下还是老老实实用ibus比较好，在gonme桌面下无论安装还是配置均是ibus方便，而且安装fcitx后会导致输入法切换很头疼。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dnf install ibus-rime</div></pre></td></tr></table></figure>
+</li>
+<li><p>fcitx-rime<br>因为有了<a href="https://repo.fdzh.org/">fedora中文社区软件源</a>安装fcitx-rime也很方便，添加了fedora中文社区软件源后直接终端输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ sudo dnf install fcitx-rime</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="搜狗输入法"><a href="#搜狗输入法" class="headerlink" title="搜狗输入法"></a>搜狗输入法</h4><p>fedora下安装搜狗输入法只能使用fcitx管理输入法<br>同样，在<a href="https://repo.fdzh.org/">fedora中文社区软件源</a>也有它的rpm包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ sudo dnf install sogoupinyin</div></pre></td></tr></table></figure></p>
+<h3 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h3><h4 id="atom"><a href="#atom" class="headerlink" title="atom"></a>atom</h4><ul>
+<li><p>使用 Fedy 安装<br>Fedy Tool是一个可以让你安装多媒体和附加软件的工具，可以轻松地安装MP3插件、Adobe Flash、java等在fedora较为难装的软件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#bash -c 'su -c "curl http://folkswithhats.org/fedy-installer -o fedy-installer &amp;&amp; chmod +x fedy-installer &amp;&amp; ./fedy-installer"'</span></div><div class="line">或者这样逐条执行</div><div class="line">[root@localhost ~]<span class="comment">#curl http://folkswithhats.org/fedy-installer -o fedy-installer</span></div><div class="line">[root@localhost ~]<span class="comment">#chmod +x fedy-installer</span></div><div class="line">[root@localhost ~]<span class="comment">#./fedy-installer</span></div></pre></td></tr></table></figure>
+<p>安装完成之后，直接在图形界面找到atom安装即可。</p>
+</li>
+<li>rpm包本地安装<br>在<a href="https://github.com/atom/atom">github</a>上下载<a href="https://github.com/atom/atom/releases/download/v1.13.1/atom.x86_64.rpm">atom.x86_64.rpm</a>包，然后运行<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ sudo dnf install ./atom.x86_64.rpm</div><div class="line">安装完成后可以直接使用终端命令atom来启动atom编辑器</div></pre></td></tr></table></figure>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/11/17/ProcessManager-I-cpp-time/#more" rel="contents">
+            <a class="btn" href="/2017/02/04/Linux/Fedora-Common-Software-Installation/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1253,7 +1468,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2016/09/27/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/04/Linux/Grub2-Theme-Replacement/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1278,8 +1493,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/27/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2017/02/04/Linux/Grub2-Theme-Replacement/" itemprop="url">
+                  Grub2 Theme Replacement
                 </a>
               
             
@@ -1295,8 +1510,8 @@
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-27T20:35:38+08:00">
-                2016-09-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T18:58:41+08:00">
+                2017-02-04
               </time>
             
 
@@ -1305,6 +1520,61 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Use Skills</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                    <span itemprop="name">Fedora System Config & Repair</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/Boot-Config/" itemprop="url" rel="index">
+                    <span itemprop="name">Boot Config</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1333,19 +1603,755 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=745137&auto=0&height=66"></iframe>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <h3 id="美化Grub2引导菜单"><a href="#美化Grub2引导菜单" class="headerlink" title="美化Grub2引导菜单"></a>美化Grub2引导菜单</h3><p>Grub黑黑的引导菜单和如今绚丽的系统启动界面格格不入。可以通过改变Grub的主题来美化Grub引导菜单。</p>
+<ul>
+<li>首先，要找到一款适合的主题，这里推荐网站<a href="https://www.gnome-look.org/" target="_blank" rel="external">GNOME-LOOK.ORG</a>，虽然是gonme主题的网站，但是其中的grub主题都是各发行版本通用的，而且其grub主题也有不少精品。<a href="https://dl.opendesktop.org/api/files/download/id/1465809108/171217-Breeze-GRUB2.tar.gz" target="_blank" rel="external">这里</a>有一款人气不错的主题。<br><img src="http://p1.bpimg.com/567571/fdc9db6dce1f2a95.png" alt="Breeze Grub2 Theme"></li>
+<li>下载好主题解压之后如果发现有install.sh等脚本安装安文件<br>在该目录下打开终端执行”./install.sh”安装即可，执行后就可以重启查看效果了。</li>
+<li>如果没有脚本安装文件<ol>
+<li>将主题包放到/boot/grub2/theme文件夹下，并确保该主题包内有theme.txt文件。</li>
+<li>更改/etc/default/grub文件，添加GRUB_THEME=”/boot/grub2/theme/主题包文件夹名称/theme.txt”，其实就是theme.txt的路径名。另外注释掉GRUB_TERMINAL_OUTPUT=”console”这一行。</li>
+<li>更新grub设置，即执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
 
           
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/03/C_Cpp/Cpp-Library-String-Type/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/03/C_Cpp/Cpp-Library-String-Type/" itemprop="url">
+                  Cpp Library String Type
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-03T18:01:35+08:00">
+                2017-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/Strings/" itemprop="url" rel="index">
+                    <span itemprop="name">Strings</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="3-2-Library-String-Type"><a href="#3-2-Library-String-Type" class="headerlink" title="3.2 Library String Type"></a>3.2 Library String Type</h3><p>使用string类型时需要加进<string>头文件，还要使用using std::string;来声明命名空间。</string></p>
+<h4 id="定义和初始化string类型数据"><a href="#定义和初始化string类型数据" class="headerlink" title="定义和初始化string类型数据"></a>定义和初始化string类型数据</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> s1; <span class="comment">// default initialization; s1 is the empty string</span></div><div class="line"><span class="built_in">string</span> s2 = s1; <span class="comment">// s2 is a copy of s1</span></div><div class="line"><span class="built_in">string</span> s3 = <span class="string">"hiya"</span>; <span class="comment">// s3 is a copy of the string literal</span></div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">s4</span><span class="params">(<span class="number">10</span>, <span class="string">'c'</span>)</span></span>; <span class="comment">// s4 is cccccccccc</span></div></pre></td></tr></table></figure>
+<p>总节几种初始化string类型的方法:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> s1;      <span class="comment">//默认空字符串</span></div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">s2</span><span class="params">(s1)</span></span>;  <span class="comment">//复制构造函数</span></div><div class="line"><span class="built_in">string</span> s2=s1;   <span class="comment">//对=重载，同上</span></div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">s3</span><span class="params">(<span class="string">"value"</span>)</span></span>; <span class="comment">//直接使用字符串初始化</span></div><div class="line"><span class="built_in">string</span> s3=<span class="string">"value"</span>;  <span class="comment">//对=重载，同上</span></div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">s4</span><span class="params">(n,<span class="string">'c'</span>)</span></span>;   <span class="comment">//用n个'C'初始化</span></div></pre></td></tr></table></figure></p>
+<p>复制初始化和直接初始化(cpoy initialization &amp;&amp; direct initialization)<br>当初始化时只有一个初始化参数时可以复制初始化，但参数有多个时必须直接初始化。比如下方s7<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> s5 = <span class="string">"hiya"</span>; <span class="comment">// copy initialization</span></div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">s6</span><span class="params">(<span class="string">"hiya"</span>)</span></span>; <span class="comment">// direct initialization</span></div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">s7</span><span class="params">(<span class="number">10</span>, <span class="string">'c'</span>)</span></span>; <span class="comment">// direct initialization; s7 is cccccccccc</span></div></pre></td></tr></table></figure></p>
+<p>也可以用这种方式达到s7地复制初始化<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> s8 = <span class="built_in">string</span>(<span class="number">10</span>, <span class="string">'c'</span>); <span class="comment">// copy initialization; s8 is cccccccccc</span></div><div class="line">其实上面依然没有和原则冲突，上面和下面等价：</div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">temp</span><span class="params">(<span class="number">10</span>, <span class="string">'c'</span>)</span></span>; <span class="comment">// temp is cccccccccc</span></div><div class="line"><span class="built_in">string</span> s8 = temp; <span class="comment">// copy temp into s8</span></div><div class="line">不过，这毫无意义</div></pre></td></tr></table></figure></p>
+<h4 id="string类型的操作"><a href="#string类型的操作" class="headerlink" title="string类型的操作"></a>string类型的操作</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> s;</div><div class="line">getline(in,s);    <span class="comment">//read a line of input,only stop in  1)eof,2)fixed Delimiter(界定符),3)MAX</span></div><div class="line">s.empty();        <span class="comment">//return true if is empty</span></div><div class="line">s.size();         <span class="comment">//return nums in s</span></div><div class="line">s[n];             /<span class="keyword">return</span> reference to the <span class="keyword">char</span> at postion in n</div></pre></td></tr></table></figure>
+<ul>
+<li><p>cin<br>cin&gt;&gt;s;   //The string input operator reads and<br>discards any leading whitespace (e.g., spaces, newlines, tabs).  cin读入但是抛弃所有不可见字符<br>对于cin使用以下方法读入并随即输出未知长度的字符串</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="built_in">string</span> word;</div><div class="line"><span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; word) <span class="comment">// read until end-of-file</span></div><div class="line"><span class="built_in">cout</span> &lt;&lt; word &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// write each word followed by a new line</span></div><div class="line"><span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>getline()<br>当不想忽略空格符时应该使用getline(),getline()将读取的第一行存入字符串，即遇到回车停止</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="built_in">string</span> line;</div><div class="line"><span class="comment">// read input a line at a time until end-of-file</span></div><div class="line"><span class="keyword">while</span> (getline(<span class="built_in">cin</span>, line))</div><div class="line"><span class="built_in">cout</span> &lt;&lt; line &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"><span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>string::size_type<br>string.size() 是int或是unsigned型？不是，试试<br>auto len = line.size(); 就会发现len是string::size_type类型。<br>string及其他库类型都定义了不少伴随类型。因为string型经常存储包含很多字符的一串字符，而一篇文章的字符的数量用int存储一定不合理，string::size_type这种类型其实类似于unsigned类型以存储足够大的数。</p>
+</li>
+<li><p>string +</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> s1 = <span class="string">"hello"</span>, s2 = <span class="string">"world"</span>; <span class="comment">// no punctuation in s1 or s2</span></div><div class="line"><span class="built_in">string</span> s3 = s1 + <span class="string">", "</span> + s2 + <span class="string">'\n'</span>;</div><div class="line">When we mix strings and <span class="built_in">string</span> or character literals, at least one operand to each</div><div class="line">+ <span class="keyword">operator</span> must be of <span class="built_in">string</span> type:</div><div class="line">(当使用+时，每一个+应该至少有一个是<span class="built_in">string</span>类型)</div><div class="line"><span class="built_in">string</span> s4 = s1 + <span class="string">", "</span>; <span class="comment">// ok: adding a string and a literal</span></div><div class="line"><span class="built_in">string</span> s5 = <span class="string">"hello"</span> + <span class="string">", "</span>; <span class="comment">// error: no string operand 完全没有string类型数据</span></div><div class="line"><span class="built_in">string</span> s6 = s1 + <span class="string">", "</span> + <span class="string">"world"</span>; <span class="comment">// ok: each + has a string operand 因为上面语句定价于 string s6 = (s1 + ", ") + "world";</span></div><div class="line"><span class="built_in">string</span> s7 = <span class="string">"hello"</span> + <span class="string">", "</span> + s2; <span class="comment">// error: can't add string literals 常量字符串不可在前面</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/03/C_Cpp/Cpp-Namespace-using-Declarations/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/03/C_Cpp/Cpp-Namespace-using-Declarations/" itemprop="url">
+                  Cpp Namespace using Declarations
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-03T16:57:48+08:00">
+                2017-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/Strings/" itemprop="url" rel="index">
+                    <span itemprop="name">Strings</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="3-1-Namespace-using-Declarations"><a href="#3-1-Namespace-using-Declarations" class="headerlink" title="3.1 Namespace using Declarations"></a>3.1 Namespace using Declarations</h3><p>在学习string，vector等库类型之前，需要先了解命名空间机制。使用声明的命名空间（namespace using declarations）即使用using声明简化了在例如std::cin前面的引用库名声明前缀。而它解决的本质问题是程序中的名称冲突。<br>一个using声明形式为：using namespace::name;<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cin</span>;</div><div class="line"><span class="comment">// using declaration; when we use the name cin, we get the one from the namespace std</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> i;</div><div class="line">  <span class="built_in">cin</span> &gt;&gt; i; <span class="comment">//正确，已经声明了using std::cin</span></div><div class="line">  <span class="built_in">cout</span> &lt;&lt; i; <span class="comment">//错误</span></div><div class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i; <span class="comment">//正确，使用了前缀声明</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意:<br>程序中所有的库中的名称均要给予using声明<br>在C++头文件中不要使用using声明，这样会导致源文件在引用头文件时命名空间有冲突。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/02/WEB/PHP/LaravelQuickStart/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/02/WEB/PHP/LaravelQuickStart/" itemprop="url">
+                  LaravelQuickStart
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-02T15:24:07+08:00">
+                2017-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/PHP/Laravel/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Laravel5-快速入门任务"><a href="#Laravel5-快速入门任务" class="headerlink" title="Laravel5 快速入门任务"></a>Laravel5 快速入门任务</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel ProjectName --prefer-dist</div></pre></td></tr></table></figure>
+<p> 进入工作目录，输入该命令，等待几分钟即可自动安装好一个空白应用，如果不指定名字默认为laravel</p>
+<h4 id="2-准备数据库"><a href="#2-准备数据库" class="headerlink" title="2.准备数据库"></a>2.准备数据库</h4><p>项目中需要的数据库需要事先设计好，在正式开始之前需要先将数据库使用migrate指令迁移至数据库系统之中。<br>先在配置文件中修改数据库名称，数据库用户名及密码。只要成功链接数据库就可以使用laravel来在数据库中建表。</p>
+<ul>
+<li><p>配置连接数据库的配置文件<br>如果使用上述方法成功创建项目，则在项目根目录下会有.env配置文件。打开后修改下面对应内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DB_CONNECTION=数据库类型（mysql）</div><div class="line">DB_HOST=数据据库服务器（一般默认127.0.0.1即可）</div><div class="line">DB_PORT=端口（一般默认为3306即可）</div><div class="line">DB_DATABASE=数据库名称</div><div class="line">DB_USERNAME=用户名</div><div class="line">DB_PASSWORD=该用户的密码</div></pre></td></tr></table></figure>
+</li>
+<li><p>建表<br>在命令行中使用下面命令即可创建新表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_tasks_table --create=tasks</div></pre></td></tr></table></figure>
+<p>创建的表将自动加上自增主键和时间戳，我们加上自己需要的字段即可。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>   <span class="comment">##在这里定义设计数据库表，然后运用迁移将数据库实现，不过数据库需要预先定义好</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Schema</span>\<span class="title">Blueprint</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Migrations</span>\<span class="title">Migration</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateTasksTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::create(<span class="string">'tasks'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);   <span class="comment">//laravel 已经添加了自增ID和时间戳</span></div><div class="line">            $table-&gt;string(<span class="string">'name'</span>);    <span class="comment">//我们需要再定义一些必须的字段</span></div><div class="line">            $table-&gt;timestamps();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::dropIfExists(<span class="string">'tasks'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>数据库迁移<br>当以上准备工作完成之后，即可进行数据库迁移</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>laravel将会根据/database/migrations内的内容在数据库中建立相应表格</p>
+<h4 id="3-Eloquent-Models"><a href="#3-Eloquent-Models" class="headerlink" title="3.Eloquent Models"></a>3.Eloquent Models</h4><p>Eloquent是Laravel的默认ORM（对象关系映射器）。 Eloquent使用清晰定义的“模型”，使得它在数据库中检索和存储数据变得很容易。 通常，每个Eloquent模型直接对应于单个数据库表。</p>
+<ul>
+<li>创建Eloquent模型<br>所以，在本例中可以创建一个Task模型对应tasks数据表，可以用artisan命令创建：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Task</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>还可以在创建模型的同时生成对应的数据库迁移文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">php artisan make:model User --migration</div><div class="line">或者：</div><div class="line">php artisan make:model User -m</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Eloquent与数据库表格对应<br>这个模型文件会在app目录下，而且在默认地，数据表对应着模型文件名的复数形式，所以只要创建模型时取合适的名字，我们就不必明确告诉Eloquent模型它对应哪个数据表。如果想要自己指定表格，则可以在模型上定义表格属性。所以，本例中，Task模型将会默认对应着tasks数据表。<br>创建好的模型类默认是空的，如下：<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span> <span class="keyword">extends</span> <span class="title">Model</span></span>&#123;</div><div class="line">  <span class="comment">//</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>//如果自己指定表格，使用下面方式：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span> <span class="keyword">extends</span> <span class="title">Model</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * The table associated with the model.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@var</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $table = <span class="string">'tasks'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>主键与时间戳：<br>Eloquent默认每个表都有一个名为id的主键。我们可以自己定义$ primaryKey属性以覆盖此约定。同样地，created_at和updated_at列将默认在表格中，不希望则将$timestamps属性设置为false。如果需要自定义时间戳的格式，请在模型上设置$ dateFormat属性。 此属性确定日期属性在数据库中的存储方式，以及将模型序列化为数组或JSON时的格式。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line">namesapce App;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span> <span class="keyword">extends</span> <span class="title">Model</span></span></div><div class="line">&#123;</div><div class="line">  $primaryKey = <span class="string">'num'</span>;</div><div class="line">  <span class="keyword">public</span> $timestamps = <span class="keyword">false</span>;</div><div class="line">  <span class="keyword">protected</span> $datLVMeFormat = <span class="string">'U'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>数据库连接<br>自定义数据库连接配置使用$connection属性<br>protected $connection = ‘connection-name’;</p>
+</li>
+</ul>
+<p>在模型节中将更多地了解Eloquent模型。<br><a href="https://laravel.com/docs/5.1/eloquent" target="_blank" rel="external">相关的Laravel文档</a><br><!--之后单独一章Eloquent的叫策划国内--></p>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><ul>
+<li><p>添加路由（stubbing）<br>接下来，需要为应用程序添加一些路由。 路由用于将URL指向控制器或在用户访问给定页面时应执行的匿名函数。一般，所有Laravel路由都在app/http/routes.php文件中。本例中，需要至少三个路由：显示所有任务列表的路由，添加新任务的路由和删除现有任务的路由。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Task</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Http</span>\<span class="title">Request</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Display All Tasks</div><div class="line"> */</div><div class="line">Route::get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Add A New Task</div><div class="line"> */</div><div class="line">Route::post(<span class="string">'/task'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Request $request)</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Delete An Existing Task</div><div class="line"> */</div><div class="line">Route::delete(<span class="string">'/task/&#123;id&#125;'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($id)</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>显示视图<br>添加完路由之后，先补全<code>/</code>route。 我们要从这个路径渲染一个包含表单的HTML模板来添加新任务，以及显示所有当前任务的列表。在Laravel中，所有HTML模板都存储在<code>resources/views</code>目录中，我们可以使用视图帮助器从我们的路由中返回其中一个模板。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*display all tasks*/</span></div><div class="line">Route::get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> view(<span class="string">'tasks'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="构建布局和视图"><a href="#构建布局和视图" class="headerlink" title="构建布局和视图"></a>构建布局和视图</h4><p>上面在完成<code>/</code>route后，需要定义能返回给用户的布局，视图。<br>本例中应用程序只有一个视图，其中包含用于添加新任务的表单以及所有当前任务的列表。</p>
+<ul>
+<li>定义布局<br>几乎所有的Web应用程序在页面之间共享相同的布局。 例如，此应用程序有一个顶部导航栏，通常会出现在每个页面。 Laravel使用Blade布局，使其可以在每个页面上共享这些常见功能。<br>在<code>resources/views/layouts/app.blade.php</code>中定义新的布局视图。.blade.php扩展指示框架使用Blade模板引擎来渲染视图。<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// resources/views/layouts/app.blade.php</div><div class="line"></div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;title&gt;Laravel Quickstart - Basic&lt;/title&gt;</div><div class="line"></div><div class="line">        &lt;!-- CSS And JavaScript --&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line"></div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;div class="container"&gt;</div><div class="line">            &lt;nav class="navbar navbar-default"&gt;</div><div class="line">                &lt;!-- Navbar Contents --&gt;</div><div class="line">            &lt;/nav&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        @yield('content')</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意布局的@yield（’content’）部分。 这是一个特殊的Blade指令，用于指定扩展布局的所有子页面可以注入自己的内容。 接下来，让我们定义将使用此布局并提供其主要内容的子视图。</p>
+<ul>
+<li><p>定义子视图<br>在<code>resources/views/tasks.blade.php</code> 中定义子视图：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">@extends('layouts.app')</div><div class="line"></div><div class="line">@section('content')</div><div class="line"></div><div class="line">	&lt;!--Bootstrap Boilerplate... --&gt;</div><div class="line"></div><div class="line">	&lt;div class="panel-body"&gt;</div><div class="line">		&lt;!-- Display Validation Errors --&gt;</div><div class="line">		@include('common.errors')</div><div class="line"></div><div class="line">		&lt;!--new task from--&gt;</div><div class="line">		&lt;form action="/task" method="POST" class="form-horizontal"&gt;</div><div class="line">			&#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">			&lt;!--task name--&gt;</div><div class="line">			&lt;div class="form-group"&gt;</div><div class="line">				&lt;label for="task" class="col-sm-3 control-label"&gt;Task&lt;/label&gt;</div><div class="line"></div><div class="line">				&lt;div class="col-sm-6"&gt;</div><div class="line">					&lt;input type="text" name="name" id="task-name" class="form-control"&gt;</div><div class="line">				&lt;/div&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line"></div><div class="line">			&lt;!--add task button--&gt;</div><div class="line">			&lt;div class="form-group"&gt;</div><div class="line">				&lt;div class="col-sm-offset-3 col-sm-6"&gt;</div><div class="line">					&lt;button type="submit" class="btn btn-default"&gt;</div><div class="line">						&lt;i class="fa fa-plus"&gt;&lt;/i&gt;Add Task</div><div class="line">					&lt;/button&gt;</div><div class="line">				&lt;/div&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line"></div><div class="line">		&lt;/form&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;!-- TODO: Current Tasks --&gt;</div><div class="line">@endsection</div></pre></td></tr></table></figure>
+<p>首先，@extends指令通知Blade，我们正在使用我们在<code>resources / views / layouts / app.blade.php</code>中定义的布局。 @section（’content’）和@endsection之间的所有内容将被注入到app.blade.php布局中的@yield（’content’）指令的位置。<br>我们之前在路由节中返回了这个视图。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*display all tasks*/</span></div><div class="line">Route::get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> view(<span class="string">'tasks'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>接下来，我们准备向我们的<code>POST/task</code>路由添加代码，以处理传入的表单输入并向数据库添加一个新任务。</p>
+</li>
+</ul>
+<h4 id="增加任务"><a href="#增加任务" class="headerlink" title="增加任务"></a>增加任务</h4><ul>
+<li>验证<br>现在我们在我们的视图中有一个表单，我们需要添加代码到POST /任务路由来验证传入表单输入并创建一个新任务。 首先，让我们验证输入。<br>对于此表单，我们将使name字段为必填，并声明其必须包含小于255个字符。 如果验证失败，我们将把用户重定向到/ URL，以及将旧的输入和错误刷入会话：<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Route::post(<span class="string">'/task'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Request $request)</span> </span>&#123;</div><div class="line">    $validator = Validator::make($request-&gt;all(), [</div><div class="line">        <span class="string">'name'</span> =&gt; <span class="string">'required|max:255'</span>,</div><div class="line">    ]);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ($validator-&gt;fails()) &#123;</div><div class="line">        <span class="keyword">return</span> redirect(<span class="string">'/'</span>)</div><div class="line">            -&gt;withInput()</div><div class="line">            -&gt;withErrors($validator);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Create The Task...</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/29/Linux/Fedora-Grub2-Repair/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/29/Linux/Fedora-Grub2-Repair/" itemprop="url">
+                  Fedora Grub2 Repair
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-29T15:39:48+08:00">
+                2017-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Use Skills</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                    <span itemprop="name">Fedora System Config & Repair</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/Boot-Config/" itemprop="url" rel="index">
+                    <span itemprop="name">Boot Config</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Repair-Grub2-on-EFI-System"><a href="#Repair-Grub2-on-EFI-System" class="headerlink" title="Repair Grub2 on EFI System"></a>Repair Grub2 on EFI System</h3><p>Grub2作为Grub升级版本,可以引导大部分操作系统,而且MBR及GPT格式均可使用,因此是作为windows及Linux双系统引导的较好选择。<br>不过由于windows10自动更新，将我的Grub搞坏了，导致win10可以正常启动，而fedora 无法引导。</p>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>一般来说grub损坏后应该可以进入到Grub的救援模式（GRUB RESCUE MODE）。如果可以进入则可以使用有限的几个Grub命令来修复引导。这种情况下使用GrubRescue手动引导后，再在丢失引导的系统中安装重新grub即可，相对较为简单而且靠谱。</p>
+<h5 id="1-使用Grub-Rescue手动引导"><a href="#1-使用Grub-Rescue手动引导" class="headerlink" title="1. 使用Grub Rescue手动引导"></a>1. 使用Grub Rescue手动引导</h5><blockquote>
+<p>此法仅在可以进入Grub Rescue模式的情况下使用</p>
+</blockquote>
+<ul>
+<li>首先使用ls命令找到需要引导的系统所在的分区<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">列出所有磁盘分区信息，以寻找所需的分区</div><div class="line"></div><div class="line">grub rescue&gt;ls</div><div class="line">(hd0),(hd0,msdos1),(hd0,msdos2),(hd0,msdos3),(hd1),(hd1,msdos1)</div><div class="line"></div><div class="line">判断，测试以上分区是否为想要引导的系统所在区，首先查看msdos2中的文件</div><div class="line"></div><div class="line">grub rescue&gt; ls (hd0,msdos2)/</div><div class="line">boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var</div><div class="line">bin  dev   home  lib64  media  opt  root  sbin  sys  usr</div><div class="line"></div><div class="line">假设这是fedora的root目录，则可以在它的/boot目录找到grub2文件夹，</div></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/29/Linux/Fedora-Grub2-Repair/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1377,7 +2383,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1420,7 +2426,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -1429,7 +2435,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1438,7 +2444,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

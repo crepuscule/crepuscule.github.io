@@ -1,0 +1,974 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C/C++," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="/statements:this c++ file includes many method to handle some specific programming problems,theyhas been classified to some categories/
+#content1.整数算法总结(1)求最大公因数与最小公倍数 15-67(2)素数的判断 68-173(3)随机函数的运用 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C/Cpp Useful Methods">
+<meta property="og:url" content="http://Crepuscule.com/2017/02/08/C_Cpp/C-Cpp-Useful-Methods/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="/statements:this c++ file includes many method to handle some specific programming problems,theyhas been classified to some categories/
+#content1.整数算法总结(1)求最大公因数与最小公倍数 15-67(2)素数的判断 68-173(3)随机函数的运用 1">
+<meta property="og:updated_time" content="2017-02-08T14:02:01.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C/Cpp Useful Methods">
+<meta name="twitter:description" content="/statements:this c++ file includes many method to handle some specific programming problems,theyhas been classified to some categories/
+#content1.整数算法总结(1)求最大公因数与最小公倍数 15-67(2)素数的判断 68-173(3)随机函数的运用 1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/2017/02/08/C_Cpp/C-Cpp-Useful-Methods/"/>
+
+
+
+
+
+  <title> C/Cpp Useful Methods | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/08/C_Cpp/C-Cpp-Useful-Methods/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C/Cpp Useful Methods
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-08T22:00:16+08:00">
+                2017-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/C-C-Useful-Methods/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++ Useful Methods</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>/<em>statements:<br>this c++ file includes many method to handle some specific programming problems,they<br>has been classified to some categories</em>/</p>
+<p>#content<br>1.整数算法总结<br>(1)求最大公因数与最小公倍数 15-67<br>(2)素数的判断 68-173<br>(3)随机函数的运用 174<br>(4)<br>2.指针算法总结<br>(1)删除字符子串 179-242<br>(2)字符串排序 243-270<br>(3)字符型数字化为整形数据 271-288<br>(4)字符数组与字符指针的区别 300-310<br>(5)二维数组的动态内存问题 315-484<br>(5)拷贝函数的动态内存问题 深拷贝与浅拷贝  484-<br>(6)平方根倒数<br>3.磁盘文件操作<br>(1)将字符串存入磁盘文件<br>//…………………………………………………………………………………//</p>
+<p>#include <iostream></iostream></p>
+<p>using namespace std;</p>
+<p>//Integer Algorithm（整数算法总结）<br>//$$$ get GCD $$$<br>/<em>directions:<br>use my way to access GCD</em>/<br>//method1<br>//Date 7*7  Thur<br>int GCD(int a,int b)  //质因数分解法<br>{<br>    int gcd;<br>    for(int i=1;i&lt;(a&lt;b?a:b);i++)<br>    {<br>        if(a%i==0&amp;&amp;b%i==0)<br>           gcd=i;<br>    }<br>    return gcd;<br>}</p>
+<p>//method2<br>//Date 7*7  Thur<br>int GCD_Euclidea(int a,int b)  //辗转相除法<br>{<br>    int x=a,y=b;<br>    if(x&lt;y){int temp=y;y=x;x=temp;}<br>    int remain=x%y;<br>    if(remain==0)<br>        return y;<br>    else<br>       GCD_Euclidea(b,remain);<br>}</p>
+<p>int GCD_Euclidea(int a,int b)  //化简的辗转算法，要求(a&gt;b)<br>{return b==0?a:GCD(b,a%b);}</p>
+<p>//method3<br>//Date 7<em>7 Thur<br>int cicu(int a,int b,int count)<br>{<br>    if(abs(a-b)==b)<br>      return count==0?b:(b</em>int(pow(2,count)));<br>    else<br>      cicu(b,abs(a-b),count);<br>}<br>int GCD_Stein(int a,int b)  //更相损减法<br>{<br>    int count=0;<br>    while(a%2==0&amp;&amp;b%2==0)<br>    {<br>       a=a/2;b=b/2;<br>       count++;<br>    }<br>    cicu(a,b,count);<br> }</p>
+<p>//tell a number is a prime or not</p>
+<p>//method1:<br>//Date:7<em>20 weds<br>/</em>directions:<br>被誉为笨蛋做法，最不动脑子的做法*/<br>int isprime(int n)<br>{<br>    if(n&lt;2) return 0; //小于2的不是素数，即1不是素数<br>    for(int i=2;i&lt;n/2+1;i++)  //注意，这里i&lt;n/2+1或者i&lt;=n/2不然4会误判为素数<br>        if(n%i==0)return 0;<br>    return 1;<br>}</p>
+<p>//method2:<br>//Date:7<em>20 weds<br>/</em>directions:<br>比较好的一般优化，可供长期使用<em>/<br>int isprime(int n)<br>{<br>    if(n&lt;2)  return 0;<br>    for(int i = 2; i</em>i &lt;= n; ++i)    //for(int i = 2; i &lt;= sqrt(n); ++i),另外i*i&lt;=n 而不是&lt;n<br>       if(n%i == 0)return 0;<br>    return 1;<br>}  </p>
+<p>poished:</p>
+<p>int isprime(int n)<br>{<br>  if(n &lt; 2) return 0;<br>  if(n == 2) return 1;<br>  for(int i = 3 ; i*i &lt;= n  ; i+=2)  //for(int i = 3;  i &lt;= sqrt(n);  ++i)<br>    if(n%1 == 0) return 0;<br>  return 1;<br>}<br>//这里 的 i+=2，是因为，偶数除了2之外，是不可能是素数的、 所以从3开始，直接 +2 。进一步优化。<br>//这个大概就是 朴素判断素数 方法的最佳优化了。</p>
+<p>//method3:<br>//Date:07<em>20 weds<br>/</em>directions:<br>标准的爱拉托逊斯筛选法(the Sieve of Eratosthenes)<br>具体做法是：先把N个自然数按次序排列起来。1不是质数，也不是合数，要划去。第二个数2是质数留下来，<br>而把2后面所有能被2整除的数都划去。2后面第一 个没划去的数是3，把3留下，再把3后面所有能被3整除的数都划去。<br>3后面第一个没划去的数是5，把5留下，再把5后面所有能被5整除的数都划去。这样一 直做下去，<br>就会把不超过N的全部合数都筛掉，留下的就是不超过N的全部质数。因为希腊人是把数写在涂腊的板上，<br>每要划去一个数，就在上面记以小点，寻求质 数的工作完毕后，这许多小点就像一个筛子，<br>所以就把埃拉托斯特尼的方法叫做“埃拉托斯特尼筛”，简称“筛法”。<br>*/</p>
+<p>#define MAX 10007<br>bool isprime[MAX]; //素数表，存放真假值<br>void TheSieveofEratosthees()<br>{<br>    int i,j;<br>    for (i=2;i&lt;MAX;i++)     //1既不是素数，也不是合数，不予判断，所以先假设2及其后面的数全是素数<br>       isprime[i]=1;<br>    for (i=2;i&lt;MAX;i++)     //开始筛选<br>    {<br>      if (isprime[i])         //如果该数是未被筛选的，将后面的该数的倍数划去，即赋值为0（从2开始，2是素数）<br>         for (j=i+i;j&lt;MAX;j+=i)  //倍数置0<br>            isprime[j]=0;<br>    }<br>}</p>
+<p>polished：</p>
+<p>#define MAX 10007 bool isprime[MAX];<br>int p[MAX];<br>void prime(int n)<br>{<br>    memset(isprime, 0, sizeof isprime);<br>    memset(p, 0, sizeof p);<br>    int np = 0;<br>    for (int i = 2; i &lt;= n; i++)<br>    {<br>       if (!isprime[i]) p[np++] = i;<br>       for (int j = 0; j &lt; np &amp;&amp; p[j]<em>i &lt;= n; j++)<br>        {<br>            isprime[p[j]</em>i] = 1;<br>            if( i % p[j] == 0) break;<br>        }<br>   }<br>} </p>
+<p>//method4<br>/<em>两种方法结合起来：</em>/</p>
+<p>void prime(int n) {<br>    memset(isprime, 0, sizeof isprime);<br>    memset(p, 0, sizeof p);<br>    np = 0;<br>    for (int i = 2; i &lt;= n; i++) {<br>        if (!isprime[i]) p[np++] = i;<br>        for (int j = 0; j &lt; np &amp;&amp; p[j]<em>i &lt;= n; j++)    {<br>            isprime[p[j]</em>i] = 1;<br>            if( i % p[j] == 0) break;         }<br>   }<br>}<br>bool Brute_Force3(int n) {<br> for (int i=0;p[i]*p[i]&lt;=n;i++)<br>   if (n%p[i]==0)  return false;<br>   return true;<br>}</p>
+<p>//srand 随机数序列产生：<br>/<em>srand和rand()配合使用产生伪随机数序列。rand函数在产生随机数前，<br>需要系统提供的生成伪随机数序列的种子，rand根据这个种子的值产生一系列随机数。<br>如果系统提供的种子没有变化，每次调用rand函数生成的伪随机数序列都是一样的。<br>srand(unsigned seed)通过参数seed改变系统提供的种子值，从而可以使得每次调用<br>rand函数生成的伪随机数序列不同，从而实现真正意义上的“随机”。通常可以利用系<br>统时间来改变系统的种子值，即srand(time(NULL))，可以为rand函数提供不同的种<br>子值，进而产生不同的随机数序列</em>/</p>
+<p>#include<iostream></iostream></p>
+<p>#include<ctime></ctime></p>
+<p>#include<cstdlib><br>using namespace std;<br>double random(double,double);-&gt;//真正的随机函数</cstdlib></p>
+<p>int main()<br>{<br>srand( unsigned( time(0) ) );//srand(time(NULL));<br>for(int j = 0; j &lt; 10; j++)<br>cout &lt;&lt; “No.” &lt;&lt; j+1 &lt;&lt; “:” &lt;&lt; int(random(0,10)) &lt;&lt; endl;<br>return 0;<br>}</p>
+<p>double random(double start,double end)<br>{<br>return start + (end - start) * rand() / (RAND_MAX + 1.0);<br>}</p>
+<p>//pointer Algorithm（指针算法总结）<br>//$$$ remove the characters from the string $$$</p>
+<p>//method 1:<br>//Date: 5<em>21 sat<br>/</em>directions:<br>this function remove the same character from string ,using pointer<br>        void removechar(char <em>,char)<br>the  char in back has default value ‘ ‘
+</em>/<br>void removechar(char <em>str,char ch=’ ‘)<br>{<br>    char </em>p=0,<em>q=0;<br>    for(p=str;</em>p!=’\0’;p++)<br>    {<br>        q=p;<br>        if(<em>p==ch)<br>        {<br>            while(</em>q!=’\0’)<br>              {<br>                  <em>q=</em>(q+1);<br>                   q++;<br>              }<br>            –p; //necessary illustration: with this –p,we can’t miss more characters<br>        }</p>
+<pre><code>}
+</code></pre><p>}</p>
+<p>//this function remove the same sub string from string</p>
+<p>char *delete(char str1[80],char str2[80]){<br>    int len1,len2,l;//l记录出现字符相同的起始位置<br>    len1=strlen(str1);<br>    len2=strlen(str2);<br>    for(int i=0;str1[i]!=’\0’;i++){<br>            if(str1[i]==str2[0]){<br>                l=i;//记下相同字符出现的位置</p>
+<pre><code>        int num=0;
+        for(int k=0;k&lt;len2;k++){
+            if(str1[l]==str2[k]){
+                num++;
+                l++;
+            }
+        }    //判断是不是完全相同
+
+        //接下来，从i开始，使所有的字符都向前移动三位；
+        if(num==len2){//如果符合子串，那么把后面的字符往前推进，挤掉子串
+            for(int k=i;str1[k]!=&apos;\0&apos;;k++)
+                    str1[k]=str1[k+num];
+        }
+    }
+}
+return str1[80];
+</code></pre><p>}</p>
+<p>//method 2:<br>//Date:5<em>21 sat<br>/</em>directions:<br>this function remove character by using a very creative ways,</p>
+<p>*/</p>
+<p>//$$$ sort the char array or string $$$<br>//Date:5<em>21 sat<br>/</em>directions:<br>this function meant for the sorting of char array or string ,using [ ],and selection sort<br>method,<em>/<br>void stringsort(char </em>str)<br>{<br>    for(int i=0;str[i]!=’\0’;i++)<br>        for(int j=i+1;str[j]!=’\0’;j++)<br>            if(str[i]&gt;str[j])<br>           {<br>            char temp=str[i];<br>            str[i]=str[j];<br>            str[j]=temp;<br>           }<br>}</p>
+<p>int main()<br>{<br>    char str[50]=”b y d k d hhhhhhh     a”;<br>    removechar(str,’h’);<br>    cout &lt;<str<< endl;="" stringsort(str);="" cout="" <<str<<="" return="" 0;="" }="" $$$="" change="" the="" char="" string="" into="" int="" num="" date="" :07*11="" mon="" *="" directions:="" of="" num*="" string_int(char="" *s)="" *t="s;" 卓越的算法，指针的魅力="" sum="0,r=1;" while(*t!="\0" )t++;="" t--;="" for="" (;t!="s;t--){" if(*t="">=48&amp;&amp;<em>t&lt;=57)<br>         {<br>             sum=(</em>t-‘0’)<em>r+sum;<br>             r=r</em>10;<br>         }<br>    }<br>    return sum;<br>}</str<<></p>
+<p>//字符指针与字符数组<br>/*</p>
+<p>char <em>str, </em>str1=”This is another string.”;<br>char string[100]=”This is a string.”;</p>
+<p>则在程序中，可以使用如下语句：<br>str++;                           //指针str加1 ，即改变指向<br>str = “This is a NEW string.”;  //使指针指向新的字符串常量,改变指向<br>str = str1;                     // 改变指针str的指向<br>strcpy( string, “This is a NEW string.”) // 改变字符数组中字符串的的内容<br>strcat( string, str) // 对string字符数组进行串连接操作</p>
+<p>在程序中，不能进行如下操作<br>string++;                         /<em> 不能对数组名进行++运算<br>string = “This is a NEW string.”; /</em> 错误的串操作，不可改变字符数组名的指向<br>string = str1;                    /<em> 对数组名不能进行赋值 ，不可改变字符数组名的指向<br>strcat(str, “This is a NEW string.”) /</em> 不能在str的后面进行串连接<br>strcpy(str, string)              /<em> string不是const，不能作为基底给str进行串复制
+</em>/</p>
+<p>//二维数组的动态内存分配问题<br>//Date：7*22 Fri</p>
+<p>//一．动态申请列大小固定的二维数组<br>/<em>首先如果二维数组的列大小固定，那么很简单，<br>可以用申请一维数数组再其指针强制转化成为二维数组指针即可。详见代码：</em>/<br>//列大小固定的二维数组可以申请一维数据并将指针强转成二维数组</p>
+<p>int main()<br>{<br>    //列值固定<br>    const int MAXCOL = 3;</p>
+<pre><code>int nRow;
+cin&gt;&gt;nRow;
+
+//申请一维数据并将其转成二维数组指针
+int *pp_arr = new int[nRow * MAXCOL];
+int (*p)[MAXCOL] = (int(*)[MAXCOL])pp_arr;
+
+//为二维数组赋值
+int i, j;
+for (i = 0; i &lt; nRow; i++)
+    for (j = 0; j &lt; MAXCOL; j++)
+        p[i][j] = i + j;
+
+//输出二维数组
+for (i = 0; i &lt; nRow; i++)
+{
+    for (j = 0; j &lt; MAXCOL; j++)
+        printf(&quot;%5d&quot;, p[i][j]);
+    cout&lt;&lt;endl;
+}
+
+//释放资源
+delete[] pp_arr;
+return 0;
+</code></pre><p>}<br>//二.动态申请行列均为未知的二维数组<br>//C语言中动态的申请二维数组 malloc free</p>
+<p>#include <stdio.h></stdio.h></p>
+<p>#include <stdlib.h></stdlib.h></p>
+<p>#include <string.h><br>//动态申请二维数组<br>template <typename t=""><br>T<strong> malloc_Array2D(int row, int col)<br>{<br>    int size = sizeof(T);<br>    int point_size = sizeof(T<em>);<br>    //先申请内存，其中point_size </em> row表示存放row个行指针<br>    T </strong>arr = (T <strong>) malloc(point_size <em> row + size </em> row <em> col);  //前面的point_size</em>row(二维数组的行数*每个元素的所占空间）–是引导区信息<br>    //c++ 中这样写： T </strong>arr=new （T<em>） [point_size </em> row + size <em> row </em> col];<br>    if (arr != NULL)<br>    {<br>        memset(arr, 0, point_size <em> row + size </em> row <em> col);      //元素置零<br>        T </em>head = (T<em>)((int)arr + point_size </em> row);<br>        while (row–)<br>            arr[row] = (T<em>)((int)head + row </em> col <em> size);<br>    }<br>    return (T<em>*)arr;<br>}<br>//释放二维数组<br>void free_Aarray2D(void </em></em>arr)<br>{<br>    if (arr != NULL)<br>        free(arr);<br>}</typename></string.h></p>
+<p>int main()<br>{<br>        //动态申请连续的二维数组<br>    int **p = malloc_Array2D<int>(nRow, nCol);</int></p>
+<pre><code>//为二维数组赋值
+int i, j;
+for (i = 0; i &lt; nRow; i++)
+    for (j = 0; j &lt; nCol; j++)
+        p[i][j] = i + j;
+
+//输出二维数组
+for (i = 0; i &lt; nRow; i++)
+{
+    for (j = 0; j &lt; nCol; j++)
+        printf(&quot;%4d &quot;, p[i][j]);
+    putchar(&apos;\n&apos;);
+}
+
+free_Aarray2D((void**)p);
+return 0;
+</code></pre><p>}</p>
+<p>//三．C++语言中动态申请连续的二维数组<br>//可以看出我们已经成功实现了在C语言中动态申请连续的二维数组，如果上面的程序不使用int类型而使用string类这种类型，那会有什么后果了？肯定的说，由于没有调用构造函数和析构函数，程序绝对会造成内存泄露。因此要做下改进，下面给出在C++语言中动态申请连续的二维数组的代码，有些C++语法可能平时见得少，但其实这些语法在STL里面运用还是比较多的，有兴趣的童鞋应该掌握下。</p>
+<p>//C++语言中动态的申请二维数组 new delete</p>
+<p>#include <new></new></p>
+<p>#include <cstdio></cstdio></p>
+<p>#include <cstdlib></cstdlib></p>
+<p>#include <string><br>using namespace std;<br>//动态申请二维数组<br>template <typename t=""><br>T<strong> new_Array2D(int row, int col)<br>{<br>    int size = sizeof(T);<br>    int point_size = sizeof(T<em>);<br>    //先申请内存，其中sizeof(T</em>) * row表示存放row个行指针<br>    T </strong>arr = (T <strong>) malloc(point_size <em> row + size </em> row <em> col);<br>    if (arr != NULL)<br>    {<br>        T </em>head = (T<em>)((int)arr + point_size </em> row);<br>        for (int i = 0; i &lt; row; ++i)<br>        {<br>            arr[i] =  (T<em>)((int)head + i </em> col * size);<br>            for (int j = 0; j &lt; col; ++j)<br>                new (&amp;arr[i][j]) T;<br>        }<br>    }<br>    return (T</strong>)arr;<br>}<br>//释放二维数组<br>template <typename t=""><br>void delete_Array2D(T <strong>arr, int row, int col)<br>{<br>    for (int i = 0; i &lt; row; ++i)<br>        for (int j = 0; j &lt; col; ++j)<br>            arr[i][j].~T();<br>    if (arr != NULL)<br>        free((void</strong>)arr);<br>}<br>int main()<br>{<br>    printf(“  C++语言中动态的申请二维数组 new delete\n”);<br>    printf(“ – by MoreWindows( <a href="http://blog.csdn.net/MoreWindows" target="_blank" rel="external">http://blog.csdn.net/MoreWindows</a> ) –\n\n”);</typename></typename></string></p>
+<pre><code>printf(&quot;请输入行列(以空格分开): &quot;);
+int nRow, nCol;
+scanf(&quot;%d %d&quot;, &amp;nRow, &amp;nCol);
+
+//动态申请连续的二维数组
+string **p = new_Array2D&lt;string&gt;(nRow, nCol);
+
+//为二维数组赋值
+int i, j;
+for (i = 0; i &lt; nRow; i++)
+    for (j = 0; j &lt; nCol; j++)
+    {
+        char szTemp[30];
+        sprintf(szTemp, &quot;(第%d行,第%d列)&quot;, i, j);
+        p[i][j] = szTemp;
+    }
+
+//输出二维数组
+for (i = 0; i &lt; nRow; i++)
+{
+    for (j = 0; j &lt; nCol; j++)
+        printf(&quot;%s &quot;, p[i][j].c_str());
+    putchar(&apos;\n&apos;);
+}
+
+delete_Array2D&lt;string&gt;(p, nRow, nCol);
+return 0;
+</code></pre><p>}</p>
+<p>/*浅拷贝与深拷贝<br>对象的构造，也可以由拷贝构造函数完成，即用一个对象的内容去初始化另一个对象的内容。</p>
+<p>此时，若对象使用了堆空间（注意和“堆对象”区分），就有深、浅拷贝的问题，不清楚则很容易出错。</p>
+<p>1、什么是浅拷贝？</p>
+<p>2、浅拷贝可能带来什么问题？</p>
+<p>3、什么是深拷贝？</p>
+<p>4、深拷贝的实现方法？</p>
+<p>什么是浅拷贝</p>
+<p>缺省拷贝构造函数：用一个对象的内容初始化另一个同类对象，也称为缺省的按成员拷贝，不是对整个类对象的按位拷贝。这种拷贝称为浅拷贝。</p>
+<p>class CGoods{</p>
+<pre><code>char *Name; //不同与char Name[21] ?
+
+int  Amount;
+
+float Price; float Total_value;
+</code></pre><p>public： CGoods(){Name=new char[21];}</p>
+<p> CGoods(CGoods &amp; other){ //缺省拷贝构造内容：</p>
+<pre><code> this-&gt;Name=other.Name;
+
+ this-&gt;Amount=other.Amount;
+
+ this-&gt;Price=other.Price;
+
+this-&gt;Total_value=&quot;/blog/other.Total_value;}
+</code></pre><p>~CGoods(){delete Name;}//析构函数<br>};  //类声明结束</p>
+<p>浅拷贝带来的问题</p>
+<p>void main(){</p>
+<pre><code>CGoods pc;  //调用缺省构造函数
+</code></pre><p>   CGoods pc1(pc);   //调用拷贝构造函数</p>
+<p>} //程序执行完，对象pc1和pc将被析构，此时出错。</p>
+<p>析构时，如用缺省的析构函数，则动态分配的堆空</p>
+<pre><code>间不能回收。
+</code></pre><p>如果用有“delete Name;”语句的析构函数，则先</p>
+<pre><code> 析构pc1时，堆空间已经释放，然后再析构pc
+
+时出现了二次释放的问题。
+</code></pre><p>这时就要重新定义拷贝构造函数，给每个对象独</p>
+<pre><code>立分配一个堆字符串，称深拷贝。
+</code></pre><p>深拷贝——自定义拷贝构造</p>
+<p>CGoods(CGoods &amp; other){ //自定义拷贝构造</p>
+<pre><code>this-&gt;Name=new char[21];
+
+strcpy(this-&gt;Name,other.Name);
+
+this-&gt;Amount=other.Amount;
+
+this-&gt;Price=other.Price;
+
+this-&gt;Total_value=&quot;/blog/other.Total_value;}
+</code></pre><p>例子：定义copy structor和拷贝赋值操作符(copy Assignment Operator）实现深拷贝。<br>//学生类定义：</p>
+<p>class student{</p>
+<pre><code>char *pName; //指针成员
+</code></pre><p>public:</p>
+<pre><code>student();
+
+student(char *pname);
+
+student(student &amp;s); //拷贝构造函数
+
+~student();
+
+student &amp; operator=(student &amp;s);
+
+                               //拷贝赋值操作符
+</code></pre><p>};</p>
+<p>//缺省构造函数：</p>
+<p>student::student()</p>
+<p> {   pName=NULL; cout&lt;&lt;“Constructor缺省/n”;  }</p>
+<p>//带参数构造函数：</p>
+<p>student::student(char *pname){</p>
+<pre><code>if(pName=new char[strlen(pname)+1])
+
+       strcpy(pName,pname);
+
+cout &lt;&lt;&quot;Constructor&quot; &lt;&lt;pName&lt;&lt;endl;}
+</code></pre><p>//拷贝构造函数：</p>
+<p>student::student(student &amp;s){</p>
+<pre><code>if(s.pName!=NULL){
+
+    if(pName=new char[strlen(s.pName)+1])
+
+           strcpy(pName,s.pName); }
+</code></pre><p>  //加1不可少，否则串结束符冲了其他信息，析构会出错！</p>
+<pre><code>else pName=NULL;
+
+cout &lt;&lt;&quot;Copy Constructor&quot; &lt;&lt;pName&lt;&lt;endl;}
+</code></pre><p>//析构函数：</p>
+<p>student::~student(){</p>
+<pre><code>cout&lt;&lt;&quot;Destructor&quot;&lt;&lt;pName&lt;&lt;endl;
+
+if(pName) delete[ ]pName;} //释放字符串
+</code></pre><p>//拷贝赋值操作符：</p>
+<p>student &amp; student::operator=(student &amp;s){</p>
+<pre><code>if(pName) delete[ ]pName;
+
+if(s.pName){
+
+   if(pName=new char[strlen(s.pName)+1])
+
+         strcpy(pName,s.pName);}
+
+else pName=NULL;
+</code></pre><p>cout &lt;&lt;”Copy Assign operator” &lt;&lt;pName&lt;&lt;‘/n’;</p>
+<pre><code>return *this;}
+</code></pre><p>堆内存是最常用的需要自定义拷贝构造函数的资源，但不是唯一的，如打开文件等也需要。</p>
+<p>   如果类需要析构函数来释放某些资源，则类也需要一个自定义的拷贝构造函数。此时，对象的拷贝就是深拷贝了。</p>
+<p>*/</p>
+<p>//求平方根倒数：</p>
+<p>#include <iostream></iostream></p>
+<p>#include <cmath><br>using namespace std;<br>float _Q_rsqrt( float number ) {<br>double i=number;<br>   /<em> long i; float x2, y; const float threehalfs = 1.5F;<br>    x2 = number </em> 0.5F;<br>    y = number;<br>    i = <em> ( long </em> ) &y; // evil floating point bit level hacking   <em>/<br>    i = 0x5f3759df - ( i &gt;&gt; 1 ); // what the fuck?<br>    /</em>y = <em> ( float </em> ) &i;<br>    y = y <em> ( threehalfs - ( x2 </em> y <em> y ) ); // 1st iteration<br>    // y = y </em> ( threehalfs - ( x2 <em> y </em> y ) ); // 2nd iteration, this can be removed</cmath></p>
+<pre><code>#ifndef Q3_VM #
+#ifdef __linux__ assert( !isnan(y) ); // bk010122 - FPE?
+#endif
+#endif return y;   */
+return i;
+</code></pre><p>}</p>
+<p>/*<br>float Q_rsqrt( float number )<br>{<br>    long i;<br>    float x2, y;<br>    const float threehalfs = 1.5F;</p>
+<pre><code>x2 = number * 0.5F;
+y  = number;
+i  = * ( long * ) &amp;y;                       // evil floating point bit level hacking
+i  = 0x5f3759df - ( i &gt;&gt; 1 );               // what the fuck?
+y  = * ( float * ) &amp;i;
+y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+return 2*y;
+</code></pre><p>}<br>*/</p>
+<p>//磁盘文件操作！！</p>
+<p>#include <iostream></iostream></p>
+<p>#include <fstream></fstream></p>
+<p>#include <cstdlib></cstdlib></p>
+<p>#include <cstring><br>using namespace std;<br>//说明：若前两个参数均给出，则不会cout完成操作返回1<br>//若给出地址则单独弹窗提示输入字符串<br>//一个参数都不给就全弹窗提示<br>int write_to_file(char <em>address=0,char </em>lines=0,int size_of_lines=50)<br>{<br>    char s[20];                    //建立数据池<br>    char *c;<br>    c=new char [size_of_lines+1];<br>    int size=0;</cstring></p>
+<pre><code>if(address==0)
+{
+   cout&lt;&lt;&quot;please input the address of the file&quot;&lt;&lt;endl
+       &lt;&lt;&quot;(if no files found ,a new file will be build):&quot;&lt;&lt;endl;
+   cin.getline(s,20);
+}
+else
+   strcpy(s,address);
+
+fstream outfile(s,ios::out);    //打开/建立文件
+if(!outfile)
+{
+    cerr&lt;&lt;&quot;open error!&quot;&lt;&lt;endl;
+    return 0;
+}
+
+if(lines==0)                       //获取要存的数据
+{
+    cout&lt;&lt;&quot;input the char you want put into:&quot;&lt;&lt;endl;  //用于其他用途可以去掉这句话
+    cin.getline(c,50);
+}
+else
+    strcpy(c,lines);
+
+size=strlen(c);                  //存储数据
+for(int i=0;i&lt;strlen(c);i++)
+   {
+      outfile.put(c[i]);
+      if(lines==0)cout&lt;&lt;c[i];
+   }
+outfile.close();
+if(c)delete []c;
+return 1;
+</code></pre><p>}</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"># C/C++</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/08/CppProject/ProcessManager-II-sstream/" rel="next" title="ProcessManager II sstream">
+                <i class="fa fa-chevron-left"></i> ProcessManager II sstream
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/10/Linux/Travel-Linux-Kernel-the-base-application-layers/" rel="prev" title="Travel Linux Kernel the base & application layers">
+                Travel Linux Kernel the base & application layers <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule" />
+          <p class="site-author-name" itemprop="name">crepuscule</p>
+          <p class="site-description motion-element" itemprop="description">my individual blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
