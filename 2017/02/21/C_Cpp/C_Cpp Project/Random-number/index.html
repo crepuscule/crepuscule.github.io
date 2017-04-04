@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://Crepuscule.com/2017/02/21/C_Cpp/C_Cpp Project/Random-number/index.html">
 <meta property="og:site_name" content="Crepuscule">
 <meta property="og:description" content="Cpp Random numberrand()使用前先加入头文件stdlib.h(c++中为cstdlib)。函数原型：int rand(void)；在标准的C库中函数rand()可以生成0~RAND_MAX之间的一个随机数，其中RAND_MAX 是stdlib.h 中定义的一个整数，它与系统有关。因为rand()函数是按指定的顺序来产生整数，因此在同一个文件中每次调用该函数都打印相同的随机值，所">
-<meta property="og:updated_time" content="2017-04-04T10:39:35.488Z">
+<meta property="og:updated_time" content="2017-04-04T11:12:39.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cpp Random number">
 <meta name="twitter:description" content="Cpp Random numberrand()使用前先加入头文件stdlib.h(c++中为cstdlib)。函数原型：int rand(void)；在标准的C库中函数rand()可以生成0~RAND_MAX之间的一个随机数，其中RAND_MAX 是stdlib.h 中定义的一个整数，它与系统有关。因为rand()函数是按指定的顺序来产生整数，因此在同一个文件中每次调用该函数都打印相同的随机值，所">
@@ -369,7 +369,7 @@
       
 
       
-        <h2 id="Cpp-Random-number"><a href="#Cpp-Random-number" class="headerlink" title="Cpp Random number"></a>Cpp Random number</h2><h3 id="rand"><a href="#rand" class="headerlink" title="rand()"></a>rand()</h3><p>使用前先加入头文件stdlib.h(c++中为cstdlib)。<br>函数原型：int rand(void)；<br>在标准的C库中函数rand()可以生成0~RAND_MAX之间的一个随机数，其中RAND_MAX 是stdlib.h 中定义的一个整数，它与系统有关。<br>因为rand()函数是按指定的顺序来产生整数，因此在同一个文件中每次调用该函数都打印相同的随机值，所以说C语言的随机并不是真正意义上的随机，有时候也叫伪随机数。<br>为了使程序在每次执行时都能生成一个新序列的随机值，使用函数 srand()(同样只需要加入stdlib.h头文件)可以为随机数生成器提供种子。只要种子不同rand()函数就会产生不同的随机数序列。srand()称为随机数生成器的初始化器。<br>使用方法：</p>
+        <h2 id="Cpp-Random-number"><a href="#Cpp-Random-number" class="headerlink" title="Cpp Random number"></a>Cpp Random number</h2><h3 id="rand"><a href="#rand" class="headerlink" title="rand()"></a>rand()</h3><p>使用前先加入头文件stdlib.h(c++中为cstdlib)。<br>函数原型：int rand(void)；<br>在标准的C库中函数rand()可以生成0~RAND_MAX之间的一个随机数，其中RAND_MAX 是stdlib.h 中定义的一个整数，它与系统有关。<br>因为rand()函数是按指定的顺序来产生整数，因此在同一个文件中每次调用该函数都打印相同的随机值，所以说C语言的随机并不是真正意义上的随机，有时候也叫伪随机数。<br>为了使程序在每次执行时都能生成一个新序列的随机值，使用函数 srand()(同样只需要加入stdlib.h头文件)可以为随机数生成器提供种子。只要种子不同rand()函数就会产生不同的随机数序列。srand()称为随机数生成器的初始化器。<br>使用方法：<br><a id="more"></a></p>
 <ol>
 <li><p>如果随机数不需要范围，则直接调用rand()即可</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;rand()&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -511,7 +511,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

@@ -96,7 +96,7 @@
 
 仅fedora24以上版本支持docker，安装前卸载旧的版本
 123456$ sudo dnf remove docker \            docker-common \            container-selinux \            docker-selinux \">
-<meta property="og:updated_time" content="2017-03-29T13:48:35.731Z">
+<meta property="og:updated_time" content="2017-04-04T10:48:24.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Learning Note">
 <meta name="twitter:description" content="Docker学习笔记Docker的安装Docker官网本文在fedora中安装docker：
@@ -321,7 +321,18 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                  <a href="/categories/Operation-Maintenance/" itemprop="url" rel="index">
+                    <span itemprop="name">Operation & Maintenance</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Operation-Maintenance/Docker/" itemprop="url" rel="index">
                     <span itemprop="name">Docker</span>
                   </a>
                 </span>
@@ -364,6 +375,9 @@
 <li><p>设置仓库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 首先配置dnf</span></div><div class="line">$ sudo dnf -y install dnf-plugins-core</div><div class="line"><span class="comment"># 添加docker的仓库</span></div><div class="line">$ sudo dnf config-manager \</div><div class="line">    --add-repo \</div><div class="line">    https://download.docker.com/linux/fedora/docker-ce.repo</div><div class="line"><span class="comment"># 可选，开启edge边缘库</span></div><div class="line">$ sudo dnf config-manager --enable docker-ce-edge</div><div class="line"><span class="comment"># 关闭dege repository</span></div><div class="line">$ sudo dnf config-manager --disable docker-ce-edge</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<a id="more"></a>
+<ol>
 <li><p>开始安装docker</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用dnf安装</span></div><div class="line">$ sudo dnf install -y docker-ce</div><div class="line"><span class="comment"># 也可以自己选择包安装</span></div><div class="line">$ dnf list docker-ce.x86_64  --showduplicates |sort -r</div><div class="line">docker-ce.x86_64    17.03.0.fc24      docker-ce-stable  </div><div class="line">$ sudo dnf -y install docker-ce-&lt;VERSION&gt;</div></pre></td></tr></table></figure>
 </li>
@@ -510,7 +524,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

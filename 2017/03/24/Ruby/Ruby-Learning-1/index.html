@@ -96,7 +96,7 @@ ruby的交互shell和命令行编译选项ruby的交互式shell为irb，输入ir
 by RUNOOB.COM
 
 ruby的交互shell和命令行编译选项ruby的交互式shell为irb，输入irb命令就可以进行交互12345678[crepuscule@bogon basic]$ irbirb(main):001:0&amp;gt; puts 4**(1/2)1=&amp;gt; nilirb(main):002:0&amp;gt; puts 4**(1/2.0)2.0=&amp;gt">
-<meta property="og:updated_time" content="2017-04-04T10:44:01.941Z">
+<meta property="og:updated_time" content="2017-04-04T10:49:34.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ruby Learning 1">
 <meta name="twitter:description" content="Basic Ruby
@@ -372,6 +372,7 @@ ruby的交互shell和命令行编译选项ruby的交互式shell为irb，输入ir
 </blockquote>
 <h2 id="ruby的交互shell和命令行编译选项"><a href="#ruby的交互shell和命令行编译选项" class="headerlink" title="ruby的交互shell和命令行编译选项"></a>ruby的交互shell和命令行编译选项</h2><p>ruby的交互式shell为irb，输入irb命令就可以进行交互<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[crepuscule@bogon basic]$ irb</div><div class="line">irb(main):001:0&gt; puts 4**(1/2)</div><div class="line">1</div><div class="line">=&gt; nil</div><div class="line">irb(main):002:0&gt; puts 4**(1/2.0)</div><div class="line">2.0</div><div class="line">=&gt; nil</div><div class="line">irb(main):003:0&gt;</div></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[crepuscule@bogon basic]$ ruby -c test.rb   <span class="comment"># 仅检查语法</span></div><div class="line">Syntax OK</div><div class="line">[crepuscule@bogon basic]$ ruby <span class="_">-d</span> test.rb   <span class="comment"># 开启调试模式</span></div><div class="line">[crepuscule@bogon basic]$ ruby -T <span class="comment"># [level=1] turn on tainting checks</span></div><div class="line">[crepuscule@bogon basic]$ ruby -v <span class="comment"># [level=2] print version number, then turn on verbose mode</span></div><div class="line">[crepuscule@bogon basic]$ ruby -w <span class="comment"># turn warnings on for your script</span></div><div class="line">[crepuscule@bogon basic]$ ruby -W <span class="comment">#[level=2] set warning level; 0=silence, 1=medium, 2=verbose</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="中文编码"><a href="#中文编码" class="headerlink" title="中文编码"></a>中文编码</h2><p>加入coding声明utf-8即可，一般均支持中文<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/ruby -w</span></div><div class="line"><span class="comment">#-*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line">puts <span class="string">"你好，世界"</span></div></pre></td></tr></table></figure></p>
 <h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>Ruby是一门一个问题有多种解法的语言，所以其语法比较自由，格式随性。每种功能均有多种实现。</p>
 <h3 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">puts  <span class="string">"输出并换行"</span></div><div class="line">print <span class="string">"不换行"</span></div><div class="line">a = <span class="number">10</span></div><div class="line">puts <span class="string">"井号后接变量可以输出变量 <span class="subst">#&#123;a&#125;</span>"</span></div></pre></td></tr></table></figure>
@@ -550,7 +551,7 @@ instance1.showdata <span class="comment">#调用方法时，如果方法没有�
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

@@ -94,7 +94,7 @@
 <meta property="og:description" content="Laravel5 快速入门任务1.安装1composer create-project laravel/laravel ProjectName --prefer-dist
  进入工作目录，输入该命令，等待几分钟即可自动安装好一个空白应用，如果不指定名字默认为laravel
 2.准备数据库项目中需要的数据库需要事先设计好，在正式开始之前需要先将数据库使用migrate指令迁移至数据库系统之中。先在配">
-<meta property="og:updated_time" content="2017-02-11T13:33:29.449Z">
+<meta property="og:updated_time" content="2017-04-04T10:57:41.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaravelQuickStart">
 <meta name="twitter:description" content="Laravel5 快速入门任务1.安装1composer create-project laravel/laravel ProjectName --prefer-dist
@@ -379,9 +379,11 @@
 <p> 进入工作目录，输入该命令，等待几分钟即可自动安装好一个空白应用，如果不指定名字默认为laravel</p>
 <h4 id="2-准备数据库"><a href="#2-准备数据库" class="headerlink" title="2.准备数据库"></a>2.准备数据库</h4><p>项目中需要的数据库需要事先设计好，在正式开始之前需要先将数据库使用migrate指令迁移至数据库系统之中。<br>先在配置文件中修改数据库名称，数据库用户名及密码。只要成功链接数据库就可以使用laravel来在数据库中建表。</p>
 <ul>
-<li><p>配置连接数据库的配置文件<br>如果使用上述方法成功创建项目，则在项目根目录下会有.env配置文件。打开后修改下面对应内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DB_CONNECTION=数据库类型（mysql）</div><div class="line">DB_HOST=数据据库服务器（一般默认127.0.0.1即可）</div><div class="line">DB_PORT=端口（一般默认为3306即可）</div><div class="line">DB_DATABASE=数据库名称</div><div class="line">DB_USERNAME=用户名</div><div class="line">DB_PASSWORD=该用户的密码</div></pre></td></tr></table></figure>
+<li>配置连接数据库的配置文件<br>如果使用上述方法成功创建项目，则在项目根目录下会有.env配置文件。打开后修改下面对应内容。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DB_CONNECTION=数据库类型（mysql）</div><div class="line">DB_HOST=数据据库服务器（一般默认127.0.0.1即可）</div><div class="line">DB_PORT=端口（一般默认为3306即可）</div><div class="line">DB_DATABASE=数据库名称</div><div class="line">DB_USERNAME=用户名</div><div class="line">DB_PASSWORD=该用户的密码</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>建表<br>在命令行中使用下面命令即可创建新表。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_tasks_table --create=tasks</div></pre></td></tr></table></figure>
 <p>创建的表将自动加上自增主键和时间戳，我们加上自己需要的字段即可。</p>
@@ -562,7 +564,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

@@ -808,19 +808,15 @@
 
       
         
-          
-            <h2 id="C-标准库-Vector-类型"><a href="#C-标准库-Vector-类型" class="headerlink" title="C++ 标准库 Vector 类型"></a>C++ 标准库 Vector 类型</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>vector（容器） 是同一种类型的对象的集合，每个对象都有一个对应的整数索引值。和 string 对象一样， 标准库将负责管理与存储元素相关的内存。它可以包含其他对象，但一个容器中的所有对象都必须是同一种类型的。<br>使用vector之前，需要加入头文件和做相应的using声明<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">vector</span>;</div></pre></td></tr></table></figure></p>
+          <h2 id="C-标准库-Vector-类型"><a href="#C-标准库-Vector-类型" class="headerlink" title="C++ 标准库 Vector 类型"></a>C++ 标准库 Vector 类型</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>vector（容器） 是同一种类型的对象的集合，每个对象都有一个对应的整数索引值。和 string 对象一样， 标准库将负责管理与存储元素相关的内存。它可以包含其他对象，但一个容器中的所有对象都必须是同一种类型的。<br>使用vector之前，需要加入头文件和做相应的using声明<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">vector</span>;</div></pre></td></tr></table></figure></p>
 <p>vector 是一个类模板（class template） 。可以定义保存 string 对象的 vector，或保存 int 值的 vector，又或是保存自定义的类类型对象（如<br>Sales_items 对象）的 vector。声明从类模板产生的某种类型的对象，需要提供附加信息，信息的种类取决于模板。以 vector 为例，必须说明 vector 保存何种对象的类型，通过将类型放在类型放在类模板名称后面的尖括号中来指定类型：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ivec; <span class="comment">// ivec holds objects of type int</span></div><div class="line"><span class="built_in">vector</span>&lt;Sales_item&gt; Sales_vec; <span class="comment">// holds Sales_items</span></div></pre></td></tr></table></figure></p>
-<h3 id="定义和初始化"><a href="#定义和初始化" class="headerlink" title="定义和初始化"></a>定义和初始化</h3><p>vector共有以下的构造函数<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span> &lt;T&gt; v1;</div><div class="line"><span class="built_in">vector</span> &lt;T&gt; v2(v1);    <span class="comment">//v2为v1副本</span></div><div class="line"><span class="built_in">vector</span> &lt;T&gt; v3(n,i);   <span class="comment">//n个值为i的元素</span></div><div class="line"><span class="built_in">vector</span> &lt;T&gt; v4(n);     <span class="comment">//v4 含有值初始化的元素的 n 个副本</span></div></pre></td></tr></table></figure></p>
-<ol>
-<li>创建空的对象</li>
-<li>使用另一个vector对象可以定义一个副本，但只有相同的元素类型的vector对象才可以参与对象复制</li>
-<li>可以用元素个数和元素值对 vector 对象进行初始化。构造函数用元素个数来决定 vector 对象保存元素的个数，元素值指定每个元素的初始值：</li>
-<li>如果没有指定元素的初始化式，那么标准库将自行提供一个元素初始值进行值初始化（value initializationd） 。这个由库生成的初始值将用来初始化容器中的每个元素，具体值为何，取决于存储在 vector 中元素的数据类型。如果 vector 保存内置类型（如 int 类型）的元素，那么标准库将用 0 值创建元素初始化式，如，vector<string> fvec(10);如果 vector 保存的是含有构造函数的类类型（如 string）的元素，标准<br>库将用该类型的默认构造函数创建元素初始化式：</string></li>
-</ol>
-<p>vector 对象（以及其他标准库容器对象）的重要属性就在于可以在运行时高效地添加元素。因为 vector 增长的效率高，在元素值已知的情况下，最好是动态地添加元素。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/02/C_Cpp/C_Cpp Project/vector-I/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1109,36 +1105,15 @@
 
       
         
-          
-            <h2 id="python-基础及数据类性"><a href="#python-基础及数据类性" class="headerlink" title="python 基础及数据类性"></a>python 基础及数据类性</h2><h3 id="python-解释器"><a href="#python-解释器" class="headerlink" title="python 解释器"></a>python 解释器</h3><p>Python 解释器有些操作类似 Unix shell：当使用终端设备（tty）作为标准输入调用时，它交互的解释并执行命令；当使用文件名参数或以文件作为标准输入调用时，它读取文件并将文件作为 脚本 执行。<br>可以再在终端中输入python来启动，而第二种启动 Python 解释器的方法是<code>python -c command [arg] ...，</code>这种方法可以在 命令行 执行 Python 语句，类似于 shell 中的 -c 选项。由于 Python 语句通常会包含空格或其他特殊 shell 字符，一般建议将 命令 用单引号包裹起来。<br>有一些 Python 模块也可以当作脚本使用。你可以使用 python -m module [arg] … 命令调用它们，这类似在命令行中键入完整的路径名执行 模块 源文件一样</p>
-<h4 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h4><p>调用解释器时，脚本名和附加参数传入一个名为 sys.argv 的字符串列表，通过执行 import sys来够获取这个列表，列表的长度大于等于1，即列表至少有一个元素为sys.argv[0] ，此时为空字符串。<br>脚本名指定为 ‘-‘ （表示标准输入）时， sys.argv[0] 被设定为 ‘-‘，使用 -c 指令 时，sys.argv[0] 被设定为 ‘-c’。使用 -m 模块 参数时，sys.argv[0] 被设定为指定模块的全名。-c 指令 或者 -m 模块 之后的参数不会被 Python 解释器的选项处理机制所截获，而是留在 sys.argv 中，供脚本命令操作</p>
-<h4 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h4><p>从 tty 读取命令时，解释器工作于交互模式。这种模式下它根据主提示符(&gt;&gt;&gt;)来执行；继续的部分被称为 从属提示符，由三个点标识(…)。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Python <span class="number">3.5</span><span class="number">.2</span> (v3<span class="number">.5</span><span class="number">.2</span>:<span class="number">4</span>def2a2901a5, Jun <span class="number">25</span> <span class="number">2016</span>, <span class="number">22</span>:<span class="number">01</span>:<span class="number">18</span>) [MSC v<span class="number">.1900</span> <span class="number">32</span> bit (Intel)] on win32</div><div class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> a :</div><div class="line"><span class="meta">... </span>   print(<span class="string">"Be careful not to fall off!"</span>)</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<h4 id="编码设置"><a href="#编码设置" class="headerlink" title="编码设置"></a>编码设置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: encoding -*-  为源文件指定UTF-8编码</span></div><div class="line"><span class="comment"># -*- coding: cp-1252 -*-  为源程序指定 Windows-1252编码</span></div></pre></td></tr></table></figure>
-<h3 id="python-基本类型和运算"><a href="#python-基本类型和运算" class="headerlink" title="python 基本类型和运算"></a>python 基本类型和运算</h3><h4 id="数字及其运算"><a href="#数字及其运算" class="headerlink" title="数字及其运算"></a>数字及其运算</h4><p>运算符 +，-，<em> 和 / 为惯用概念，括号 () 用于分组,计算余数使用 % ,计算幂使用*</em></p>
-<blockquote>
-<p>注意: / 除法返回浮点数 ，// 为 整除</p>
-</blockquote>
-<p>在交互模式中，最近一个表达式的值赋给变量_，可使用上次的结果<br>如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span>**<span class="number">10</span></div><div class="line"><span class="number">1024</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>_/<span class="number">2</span></div><div class="line"><span class="number">512.0</span></div></pre></td></tr></table></figure></p>
-<p>python还支持Decimal（小数）和fraction，甚至复数，使用<code>a+bj</code>或<code>a-bJ</code>的形式表示 。对于需要精确十进制表示的情况，可以尝试使用 decimal 模块，它实现的十进制运算适合会计方面的应用和高精度要求的应用。而fractions 模块支持另外一种形式的运算，该运算基于有理数（因此分数可以精确地表示）。</p>
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><ul>
-<li><p>python中字符串可以用<code>&#39;..&#39;</code>,<code>&quot;..&quot;</code>表示,使用<code>\</code>转义</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;<span class="string">'python\'s'</span></div><div class="line"><span class="string">"python's"</span></div><div class="line">&gt;&gt;&gt;<span class="string">"python's"</span></div><div class="line"><span class="string">"python's"</span></div><div class="line"><span class="comment"># 如果需要的字符串中有双引号，外部用单引号括起来。或者使用\转义</span></div><div class="line">&gt;&gt;&gt;<span class="string">'"what did you say",saied he.'</span></div><div class="line"><span class="string">'"what did you say",saied he.'</span></div><div class="line">&gt;&gt;&gt;<span class="string">"\"what did you say\",saied he."</span></div><div class="line"><span class="comment"># 如果需要的字符串中有单引号，外部用双引号括起来。或者使用\转义</span></div><div class="line">&gt;&gt;&gt;print(<span class="string">'C:\some\name'</span>)  </div><div class="line">C:\some</div><div class="line">ame</div><div class="line"><span class="comment"># 在print函数中可以使用下面的形式进行取消转义</span></div><div class="line">&gt;&gt;&gt;print(<span class="string">r'C:\some\name'</span>)  </div><div class="line">C:\some\name</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用<code>&quot;&quot;&quot;...&quot;&quot;&quot;</code> 或者｀ ‘’’…’’’｀将字符串写在多行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"""python</span></div><div class="line"><span class="meta">... </span>is \n</div><div class="line"><span class="meta">... </span>a very</div><div class="line"><span class="meta">... </span>poweful</div><div class="line"><span class="meta">... </span>tools"""</div><div class="line"><span class="string">'python\nis \n \na very\npoweful \ntools'</span></div><div class="line"><span class="comment"># 转义字符回在字符串中被显示出来</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"""python \</span></div><div class="line"><span class="meta">... </span>is a \</div><div class="line"><span class="meta">... </span>very poweful \</div><div class="line"><span class="meta">... </span>tools"""</div><div class="line"><span class="string">'python is a very poweful tools'</span></div><div class="line"><span class="comment"># 加入\来实现两行在逻辑上是同一行</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>字符串相连</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;<span class="string">'pyt'</span>+<span class="string">'hon'</span></div><div class="line"><span class="string">'python'</span></div><div class="line"><span class="comment"># 使用+连接</span></div><div class="line">&gt;&gt;&gt;<span class="number">2</span>*<span class="string">'py'</span>+<span class="string">'thon'</span></div><div class="line"><span class="string">'pypython'</span></div><div class="line"><span class="comment"># * 表示字符串的重复</span></div><div class="line">&gt;&gt;&gt;<span class="string">'pyt'</span><span class="string">'hon'</span></div><div class="line"><span class="string">'python'</span></div><div class="line"><span class="comment"># 或者相邻的字符串会自动相连</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>字符串索引及切片</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;str=<span class="string">'python'</span></div><div class="line">&gt;&gt;&gt;str[<span class="number">1</span>]</div><div class="line"><span class="string">'y'</span></div><div class="line">&gt;&gt;&gt;str[<span class="number">-0</span>]</div><div class="line"><span class="string">'p'</span></div><div class="line"><span class="comment"># -0 即为 0</span></div><div class="line">&gt;&gt;&gt;str[<span class="number">0</span>:<span class="number">3</span>]</div><div class="line"><span class="string">'pyth'</span></div><div class="line"><span class="comment"># 从 第0号元素到第3号元素</span></div><div class="line">&gt;&gt;&gt;str[<span class="number">2</span>:]</div><div class="line"><span class="string">'thon'</span></div><div class="line"><span class="comment"># 表示2到结尾</span></div><div class="line">&gt;&gt;&gt;str[:<span class="number">3</span>]+str[<span class="number">3</span>:] 或者 str[:]</div><div class="line"><span class="string">'python'</span></div><div class="line"><span class="comment"># 这样可以表示完整的字符串</span></div><div class="line">&gt;&gt;&gt;str[<span class="number">-3</span>:]</div><div class="line"><span class="string">'hon'</span></div><div class="line">切片索引值展示：</div><div class="line">+---+---+---+---+---+---+</div><div class="line">| P | y | t | h | o | n |</div><div class="line">+---+---+---+---+---+---+</div><div class="line"><span class="number">0</span>   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span>   <span class="number">4</span>   <span class="number">5</span>   <span class="number">6</span></div><div class="line"><span class="number">-6</span>  <span class="number">-5</span>  <span class="number">-4</span>  <span class="number">-3</span>  <span class="number">-2</span>  <span class="number">-1</span></div><div class="line">&gt;&gt;&gt;len(str)</div><div class="line"><span class="number">6</span></div><div class="line"><span class="comment"># 使用len（）函数获取长度</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>Python 有几个 复合 数据类型，用于表示其它的值。最通用的是 list (列表) ，它可以写作中括号之间的一列逗号分隔的值。列表的元素不必是同一类型:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;List = [<span class="number">415</span>,<span class="number">545</span>,<span class="number">454</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>List</div><div class="line">[<span class="number">415</span>,<span class="number">545</span>,<span class="number">454</span>]</div></pre></td></tr></table></figure></p>
-<p>list也可以被索引和切片，但和字符串不同，列表中的元素可被赋值修改。甚至整个列表都也可以被赋值<br>使用 append() 方法为列表添加新元素<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;List.append(<span class="number">234</span>)</div><div class="line">&gt;&gt;&gt;List</div><div class="line">[<span class="number">415</span>,<span class="number">545</span>,<span class="number">454</span>，<span class="number">234</span>]</div><div class="line"></div><div class="line">&gt;&gt;&gt;List=[<span class="number">45</span>,<span class="number">56</span>,<span class="number">90</span>,<span class="number">34</span>]</div><div class="line">&gt;&gt;&gt;List</div><div class="line">[<span class="number">45</span>,<span class="number">56</span>,<span class="number">90</span>,<span class="number">34</span>]</div><div class="line"><span class="comment"># 可被赋值</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;List[<span class="number">0</span>:<span class="number">1</span>]=[<span class="number">0</span>,<span class="number">1</span>]</div><div class="line">&gt;&gt;&gt;List</div><div class="line">[<span class="number">0</span>,<span class="number">1</span>,<span class="number">90</span>,<span class="number">34</span>]</div><div class="line"><span class="comment"># 列表中的切片也可以白赋值</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;List=[]</div><div class="line">&gt;&gt;&gt;List</div><div class="line">[]</div><div class="line"><span class="comment"># 也可以被赋空值</span></div><div class="line">&gt;&gt;&gt;len(List)</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure></p>
-<p>列表也可以被嵌套使用，相当于二维数组</p>
-
-          
+          <h2 id="python-基础及数据类性"><a href="#python-基础及数据类性" class="headerlink" title="python 基础及数据类性"></a>python 基础及数据类性</h2><h3 id="python-解释器"><a href="#python-解释器" class="headerlink" title="python 解释器"></a>python 解释器</h3><p>Python 解释器有些操作类似 Unix shell：当使用终端设备（tty）作为标准输入调用时，它交互的解释并执行命令；当使用文件名参数或以文件作为标准输入调用时，它读取文件并将文件作为 脚本 执行。<br>可以再在终端中输入python来启动，而第二种启动 Python 解释器的方法是<code>python -c command [arg] ...，</code>这种方法可以在 命令行 执行 Python 语句，类似于 shell 中的 -c 选项。由于 Python 语句通常会包含空格或其他特殊 shell 字符，一般建议将 命令 用单引号包裹起来。<br>有一些 Python 模块也可以当作脚本使用。你可以使用 python -m module [arg] … 命令调用它们，这类似在命令行中键入完整的路径名执行 模块 源文件一样</p>
+<h4 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h4><p>调用解释器时，脚本名和附加参数传入一个名为 sys.argv 的字符串列表，通过执行 import sys来够获取这个列表，列表的长度大于等于1，即列表至少有一个元素为sys.argv[0] ，此时为空字符串。<br>脚本名指定为 ‘-‘ （表示标准输入）时， sys.argv[0] 被设定为 ‘-‘，使用 -c 指令 时，sys.argv[0] 被设定为 ‘-c’。使用 -m 模块 参数时，sys.argv[0] 被设定为指定模块的全名。-c 指令 或者 -m 模块 之后的参数不会被 Python 解释器的选项处理机制所截获，而是留在 sys.argv 中，供脚本命令操作<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/23/Python/Python-Learning-1/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1298,26 +1273,14 @@
 
       
         
-          
-            <h2 id="Cpp-Random-number"><a href="#Cpp-Random-number" class="headerlink" title="Cpp Random number"></a>Cpp Random number</h2><h3 id="rand"><a href="#rand" class="headerlink" title="rand()"></a>rand()</h3><p>使用前先加入头文件stdlib.h(c++中为cstdlib)。<br>函数原型：int rand(void)；<br>在标准的C库中函数rand()可以生成0~RAND_MAX之间的一个随机数，其中RAND_MAX 是stdlib.h 中定义的一个整数，它与系统有关。<br>因为rand()函数是按指定的顺序来产生整数，因此在同一个文件中每次调用该函数都打印相同的随机值，所以说C语言的随机并不是真正意义上的随机，有时候也叫伪随机数。<br>为了使程序在每次执行时都能生成一个新序列的随机值，使用函数 srand()(同样只需要加入stdlib.h头文件)可以为随机数生成器提供种子。只要种子不同rand()函数就会产生不同的随机数序列。srand()称为随机数生成器的初始化器。<br>使用方法：</p>
-<ol>
-<li><p>如果随机数不需要范围，则直接调用rand()即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;rand()&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果随机数需要一个范围，可以通过求余的方法来限制范围<br>例如：随机生成10个0~100(不包含100)的数：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</div><div class="line">         <span class="built_in">cout</span>&lt;&lt;rand()%<span class="number">100</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">也可以使用宏定义来简化：</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> random(x) (rand()%x)</span></div><div class="line"><span class="built_in">cout</span>&lt;&lt;random(<span class="number">100</span>)&lt;&lt;<span class="built_in">endl</span>;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="srand"><a href="#srand" class="headerlink" title="srand()"></a>srand()</h3><p>先加入头文件stdlib.h(cstdlib)，函数原型：void srand(unsigned seed)；<br>该函数一般均与rand()函数配合使用。<br>参数seed是rand()的种子，用来初始化rand()的起始值。<br>如果srand()在被调用前已被指定了seed值，则它仍然会调用srand(seed)来初始化它的起始值，若之前没有调用过srand(seed)，它会调用srand(1)一次。<br>所以：</p>
-<ol>
-<li>如果希望rand（）在每次程序运行时产生的值都不一样，必须给srand(seed)中的seed一个变值，这个变值必须在每次程序运行时都不一样（比如到目前为止流逝的时间）。</li>
-<li>如果给seed指定的是一个定值，那么每次程序运行时rand（）产生的值都会一样，虽然这个值会是[seed, RAND_MAX（0x7fff）)之间的一个随机取得的值。</li>
-<li>如果在调用rand()之前没有调用过srand(seed)，效果将和调用了srand(1)再调用rand()一样（1也是一个定值）。<br>所以如果想要每次运行时均产生范围内不一样的随机数，方法如下：<br>这里生成0-0.99之间的小数，将（float)(rand()%100)/100改为（float)(rand()%100)/1000则为0-0.099之间的小数。<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">float</span> ran_num;</div><div class="line">  srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));       </div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;  </div><div class="line">    ran_num=（<span class="keyword">float</span>)(rand()%<span class="number">100</span>)/<span class="number">100</span>;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;ran_num&lt;&lt;<span class="string">" "</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>第六行指定seed为当前系统流逝了的时间（单位为秒）：time_t time(0)，关于time()函数，参见</p>
-
-          
+          <h2 id="Cpp-Random-number"><a href="#Cpp-Random-number" class="headerlink" title="Cpp Random number"></a>Cpp Random number</h2><h3 id="rand"><a href="#rand" class="headerlink" title="rand()"></a>rand()</h3><p>使用前先加入头文件stdlib.h(c++中为cstdlib)。<br>函数原型：int rand(void)；<br>在标准的C库中函数rand()可以生成0~RAND_MAX之间的一个随机数，其中RAND_MAX 是stdlib.h 中定义的一个整数，它与系统有关。<br>因为rand()函数是按指定的顺序来产生整数，因此在同一个文件中每次调用该函数都打印相同的随机值，所以说C语言的随机并不是真正意义上的随机，有时候也叫伪随机数。<br>为了使程序在每次执行时都能生成一个新序列的随机值，使用函数 srand()(同样只需要加入stdlib.h头文件)可以为随机数生成器提供种子。只要种子不同rand()函数就会产生不同的随机数序列。srand()称为随机数生成器的初始化器。<br>使用方法：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/21/C_Cpp/C_Cpp Project/Random-number/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1629,71 +1592,23 @@
 
       
         
-          
-            <h2 id="Basic-CMD-Commands-of-CMD-Script"><a href="#Basic-CMD-Commands-of-CMD-Script" class="headerlink" title="Basic CMD Commands of CMD Script"></a>Basic CMD Commands of CMD Script</h2><ol>
-<li>@<br>前面加\@的一行命令，在执行时其执行过程不会显示在终端上,例如：<br>文件 echo.cmd内容如下：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> a</div><div class="line">@<span class="built_in">pause</span></div><div class="line">@<span class="built_in">echo</span> a</div><div class="line">@<span class="built_in">pause</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>执行时显示如下：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function">C:\<span class="title">Users</span>\<span class="title">username</span>\<span class="title">Desktop</span>&gt;<span class="title">echo</span> <span class="title">a</span>    </span></div><div class="line"><span class="title">a</span></div><div class="line">请按任意键继续. . .</div><div class="line"><span class="title">a</span></div><div class="line">请按任意键继续. . .</div></pre></td></tr></table></figure></p>
+          <h2 id="Basic-CMD-Commands-of-CMD-Script"><a href="#Basic-CMD-Commands-of-CMD-Script" class="headerlink" title="Basic CMD Commands of CMD Script"></a>Basic CMD Commands of CMD Script</h2><ol>
+<li><p>@<br>前面加\@的一行命令，在执行时其执行过程不会显示在终端上,例如：<br>文件 echo.cmd内容如下：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> a</div><div class="line">@<span class="built_in">pause</span></div><div class="line">@<span class="built_in">echo</span> a</div><div class="line">@<span class="built_in">pause</span></div></pre></td></tr></table></figure>
+<p>执行时显示如下：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function">C:\<span class="title">Users</span>\<span class="title">username</span>\<span class="title">Desktop</span>&gt;<span class="title">echo</span> <span class="title">a</span>    </div><div class="line"><span class="title">a</span></div><div class="line">请按任意键继续. . .</div><div class="line"><span class="title">a</span></div><div class="line">请按任意键继续. . .</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>使用@echo off关闭本文件中所有echo的回显功能，直到出现@ echo on开启回显功能</p>
 </blockquote>
-<ol>
-<li>% ,%%</li>
-</ol>
-<ul>
-<li><p>当百分号成对出现，并且其间包含非特殊字符时，一般做变量引用处理，比如：<code>%var%,%str%</code></p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="built_in">set</span> str = "abc"</div><div class="line"><span class="built_in">echo</span> 变量 str 的值是： <span class="variable">%str%</span></div><div class="line"><span class="built_in">pause</span></div><div class="line"></div><div class="line">变量 str 的值是： "abc"</div><div class="line">请按任意键继续. . .</div></pre></td></tr></table></figure>
-</li>
-<li><p>百分号作为变量引用还有一种特殊形式，那就是对形式参数的引用，此时，单个百分号后面紧跟0～9这10个数字，如%0、%1，其中，%0为脚本本身的名称，%1至%9为第二至九个参数…最多支持％0～％9，％10以后就是变量引用了，即％15为％1的值接上5。</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="built_in">echo</span> "%~<span class="number">0</span>"</div><div class="line"><span class="built_in">pause</span></div><div class="line"></div><div class="line">"C:\Users\username\Desktop\<span class="keyword">call</span>.<span class="built_in">cmd</span>"</div><div class="line">请按任意键继续. . .</div></pre></td></tr></table></figure>
-</li>
-<li><p>出现在 set /a 语句中时，表示两数相除取余数，也就是所谓的模运算，它在命令行窗口和批处理文件中的写法略有差异：在命令行窗口中，只需要单个的%，在批处理文件中，需要连续两个百分号，写成%%，其实也是一种转义字符的用法</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="built_in">set</span> /a a=<span class="number">10</span><span class="variable">%%5</span>+<span class="number">1</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">%a%</span></div><div class="line"><span class="built_in">pause</span></div><div class="line"></div><div class="line"><span class="number">1</span></div><div class="line">请按任意键继续. . .</div></pre></td></tr></table></figure>
-</li>
-<li><p>转义符号：如果要显示%本身时，需要在前面用%来转义</p>
-</li>
-</ul>
-<ol>
-<li>:,::</li>
-</ol>
-<ul>
-<li>以:打头的单个的:表示该行是一个标签，它之后的内容是一个标签段，如:test，则表示:test之下的内容是标签段，而test是这个标签段的名，可以用 goto test ,goto :test 跳转到该标签段或用 call :test 调用该子过,而连续两个冒号打头表示该行内容为注释内容，实际上，:: 是个无效的标签名，:加上空格同样可以起到注释的作用，此时，::的功能和注释命令rem相同；但是，rem 注释语句中的某些命令符号如重定向符号和管道符号还是会执行，而如果用::来注释的时候，与::同处一行的所有命令或符号直接被忽略掉.</li>
-<li>在 set 语句中：和~同时使用时，: 起到截取字符串的功能。假设 set str=abcde，那么，set var=%str:~0,1% 表示截取字符串abcde的第一个字符；和=同时使用时，起到替换字符串的功能。假设：set str=abc:de，那么，set var=%str:a=1% 则表示把字符串abc:de中的a替换为1，set var=%str::=2% 则表示把字符串abc:de中的:替换为2；</li>
-</ul>
-<ol>
-<li>~</li>
-</ol>
-<ul>
-<li>用在 set 语句中，和:同时使用时，起到截取字符串的功能</li>
-<li>用在 set /a 语句中时，它是一元运算符号，表示将操作数字按位取反，例如，set /a num=~1的执行结果是-2，set /a num=~0的结果是-1</li>
-<li>用在for语句中，表示增强for的功能，能够提取到更多的信息。例如：在批处理文件的for语句中：%%~i表示去掉第一对外侧引号，%%~zi表示获取文件的大小(以字节为单位)，%%~ni表示获取文件名，%%~xi表示获取扩展名(带点号)……它们可以组合使用，如%%~nxi表示获取文件名和后缀名</li>
-</ul>
-<ol>
-<li><p>> ,&gt;&gt;<br>一般而言，&gt;表示用新内容覆盖原文件内容，&gt;&gt;表示向原文件追加内容，此时，它们以重定向符号的身份出现；如果用在 set /a 语句中，则&gt;表示分组，&gt;&gt;表示逻辑移位</p>
-</li>
-<li><p>|<br>它以管道符号的身份出现，表示把在它之前的命令或语句的执行结果作为在它之后的命令或语句的处理对象，简而言之，就是把它之前的输出作为它之后的输入，例如：echo abcd|findstr “b”，表示把echo abcd的执行结果，作为findstr “b” 的执行对象，也就是在字符串abcd中查找b字符；如果test.txt中有abcd字符串，则该语句与 findstr “b” test.txt 具有同样的效果</p>
-</li>
-<li><p>^<br>一般而言，^以转义字符的身份出现。因为在 cmd环境中，有些字符具备特殊功能，如&gt;、&gt;&gt;表示重定向，|表示管道，&amp;、&amp;&amp;、||表示语句连接……它们都有特定的功能，如果需要把它们作为字符输出的话，echo &gt;、echo | ……之类的写法就会出错——cmd解释器会把它们作为具有特殊功能的字符对待，而不会作为普通字符处理，这个时候，就需要对这些特殊字符做转义处理：在每个特殊字符前加上转义字符^，因此，要输出这些特殊字符，就需要用 echo ^&gt;、echo ^|、echo ^|^|、echo ^^……之类的格式来处理</p>
-</li>
-<li><p>&amp;<br>一般而言，&amp;表示两条命令或语句同时执行的意思。如 echo a&amp;echo b，将在屏幕上同时显示a和b字符。当几条语句含义近似或作用相同且没有先后的顺序之别时，启用&amp;符号连接这些语句将会增加程序的可读性</p>
-</li>
-<li><p>&amp;&amp;,||<br>&amp;&amp;表示如果它之前的语句成功执行，将执行它之后的语句，而||则表示如果它之前的语句执行失败，将执行它之后的语句,在某些场合，它们能替代 if……else…… 语句</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="built_in">md</span> test&amp;&amp;<span class="built_in">echo</span> 成功创建文件夹test||<span class="built_in">echo</span> 创建文件夹test失败</div><div class="line"><span class="built_in">pause</span></div><div class="line">效果等同于如下代码：</div><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="built_in">md</span> test</div><div class="line"><span class="keyword">if</span> "<span class="variable">%errorlevel%</span>"=="<span class="number">0</span>" (<span class="built_in">echo</span> 成功创建文件夹test)</div><div class="line"><span class="keyword">else</span> <span class="built_in">echo</span> 创建文件夹test失败</div><div class="line"><span class="built_in">pause</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>10、()</p>
-<ul>
-<li><p>小括号对经常出现在for语句和if语句中，还有一些特定场合；在for和if语句中属于语句格式的要求，例如：<br>for %%i in (语句1) do (语句2)：在这条语句中，语句1必须用括号对包围，而语句2的括号对则可视情况予以抛弃或保留：如果语句2是单条语句或用&amp;、&amp; &amp;、||等连接符号连接的多条语句，括号对可以抛弃，如果语句2是有逻辑先后关系的多条语句集合，则必须保留括号对，并且，多条语句必须断行书写；例如：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    @<span class="built_in">echo</span> off</div><div class="line">    <span class="keyword">for</span> <span class="variable">%%i</span> <span class="keyword">in</span> (a b c) <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">%%i</span>&amp;<span class="built_in">echo</span> --------</div><div class="line">    <span class="built_in">pause</span></div><div class="line">也可以改写为：</div><div class="line">    @<span class="built_in">echo</span> off</div><div class="line">    <span class="keyword">for</span> <span class="variable">%%i</span> <span class="keyword">in</span> (a b c) <span class="keyword">do</span> (</div><div class="line">        <span class="built_in">echo</span> <span class="variable">%%i</span></div><div class="line">        &amp;<span class="built_in">echo</span> --------</div><div class="line">    )</div><div class="line">    <span class="built_in">pause</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>if 条件 (语句1) else (语句2)：如果没有else部分，则语句1的括号对可有可无；如果有else部分，则语句1中的括号对必须保留，此时，语句2中的括号对保留与否，和上一点类似。例如：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="keyword">if</span> <span class="keyword">exist</span> test.txt <span class="built_in">echo</span> 当前目录下有test.txt</div><div class="line"><span class="built_in">pause</span></div><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="keyword">if</span> <span class="keyword">exist</span> test.txt (<span class="built_in">echo</span> 当前目录下有test.txt) <span class="keyword">else</span> <span class="built_in">echo</span> 当前目录下没有test.txt</div><div class="line"><span class="built_in">pause</span></div><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="keyword">if</span> <span class="keyword">exist</span> test.txt (<span class="built_in">echo</span> 当前目录下有test.txt) <span class="keyword">else</span> (</div><div class="line">    <span class="built_in">echo</span> 当前目录下没有test.txt</div><div class="line">    <span class="built_in">pause</span></div><div class="line">    <span class="built_in">cls</span></div><div class="line">    <span class="built_in">echo</span> 即将创建test.txt文件</div><div class="line">    <span class="built_in">cd</span>.&gt;test.txt&amp;&amp;<span class="built_in">echo</span> 成功创建test.txt</div><div class="line">)</div><div class="line"><span class="built_in">pause</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>③ 特定场合下使用括号对，不但可以使代码逻辑清晰，增强可读性，还可能会减少代码量。比如用echo语句构造多行文本内容的时候：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@<span class="built_in">echo</span> off</div><div class="line">(</div><div class="line"><span class="built_in">echo</span> 第一行</div><div class="line"><span class="built_in">echo</span> 第二行</div><div class="line"><span class="built_in">echo</span> 第三行</div><div class="line">)&gt;test.txt</div><div class="line"><span class="built_in">start</span> test.txt</div><div class="line">如果不使用括号对的话，则需要使用如下代码：</div><div class="line">@<span class="built_in">echo</span> off</div><div class="line"><span class="built_in">echo</span> 第一行&gt;test.txt</div><div class="line"><span class="built_in">echo</span> 第二行&gt;&gt;test.txt</div><div class="line"><span class="built_in">echo</span> 第三行&gt;&gt;test.txt</div><div class="line"><span class="built_in">start</span> test.txt</div></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/18/Tools/Basic-CMD-Command/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1853,37 +1768,17 @@
 
       
         
-          
-            <h2 id="HTTP-控制器"><a href="#HTTP-控制器" class="headerlink" title="HTTP 控制器"></a>HTTP 控制器</h2><ol>
+          <h2 id="HTTP-控制器"><a href="#HTTP-控制器" class="headerlink" title="HTTP 控制器"></a>HTTP 控制器</h2><ol>
 <li>基本控制器</li>
 </ol>
 <p>下面是一个基本控制器类的例子。所有的Laravel控制器应该继承自Laravel自带的控制器基类Controller：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Http\Controllers;</div><div class="line"></div><div class="line">use App\User;</div><div class="line">use App\Http\Controllers\Controller;</div><div class="line"></div><div class="line">class UserController extends Controller</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * 为指定用户显示详情</div><div class="line">     *</div><div class="line">     * @param  int  $id</div><div class="line">     * @return Response</div><div class="line">     */</div><div class="line">    public function showProfile($id)</div><div class="line">    &#123;</div><div class="line">        return view(&apos;user.profile&apos;, [&apos;user&apos; =&gt; User::findOrFail($id)]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们可以像这样定义指向该控制器动作的路由：</p>
-<p>Route::get(‘user/{id}’, ‘UserController@showProfile’);</p>
-<p>现在，如果一个请求匹配上面的路由URI，UserController的showProfile方法就会被执行。当然，路由参数也会被传递给这个方法。</p>
-<ul>
-<li>命名控制器路由</li>
-</ul>
-<p>和闭包路由一样，可以指定控制器路由的名字：</p>
-<p>Route::get(‘foo’, [‘uses’ =&gt; ‘FooController@method’, ‘as’ =&gt; ‘name’]);</p>
-<p>设置好控制器路由后，就可以使用帮助函数action很方便地为控制器动作生成对应的URL：</p>
-<p>$url = action(‘FooController@method’);</p>
-<p>你还可以使用帮助函数route来为已命名的控制器路由生成对应的URL：</p>
-<p>$url = route(‘name’);</p>
-<ol>
-<li>RESTful资源控制器<br>例如，你可能想要在应用中创建一个控制器，用于处理关于图片存储的HTTP请求，使用Artisan命令make:controller，我们可以快速创建这样的控制器：<br>php artisan make:controller PhotoController<br>该Artisan命令将会生成一个控制器文件app/Http/Controllers/PhotoController.php，这个控制器包含了每一个资源操作对应的方法<br>接下来，可以为该控制器注册一个资源路由：</li>
-</ol>
-<p>Route::resource(‘photo’, ‘PhotoController’);</p>
-<p>这个路由声明包含了处理图片资源RESTful动作的多个路由，相应地，Artisan生成的控制器也已经为这些动作设置了对应的处理方法。</p>
-<p>方法     路径     动作     路由名称<br>GET     /photo     index     photo.index<br>GET     /photo/create     create     photo.create<br>POST     /photo     store     photo.store<br>GET     /photo/{photo}     show     photo.show<br>GET     /photo/{photo}/edit     edit     photo.edit<br>PUT/PATCH     /photo/{photo}     update     photo.update<br>DELETE     /photo/{photo}     destroy     photo.destroy</p>
-<ul>
-<li>只定义部分资源路由</li>
-</ul>
-<p>声明资源路由时可以指定该路由处理的动作子集：</p>
-<p>Route::resource(‘photo’, ‘PhotoController’,<br>                [‘only’ =&gt; [‘index’, ‘show’]]);</p>
-<p>Route::resource(‘photo’, ‘PhotoController’,<br>                [‘except’ =&gt; [‘create’, ‘store’, ‘update’, ‘destroy’]]);</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/13/WEB/PHP/Laravel-controller/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1967,7 +1862,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

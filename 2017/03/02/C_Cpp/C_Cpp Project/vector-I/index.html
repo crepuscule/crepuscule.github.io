@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://Crepuscule.com/2017/03/02/C_Cpp/C_Cpp Project/vector-I/index.html">
 <meta property="og:site_name" content="Crepuscule">
 <meta property="og:description" content="C++ 标准库 Vector 类型简介vector（容器） 是同一种类型的对象的集合，每个对象都有一个对应的整数索引值。和 string 对象一样， 标准库将负责管理与存储元素相关的内存。它可以包含其他对象，但一个容器中的所有对象都必须是同一种类型的。使用vector之前，需要加入头文件和做相应的using声明12#include &amp;lt;vector&amp;gt;using std::vector;">
-<meta property="og:updated_time" content="2017-04-04T10:39:32.897Z">
+<meta property="og:updated_time" content="2017-04-04T11:12:49.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vector-I">
 <meta name="twitter:description" content="C++ 标准库 Vector 类型简介vector（容器） 是同一种类型的对象的集合，每个对象都有一个对应的整数索引值。和 string 对象一样， 标准库将负责管理与存储元素相关的内存。它可以包含其他对象，但一个容器中的所有对象都必须是同一种类型的。使用vector之前，需要加入头文件和做相应的using声明12#include &amp;lt;vector&amp;gt;using std::vector;">
@@ -371,6 +371,7 @@
       
         <h2 id="C-标准库-Vector-类型"><a href="#C-标准库-Vector-类型" class="headerlink" title="C++ 标准库 Vector 类型"></a>C++ 标准库 Vector 类型</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>vector（容器） 是同一种类型的对象的集合，每个对象都有一个对应的整数索引值。和 string 对象一样， 标准库将负责管理与存储元素相关的内存。它可以包含其他对象，但一个容器中的所有对象都必须是同一种类型的。<br>使用vector之前，需要加入头文件和做相应的using声明<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">vector</span>;</div></pre></td></tr></table></figure></p>
 <p>vector 是一个类模板（class template） 。可以定义保存 string 对象的 vector，或保存 int 值的 vector，又或是保存自定义的类类型对象（如<br>Sales_items 对象）的 vector。声明从类模板产生的某种类型的对象，需要提供附加信息，信息的种类取决于模板。以 vector 为例，必须说明 vector 保存何种对象的类型，通过将类型放在类型放在类模板名称后面的尖括号中来指定类型：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ivec; <span class="comment">// ivec holds objects of type int</span></div><div class="line"><span class="built_in">vector</span>&lt;Sales_item&gt; Sales_vec; <span class="comment">// holds Sales_items</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h3 id="定义和初始化"><a href="#定义和初始化" class="headerlink" title="定义和初始化"></a>定义和初始化</h3><p>vector共有以下的构造函数<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span> &lt;T&gt; v1;</div><div class="line"><span class="built_in">vector</span> &lt;T&gt; v2(v1);    <span class="comment">//v2为v1副本</span></div><div class="line"><span class="built_in">vector</span> &lt;T&gt; v3(n,i);   <span class="comment">//n个值为i的元素</span></div><div class="line"><span class="built_in">vector</span> &lt;T&gt; v4(n);     <span class="comment">//v4 含有值初始化的元素的 n 个副本</span></div></pre></td></tr></table></figure></p>
 <ol>
 <li>创建空的对象</li>
@@ -504,7 +505,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

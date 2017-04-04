@@ -94,7 +94,7 @@
 <meta property="og:description" content="HTTP中间件中间件是过滤进入应用的HTTP请求，例如，Laravel包含了一个中间件来验证用户是否经过授权，如果用户没有经过授权，中间件会将用户重定向到登录页面，否则如果用户经过授权，中间件就会允许请求继续往前进入下一步操作。Laravel框架内置了一些中间件，包括维护模式中间件、认证、CSRF保护中间件等等。所有的中间件都位于app/Http/Middleware目录。
 
 定义中间件php a">
-<meta property="og:updated_time" content="2017-02-13T02:15:41.821Z">
+<meta property="og:updated_time" content="2017-04-04T10:57:20.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel middleware">
 <meta name="twitter:description" content="HTTP中间件中间件是过滤进入应用的HTTP请求，例如，Laravel包含了一个中间件来验证用户是否经过授权，如果用户没有经过授权，中间件会将用户重定向到登录页面，否则如果用户经过授权，中间件就会允许请求继续往前进入下一步操作。Laravel框架内置了一些中间件，包括维护模式中间件、认证、CSRF保护中间件等等。所有的中间件都位于app/Http/Middleware目录。
@@ -380,6 +380,7 @@
 <li>定义中间件<br><code>php artisan make:middleware OldMiddleware</code><br>这个命令会在app/Http/Middleware目录下创建一个新的中间件类OldMiddleware，在这个中间件中，我们只允许提供的age大于200的访问路由，否则，我们将用户重定向到主页：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Http\Middleware;</div><div class="line"></div><div class="line">use Closure;</div><div class="line"></div><div class="line">class OldMiddleware</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * 返回请求过滤器</div><div class="line">     *</div><div class="line">     * @param  \Illuminate\Http\Request  $request</div><div class="line">     * @param  \Closure  $next</div><div class="line">     * @return mixed</div><div class="line">     */</div><div class="line">    public function handle($request, Closure $next)</div><div class="line">    &#123;</div><div class="line">        if ($request-&gt;input(&apos;age&apos;) &lt;= 200) &#123;</div><div class="line">            return redirect(&apos;home&apos;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return $next($request);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<a id="more"></a>
 <p>中间件之前/之后</p>
 <p>一个中间件是否请求前还是请求后执行取决于中间件本身。比如，以下中间件会在请求处理前执行一些任务：</p>
 <p>&lt;?php</p>
@@ -542,7 +543,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

@@ -96,7 +96,7 @@
 基本控制器
 
 下面是一个基本控制器类的例子。所有的Laravel控制器应该继承自Laravel自带的控制器基类Controller：1234567891011121314151617181920&amp;lt;?phpnamespace App\Http\Controllers;use App\User;use App\Http\Controllers\Controller;class">
-<meta property="og:updated_time" content="2017-02-21T05:39:34.936Z">
+<meta property="og:updated_time" content="2017-04-04T10:57:10.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel controller">
 <meta name="twitter:description" content="HTTP 控制器
@@ -382,6 +382,7 @@
 <li>基本控制器</li>
 </ol>
 <p>下面是一个基本控制器类的例子。所有的Laravel控制器应该继承自Laravel自带的控制器基类Controller：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Http\Controllers;</div><div class="line"></div><div class="line">use App\User;</div><div class="line">use App\Http\Controllers\Controller;</div><div class="line"></div><div class="line">class UserController extends Controller</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * 为指定用户显示详情</div><div class="line">     *</div><div class="line">     * @param  int  $id</div><div class="line">     * @return Response</div><div class="line">     */</div><div class="line">    public function showProfile($id)</div><div class="line">    &#123;</div><div class="line">        return view(&apos;user.profile&apos;, [&apos;user&apos; =&gt; User::findOrFail($id)]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>我们可以像这样定义指向该控制器动作的路由：</p>
 <p>Route::get(‘user/{id}’, ‘UserController@showProfile’);</p>
 <p>现在，如果一个请求匹配上面的路由URI，UserController的showProfile方法就会被执行。当然，路由参数也会被传递给这个方法。</p>
@@ -531,7 +532,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

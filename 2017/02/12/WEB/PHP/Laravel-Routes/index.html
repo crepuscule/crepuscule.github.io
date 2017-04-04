@@ -98,7 +98,7 @@
 
 
 多个动作的路">
-<meta property="og:updated_time" content="2017-02-13T01:41:38.309Z">
+<meta property="og:updated_time" content="2017-04-04T10:57:29.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel Routes">
 <meta name="twitter:description" content="HTTP 路由
@@ -387,7 +387,7 @@
 </ol>
 <p>多个动作的路由<br>以使用Route门面的match方法来实现注册一个路由来响应多个不同的HTTP动作<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::match([<span class="string">'get'</span>, <span class="string">'post'</span>], <span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">'welcome'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>或者，还可以使用any方法注册一个路由响应所有HTTP动作：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::any(<span class="string">'foo'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">'welcome'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>生成路由对应的URLs，可以使用帮助函数url来生成路由对应的URLs<br><code>$url = url(&#39;foo&#39;);</code></p>
+<p>生成路由对应的URLs，可以使用帮助函数url来生成路由对应的URLs<br><code>$url = url(&#39;foo&#39;);</code><br><a id="more"></a></p>
 <ol>
 <li>参数</li>
 </ol>
@@ -581,7 +581,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
