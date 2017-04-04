@@ -251,7 +251,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/24/Linux/LVM/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/29/Linux/Linux Distributions/Fedora System Config & Repair/Fedora-Grub2-Repair/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -276,7 +276,193 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/24/Linux/LVM/" itemprop="url">
+                <a class="post-title-link" href="/2017/01/29/Linux/Linux Distributions/Fedora System Config & Repair/Fedora-Grub2-Repair/" itemprop="url">
+                  Fedora Grub2 Repair
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-29T15:39:48+08:00">
+                2017-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Distributions/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Distributions</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                    <span itemprop="name">Fedora System Config & Repair</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-System-Config-Repair/Boot-Config/" itemprop="url" rel="index">
+                    <span itemprop="name">Boot Config</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Repair-Grub2-on-EFI-System"><a href="#Repair-Grub2-on-EFI-System" class="headerlink" title="Repair Grub2 on EFI System"></a>Repair Grub2 on EFI System</h3><p>Grub2作为Grub升级版本,可以引导大部分操作系统,而且MBR及GPT格式均可使用,因此是作为windows及Linux双系统引导的较好选择。<br>不过由于windows10自动更新，将我的Grub搞坏了，导致win10可以正常启动，而fedora 无法引导。</p>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>一般来说grub损坏后应该可以进入到Grub的救援模式（GRUB RESCUE MODE）。如果可以进入则可以使用有限的几个Grub命令来修复引导。这种情况下使用GrubRescue手动引导后，再在丢失引导的系统中安装重新grub即可，相对较为简单而且靠谱。</p>
+<h5 id="1-使用Grub-Rescue手动引导"><a href="#1-使用Grub-Rescue手动引导" class="headerlink" title="1. 使用Grub Rescue手动引导"></a>1. 使用Grub Rescue手动引导</h5><blockquote>
+<p>此法仅在可以进入Grub Rescue模式的情况下使用</p>
+</blockquote>
+<ul>
+<li>首先使用ls命令找到需要引导的系统所在的分区<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">列出所有磁盘分区信息，以寻找所需的分区</div><div class="line"></div><div class="line">grub rescue&gt;ls</div><div class="line">(hd0),(hd0,msdos1),(hd0,msdos2),(hd0,msdos3),(hd1),(hd1,msdos1)</div><div class="line"></div><div class="line">判断，测试以上分区是否为想要引导的系统所在区，首先查看msdos2中的文件</div><div class="line"></div><div class="line">grub rescue&gt; ls (hd0,msdos2)/</div><div class="line">boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var</div><div class="line">bin  dev   home  lib64  media  opt  root  sbin  sys  usr</div><div class="line"></div><div class="line">假设这是fedora的root目录，则可以在它的/boot目录找到grub2文件夹，</div></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/29/Linux/Linux Distributions/Fedora System Config & Repair/Fedora-Grub2-Repair/#more" rel="contents">
+              Lire la suite &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/24/Linux/Linux Distributions/Fedora System Config & Repair/LVM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/24/Linux/Linux Distributions/Fedora System Config & Repair/LVM/" itemprop="url">
                   LVM
                 </a>
               
@@ -327,8 +513,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Use Skills</span>
+                  <a href="/categories/Linux/Linux-Distributions/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Distributions</span>
                   </a>
                 </span>
 
@@ -338,7 +524,7 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-System-Config-Repair/" itemprop="url" rel="index">
                     <span itemprop="name">Fedora System Config & Repair</span>
                   </a>
                 </span>
@@ -349,7 +535,7 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/Disk-Partition/" itemprop="url" rel="index">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-System-Config-Repair/Disk-Partition/" itemprop="url" rel="index">
                     <span itemprop="name">Disk Partition</span>
                   </a>
                 </span>
@@ -385,9 +571,7 @@
 
       
         
-          <h3 id="LVM-Logical-Volume-Manager"><a href="#LVM-Logical-Volume-Manager" class="headerlink" title="LVM (Logical Volume Manager)"></a>LVM (Logical Volume Manager)</h3><p>LVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。</p>
-<blockquote>
-<p>首先需要了解一些LVM术语：</p>
+          <h3 id="LVM-Logical-Volume-Manager"><a href="#LVM-Logical-Volume-Manager" class="headerlink" title="LVM (Logical Volume Manager)"></a>LVM (Logical Volume Manager)</h3><p>LVM即Logical Volume Manager（逻辑卷管理），是linux下对磁盘管理的一种机制。与普通磁盘分区管理机制不同的是，它可以在零停机前提下实现对分区大小的调整，其分区不需要必须连续的空间，所以可以跨越不同的磁盘和分区。<br>首先需要了解一些LVM术语：</p>
 <ul>
 <li>物理卷 PV （Physical Volume）<br>指磁盘分区或从逻辑上与磁盘分区具有同样功能的设备（如RAID），是LVM的基本存储逻辑块，但和基本的物理存储介质（如分区、磁盘等）比较，却包含有与LVM相关的管理参数</li>
 <li>物理块 PE （Physical Extent）<br>每一个物理卷PV被划分为称为PE（Physical Extents）的基本单元，具有唯一编号的PE是可以被LVM寻址的最小单元。PE的大小是可配置的，默认为4MB。所以物理卷（PV）由大小等同的基本单元PE组成</li>
@@ -396,7 +580,7 @@
 <li>逻辑卷 LV （Logical Volume）<br>类似于非LVM系统中的磁盘分区，逻辑卷建立在卷组VG之上。在逻辑卷LV之上可以建立文件系统（比如/home或者/usr等）<br>LVM就是允许不连续的PV组成一个逻辑上的磁盘（即VG），然后在VG上实现类似非LVM的磁盘分区，显然这样在逻辑上划分分区就更加灵活。
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/01/24/Linux/LVM/#more" rel="contents">
+            <a class="btn" href="/2017/01/24/Linux/Linux Distributions/Fedora System Config & Repair/LVM/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -437,7 +621,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/21/C_Cpp/New-Cpp-Standard/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/21/C_Cpp/C_CPP Skills/New-Cpp-Standard/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -462,7 +646,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/21/C_Cpp/New-Cpp-Standard/" itemprop="url">
+                <a class="post-title-link" href="/2017/01/21/C_Cpp/C_CPP Skills/New-Cpp-Standard/" itemprop="url">
                   New C++ Standard
                 </a>
               
@@ -502,8 +686,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
 
@@ -513,19 +697,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Kernel</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Kernel/Basic-C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Basic C/C++</span>
+                  <a href="/categories/C-C/C-C-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++ Skills</span>
                   </a>
                 </span>
 
@@ -599,7 +772,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/19/Linux/Fedora-System-Config/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/19/Linux/Linux Distributions/Fedora System Config & Repair/Fedora-System-Config/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -624,7 +797,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/19/Linux/Fedora-System-Config/" itemprop="url">
+                <a class="post-title-link" href="/2017/01/19/Linux/Linux Distributions/Fedora System Config & Repair/Fedora-System-Config/" itemprop="url">
                   Fedora System Config
                 </a>
               
@@ -675,8 +848,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Use Skills</span>
+                  <a href="/categories/Linux/Linux-Distributions/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Distributions</span>
                   </a>
                 </span>
 
@@ -686,7 +859,7 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-System-Config-Repair/" itemprop="url" rel="index">
                     <span itemprop="name">Fedora System Config & Repair</span>
                   </a>
                 </span>
@@ -731,7 +904,7 @@
 <h3 id="MP3插件"><a href="#MP3插件" class="headerlink" title="MP3插件"></a>MP3插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf install gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-ugly gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free gstreamer1-plugins-bad-freeworld gstreamer1-plugins-bad-free-extras ffmpeg</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/01/19/Linux/Fedora-System-Config/#more" rel="contents">
+            <a class="btn" href="/2017/01/19/Linux/Linux Distributions/Fedora System Config & Repair/Fedora-System-Config/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -772,7 +945,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/17/Linux/Advanced-C/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/17/Linux/Linux Kernel/Advanced-C/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -797,7 +970,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/17/Linux/Advanced-C/" itemprop="url">
+                <a class="post-title-link" href="/2017/01/17/Linux/Linux Kernel/Advanced-C/" itemprop="url">
                   Advanced C
                 </a>
               
@@ -907,7 +1080,7 @@
 <li>#x   表示给x加上””,使其变为一个字符串
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/01/17/Linux/Advanced-C/#more" rel="contents">
+            <a class="btn" href="/2017/01/17/Linux/Linux Kernel/Advanced-C/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1105,7 +1278,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/12/Tools/newwin10demo/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/12/Tools/Tools-MarkDown/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1130,7 +1303,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/12/Tools/newwin10demo/" itemprop="url">
+                <a class="post-title-link" href="/2017/01/12/Tools/Tools-MarkDown/" itemprop="url">
                   Tools-MarkDown
                 </a>
               
@@ -1228,7 +1401,7 @@
 <p><code>1. 1</code><br><code>2. 2</code><br><code>3. 3</code></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/01/12/Tools/newwin10demo/#more" rel="contents">
+            <a class="btn" href="/2017/01/12/Tools/Tools-MarkDown/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1269,7 +1442,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2016/11/17/CppProject/ProcessManager-I-cpp-time/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2016/11/17/C_Cpp/C_Cpp Project/ProcessManager-I-cpp-time/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1294,7 +1467,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/17/CppProject/ProcessManager-I-cpp-time/" itemprop="url">
+                <a class="post-title-link" href="/2016/11/17/C_Cpp/C_Cpp Project/ProcessManager-I-cpp-time/" itemprop="url">
                   ProcessManager I cpp time
                 </a>
               
@@ -1398,7 +1571,7 @@
 <p>time.h中定义了<strong>time32_t,</strong>time64_t两种time_t类型以在不同时机适应不同的机器，实际使用中只需要使用time_t类型即可。同时也可以看出time_t其实也就是一种int类型，只不过是长整形(int32或是int64)。<br>time_t实际是从1970年1月1日开始时刻到当前时刻的秒数。<br>此类型对应的函数time()原型为：<br>time_t time(time_t *t);<br>可以通过它来获取系统当前time_t类型时间（日历时间 calender time）</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/11/17/CppProject/ProcessManager-I-cpp-time/#more" rel="contents">
+            <a class="btn" href="/2016/11/17/C_Cpp/C_Cpp Project/ProcessManager-I-cpp-time/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1477,7 +1650,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -1486,7 +1659,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1495,7 +1668,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

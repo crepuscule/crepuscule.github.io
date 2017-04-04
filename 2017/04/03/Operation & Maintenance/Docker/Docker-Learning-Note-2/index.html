@@ -1,0 +1,695 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Docker," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Docker 学习笔记 2Docker 的数据持久化Docker镜像是通过每一次修改时增加数据层的方式进行的。每一次commit新的镜像均会向镜像的上面新加数据层。而使用run命令执行的则是以镜像为基础打造的一个实例，即容器(container)。容器在运行中被修改的数据在执行commit命令后会写入新的镜像。所以docker在实际的应用中，比如web应用中。会有很多容器内部或者web app用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker Learning Note 2">
+<meta property="og:url" content="http://Crepuscule.com/2017/04/03/Operation & Maintenance/Docker/Docker-Learning-Note-2/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="Docker 学习笔记 2Docker 的数据持久化Docker镜像是通过每一次修改时增加数据层的方式进行的。每一次commit新的镜像均会向镜像的上面新加数据层。而使用run命令执行的则是以镜像为基础打造的一个实例，即容器(container)。容器在运行中被修改的数据在执行commit命令后会写入新的镜像。所以docker在实际的应用中，比如web应用中。会有很多容器内部或者web app用户">
+<meta property="og:updated_time" content="2017-04-03T11:26:27.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker Learning Note 2">
+<meta name="twitter:description" content="Docker 学习笔记 2Docker 的数据持久化Docker镜像是通过每一次修改时增加数据层的方式进行的。每一次commit新的镜像均会向镜像的上面新加数据层。而使用run命令执行的则是以镜像为基础打造的一个实例，即容器(container)。容器在运行中被修改的数据在执行commit命令后会写入新的镜像。所以docker在实际的应用中，比如web应用中。会有很多容器内部或者web app用户">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/2017/04/03/Operation & Maintenance/Docker/Docker-Learning-Note-2/"/>
+
+
+
+
+
+  <title> Docker Learning Note 2 | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/04/03/Operation & Maintenance/Docker/Docker-Learning-Note-2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Docker Learning Note 2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-03T14:40:00+08:00">
+                2017-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Docker-学习笔记-2"><a href="#Docker-学习笔记-2" class="headerlink" title="Docker 学习笔记 2"></a>Docker 学习笔记 2</h2><h3 id="Docker-的数据持久化"><a href="#Docker-的数据持久化" class="headerlink" title="Docker 的数据持久化"></a>Docker 的数据持久化</h3><p>Docker镜像是通过每一次修改时增加数据层的方式进行的。每一次commit新的镜像均会向镜像的上面新加数据层。而使用run命令执行的则是以镜像为基础打造的一个实例，即容器(container)。容器在运行中被修改的数据在执行commit命令后会写入新的镜像。<br>所以docker在实际的应用中，比如web应用中。会有很多容器内部或者web app用户生成的数据。这些数据有些时候是需要保存起来而且不允许丢失的。<br>如果将这写数据直接保存在docker容器中显然会大幅降低docker的易用性，而且会致使容器数据层频繁增加影响效率。除此之外，容器之间的数据通信也是问题。而如果在实际运维中，容器需要更换，那么容器中的数据就需要要从一个容器中转移到另一个容器或者干脆可以共享。<br>为了能够保存(持久化)数据以及共享容器间的数据,Docker提出了Volume的概念.简单来说,Volume就是目录或者文件,它可以绕过默认的联合文件系统,而以正常的文件或者目录的形式存在于宿主机上。</p>
+<h3 id="运行时使用-v参数指定volume"><a href="#运行时使用-v参数指定volume" class="headerlink" title="运行时使用-v参数指定volume"></a>运行时使用-v参数指定volume</h3><p>这里使用centos镜像，在运行时使用 -v 参数指定volume在容器中的挂载目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">[crepuscule@bogon ~]$ docker run -it --name volume-test -v /data centos /bin/bash</div><div class="line">[root@a9ebab0fa49e /]<span class="comment"># 已进入容器内</span></div><div class="line">另起一终端：</div><div class="line">[crepuscule@bogon ~]$ docker ps</div><div class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</div><div class="line">a9ebab0fa49e        centos              <span class="string">"/bin/bash"</span>         45 seconds ago      Up 43 seconds                           volume-test</div><div class="line">[crepuscule@bogon ~] docker inspect volume-test</div><div class="line"><span class="string">"Mounts"</span>: [</div><div class="line">           &#123;</div><div class="line">               <span class="string">"Type"</span>: <span class="string">"volume"</span>,</div><div class="line">               <span class="string">"Name"</span>: <span class="string">"c81f996ca6f5c3715e51f8f37ee640031661917894b5e5d4cf9acfe0dd171ab3"</span>,</div><div class="line">               <span class="string">"Source"</span>: <span class="string">"/var/lib/docker/volumes/c81f996ca6f5c3715e51f8f37ee640031661917894b5e5d4cf9acfe0dd171ab3/_data"</span>,  <span class="comment"># volumes在宿主机中的真实路径</span></div><div class="line">               <span class="string">"Destination"</span>: <span class="string">"/data"</span>, <span class="comment"># volumes在docker容器中的挂载点</span></div><div class="line">               <span class="string">"Driver"</span>: <span class="string">"local"</span>,</div><div class="line">               <span class="string">"Mode"</span>: <span class="string">""</span>,</div><div class="line">               <span class="string">"RW"</span>: <span class="literal">true</span>,</div><div class="line">               <span class="string">"Propagation"</span>: <span class="string">""</span></div><div class="line">           &#125;</div><div class="line">       ],</div><div class="line">       <span class="string">"Config"</span>: &#123;</div><div class="line">           <span class="string">"Hostname"</span>: <span class="string">"a9ebab0fa49e"</span>,</div><div class="line">           <span class="string">"Domainname"</span>: <span class="string">""</span>,</div><div class="line">           <span class="string">"User"</span>: <span class="string">""</span>,</div><div class="line">           <span class="string">"AttachStdin"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="string">"AttachStdout"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="string">"AttachStderr"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="string">"Tty"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="string">"OpenStdin"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="string">"StdinOnce"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="string">"Env"</span>: [</div><div class="line">               <span class="string">"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</span></div><div class="line">           ],</div><div class="line">           <span class="string">"Cmd"</span>: [</div><div class="line">               <span class="string">"/bin/bash"</span></div><div class="line">           ],</div><div class="line">           <span class="string">"Image"</span>: <span class="string">"centos"</span>,</div><div class="line">           <span class="string">"Volumes"</span>: &#123;   <span class="comment"># 此容器的volumes仅有/data</span></div><div class="line">               <span class="string">"/data"</span>: &#123;&#125;</div><div class="line">           &#125;,</div><div class="line">           <span class="string">"WorkingDir"</span>: <span class="string">""</span>,</div><div class="line">           <span class="string">"Entrypoint"</span>: null,</div><div class="line">           <span class="string">"OnBuild"</span>: null,</div><div class="line">           <span class="string">"Labels"</span>: &#123;</div><div class="line">               <span class="string">"build-date"</span>: <span class="string">"20161214"</span>,</div><div class="line">               <span class="string">"license"</span>: <span class="string">"GPLv2"</span>,</div><div class="line">               <span class="string">"name"</span>: <span class="string">"CentOS Base Image"</span>,</div><div class="line">               <span class="string">"vendor"</span>: <span class="string">"CentOS"</span></div><div class="line">           &#125;</div><div class="line">       &#125;,</div><div class="line">[root@bogon volumes]$ <span class="built_in">cd</span> /var/lib/docker/volumes/c81f996ca6f5c3715e51f8f37ee640031661917894b5e5d4cf9acfe0dd171ab3/_data</div><div class="line"><span class="comment"># 这里就是容器挂载的目录</span></div><div class="line">[root@bogon _data]$ mkdir <span class="built_in">test</span></div><div class="line">[root@bogon _data]$ ls</div><div class="line"><span class="built_in">test</span></div><div class="line">换到docker内部的终端</div><div class="line">[root@a9ebab0fa49e /]<span class="comment"># ls /data</span></div><div class="line"><span class="built_in">test</span></div><div class="line"><span class="comment"># 容器中的/data就是宿主机中的那个目录</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>你可以把VOLUME理解为，从镜像中复制指定卷的文件夹到本地/var/lib/docker/volumes/xxxxxxxxx/文件夹，然后把本地的该文件夹挂载到容器里面去。<a href="https://segmentfault.com/q/1010000004107293" target="_blank" rel="external">原文</a></p>
+</blockquote>
+<h3 id="lamp镜像的使用"><a href="#lamp镜像的使用" class="headerlink" title="lamp镜像的使用"></a>lamp镜像的使用</h3><h4 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h4><p>在了解了volumes概念之后，就可以使用volumes来为web app的开发运维创造福音。<br>首先，为了提高网速，使用了网易蜂巢的lamp镜像，下载地址(需要注册网易蜂巢帐号并在pull之前login)：<br>docker pull hub.c.163.com/public/lamp:latest<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@bogon _data]$ docker login -u [你的蜂巢邮箱账号或手机号码] -p [你的蜂巢密码] <span class="_">-e</span> [你的邮箱] hub.c.163.com</div><div class="line">Login Succeeded</div><div class="line">[root@bogon _data]$ docker pull hub.c.163.com/public/lamp:latest</div><div class="line">[root@bogon _data]$ docker images</div><div class="line">centos                                latest              67591570dd29        3 months ago        192 MB</div><div class="line">hub.c.163.com/public/lamp             latest              14e0318d2c44        12 months ago       366 MB</div></pre></td></tr></table></figure></p>
+<h4 id="了解镜像的描述"><a href="#了解镜像的描述" class="headerlink" title="了解镜像的描述"></a>了解镜像的描述</h4><p>ok，lamp的镜像已经下载完毕，阅读网易蜂巢上LAMP详细描述：</p>
+<blockquote>
+<p>如何使用LAMP镜像<br>    该镜像基于 hub.c.163.com/public/debian:7.9 镜像制作，推荐最小规格为小型。<br>安装软件:<br>    apache2，站点路径/var/www/<br>    php5<br>    mysql 5.6.29，默认密码为空</p>
+</blockquote>
+<p>从中我们了解到该lamp镜像中的站点目录为/var/www，那么我们只要将需要部署的web app放在容器中的这个目录下即可。<br>另外，通过dockerfile可以了解到更多信息：</p>
+<blockquote>
+<p>VOLUME /var/lib/mysql<br>  EXPOSE 22<br>  EXPOSE 80<br>  EXPOSE 3306</p>
+</blockquote>
+<p>首先该容器暴露了 22，80，3306端口分别用于远程登入，用户访问和mysql数据库连接。然后，该镜像已经在dockerfile中创建了volume，那么在生成该镜像的实例容器时，docker会自动在系统的/var/lib/docker/volumes/中创建挂载目录供容器挂载，但是该目录隐蔽，权限要求高，在分享和维护volume时比较繁琐。</p>
+<h4 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h4><p>所以将使用run命令的参数 -v 来规范volume使之更易使用，下面通过创建一个该镜像的容器实例来说明：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@bogon _data]$ docker run --name volumes-test -p 8080:80 -p 33066:3306 -p 2222:22  -v /docker/deployPath:/var/www  -v /docker/mysqldata:/var/lib/mysql     hub.c.163.com/public/lamp</div></pre></td></tr></table></figure></p>
+<p>这条命令首先使用 –name 参数指定将要创建的容器实例名字，这样就不必每次均使用容器的id来进行操作<br>三次指定 -p 参数 分别将容器暴露的端口映射到宿主机<br>两次指定 -v 参数<br> -v /docker/deployPath:/var/www 是将宿主机目录/docker/deployPath映射到容器中的/var/www中，那么只要将需要部署的web app文件复制到宿主机目录/docker/deployPath下，就像当于将web app部署到了容器站点根目录下，容器就会进行解析，并在对应的 宿主机ip:8080 中进行渲染。<br> -v /docker/mysqldata:/var/lib/mysql 这里/var/lib/mysql是该镜像默认就有的用于存储mysql数据的volume。将其挂载到指定目录便于管理，识别和数据共享。</p>
+<h4 id="容器的访问和维护"><a href="#容器的访问和维护" class="headerlink" title="容器的访问和维护"></a>容器的访问和维护</h4><p>在容器运行之后，我们还可以通过执行exec进入容器内部访问数据库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@bogon _data]$ docker <span class="built_in">exec</span> -it 容器id/名字 /bin/bash</div><div class="line">root@37d7bc558371<span class="comment"># mysql</span></div><div class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</div></pre></td></tr></table></figure></p>
+<p>通过上面的参数，lamp镜像所生成的容器实例就可以实现 将自己在宿主机中开发好的网站放在宿主机/docker/deployPath目录中，然后在 宿主机ip:8080 将可以访问到部署的网站，而网站在处理中生成或者接收的数据在宿主机/docker/mysqldata目录可以被访问和维护。<br>如果网站功能需要完善，原先的网站需要被修改。那么先停掉容器，将修改好的文件替换宿主机/docker/deployPath目录中原来的文件，重新启动容器即可。那么，这里运行中的容器就是一个仅进行数据处理，不吸收也不释放数据的引擎。</p>
+<h3 id="一些lamp镜像"><a href="#一些lamp镜像" class="headerlink" title="一些lamp镜像"></a>一些lamp镜像</h3><p>[dockerfiles/centos-lamp] (<a href="https://github.com/dockerfiles/centos-lamp" target="_blank" rel="external">https://github.com/dockerfiles/centos-lamp</a>)<br>daocloud pull 命令：docker pull dockerfiles/centos-lamp:latest</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/31/JAVA/JAVA-in-2017/" rel="next" title="JAVA in 2017">
+                <i class="fa fa-chevron-left"></i> JAVA in 2017
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule" />
+          <p class="site-author-name" itemprop="name">crepuscule</p>
+          <p class="site-description motion-element" itemprop="description">my individual blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-学习笔记-2"><span class="nav-number">1.</span> <span class="nav-text">Docker 学习笔记 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-的数据持久化"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 的数据持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时使用-v参数指定volume"><span class="nav-number">1.2.</span> <span class="nav-text">运行时使用-v参数指定volume</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lamp镜像的使用"><span class="nav-number">1.3.</span> <span class="nav-text">lamp镜像的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载镜像"><span class="nav-number">1.3.1.</span> <span class="nav-text">下载镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#了解镜像的描述"><span class="nav-number">1.3.2.</span> <span class="nav-text">了解镜像的描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行容器"><span class="nav-number">1.3.3.</span> <span class="nav-text">运行容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器的访问和维护"><span class="nav-number">1.3.4.</span> <span class="nav-text">容器的访问和维护</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些lamp镜像"><span class="nav-number">1.4.</span> <span class="nav-text">一些lamp镜像</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

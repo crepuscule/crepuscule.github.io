@@ -251,6 +251,210 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/13/WEB/PHP/Laravel-middleware/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/13/WEB/PHP/Laravel-middleware/" itemprop="url">
+                  Laravel middleware
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-13T09:42:40+08:00">
+                2017-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/PHP/Laravel/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="HTTP中间件"><a href="#HTTP中间件" class="headerlink" title="HTTP中间件"></a>HTTP中间件</h2><p>中间件是过滤进入应用的HTTP请求，例如，Laravel包含了一个中间件来验证用户是否经过授权，如果用户没有经过授权，中间件会将用户重定向到登录页面，否则如果用户经过授权，中间件就会允许请求继续往前进入下一步操作。<br>Laravel框架内置了一些中间件，包括维护模式中间件、认证、CSRF保护中间件等等。所有的中间件都位于app/Http/Middleware目录。</p>
+<ol>
+<li>定义中间件<br><code>php artisan make:middleware OldMiddleware</code><br>这个命令会在app/Http/Middleware目录下创建一个新的中间件类OldMiddleware，在这个中间件中，我们只允许提供的age大于200的访问路由，否则，我们将用户重定向到主页：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Http\Middleware;</div><div class="line"></div><div class="line">use Closure;</div><div class="line"></div><div class="line">class OldMiddleware</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * 返回请求过滤器</div><div class="line">     *</div><div class="line">     * @param  \Illuminate\Http\Request  $request</div><div class="line">     * @param  \Closure  $next</div><div class="line">     * @return mixed</div><div class="line">     */</div><div class="line">    public function handle($request, Closure $next)</div><div class="line">    &#123;</div><div class="line">        if ($request-&gt;input(&apos;age&apos;) &lt;= 200) &#123;</div><div class="line">            return redirect(&apos;home&apos;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return $next($request);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>中间件之前/之后</p>
+<p>一个中间件是否请求前还是请求后执行取决于中间件本身。比如，以下中间件会在请求处理前执行一些任务：</p>
+<p>&lt;?php</p>
+<p>namespace App\Http\Middleware;</p>
+<p>use Closure;</p>
+<p>class BeforeMiddleware<br>{<br>    public function handle($request, Closure $next)<br>    {<br>        // 执行动作</p>
+<pre><code>    return $next($request);
+}
+</code></pre><p>}</p>
+<p>然而，下面这个中间件则会在请求处理后执行其任务：</p>
+<p>&lt;?php</p>
+<p>namespace App\Http\Middleware;</p>
+<p>use Closure;</p>
+<p>class AfterMiddleware<br>{<br>    public function handle($request, Closure $next)<br>    {<br>        $response = $next($request);</p>
+<pre><code>    // 执行动作
+
+    return $response;
+}
+</code></pre><p>}</p>
+<ol>
+<li>注册中间件</li>
+</ol>
+<ul>
+<li>全局中间件</li>
+</ul>
+<p>如果你想要中间件在每一个HTTP请求期间被执行，只需要将相应的中间件类放到app/Http/Kernel.php的数组属性$middleware中即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 在 App\Http\Kernel 里中</div><div class="line">protected $routeMiddleware = [</div><div class="line">    &apos;auth&apos; =&gt; \App\Http\Middleware\Authenticate::class,</div><div class="line">    &apos;auth.basic&apos; =&gt; \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,</div><div class="line">    &apos;guest&apos; =&gt; \App\Http\Middleware\RedirectIfAuthenticated::class,];</div></pre></td></tr></table></figure></p>
+<ul>
+<li>分配中间件到路由<br>首先应该在app/Http/Kernel.php文件中分配给该中间件一个简写的key，默认情况下，该类的$routeMiddleware属性包含了Laravel内置的入口中间件，添加你自己的中间件只需要将其追加到后面并为其分配一个key：</li>
+</ul>
+<p>// 在 App\Http\Kernel 里中<br>protected $routeMiddleware = [<br>    ‘auth’ =&gt; \App\Http\Middleware\Authenticate::class,<br>    ‘auth.basic’ =&gt; \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,<br>    ‘guest’ =&gt; \App\Http\Middleware\RedirectIfAuthenticated::class,];</p>
+<p>中间件在HTTP kernel中被定义后，可以在路由选项数组中使用$middleware键来指定中间件：</p>
+<p>Route::get(‘admin/profile’, [‘middleware’ =&gt; ‘auth’, function () {<br>    //<br>}]);</p>
+<ol>
+<li>中间件参数</li>
+</ol>
+<p>中间件还可以接收额外的自定义参数，比如，如果应用需要在执行动作之前验证认证用户是否拥有指定的角色，可以创建一个RoleMiddleware来接收角色名作为额外参数。</p>
+<p>额外的中间件参数会在$next参数之后传入中间件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Http\Middleware;</div><div class="line"></div><div class="line">use Closure;</div><div class="line"></div><div class="line">class RoleMiddleware</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * 运行请求过滤器</div><div class="line">     *</div><div class="line">     * @param  \Illuminate\Http\Request  $request</div><div class="line">     * @param  \Closure  $next</div><div class="line">     * @param  string  $role</div><div class="line">     * @return mixed</div><div class="line">     * translator http://laravelacademy.org</div><div class="line">     */</div><div class="line">    public function handle($request, Closure $next, $role)</div><div class="line">    &#123;</div><div class="line">        if (! $request-&gt;user()-&gt;hasRole($role)) &#123;</div><div class="line">            // Redirect...</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return $next($request);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">中间件参数可以在定义路由时通过：分隔中间件名和参数名来指定，多个中间件参数可以通过逗号分隔：</div><div class="line"></div><div class="line">Route::put(&apos;post/&#123;id&#125;&apos;, [&apos;middleware&apos; =&gt; &apos;role:editor&apos;, function ($id) &#123;</div><div class="line">    //</div><div class="line">&#125;]);</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/12/WEB/PHP/Laravel-Routes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -488,7 +692,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/10/Linux/Travel-Linux-Kernel-the-base-application-layers/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/10/Linux/Linux Kernel/Travel-Linux-Kernel-the-base-application-layers/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -513,7 +717,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/10/Linux/Travel-Linux-Kernel-the-base-application-layers/" itemprop="url">
+                <a class="post-title-link" href="/2017/02/10/Linux/Linux Kernel/Travel-Linux-Kernel-the-base-application-layers/" itemprop="url">
                   Travel Linux Kernel the base & application layers
                 </a>
               
@@ -652,7 +856,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/08/C_Cpp/C-Cpp-Useful-Methods/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/08/C_Cpp/C_CPP Skills/C-Cpp-Useful-Methods/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -677,7 +881,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/08/C_Cpp/C-Cpp-Useful-Methods/" itemprop="url">
+                <a class="post-title-link" href="/2017/02/08/C_Cpp/C_CPP Skills/C-Cpp-Useful-Methods/" itemprop="url">
                   C/Cpp Useful Methods
                 </a>
               
@@ -728,8 +932,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/C-C-Useful-Methods/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++ Useful Methods</span>
+                  <a href="/categories/C-C/C-C-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++ Skills</span>
                   </a>
                 </span>
 
@@ -1109,7 +1313,7 @@ return 1;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/08/CppProject/ProcessManager-II-sstream/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/08/C_Cpp/C_Cpp Project/ProcessManager-II-sstream/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1134,7 +1338,7 @@ return 1;
             
               
                 
-                <a class="post-title-link" href="/2017/02/08/CppProject/ProcessManager-II-sstream/" itemprop="url">
+                <a class="post-title-link" href="/2017/02/08/C_Cpp/C_Cpp Project/ProcessManager-II-sstream/" itemprop="url">
                   ProcessManager II sstream
                 </a>
               
@@ -1285,7 +1489,7 @@ return 1;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/04/Linux/Fedora-Common-Software-Installation/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/04/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1310,7 +1514,7 @@ return 1;
             
               
                 
-                <a class="post-title-link" href="/2017/02/04/Linux/Fedora-Common-Software-Installation/" itemprop="url">
+                <a class="post-title-link" href="/2017/02/04/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/" itemprop="url">
                   Fedora Common Software Installation
                 </a>
               
@@ -1361,8 +1565,8 @@ return 1;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Use Skills</span>
+                  <a href="/categories/Linux/Linux-Distributions/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Distributions</span>
                   </a>
                 </span>
 
@@ -1372,7 +1576,7 @@ return 1;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-Software-Installation/" itemprop="url" rel="index">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-Software-Installation/" itemprop="url" rel="index">
                     <span itemprop="name">Fedora Software Installation</span>
                   </a>
                 </span>
@@ -1427,7 +1631,7 @@ return 1;
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/02/04/Linux/Fedora-Common-Software-Installation/#more" rel="contents">
+            <a class="btn" href="/2017/02/04/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1468,7 +1672,7 @@ return 1;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/04/Linux/Grub2-Theme-Replacement/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/04/Linux/Linux Distributions/Fedora System Config & Repair/Grub2-Theme-Replacement/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1493,7 +1697,7 @@ return 1;
             
               
                 
-                <a class="post-title-link" href="/2017/02/04/Linux/Grub2-Theme-Replacement/" itemprop="url">
+                <a class="post-title-link" href="/2017/02/04/Linux/Linux Distributions/Fedora System Config & Repair/Grub2-Theme-Replacement/" itemprop="url">
                   Grub2 Theme Replacement
                 </a>
               
@@ -1544,8 +1748,8 @@ return 1;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Use Skills</span>
+                  <a href="/categories/Linux/Linux-Distributions/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Distributions</span>
                   </a>
                 </span>
 
@@ -1555,7 +1759,7 @@ return 1;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-System-Config-Repair/" itemprop="url" rel="index">
                     <span itemprop="name">Fedora System Config & Repair</span>
                   </a>
                 </span>
@@ -1566,7 +1770,7 @@ return 1;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/Boot-Config/" itemprop="url" rel="index">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-System-Config-Repair/Boot-Config/" itemprop="url" rel="index">
                     <span itemprop="name">Boot Config</span>
                   </a>
                 </span>
@@ -1653,7 +1857,7 @@ return 1;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/03/C_Cpp/Cpp-Library-String-Type/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/03/C_Cpp/C_CPP Basic/Cpp-Library-String-Type/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1678,7 +1882,7 @@ return 1;
             
               
                 
-                <a class="post-title-link" href="/2017/02/03/C_Cpp/Cpp-Library-String-Type/" itemprop="url">
+                <a class="post-title-link" href="/2017/02/03/C_Cpp/C_CPP Basic/Cpp-Library-String-Type/" itemprop="url">
                   Cpp Library String Type
                 </a>
               
@@ -1729,7 +1933,18 @@ return 1;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/Strings/" itemprop="url" rel="index">
+                  <a href="/categories/C-C/C-C-Basic/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++ Basic</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/C-C-Basic/Strings/" itemprop="url" rel="index">
                     <span itemprop="name">Strings</span>
                   </a>
                 </span>
@@ -1823,7 +2038,7 @@ return 1;
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/03/C_Cpp/Cpp-Namespace-using-Declarations/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/02/03/C_Cpp/C_CPP Basic/Cpp-Namespace-using-Declarations/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule">
@@ -1848,7 +2063,7 @@ return 1;
             
               
                 
-                <a class="post-title-link" href="/2017/02/03/C_Cpp/Cpp-Namespace-using-Declarations/" itemprop="url">
+                <a class="post-title-link" href="/2017/02/03/C_Cpp/C_CPP Basic/Cpp-Namespace-using-Declarations/" itemprop="url">
                   Cpp Namespace using Declarations
                 </a>
               
@@ -1899,7 +2114,18 @@ return 1;
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/Strings/" itemprop="url" rel="index">
+                  <a href="/categories/C-C/C-C-Basic/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++ Basic</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/C-C-Basic/Strings/" itemprop="url" rel="index">
                     <span itemprop="name">Strings</span>
                   </a>
                 </span>
@@ -2193,192 +2419,6 @@ return 1;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/29/Linux/Fedora-Grub2-Repair/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="crepuscule">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Crepuscule">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/29/Linux/Fedora-Grub2-Repair/" itemprop="url">
-                  Fedora Grub2 Repair
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-29T15:39:48+08:00">
-                2017-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux Use Skills</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/" itemprop="url" rel="index">
-                    <span itemprop="name">Fedora System Config & Repair</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Linux-Use-Skills/Fedora-System-Config-Repair/Boot-Config/" itemprop="url" rel="index">
-                    <span itemprop="name">Boot Config</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Repair-Grub2-on-EFI-System"><a href="#Repair-Grub2-on-EFI-System" class="headerlink" title="Repair Grub2 on EFI System"></a>Repair Grub2 on EFI System</h3><p>Grub2作为Grub升级版本,可以引导大部分操作系统,而且MBR及GPT格式均可使用,因此是作为windows及Linux双系统引导的较好选择。<br>不过由于windows10自动更新，将我的Grub搞坏了，导致win10可以正常启动，而fedora 无法引导。</p>
-<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>一般来说grub损坏后应该可以进入到Grub的救援模式（GRUB RESCUE MODE）。如果可以进入则可以使用有限的几个Grub命令来修复引导。这种情况下使用GrubRescue手动引导后，再在丢失引导的系统中安装重新grub即可，相对较为简单而且靠谱。</p>
-<h5 id="1-使用Grub-Rescue手动引导"><a href="#1-使用Grub-Rescue手动引导" class="headerlink" title="1. 使用Grub Rescue手动引导"></a>1. 使用Grub Rescue手动引导</h5><blockquote>
-<p>此法仅在可以进入Grub Rescue模式的情况下使用</p>
-</blockquote>
-<ul>
-<li>首先使用ls命令找到需要引导的系统所在的分区<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">列出所有磁盘分区信息，以寻找所需的分区</div><div class="line"></div><div class="line">grub rescue&gt;ls</div><div class="line">(hd0),(hd0,msdos1),(hd0,msdos2),(hd0,msdos3),(hd1),(hd1,msdos1)</div><div class="line"></div><div class="line">判断，测试以上分区是否为想要引导的系统所在区，首先查看msdos2中的文件</div><div class="line"></div><div class="line">grub rescue&gt; ls (hd0,msdos2)/</div><div class="line">boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var</div><div class="line">bin  dev   home  lib64  media  opt  root  sbin  sys  usr</div><div class="line"></div><div class="line">假设这是fedora的root目录，则可以在它的/boot目录找到grub2文件夹，</div></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/29/Linux/Fedora-Grub2-Repair/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2426,7 +2466,7 @@ return 1;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -2435,7 +2475,7 @@ return 1;
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -2444,7 +2484,7 @@ return 1;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -1,0 +1,901 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Markdown," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一级标题# 一级标题
+二级标题## 二级标题
+无序列表
+1
+2
+3
+
+* 1* 2* 3
+
+1
+2
+3
+
+- 1- 2- 3
+有序列表
+1
+2
+3
+
+1. 12. 23. 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tools-MarkDown">
+<meta property="og:url" content="http://Crepuscule.com/2017/01/12/Tools/Tools-MarkDown/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="一级标题# 一级标题
+二级标题## 二级标题
+无序列表
+1
+2
+3
+
+* 1* 2* 3
+
+1
+2
+3
+
+- 1- 2- 3
+有序列表
+1
+2
+3
+
+1. 12. 23. 3">
+<meta property="og:image" content="http://p1.bqimg.com/567571/46f4ac43e7dd8e40.png">
+<meta property="og:updated_time" content="2017-04-03T08:41:11.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tools-MarkDown">
+<meta name="twitter:description" content="一级标题# 一级标题
+二级标题## 二级标题
+无序列表
+1
+2
+3
+
+* 1* 2* 3
+
+1
+2
+3
+
+- 1- 2- 3
+有序列表
+1
+2
+3
+
+1. 12. 23. 3">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/46f4ac43e7dd8e40.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/2017/01/12/Tools/Tools-MarkDown/"/>
+
+
+
+
+
+  <title> Tools-MarkDown | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/01/12/Tools/Tools-MarkDown/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Tools-MarkDown
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T11:34:57+08:00">
+                2017-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p><code># 一级标题</code></p>
+<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p><code>## 二级标题</code></p>
+<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p><code>* 1</code><br><code>* 2</code><br><code>* 3</code></p>
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<p><code>- 1</code><br><code>- 2</code><br><code>- 3</code></p>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ol>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ol>
+<p><code>1. 1</code><br><code>2. 2</code><br><code>3. 3</code></p>
+<a id="more"></a>
+<blockquote>
+<p>引用<br>符号与文本见得空格</p>
+</blockquote>
+<p><code>&gt; 引用</code><br><code>符号与文本见得空格</code></p>
+<h4 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h4><p><a href="http://www.baidu.com" target="_blank" rel="external">百度</a><br><code>[百度](http://www.baidu.com)</code></p>
+<h4 id="文章的内部链接"><a href="#文章的内部链接" class="headerlink" title="文章的内部链接"></a>文章的内部链接</h4>
+<p><code></code></p>
+<h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p><img src="http://p1.bqimg.com/567571/46f4ac43e7dd8e40.png" alt="star butterfly"><br><code>![star butterfly](http://p1.bqimg.com/567571/46f4ac43e7dd8e40.png)</code></p>
+<p><strong>粗体</strong><br><code>**粗体**</code></p>
+<p><em>斜体</em><br><code>*斜体*</code></p>
+<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><hr>
+<p><code>***</code></p>
+<h4 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h4><p><del>删除</del><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~~删除~~</div></pre></td></tr></table></figure></p>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><table>
+<thead>
+<tr>
+<th>name</th>
+<th style="text-align:center">age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UUZ</td>
+<td style="text-align:center">17</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:center">Name</th>
+<th style="text-align:right">phone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:center">Jiam</td>
+<td style="text-align:right">1600</td>
+</tr>
+<tr>
+<td style="text-align:left">25</td>
+<td style="text-align:center">Peter</td>
+<td style="text-align:right">45412</td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:center">Susu</td>
+<td style="text-align:right">43541</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">|name    |age      |</div><div class="line">|--------|:-------:|</div><div class="line">|UUZ     |17       |</div><div class="line"></div><div class="line">| ID | Name  | phone |</div><div class="line">| :- |:-----:| -----:|</div><div class="line">|12  | Jiam  | 1600  |</div><div class="line">|25  | Peter | 45412 |</div><div class="line">|56  | Susu  | 43541 |</div></pre></td></tr></table></figure>
+<h4 id="单行命令或区段代码"><a href="#单行命令或区段代码" class="headerlink" title="单行命令或区段代码"></a>单行命令或区段代码</h4><p><code>[user@localhost ~]$ sudo dnf install screenfetch -y</code></p>
+<p><code>`[user@localhost ~]$ sudo dnf install screenfetch -y`
+</code></p>
+<p>A backtick-delimited string in a code span<code>&#39;foo&#39;</code></p>
+<p><code>A backtick-delimited string in a code span: ` &#39;foo&#39; `
+</code></p>
+<h4 id="反斜杠转义"><a href="#反斜杠转义" class="headerlink" title="反斜杠转义"></a>反斜杠转义</h4><p>\   反斜线<br>`   反引号<br>*   星号<br>_   底线<br>{}  花括号<br>[]  方括号<br>()  括弧<br>#   井字号<br>+   加号<br>-   减号<br>.   英文句点<br>!   惊叹号</p>
+<p><code>\\   反斜线</code><br><code>\`   反引号</code><br><code>\*   星号</code><br><code>\_   底线</code><br><code>\{\}  花括号</code><br><code>\[\]  方括号</code><br><code>\(\)  括弧</code><br><code>\#   井字号</code><br><code>\+   加号</code><br><code>\-   减号</code><br><code>\.   英文句点</code><br><code>\!   惊叹号</code></p>
+<h4 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> value=<span class="number">10000</span>;</div><div class="line">  <span class="built_in">string</span> str;</div><div class="line"></div><div class="line">  <span class="built_in">stringstream</span> ss;</div><div class="line">  ss&lt;&lt;value;</div><div class="line">  ss&gt;&gt;str;</div><div class="line">  <span class="built_in">cout</span>&lt;&lt;str&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="语法高亮对应代码"><a href="#语法高亮对应代码" class="headerlink" title="语法高亮对应代码"></a>语法高亮对应代码</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">语言</th>
+<th style="text-align:left">对应代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Bash</td>
+<td style="text-align:left">bash, sh, zsh</td>
+</tr>
+<tr>
+<td style="text-align:left">C#</td>
+<td style="text-align:left">cs, csharp</td>
+</tr>
+<tr>
+<td style="text-align:left">C++</td>
+<td style="text-align:left">cpp, c, cc, h, c++lar, h++, hpp</td>
+</tr>
+<tr>
+<td style="text-align:left">CSS</td>
+<td style="text-align:left">css</td>
+</tr>
+<tr>
+<td style="text-align:left">DOS</td>
+<td style="text-align:left">dos, bat, cmd</td>
+</tr>
+<tr>
+<td style="text-align:left">HTML, XML</td>
+<td style="text-align:left">xml, html, xhtml, rss, atom, xjb, xsd, xsl, plist</td>
+</tr>
+<tr>
+<td style="text-align:left">JSON</td>
+<td style="text-align:left">json</td>
+</tr>
+<tr>
+<td style="text-align:left">Java</td>
+<td style="text-align:left">java, jsp</td>
+</tr>
+<tr>
+<td style="text-align:left">JavaScript</td>
+<td style="text-align:left">javascript, js, jsx</td>
+</tr>
+<tr>
+<td style="text-align:left">Objective C</td>
+<td style="text-align:left">objectivec, mm, objc, obj-c</td>
+</tr>
+<tr>
+<td style="text-align:left">PHP</td>
+<td style="text-align:left">php, php3, php4, php5, php6</td>
+</tr>
+<tr>
+<td style="text-align:left">Ruby</td>
+<td style="text-align:left">ruby, rb, gemspec, podspec, thor, irb</td>
+</tr>
+<tr>
+<td style="text-align:left">Python</td>
+<td style="text-align:left">python, py, gyp</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">sql</td>
+</tr>
+<tr>
+<td style="text-align:left">Swift</td>
+<td style="text-align:left">swift</td>
+</tr>
+<tr>
+<td style="text-align:left">VB.Net</td>
+<td style="text-align:left">vbnet, vb</td>
+</tr>
+</tbody>
+</table>
+<h4 id="useful-website"><a href="#useful-website" class="headerlink" title="useful website"></a>useful website</h4><p>icon resource<br><a href="https://icons8.com/" target="_blank" rel="external">Free download of 4220+ icons in Windows 8, iOS 7 and Android style</a></p>
+<p>perfect website<br><a href="www.psd2html.com/10-years-in-review/">psd2html.com10 years conquering the web!</a><br><a href="www.freshnotcanned.com">fresh…not canned.</a></p>
+<!--
+访问量统计->https://www.zhihu.com/question/39620187/answer/83708468
+添加『微搜索』->http://www.jianshu.com/p/739bf1305e66-->
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/17/C_Cpp/C_Cpp Project/ProcessManager-I-cpp-time/" rel="next" title="ProcessManager I cpp time">
+                <i class="fa fa-chevron-left"></i> ProcessManager I cpp time
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/15/BasicComputerTheory/Compiler-Basics-Chapter-1/" rel="prev" title="Compiler Basics Chapter 1">
+                Compiler Basics Chapter 1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule" />
+          <p class="site-author-name" itemprop="name">crepuscule</p>
+          <p class="site-description motion-element" itemprop="description">my individual blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一级标题"><span class="nav-number">1.</span> <span class="nav-text">一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二级标题"><span class="nav-number">1.1.</span> <span class="nav-text">二级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无序列表"><span class="nav-number">1.1.1.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序列表"><span class="nav-number">1.1.2.</span> <span class="nav-text">有序列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入链接"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">插入链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章的内部链接"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">文章的内部链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入图片"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分割线"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除线"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单行命令或区段代码"><span class="nav-number">1.1.2.7.</span> <span class="nav-text">单行命令或区段代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反斜杠转义"><span class="nav-number">1.1.2.8.</span> <span class="nav-text">反斜杠转义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码段"><span class="nav-number">1.1.2.9.</span> <span class="nav-text">代码段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语法高亮对应代码"><span class="nav-number">1.1.2.10.</span> <span class="nav-text">语法高亮对应代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#useful-website"><span class="nav-number">1.1.2.11.</span> <span class="nav-text">useful website</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
