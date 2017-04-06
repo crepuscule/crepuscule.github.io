@@ -1,0 +1,843 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Ruby," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Crepuscule" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Basic Ruby
+by RUNOOB.COM
+
+ruby的交互shell和命令行编译选项ruby的交互式shell为irb，输入irb命令就可以进行交互12345678[crepuscule@bogon basic]$ irbirb(main):001:0&amp;gt; puts 4**(1/2)1=&amp;gt; nilirb(main):002:0&amp;gt; puts 4**(1/2.0)2.0=&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby Learning 1">
+<meta property="og:url" content="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="Basic Ruby
+by RUNOOB.COM
+
+ruby的交互shell和命令行编译选项ruby的交互式shell为irb，输入irb命令就可以进行交互12345678[crepuscule@bogon basic]$ irbirb(main):001:0&amp;gt; puts 4**(1/2)1=&amp;gt; nilirb(main):002:0&amp;gt; puts 4**(1/2.0)2.0=&amp;gt">
+<meta property="og:updated_time" content="2017-04-05T14:05:11.978Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ruby Learning 1">
+<meta name="twitter:description" content="Basic Ruby
+by RUNOOB.COM
+
+ruby的交互shell和命令行编译选项ruby的交互式shell为irb，输入irb命令就可以进行交互12345678[crepuscule@bogon basic]$ irbirb(main):001:0&amp;gt; puts 4**(1/2)1=&amp;gt; nilirb(main):002:0&amp;gt; puts 4**(1/2.0)2.0=&amp;gt">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/"/>
+
+
+
+
+
+  <title> Ruby Learning 1 | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3ef101c4ba97bd169b7be0f2ef5d1d6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            A propos
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule_scintillant">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ruby Learning 1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T08:54:29+08:00">
+                2017-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Ruby</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby/Ruby-Basic/" itemprop="url" rel="index">
+                    <span itemprop="name">Ruby Basic</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Basic-Ruby"><a href="#Basic-Ruby" class="headerlink" title="Basic Ruby"></a>Basic Ruby</h2><blockquote>
+<p>by RUNOOB.COM</p>
+</blockquote>
+<h2 id="ruby的交互shell和命令行编译选项"><a href="#ruby的交互shell和命令行编译选项" class="headerlink" title="ruby的交互shell和命令行编译选项"></a>ruby的交互shell和命令行编译选项</h2><p>ruby的交互式shell为irb，输入irb命令就可以进行交互<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[crepuscule@bogon basic]$ irb</div><div class="line">irb(main):001:0&gt; puts 4**(1/2)</div><div class="line">1</div><div class="line">=&gt; nil</div><div class="line">irb(main):002:0&gt; puts 4**(1/2.0)</div><div class="line">2.0</div><div class="line">=&gt; nil</div><div class="line">irb(main):003:0&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[crepuscule@bogon basic]$ ruby -c test.rb   <span class="comment"># 仅检查语法</span></div><div class="line">Syntax OK</div><div class="line">[crepuscule@bogon basic]$ ruby <span class="_">-d</span> test.rb   <span class="comment"># 开启调试模式</span></div><div class="line">[crepuscule@bogon basic]$ ruby -T <span class="comment"># [level=1] turn on tainting checks</span></div><div class="line">[crepuscule@bogon basic]$ ruby -v <span class="comment"># [level=2] print version number, then turn on verbose mode</span></div><div class="line">[crepuscule@bogon basic]$ ruby -w <span class="comment"># turn warnings on for your script</span></div><div class="line">[crepuscule@bogon basic]$ ruby -W <span class="comment">#[level=2] set warning level; 0=silence, 1=medium, 2=verbose</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="中文编码"><a href="#中文编码" class="headerlink" title="中文编码"></a>中文编码</h2><p>加入coding声明utf-8即可，一般均支持中文<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/ruby -w</span></div><div class="line"><span class="comment">#-*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line">puts <span class="string">"你好，世界"</span></div></pre></td></tr></table></figure></p>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>Ruby是一门一个问题有多种解法的语言，所以其语法比较自由，格式随性。每种功能均有多种实现。</p>
+<h3 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">puts  <span class="string">"输出并换行"</span></div><div class="line">print <span class="string">"不换行"</span></div><div class="line">a = <span class="number">10</span></div><div class="line">puts <span class="string">"井号后接变量可以输出变量 <span class="subst">#&#123;a&#125;</span>"</span></div></pre></td></tr></table></figure>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># # 是常用的单行注释</span></div><div class="line"><span class="comment">=begin</span></div><div class="line">这是多行注释（嵌入式文档注释），极具美感</div><div class="line">=end</div></pre></td></tr></table></figure>
+<h3 id="标识符和保留字"><a href="#标识符和保留字" class="headerlink" title="标识符和保留字"></a>标识符和保留字</h3><p>ruby中以字母，数字，下划线组合而成的变量，方法，常量名称的总称为标识符。<br>保留字即关键字，共有40个<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">BEGIN</span>	<span class="keyword">do</span>	<span class="keyword">next</span>	<span class="keyword">then</span></div><div class="line"><span class="keyword">END</span>	<span class="keyword">else</span>	<span class="literal">nil</span>	<span class="literal">true</span></div><div class="line"><span class="keyword">alias</span>	<span class="keyword">elsif</span>	<span class="keyword">not</span>	<span class="keyword">undef</span></div><div class="line"><span class="keyword">and</span>	<span class="keyword">end</span>	<span class="keyword">or</span>	<span class="keyword">unless</span></div><div class="line"><span class="keyword">begin</span>	<span class="keyword">ensure</span>	<span class="keyword">redo</span>	<span class="keyword">until</span></div><div class="line"><span class="keyword">break</span>	<span class="literal">false</span>	<span class="keyword">rescue</span>	<span class="keyword">when</span></div><div class="line"><span class="keyword">case</span>	<span class="keyword">for</span>	<span class="keyword">retry</span>	<span class="keyword">while</span></div><div class="line"><span class="class"><span class="keyword">class</span>	<span class="title">if</span>	<span class="title">return</span>	<span class="title">while</span></span></div><div class="line"><span class="function"><span class="keyword">def</span>	<span class="title">in</span>	<span class="title">self</span>	__FILE__</span></div><div class="line"><span class="keyword">defined</span>?	<span class="class"><span class="keyword">module</span>	<span class="title">super</span>	__LINE__</span></div></pre></td></tr></table></figure></p>
+<h3 id="Ruby的数据类型"><a href="#Ruby的数据类型" class="headerlink" title="Ruby的数据类型"></a>Ruby的数据类型</h3><ol>
+<li><p>Integer 整形<br>整型分两种，如果小于31位，为Fixnum实例，其范围从 -2^30 到 2^30-1 或 -2^62 到 2^62-1；大于31位，即超过4字节，为Bignum实例。<br>整数有四种进制，前缀0 对应 octal，0x 对应 hex，0b 对应 binary，十进制没有前缀。<br>下划线允许出现在数字字符串中，解释器将忽视下划线</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">-<span class="number">512</span>    <span class="comment">#Fixnum 10进制</span></div><div class="line"><span class="number">40_000_000</span>  <span class="comment">#Fixnum 10进制,带有下划线，可用于标识位数</span></div><div class="line"><span class="number">057</span>     <span class="comment">#Fixnum 8进制,以0作为前缀</span></div><div class="line"><span class="number">0xcfee</span>  <span class="comment">#Fixnum 16进制,以0x作为前缀</span></div><div class="line">0b1001<span class="number">0</span> <span class="comment">#Fixnum 2进制,以0b作为前缀</span></div><div class="line"></div><div class="line"><span class="string">"U"</span>.ord  <span class="comment">#ruby中的字符同样和整形互通，可以使用ord(er) 属性来获得字符对应的10进制字符编码</span></div><div class="line"><span class="string">?\n</span>      <span class="comment"># 换行符（0x0a）的编码？？？？</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Float 浮点型</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">123.4</span>                <span class="comment"># 浮点值</span></div><div class="line"><span class="number">1.0</span>e6                <span class="comment"># 科学记数法</span></div><div class="line"><span class="number">4</span>E2<span class="number">0</span>                 <span class="comment"># e大小写无所谓</span></div><div class="line"><span class="number">8</span>e-<span class="number">20</span>                <span class="comment"># 指数前的符号也可以表现出来</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>基本算数操作<br>除了普通加减乘除外，ruby还支持乘方运算 ** ，而且指数可以使用小数</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">puts <span class="number">4</span>**(<span class="number">1</span>/<span class="number">2.0</span>) <span class="comment">#4的1/2次方，即4的算数平方根为2(注意此处应为1/2.0=0.5 而非 1/2=0)</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>String 字符串类型<br>双引号标记的字符串允许替换和使用反斜线符号，单引号标记的字符串不允许替换，且只允许使用 \ 和 \’ 两个反斜线符号。<br>在打印字符串时，使用#{xxx}来替换 Ruby 表达式的值为一个字符串。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">puts <span class="string">"32*45 = <span class="subst">#&#123;<span class="number">32</span>*<span class="number">45</span>&#125;</span>"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>转义字符</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">\n	换行符 (<span class="number">0x0a</span>)</div><div class="line">\r	回车符 (<span class="number">0x0d</span>)</div><div class="line">\f	换页符 (<span class="number">0x0c</span>)</div><div class="line">\b	退格键 (<span class="number">0x08</span>)</div><div class="line">\a	报警符 Bell (<span class="number">0x07</span>)</div><div class="line">\e	转义符 (<span class="number">0x1b</span>)</div><div class="line">\s	空格符 (<span class="number">0x20</span>)</div><div class="line">\nnn	八进制表示法 (n 是 <span class="number">0</span>-<span class="number">7</span>)</div><div class="line">\xnn	十六进制表示法 (n 是 <span class="number">0</span>-<span class="number">9</span>、a-f 或 A-F)</div><div class="line">\cx, \C-x	Control-x</div><div class="line">\M-x	Meta-x (c <span class="params">| 0x80)</span></div><div class="line">\M-\C-x	Meta-Control-x</div><div class="line">\x	字符 x</div></pre></td></tr></table></figure>
+</li>
+<li><p>Array 数组<br>数组使用[]来定义，通过[]索引访问，可用+，-合并及删除元素，而且在不适用”!”的情况下会建立拷贝进行这些操作，用&lt;&lt;追加元素，使用*重复数组元素，使用|和&amp;做并集和交集操作。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ary = [<span class="string">'c++'</span>，<span class="number">0x1080</span>,<span class="number">89</span>,<span class="literal">true</span>,<span class="string">"a stirng"</span>,<span class="string">"array in ruby can be any type!"</span>]</div><div class="line">ary.each <span class="keyword">do</span> <span class="params">|i|</span></div><div class="line">  puts i</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Hash 哈希类型<br>Ruby 哈希是在大括号内放置一系列键/值对，键和值之间使用逗号和序列 =&gt; 分隔。它和python中的enumerate()函数返回的类型类似，是一对键和值的组合。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hsh = &#123;<span class="string">'C++'</span>=&gt;<span class="string">"很难的语言"</span>,<span class="string">'JAVA'</span>=&gt;<span class="string">"如今非常火的语言"</span>,<span class="string">'Python'</span>=&gt;<span class="string">"人气极高的脚本语言"</span>,<span class="string">'Ruby'</span>=&gt;<span class="string">"因为Ruby on Rails而一炮走红的脚本语言"</span>&#125;</div><div class="line">hsh.each <span class="keyword">do</span> <span class="params">|key,value|</span></div><div class="line">    print key, <span class="string">"是"</span>, value, <span class="string">"\n"</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Range 范围类型<br>一个范围表示一个区间。 使用 .. 构造的范围从开始值运行到结束值（包含结束值）。使用 … 构造的范围从开始值运行到结束值（不包含结束值），即(1..5)包括1-5，而(1…5)包括1-4。当作为一个迭代器使用时，范围会返回序列中的每个值。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="number">10</span>..<span class="number">15</span>).each <span class="keyword">do</span> <span class="params">|n|</span></div><div class="line">    print n, <span class="string">' '</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="BEGIN，END语句"><a href="#BEGIN，END语句" class="headerlink" title="BEGIN，END语句"></a>BEGIN，END语句</h3><p>BEGIN 块中的语句将最先执行，如果有多个BEGIN块，则按先后顺序执行BEGIN 块再执行主程序<br>BEGIN 块中的语句将最后执行，如果有多个END块，则在执行完成主程序后，按从后往前的顺序执行END块<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> puts <span class="string">"接着运行"</span>  <span class="comment"># 运行顺序 3</span></div><div class="line"></div><div class="line"> <span class="keyword">BEGIN</span> &#123;    <span class="comment"># 运行顺序 1</span></div><div class="line">   puts <span class="string">"首先运行1"</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">BEGIN</span> &#123;     <span class="comment"># 运行顺序 2</span></div><div class="line">  puts <span class="string">"首先运行2"</span></div><div class="line">&#125;</div><div class="line">print <span class="string">"接着puts运行"</span> <span class="comment"># 运行顺序 4</span></div><div class="line"></div><div class="line"><span class="keyword">END</span> &#123;      <span class="comment"># 运行顺序 6</span></div><div class="line">  print <span class="string">"最后运行1"</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">END</span> &#123;</div><div class="line">  print <span class="string">"最后运行2"</span> <span class="comment"># 运行顺序 5</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Here-Document"><a href="#Here-Document" class="headerlink" title="Here Document"></a>Here Document</h3><p>ruby中的多行字符串，使用 &lt;&lt; 和一个指定的终止字符串来限定范围，&lt;&lt; 和终止符之间必须没有空格。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">print <span class="string">&lt;&lt;EOF</span></div><div class="line">    两个结束字符串中间</div><div class="line">    所有字符均被录入，包括空格</div><div class="line">EOF</div><div class="line"><span class="comment"># 也可以将终止字符串用""括起</span></div><div class="line">print &lt;&lt;<span class="string">"EOF"</span></div><div class="line">    两个结束字符串中间</div><div class="line">    所有字符均被录入，包括空格</div><div class="line">EOF</div><div class="line"><span class="comment"># 使用``括起的终止字符串中间的字符串可以是可执行的系统命令</span></div><div class="line">print &lt;&lt;<span class="string">`EOF`</span></div><div class="line">    cd ..</div><div class="line">    ls -l</div><div class="line">EOF</div><div class="line"><span class="comment"># 可以以下面的方式对他门进行堆叠</span></div><div class="line">print &lt;&lt;<span class="string">"first"</span> ,&lt;&lt;<span class="string">"sec"</span></div><div class="line">    两个结束字符串中间</div><div class="line">first</div><div class="line">    所有字符均被录入，包括空格</div><div class="line">sec</div></pre></td></tr></table></figure></p>
+<h3 id="string-amp-array"><a href="#string-amp-array" class="headerlink" title="string&amp;array"></a>string&amp;array</h3><p>! 强制改变字符串变量中的指定字符不设立copy串<br>[] 搜寻字符串中的指定字符，但不一定搜寻所有<br>.to_a :<strong>to_a</strong> rray<br>.to_s :<strong>to_s</strong> tring<br>.reverse 反转字符串<br>.join 将数组各个元素合并起来<br>.incldue<br>.downcase</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">poem=<span class="string">"this is a poem</span></div><div class="line">  this will be a good poem"</div><div class="line"></div><div class="line">poem.<span class="keyword">include</span>? <span class="string">"my hand"</span> <span class="comment">#问号要紧跟着include方法</span></div><div class="line">poem.downcase</div></pre></td></tr></table></figure>
+<h2 id="Ruby的类和对象"><a href="#Ruby的类和对象" class="headerlink" title="Ruby的类和对象"></a>Ruby的类和对象</h2><p>Ruby是一门完全面向对象的语言。它有数据封装，数据抽象，多态性，继承等特性,因此，ruby更需要提前了解类的概念。</p>
+<h3 id="ruby类中的变量"><a href="#ruby类中的变量" class="headerlink" title="ruby类中的变量"></a>ruby类中的变量</h3><ul>
+<li>局部变量：指在方法中定义的在方法外就不可以使用的方法，局部变量以_或小写字母开头</li>
+<li>实例变量：指类中的普通成员变量，它只有在被初始化的实例中才可以被使用，实例变量以@开头</li>
+<li>类变量：类似于c++中的static成员变量，它属于类，所以它不仅可以被该类的实例使用，还可以通过类名直接访问。类变量以@@ 开头</li>
+<li>全局变量：在程序中的任意位置都可以被访问，可以跨越类的约束。全局变量以$ 开头<h3 id="new方法"><a href="#new方法" class="headerlink" title="new方法"></a>new方法</h3>使用这种方创建类的实例<code>instance1 = Classes.new</code><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3>首先注意，ruby类一般首字母大写，其他字母小写<br>通过重写initialize函数来自定义构造函数<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Classes</span></span></div><div class="line">   @@count=<span class="number">0</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(id, name)</span></span></div><div class="line">      @id=id</div><div class="line">      @name=name</div><div class="line">   <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">instance1=Classes.new(<span class="number">1</span>,<span class="string">"xiaoming"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Classes</span>   </span></div><div class="line">   $global = <span class="number">12</span></div><div class="line">   @id = <span class="number">1</span></div><div class="line">   @name = <span class="string">"daming"</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">showdata</span> <span class="comment"># 成员函数</span></span></div><div class="line">        puts @id</div><div class="line">        puts @name</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line">instance1=Classes.new</div><div class="line">instance1.showdata <span class="comment">#调用方法时，如果方法没有参数，可以省去()</span></div><div class="line"><span class="string">``</span><span class="string">`                              </span></div><div class="line"></div><div class="line"></div><div class="line">## Ruby控制语句</div><div class="line">### Ruby判断</div><div class="line">- if else</div><div class="line"></div><div class="line">`<span class="string">``</span> ruby</div><div class="line"><span class="keyword">if</span> conditional [<span class="keyword">then</span>] <span class="comment">#[]内为可以省略的部分</span></div><div class="line">  exp1</div><div class="line">[<span class="keyword">elsif</span> conditional [<span class="keyword">then</span>]</div><div class="line">  exp2 ]</div><div class="line">[<span class="keyword">else</span></div><div class="line">  exp3 ]</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>``` ruby<br>if a==4 then a = 7 end</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ruby/" rel="tag"># Ruby</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Data-Structure-Algorithm/Advanced-Algorithm/DSandAl/Dynamic-Programming/" rel="next" title="Dynamic Programming">
+                <i class="fa fa-chevron-left"></i> Dynamic Programming
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Linux/Linux-Distributions/Arch-Linux/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/" rel="prev" title="Arch Linux Installation">
+                Arch Linux Installation <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/"
+           data-title="Ruby Learning 1" data-url="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule_scintillant" />
+          <p class="site-author-name" itemprop="name">crepuscule_scintillant</p>
+          <p class="site-description motion-element" itemprop="description">a brony's Tech blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crepuscule" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/glimmer-twilight" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2495066253/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Ruby"><span class="nav-number">1.</span> <span class="nav-text">Basic Ruby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ruby的交互shell和命令行编译选项"><span class="nav-number">2.</span> <span class="nav-text">ruby的交互shell和命令行编译选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文编码"><span class="nav-number">3.</span> <span class="nav-text">中文编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法"><span class="nav-number">4.</span> <span class="nav-text">基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输出语句"><span class="nav-number">4.1.</span> <span class="nav-text">输出语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">4.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标识符和保留字"><span class="nav-number">4.3.</span> <span class="nav-text">标识符和保留字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ruby的数据类型"><span class="nav-number">4.4.</span> <span class="nav-text">Ruby的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BEGIN，END语句"><span class="nav-number">4.5.</span> <span class="nav-text">BEGIN，END语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Here-Document"><span class="nav-number">4.6.</span> <span class="nav-text">Here Document</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string-amp-array"><span class="nav-number">4.7.</span> <span class="nav-text">string&array</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby的类和对象"><span class="nav-number">5.</span> <span class="nav-text">Ruby的类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ruby类中的变量"><span class="nav-number">5.1.</span> <span class="nav-text">ruby类中的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new方法"><span class="nav-number">5.2.</span> <span class="nav-text">new方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">5.3.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员函数"><span class="nav-number">5.4.</span> <span class="nav-text">成员函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule_scintillant</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"crepuscule"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

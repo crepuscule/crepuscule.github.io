@@ -1,0 +1,826 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Docker," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Crepuscule" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Docker学习笔记Docker的安装Docker官网本文在fedora中安装docker：
+
+仅fedora24以上版本支持docker，安装前卸载旧的版本
+123456$ sudo dnf remove docker \            docker-common \            container-selinux \            docker-selinux \">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker Learning Note">
+<meta property="og:url" content="http://Crepuscule.com/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="Docker学习笔记Docker的安装Docker官网本文在fedora中安装docker：
+
+仅fedora24以上版本支持docker，安装前卸载旧的版本
+123456$ sudo dnf remove docker \            docker-common \            container-selinux \            docker-selinux \">
+<meta property="og:updated_time" content="2017-04-04T10:48:24.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker Learning Note">
+<meta name="twitter:description" content="Docker学习笔记Docker的安装Docker官网本文在fedora中安装docker：
+
+仅fedora24以上版本支持docker，安装前卸载旧的版本
+123456$ sudo dnf remove docker \            docker-common \            container-selinux \            docker-selinux \">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/"/>
+
+
+
+
+
+  <title> Docker Learning Note | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3ef101c4ba97bd169b7be0f2ef5d1d6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            A propos
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule_scintillant">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Docker Learning Note
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T10:16:09+08:00">
+                2017-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Operation-Maintenance/" itemprop="url" rel="index">
+                    <span itemprop="name">Operation & Maintenance</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Operation-Maintenance/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Docker学习笔记"><a href="#Docker学习笔记" class="headerlink" title="Docker学习笔记"></a>Docker学习笔记</h2><h3 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h3><p><a href="https://www.docker.com" target="_blank" rel="external">Docker官网</a><br>本文在fedora中安装docker：</p>
+<ol>
+<li><p>仅fedora24以上版本支持docker，安装前卸载旧的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ sudo dnf remove docker \</div><div class="line">            docker-common \</div><div class="line">            container-selinux \</div><div class="line">            docker-selinux \</div><div class="line">            docker-engine</div><div class="line"><span class="comment"># docker的镜像存储路径在/var/lib/docker/</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>设置仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 首先配置dnf</span></div><div class="line">$ sudo dnf -y install dnf-plugins-core</div><div class="line"><span class="comment"># 添加docker的仓库</span></div><div class="line">$ sudo dnf config-manager \</div><div class="line">    --add-repo \</div><div class="line">    https://download.docker.com/linux/fedora/docker-ce.repo</div><div class="line"><span class="comment"># 可选，开启edge边缘库</span></div><div class="line">$ sudo dnf config-manager --enable docker-ce-edge</div><div class="line"><span class="comment"># 关闭dege repository</span></div><div class="line">$ sudo dnf config-manager --disable docker-ce-edge</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>开始安装docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用dnf安装</span></div><div class="line">$ sudo dnf install -y docker-ce</div><div class="line"><span class="comment"># 也可以自己选择包安装</span></div><div class="line">$ dnf list docker-ce.x86_64  --showduplicates |sort -r</div><div class="line">docker-ce.x86_64    17.03.0.fc24      docker-ce-stable  </div><div class="line">$ sudo dnf -y install docker-ce-&lt;VERSION&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>卸载docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo dnf remove docker-ce</div><div class="line"><span class="comment"># 如果你想同时移除你的docker镜像，运行：</span></div><div class="line">$ sudo rm -rf /var/lib/docker</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="docker的基本使用"><a href="#docker的基本使用" class="headerlink" title="docker的基本使用"></a>docker的基本使用</h3><ol>
+<li>docker的基本配置<br>首先要设置docker的服务启动<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 设置docker的开机自启动</span></div><div class="line">$ sudo systemctl <span class="built_in">enable</span> docker</div><div class="line"><span class="comment"># 开启docker守护进程</span></div><div class="line">$ sudo systemctl start docker</div><div class="line"><span class="comment"># 如果对docker配置文件进行了更改，则应该重启docker</span></div><div class="line">$ sudo systemctl restart docker</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>docker的官方源：docker hub 在中国速度慢，甚至有时无法下载，所以可以使用中国的源。<br>首先在Dao could上注册帐号，接着root权限打开/etc/default/doocker 配置文件，没有则新建一个。<br>源内容如下：<br><code>DOCKER_OPTS=&quot;-H unix:///var/run/docker.sock -H 0.0.0.0:5555&quot;</code><br>改为：<br><code>DOCKER_OPTS=&quot;--registry-mirror=http://yourname.m.daocloud.io&quot;</code><br>其中yourname为你在Dao could上的用户名。</p>
+<ol>
+<li>docker的使用</li>
+</ol>
+<ul>
+<li><p>首先检查版本，未出现报错则说明配置正确</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[user@~]$ docker version</div><div class="line">Client:</div><div class="line"> Version:      1.13.0</div><div class="line"> API version:  1.25</div><div class="line"> Go version:   go1.7.3</div><div class="line"> Git commit:   49bf474</div><div class="line"> Built:        Tue Jan 17 09:48:22 2017</div><div class="line"> OS/Arch:      linux/amd64</div><div class="line"></div><div class="line">Server:</div><div class="line"> Version:      1.13.0</div><div class="line"> API version:  1.25 (minimum version 1.12)</div><div class="line"> Go version:   go1.7.3</div><div class="line"> Git commit:   49bf474</div><div class="line"> Built:        Tue Jan 17 09:48:22 2017</div><div class="line"> OS/Arch:      linux/amd64</div><div class="line"> Experimental: <span class="literal">false</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>docker镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 搜索镜像</span></div><div class="line"> <span class="variable">$sudo</span> docker search  centos</div><div class="line"> NAME                                   DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</div><div class="line">centos                                 The official build of CentOS.                   3173      [OK]       </div><div class="line">jdeathe/centos-ssh                     CentOS-6 6.8 x86_64 / CentOS-7 7.3.1611 x8...   62                   [OK]</div><div class="line">jdeathe/centoser</div><div class="line">ssh-apache-php          CentOS-6 6.8 x86_64 - Apache / PHP-FPM / P...   25                   [OK]</div><div class="line">nimmis/java-centos                     This is docker images of CentOS 7 with dif...   23                   [OK]</div><div class="line">consol/centos-xfce-vnc                 Centos container with <span class="string">"headless"</span> VNC sessi...   22                   [OK]</div><div class="line">gluster/gluster-centos                 Official GlusterFS Image [ CentOS-7 +  Glu...   18                   [OK]</div><div class="line">million12/centos-supervisor            Base CentOS-7 with supervisord launcher, h...   13                   [OK]</div><div class="line">nickistre/centos-lamp                  LAMP on centos setup                            10                   [OK]</div><div class="line"></div><div class="line"><span class="comment"># 拉取镜像</span></div><div class="line">$ sudo docker pull jdeathe/centos-ssh</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Python/Documents/Python/Python-Learning-2/" rel="next" title="Python Learning 2">
+                <i class="fa fa-chevron-left"></i> Python Learning 2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Tools/Git/Tools/Git-Learing/" rel="prev" title="Git Learing">
+                Git Learing <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/"
+           data-title="Docker Learning Note" data-url="http://Crepuscule.com/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule_scintillant" />
+          <p class="site-author-name" itemprop="name">crepuscule_scintillant</p>
+          <p class="site-description motion-element" itemprop="description">a brony's Tech blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crepuscule" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/glimmer-twilight" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2495066253/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Docker学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker的安装"><span class="nav-number">1.1.</span> <span class="nav-text">Docker的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker的基本使用"><span class="nav-number">1.2.</span> <span class="nav-text">docker的基本使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule_scintillant</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"crepuscule"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

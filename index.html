@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Crepuscule" type="application/atom+xml" />
+
 
 
 
@@ -134,6 +136,16 @@
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3ef101c4ba97bd169b7be0f2ef5d1d6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -222,6 +234,26 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            A propos
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -251,7 +283,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/04/03/Operation & Maintenance/Docker/Docker-Learning-Note-2/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Instances-Logs/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -276,7 +308,175 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/03/Operation & Maintenance/Docker/Docker-Learning-Note-2/" itemprop="url">
+                <a class="post-title-link" href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Instances-Logs/" itemprop="url">
+                  Docker Instances Logs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T12:52:33+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Operation-Maintenance/" itemprop="url" rel="index">
+                    <span itemprop="name">Operation & Maintenance</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Operation-Maintenance/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Instances-Logs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Instances-Logs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Docker-Logs"><a href="#Docker-Logs" class="headerlink" title="Docker Logs"></a>Docker Logs</h2><h3 id="2017-4-5-13-00"><a href="#2017-4-5-13-00" class="headerlink" title="2017.4.5 13:00"></a>2017.4.5 13:00</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line">使用镜像：</div><div class="line">hub.c.163.com/library/owncloud        latest              8720bc439c27        8 weeks ago         549 MB</div><div class="line">使用命令：</div><div class="line">[crepuscule@bogon ~]$ docker run --name owncloud-v1 -p 8080:80 -v /tools/docker/apps:/var/www/html/apps -v /tools/docker/config:/var/www/html/config  -v /tools/docker/data:/var/www/html/data hub.c.163.com/library/owncloud</div><div class="line">[crepuscule@bogon owncloud]$ docker inspect owncloud-v1</div><div class="line">[</div><div class="line">    &#123;</div><div class="line">        &quot;Id&quot;: &quot;ec4d0ebe08a3797f79d04dd04cc25c070c772831c3b39217be8a4766e72e662d&quot;,</div><div class="line">        &quot;Created&quot;: &quot;2017-04-05T04:56:34.806584499Z&quot;,</div><div class="line">        &quot;Path&quot;: &quot;/entrypoint.sh&quot;,</div><div class="line">        &quot;Args&quot;: [</div><div class="line">            &quot;apache2-foreground&quot;</div><div class="line">        ],</div><div class="line">        &quot;State&quot;: &#123;</div><div class="line">            &quot;Status&quot;: &quot;running&quot;,</div><div class="line">            &quot;Running&quot;: true,</div><div class="line">            &quot;Paused&quot;: false,</div><div class="line">            &quot;Restarting&quot;: false,</div><div class="line">            &quot;OOMKilled&quot;: false,</div><div class="line">            &quot;Dead&quot;: false,</div><div class="line">            &quot;Pid&quot;: 4066,</div><div class="line">            &quot;ExitCode&quot;: 0,</div><div class="line">            &quot;Error&quot;: &quot;&quot;,</div><div class="line">            &quot;StartedAt&quot;: &quot;2017-04-05T04:56:35.508677216Z&quot;,</div><div class="line">            &quot;FinishedAt&quot;: &quot;0001-01-01T00:00:00Z&quot;</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        &quot;HostConfig&quot;: &#123;</div><div class="line">            &quot;Binds&quot;: [</div><div class="line">                &quot;/tools/docker/config:/var/www/html/config&quot;,</div><div class="line">                &quot;/tools/docker/data:/var/www/html/data&quot;,</div><div class="line">                &quot;/tools/docker/apps:/var/www/html/apps&quot;</div><div class="line">            ],</div><div class="line"></div><div class="line">        &quot;Mounts&quot;: [</div><div class="line">            &#123;</div><div class="line">                &quot;Type&quot;: &quot;bind&quot;,</div><div class="line">                &quot;Source&quot;: &quot;/tools/docker/apps&quot;,</div><div class="line">                &quot;Destination&quot;: &quot;/var/www/html/apps&quot;,</div><div class="line">                &quot;Mode&quot;: &quot;&quot;,</div><div class="line">                &quot;RW&quot;: true,</div><div class="line">                &quot;Propagation&quot;: &quot;&quot;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                &quot;Type&quot;: &quot;volume&quot;,</div><div class="line">                &quot;Name&quot;: &quot;bb141ae7c198757a5f05929ddc9e291b5cbcc3dcf9273b30a8a00d5921409e0c&quot;,</div><div class="line">                &quot;Source&quot;: &quot;/var/lib/docker/volumes/bb141ae7c198757a5f05929ddc9e291b5cbcc3dcf9273b30a8a00d5921409e0c/_data&quot;,</div><div class="line">                &quot;Destination&quot;: &quot;/var/www/html&quot;,</div><div class="line">                &quot;Driver&quot;: &quot;local&quot;,</div><div class="line">                &quot;Mode&quot;: &quot;&quot;,</div><div class="line">                &quot;RW&quot;: true,</div><div class="line">                &quot;Propagation&quot;: &quot;&quot;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                &quot;Type&quot;: &quot;bind&quot;,</div><div class="line">                &quot;Source&quot;: &quot;/tools/docker/config&quot;,</div><div class="line">                &quot;Destination&quot;: &quot;/var/www/html/config&quot;,</div><div class="line">                &quot;Mode&quot;: &quot;&quot;,</div><div class="line">                &quot;RW&quot;: true,</div><div class="line">                &quot;Propagation&quot;: &quot;&quot;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                &quot;Type&quot;: &quot;bind&quot;,</div><div class="line">                &quot;Source&quot;: &quot;/tools/docker/data&quot;,</div><div class="line">                &quot;Destination&quot;: &quot;/var/www/html/data&quot;,</div><div class="line">                &quot;Mode&quot;: &quot;&quot;,</div><div class="line">                &quot;RW&quot;: true,</div><div class="line">                &quot;Propagation&quot;: &quot;&quot;</div><div class="line">            &#125;</div><div class="line">        ],</div><div class="line">        &quot;Config&quot;: &#123;</div><div class="line">            &quot;Hostname&quot;: &quot;ec4d0ebe08a3&quot;,</div><div class="line">            &quot;Domainname&quot;: &quot;&quot;,</div><div class="line">            &quot;User&quot;: &quot;&quot;,</div><div class="line">            &quot;AttachStdin&quot;: false,</div><div class="line">            &quot;AttachStdout&quot;: true,</div><div class="line">            &quot;AttachStderr&quot;: true,</div><div class="line">            &quot;ExposedPorts&quot;: &#123;</div><div class="line">                &quot;80/tcp&quot;: &#123;&#125;</div><div class="line">            &#125;,</div><div class="line"></div><div class="line">            &quot;Cmd&quot;: [</div><div class="line">                &quot;apache2-foreground&quot;</div><div class="line">            ],</div><div class="line">            &quot;ArgsEscaped&quot;: true,</div><div class="line">            &quot;Image&quot;: &quot;hub.c.163.com/library/owncloud&quot;,</div><div class="line">            &quot;Volumes&quot;: &#123;</div><div class="line">                &quot;/var/www/html&quot;: &#123;&#125;</div><div class="line">            &#125;,</div><div class="line">            &quot;WorkingDir&quot;: &quot;/var/www/html&quot;,</div><div class="line">            &quot;Entrypoint&quot;: [</div><div class="line">                &quot;/entrypoint.sh&quot;</div><div class="line">            ],</div><div class="line">            &quot;OnBuild&quot;: null,</div><div class="line">            &quot;Labels&quot;: &#123;&#125;</div><div class="line">        &#125;,</div><div class="line">        &quot;NetworkSettings&quot;: &#123;</div><div class="line"></div><div class="line">            &quot;Ports&quot;: &#123;</div><div class="line">                &quot;80/tcp&quot;: [</div><div class="line">                    &#123;</div><div class="line">                        &quot;HostIp&quot;: &quot;0.0.0.0&quot;,</div><div class="line">                        &quot;HostPort&quot;: &quot;8080&quot;</div><div class="line">                    &#125;</div><div class="line">                ]</div><div class="line">            &#125;,</div></pre></td></tr></table></figure>
+<p>运行情况：<br>  运行正常，但是如果使用mysql数据库，需要使用外挂的mysql容器实现，目前使用的是</p>
+<h3 id="2017-4-5-16-00"><a href="#2017-4-5-16-00" class="headerlink" title="2017.4.5 16:00"></a>2017.4.5 16:00</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">下载镜像，</div><div class="line">daocloud.io/library/mysql，它可以使用volumes</div><div class="line">使用命令：</div><div class="line">docker pull daocloud.io/library/mysql:8</div><div class="line">[crepuscule@bogon ~]$ docker run --name owncloud-mysql -v /tools/docker/mysql:/var/lib/mysql <span class="_">-e</span> MYSQL_ROOT_PASSWORD=12345678  daocloud.io/library/mysql:8</div><div class="line"><span class="comment"># 使用-e 指定了该数据库容器的密码</span></div><div class="line"></div><div class="line">[crepuscule@bogon ~]$ docker run --name owncloud-v2 --link owncloud-mysql:mysql -p 8080:80 -v /tools/docker/owncloud:/var/www/html  hub.c.163.com/library/owncloud</div><div class="line">无法连接mysql数据库，想进入owncloud内查看mysql情况，发现mysql命令根本无法使用，这里没有安装mysql</div></pre></td></tr></table></figure>
+<h3 id="2017-4-5-17-00"><a href="#2017-4-5-17-00" class="headerlink" title="2017.4.5 17:00"></a>2017.4.5 17:00</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">使用centos镜像尝试容器间数据库连接是否需要两个容器均安装mysql</div><div class="line">首先运行一个mysql实例</div><div class="line">[crepuscule@bogon ~]$ docker run --name centos-mysql -v /tools/testmysql/mysql:/var/lib/mysql <span class="_">-e</span> MYSQL_ROOT_PASSWORD=12345678  daocloud.io/library/mysql:8</div><div class="line">接着运行centos镜像，使用--link参数</div><div class="line">[crepuscule@bogon ~]$  docker run -it --name centos-test-mysql --link centos-mysql:mysql centos /bin/bash</div><div class="line">镜像内没有安装mysql 也不知道如何连接外部mysql容器</div><div class="line">于是yum 安装mysql</div><div class="line">[crepuscule@bogon ~]$ yum list | grep mysql</div><div class="line">[crepuscule@bogon ~]$ yum install -y mysql-server mysql mysql-deve</div><div class="line">[crepuscule@bogon ~]$ service mysqld start</div><div class="line">或者：</div><div class="line">[crepuscule@bogon ~]$ /etc/init.d/mysqld start</div><div class="line">或者centos7使用：</div><div class="line">[crepuscule@bogon ~]$ systemctl start mysql</div><div class="line">结果报错</div><div class="line">[root@fcef23c4f6cb init.d]$ systemctl start mysql</div><div class="line">Failed to get D-Bus connection: Operation not permitted</div></pre></td></tr></table></figure>
+<blockquote>
+<p>因为docker内的root并非真的root，<br>这个的原因是因为dbus-daemon没能启动。其实systemctl并不是不可以使用。将你的CMD或者entrypoint设置为/usr/sbin/init即可。会自动将dbus等服务启动起来。<br>   然后就可以使用systemctl了。命令如下：<br>   docker run –privileged  -ti -e “container=docker”  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note-2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule_scintillant">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note-2/" itemprop="url">
                   Docker Learning Note 2
                 </a>
               
@@ -345,8 +545,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/03/Operation & Maintenance/Docker/Docker-Learning-Note-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/03/Operation & Maintenance/Docker/Docker-Learning-Note-2/" itemprop="commentCount"></span>
+                <a href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note-2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -376,7 +576,7 @@
           <h2 id="Docker-学习笔记-2"><a href="#Docker-学习笔记-2" class="headerlink" title="Docker 学习笔记 2"></a>Docker 学习笔记 2</h2><h3 id="Docker-的数据持久化"><a href="#Docker-的数据持久化" class="headerlink" title="Docker 的数据持久化"></a>Docker 的数据持久化</h3><p>Docker镜像是通过每一次修改时增加数据层的方式进行的。每一次commit新的镜像均会向镜像的上面新加数据层。而使用run命令执行的则是以镜像为基础打造的一个实例，即容器(container)。容器在运行中被修改的数据在执行commit命令后会写入新的镜像。<br>所以docker在实际的应用中，比如web应用中。会有很多容器内部或者web app用户生成的数据。这些数据有些时候是需要保存起来而且不允许丢失的。<br>如果将这写数据直接保存在docker容器中显然会大幅降低docker的易用性，而且会致使容器数据层频繁增加影响效率。除此之外，容器之间的数据通信也是问题。而如果在实际运维中，容器需要更换，那么容器中的数据就需要要从一个容器中转移到另一个容器或者干脆可以共享。<br>为了能够保存(持久化)数据以及共享容器间的数据,Docker提出了Volume的概念.简单来说,Volume就是目录或者文件,它可以绕过默认的联合文件系统,而以正常的文件或者目录的形式存在于宿主机上。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/04/03/Operation & Maintenance/Docker/Docker-Learning-Note-2/#more" rel="contents">
+            <a class="btn" href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note-2/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -417,7 +617,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/31/JAVA/JAVA-in-2017/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/uncategorized/JAVA/JAVA-in-2017/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -442,7 +642,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/31/JAVA/JAVA-in-2017/" itemprop="url">
+                <a class="post-title-link" href="/uncategorized/JAVA/JAVA-in-2017/" itemprop="url">
                   JAVA in 2017
                 </a>
               
@@ -478,8 +678,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/31/JAVA/JAVA-in-2017/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/31/JAVA/JAVA-in-2017/" itemprop="commentCount"></span>
+                <a href="/uncategorized/JAVA/JAVA-in-2017/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="uncategorized/JAVA/JAVA-in-2017/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -509,7 +709,7 @@
           <h2 id="JAVA基础注意点"><a href="#JAVA基础注意点" class="headerlink" title="JAVA基础注意点"></a>JAVA基础注意点</h2><h3 id="JAVA的字符类型"><a href="#JAVA的字符类型" class="headerlink" title="JAVA的字符类型"></a>JAVA的字符类型</h3><p>java字符类型采用unicode码，char与整型各类型通用。char可直接由十进制或十六进制整形赋值，亦可以由十六进制的unicode码(使用’\uxxxx’表示)。如果将字符强制类型转换，将输出unicode码对应的十进制数。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> hanzi1=<span class="number">20013</span>;</div><div class="line"><span class="keyword">char</span> hanzi2=<span class="number">0x4E2D</span>;</div><div class="line"><span class="keyword">char</span> hanzi3=<span class="string">'\u4E2D'</span>;</div><div class="line"><span class="keyword">char</span> hanzi4=<span class="string">'中'</span>;</div><div class="line">System.out.println(hanzi1);</div><div class="line">System.out.println(hanzi2);</div><div class="line">System.out.println(hanzi3);</div><div class="line">System.out.println((<span class="keyword">int</span>)hanzi4);</div><div class="line"></div><div class="line">console：</div><div class="line">中</div><div class="line">中</div><div class="line">中</div><div class="line"><span class="number">20013</span></div></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/31/JAVA/JAVA-in-2017/#more" rel="contents">
+            <a class="btn" href="/uncategorized/JAVA/JAVA-in-2017/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -550,7 +750,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/30/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Linux/Linux-Distributions/Arch-Linux/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -575,7 +775,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/30/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/" itemprop="url">
+                <a class="post-title-link" href="/Linux/Linux-Distributions/Arch-Linux/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/" itemprop="url">
                   Arch Linux Installation
                 </a>
               
@@ -655,8 +855,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/30/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/30/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/" itemprop="commentCount"></span>
+                <a href="/Linux/Linux-Distributions/Arch-Linux/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Linux/Linux-Distributions/Arch-Linux/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -692,7 +892,7 @@
 <h3 id="键盘布局"><a href="#键盘布局" class="headerlink" title="键盘布局"></a>键盘布局</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># loadkeys layout</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/30/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/#more" rel="contents">
+            <a class="btn" href="/Linux/Linux-Distributions/Arch-Linux/Linux/Linux Distributions/Arch Linux/Arch-Linux-Installation/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -733,7 +933,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/24/Ruby/Ruby-Learning-1/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -758,7 +958,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/24/Ruby/Ruby-Learning-1/" itemprop="url">
+                <a class="post-title-link" href="/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/" itemprop="url">
                   Ruby Learning 1
                 </a>
               
@@ -827,8 +1027,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/24/Ruby/Ruby-Learning-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/24/Ruby/Ruby-Learning-1/" itemprop="commentCount"></span>
+                <a href="/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -862,7 +1062,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[crepuscule@bogon basic]$ ruby -c test.rb   <span class="comment"># 仅检查语法</span></div><div class="line">Syntax OK</div><div class="line">[crepuscule@bogon basic]$ ruby <span class="_">-d</span> test.rb   <span class="comment"># 开启调试模式</span></div><div class="line">[crepuscule@bogon basic]$ ruby -T <span class="comment"># [level=1] turn on tainting checks</span></div><div class="line">[crepuscule@bogon basic]$ ruby -v <span class="comment"># [level=2] print version number, then turn on verbose mode</span></div><div class="line">[crepuscule@bogon basic]$ ruby -w <span class="comment"># turn warnings on for your script</span></div><div class="line">[crepuscule@bogon basic]$ ruby -W <span class="comment">#[level=2] set warning level; 0=silence, 1=medium, 2=verbose</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/24/Ruby/Ruby-Learning-1/#more" rel="contents">
+            <a class="btn" href="/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -903,7 +1103,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/19/DSandAl/Dynamic-Programming/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Data-Structure-Algorithm/Advanced-Algorithm/DSandAl/Dynamic-Programming/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -928,7 +1128,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/19/DSandAl/Dynamic-Programming/" itemprop="url">
+                <a class="post-title-link" href="/Data-Structure-Algorithm/Advanced-Algorithm/DSandAl/Dynamic-Programming/" itemprop="url">
                   Dynamic Programming
                 </a>
               
@@ -997,8 +1197,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/19/DSandAl/Dynamic-Programming/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/DSandAl/Dynamic-Programming/" itemprop="commentCount"></span>
+                <a href="/Data-Structure-Algorithm/Advanced-Algorithm/DSandAl/Dynamic-Programming/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Data-Structure-Algorithm/Advanced-Algorithm/DSandAl/Dynamic-Programming/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1030,7 +1230,7 @@
 <h4 id="定义状态"><a href="#定义状态" class="headerlink" title="定义状态"></a>定义状态</h4><p>对每一个阶段，对起始状态施加决策，使得状态发生改变，得到决策的结果状态。初始状态经过每一个阶段的决策后，最终得到的状态就是问题的解。注意不可使得子问题具有后向性。因为这样之前的子问题可能对之后问题产生影响。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/19/DSandAl/Dynamic-Programming/#more" rel="contents">
+            <a class="btn" href="/Data-Structure-Algorithm/Advanced-Algorithm/DSandAl/Dynamic-Programming/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1071,7 +1271,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/19/Linux/Linux Shell Script/Shell-Script/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Linux/Linux-Shell-Script/Linux/Linux Shell Script/Shell-Script/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -1096,7 +1296,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/19/Linux/Linux Shell Script/Shell-Script/" itemprop="url">
+                <a class="post-title-link" href="/Linux/Linux-Shell-Script/Linux/Linux Shell Script/Shell-Script/" itemprop="url">
                   Shell Script
                 </a>
               
@@ -1165,8 +1365,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/19/Linux/Linux Shell Script/Shell-Script/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/Linux/Linux Shell Script/Shell-Script/" itemprop="commentCount"></span>
+                <a href="/Linux/Linux-Shell-Script/Linux/Linux Shell Script/Shell-Script/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Linux/Linux-Shell-Script/Linux/Linux Shell Script/Shell-Script/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1200,7 +1400,7 @@
 <h3 id="主要程序部分"><a href="#主要程序部分" class="headerlink" title="主要程序部分"></a>主要程序部分</h3><p>主要程序之后还可以使用exit 数字 来回传返回值，自定义错误信息等<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/19/Linux/Linux Shell Script/Shell-Script/#more" rel="contents">
+            <a class="btn" href="/Linux/Linux-Shell-Script/Linux/Linux Shell Script/Shell-Script/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1241,7 +1441,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/16/Tools/Git-Learing/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Tools/Git/Tools/Git-Learing/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -1266,7 +1466,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/16/Tools/Git-Learing/" itemprop="url">
+                <a class="post-title-link" href="/Tools/Git/Tools/Git-Learing/" itemprop="url">
                   Git Learing
                 </a>
               
@@ -1335,8 +1535,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/16/Tools/Git-Learing/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/Tools/Git-Learing/" itemprop="commentCount"></span>
+                <a href="/Tools/Git/Tools/Git-Learing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Tools/Git/Tools/Git-Learing/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1367,7 +1567,7 @@
 <h2 id="本地版本管理"><a href="#本地版本管理" class="headerlink" title="本地版本管理"></a>本地版本管理</h2><h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 建立并进入空的目录</span></div><div class="line">[crepuscule@bogon ~]$ mkdir GitLearn</div><div class="line">[crepuscule@bogon ~]$ <span class="built_in">cd</span> GitLearn/</div><div class="line">[crepuscule@bogon GitLearn]$ <span class="built_in">pwd</span></div><div class="line">/home/crepuscule/GitLearn</div><div class="line"><span class="comment"># 开始初始化一个仓库</span></div><div class="line">[crepuscule@bogon GitLearn]$ git init</div><div class="line">Initialized empty Git repository <span class="keyword">in</span> /home/crepuscule/GitLearn/.git/</div><div class="line">[crepuscule@bogon GitLearn]$ ls -ah</div><div class="line">.  ..  .git</div><div class="line"><span class="comment"># 创建新的文件</span></div><div class="line">[crepuscule@bogon GitLearn]$ vi readme.md</div><div class="line">PS1：(提示字符的配置)</div><div class="line"></div><div class="line">这是 PS1 (数字的 1 不是英文字母)，这个东西就是我们的『命令提示字符』喔！ 当我们&gt;每次按下 [Enter] 按键去运行某个命令后，最后要再次出现提示字符时， 就会主动去读取</div><div class="line">这个变量值了。上头 PS1 内显示的是一些特殊符号，这些特殊符号可以显示不同的信息， 每个 distributions 的 bash 默认的 PS1 变量内容可能有些许的差异，不要紧，『习惯你</div><div class="line">自己的习惯』就好了。 你可以用 man bash (注3)去查询一下 PS1 的相关说明，以理解底&gt;下的一些符号意义</div><div class="line"><span class="comment"># 将此文件加入跟踪</span></div><div class="line">[crepuscule@bogon GitLearn]$ git add readme.md</div><div class="line"><span class="comment"># 将文件提交仓库</span></div><div class="line">[crepuscule@bogon GitLearn]$ git commit -m <span class="string">"a new readme file"</span></div><div class="line">[master (root-commit) d5a6e75] a new readme file</div><div class="line"> 1 file changed, 3 insertions(+)</div><div class="line"> create mode 100644 readme.md</div><div class="line"><span class="comment">##    关于此命令的信息：commit命令 为提交进仓库 -m后面输入的是本次提交的说明</span></div><div class="line"><span class="comment">##    git commit -m &lt;msg&gt;, --message=&lt;msg&gt;  </span></div><div class="line"><span class="comment">##         Use the given &lt;msg&gt; as the commit message. If multiple -m options</span></div><div class="line"><span class="comment">##         are given, their values are concatenated as separate paragraphs.</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/16/Tools/Git-Learing/#more" rel="contents">
+            <a class="btn" href="/Tools/Git/Tools/Git-Learing/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1408,7 +1608,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/14/Operation & Maintenance/Docker/Docker-Learning-Note/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -1433,7 +1633,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/14/Operation & Maintenance/Docker/Docker-Learning-Note/" itemprop="url">
+                <a class="post-title-link" href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/" itemprop="url">
                   Docker Learning Note
                 </a>
               
@@ -1502,8 +1702,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/14/Operation & Maintenance/Docker/Docker-Learning-Note/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/14/Operation & Maintenance/Docker/Docker-Learning-Note/" itemprop="commentCount"></span>
+                <a href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1541,7 +1741,7 @@
 </ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/14/Operation & Maintenance/Docker/Docker-Learning-Note/#more" rel="contents">
+            <a class="btn" href="/Operation-Maintenance/Docker/Operation & Maintenance/Docker/Docker-Learning-Note/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1582,7 +1782,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/12/Python/Python-Learning-2/">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Python/Documents/Python/Python-Learning-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="crepuscule_scintillant">
@@ -1607,7 +1807,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/12/Python/Python-Learning-2/" itemprop="url">
+                <a class="post-title-link" href="/Python/Documents/Python/Python-Learning-2/" itemprop="url">
                   Python Learning 2
                 </a>
               
@@ -1676,8 +1876,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/12/Python/Python-Learning-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/12/Python/Python-Learning-2/" itemprop="commentCount"></span>
+                <a href="/Python/Documents/Python/Python-Learning-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Python/Documents/Python/Python-Learning-2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1707,145 +1907,7 @@
           <h2 id="python-控制流及函数"><a href="#python-控制流及函数" class="headerlink" title="python 控制流及函数"></a>python 控制流及函数</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Input = int(input(<span class="string">"input a number"</span>))</div><div class="line"></div><div class="line"><span class="keyword">if</span> Input &gt; <span class="number">0</span>:</div><div class="line">  print(<span class="string">"Input num is positive number !"</span>,end=<span class="string">' '</span>)</div><div class="line"><span class="keyword">elif</span> Input == <span class="number">0</span>:</div><div class="line">  print(<span class="string">"Input num is zero !"</span>,end=<span class="string">' '</span>)</div><div class="line"><span class="keyword">elif</span> Input &lt; <span class="number">0</span>:</div><div class="line">  print(<span class="string">"Input num is negative number !"</span>,end=<span class="string">' '</span>)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">  print(<span class="string">"undiscovered number!"</span>)</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/12/Python/Python-Learning-2/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/2017/03/12/DSandAl/Knapsack-Problem/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="crepuscule_scintillant">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Crepuscule">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/12/DSandAl/Knapsack-Problem/" itemprop="url">
-                  Knapsack Problem
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-12T15:53:24+08:00">
-                2017-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/12/DSandAl/Knapsack-Problem/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/12/DSandAl/Knapsack-Problem/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><pre><code>1. 问题描述
-</code></pre><p>Almost问题是invest问题和strong问题的升级和加强。文件中每条数据的pi值将会不可预知的比wi少或多一个定值，在wi和为C的情况下下求pi和的最大值。</p>
-<ol>
-<li>问题分析与思路<br>如果不细看会感觉almost问题与strong和invest问题相比就变化了一点点，其实不然。如果单纯地按strong和almost的思路来思考这题，不仅架构困难，而且计算量很大。介于问题较为复杂，我又用万能解法—穷举法实现了能解决极小规模数据的算法。与subset中穷举算法区别是判断条件改为直接搜寻最大的子集。</li>
-<li>背包问题<br>背包问题可以描述为：给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高。如果限定每种物品只能选择0个或1个，则问题称为0-1背包问题。例如有一个最多能承重C=150的物品，现有7个物品重量分别为wi=[35,30,60,50,40,10,25]，价值分别为pi=[10,40,30,50,35,40,30]，现在从这7个物品中选择一个或多个装入背包，要求总重量不超过C的前提下所装入物品具有最高价值。<br>Almost问题就是背包问题的在某方面的简化和某方面的强化。Almost问题的重量和价值只有加减定值得关系，这样会有很多易于寻找的规律。但是背包问题并非要求一个组合重量和等于C，而是越接近C越好。</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/12/DSandAl/Knapsack-Problem/#more" rel="contents">
+            <a class="btn" href="/Python/Documents/Python/Python-Learning-2/#more" rel="contents">
               Lire la suite &raquo;
             </a>
           </div>
@@ -1924,7 +1986,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -1951,8 +2013,44 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crepuscule" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/glimmer-twilight" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2495066253/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1981,7 +2079,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2016 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -2081,7 +2179,7 @@
   
 
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"你站点的short_name"};
+    var duoshuoQuery = {short_name:"crepuscule"};
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;

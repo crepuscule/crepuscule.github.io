@@ -1,0 +1,856 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Fedora," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Crepuscule" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="fedora常用软件的安装Input MethodsRime(中州韵)
+ibus-rimefedora自带的输入法管理器是ibus，个人认为gnome桌面下还是老老实实用ibus比较好，在gonme桌面下无论安装还是配置均是ibus方便，而且安装fcitx后会导致输入法切换很头疼。
+1sudo dnf install ibus-rime
+
+fcitx-rime因为有了fedora中文社区软件源安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fedora Common Software Installation">
+<meta property="og:url" content="http://Crepuscule.com/Linux/Linux-Distributions/Fedora-Software-Installation/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="fedora常用软件的安装Input MethodsRime(中州韵)
+ibus-rimefedora自带的输入法管理器是ibus，个人认为gnome桌面下还是老老实实用ibus比较好，在gonme桌面下无论安装还是配置均是ibus方便，而且安装fcitx后会导致输入法切换很头疼。
+1sudo dnf install ibus-rime
+
+fcitx-rime因为有了fedora中文社区软件源安装">
+<meta property="og:updated_time" content="2017-04-04T10:41:47.411Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fedora Common Software Installation">
+<meta name="twitter:description" content="fedora常用软件的安装Input MethodsRime(中州韵)
+ibus-rimefedora自带的输入法管理器是ibus，个人认为gnome桌面下还是老老实实用ibus比较好，在gonme桌面下无论安装还是配置均是ibus方便，而且安装fcitx后会导致输入法切换很头疼。
+1sudo dnf install ibus-rime
+
+fcitx-rime因为有了fedora中文社区软件源安装">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/Linux/Linux-Distributions/Fedora-Software-Installation/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/"/>
+
+
+
+
+
+  <title> Fedora Common Software Installation | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3ef101c4ba97bd169b7be0f2ef5d1d6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            A propos
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Linux/Linux-Distributions/Fedora-Software-Installation/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule_scintillant">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Fedora Common Software Installation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T20:20:59+08:00">
+                2017-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Distributions/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Distributions</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Distributions/Fedora-Software-Installation/" itemprop="url" rel="index">
+                    <span itemprop="name">Fedora Software Installation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Linux/Linux-Distributions/Fedora-Software-Installation/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Linux/Linux-Distributions/Fedora-Software-Installation/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="fedora常用软件的安装"><a href="#fedora常用软件的安装" class="headerlink" title="fedora常用软件的安装"></a>fedora常用软件的安装</h2><h3 id="Input-Methods"><a href="#Input-Methods" class="headerlink" title="Input Methods"></a>Input Methods</h3><h4 id="Rime-中州韵"><a href="#Rime-中州韵" class="headerlink" title="Rime(中州韵)"></a>Rime(中州韵)</h4><ul>
+<li><p>ibus-rime<br>fedora自带的输入法管理器是ibus，个人认为gnome桌面下还是老老实实用ibus比较好，在gonme桌面下无论安装还是配置均是ibus方便，而且安装fcitx后会导致输入法切换很头疼。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dnf install ibus-rime</div></pre></td></tr></table></figure>
+</li>
+<li><p>fcitx-rime<br>因为有了<a href="https://repo.fdzh.org/" target="_blank" rel="external">fedora中文社区软件源</a>安装fcitx-rime也很方便，添加了fedora中文社区软件源后直接终端输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ sudo dnf install fcitx-rime</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="搜狗输入法"><a href="#搜狗输入法" class="headerlink" title="搜狗输入法"></a>搜狗输入法</h4><p>fedora下安装搜狗输入法只能使用fcitx管理输入法<br>同样，在<a href="https://repo.fdzh.org/" target="_blank" rel="external">fedora中文社区软件源</a>也有它的rpm包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ sudo dnf install sogoupinyin</div></pre></td></tr></table></figure></p>
+<h3 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h3><h4 id="atom"><a href="#atom" class="headerlink" title="atom"></a>atom</h4><ul>
+<li><p>使用 Fedy 安装<br>Fedy Tool是一个可以让你安装多媒体和附加软件的工具，可以轻松地安装MP3插件、Adobe Flash、java等在fedora较为难装的软件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#bash -c 'su -c "curl http://folkswithhats.org/fedy-installer -o fedy-installer &amp;&amp; chmod +x fedy-installer &amp;&amp; ./fedy-installer"'</span></div><div class="line">或者这样逐条执行</div><div class="line">[root@localhost ~]<span class="comment">#curl http://folkswithhats.org/fedy-installer -o fedy-installer</span></div><div class="line">[root@localhost ~]<span class="comment">#chmod +x fedy-installer</span></div><div class="line">[root@localhost ~]<span class="comment">#./fedy-installer</span></div></pre></td></tr></table></figure>
+<p>安装完成之后，直接在图形界面找到atom安装即可。</p>
+</li>
+<li>rpm包本地安装<br>在<a href="https://github.com/atom/atom" target="_blank" rel="external">github</a>上下载<a href="https://github.com/atom/atom/releases/download/v1.13.1/atom.x86_64.rpm" target="_blank" rel="external">atom.x86_64.rpm</a>包，然后运行<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ sudo dnf install ./atom.x86_64.rpm</div><div class="line">安装完成后可以直接使用终端命令atom来启动atom编辑器</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="Music"><a href="#Music" class="headerlink" title="Music"></a>Music</h3><h4 id="MP3插件"><a href="#MP3插件" class="headerlink" title="MP3插件"></a>MP3插件</h4><p>在确保添加RPM Fusion源之后直接输入以下命令即可安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]<span class="comment">#dnf install gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-ugly gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free gstreamer1-plugins-bad-freeworld gstreamer1-plugins-bad-free-extras ffmpeg</span></div></pre></td></tr></table></figure></p>
+<h4 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h4><ul>
+<li><p>网易云音乐GUI版<br>网易云音乐官网是没有rpm包的，但是有很多fedoraer将deb包转换成了rpm包以供fedora系统使用。安装前需要已经添加rpm fusion源。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">添加rpm fusion源</div><div class="line">[root@localhost ~]$ sudo rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm</div><div class="line">[root@localhost ~]$ sudo rpm -ivh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm</div></pre></td></tr></table></figure>
+<p>使用<a href="http://dl-http.senorsen.com/pub/package/linux/rpm/netease-cloud-music-0.9.0-3.x86_64.rpm" target="_blank" rel="external">此链接</a>或者在<a href="http://dl-http.senorsen.com/pub/package/linux/rpm/" target="_blank" rel="external">此链接</a>中选择，下载网易云的rpm包。<br>然后本地安装该rpm包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ sudo dnf install ./包的名称.rpm</div></pre></td></tr></table></figure>
+<blockquote>
+<p>值得一提的是，如果你的fedora系统没有安装MP3插件，网易云也是无法播放音乐的</p>
+</blockquote>
+</li>
+<li><p>网易云音乐命令行版<br>如果你嫌安装图形版的网易云繁琐，可以试试它的命令行版本。不仅安装方便，而且使用简洁快速，逼格甚高。该版本在<a href="https://repo.fdzh.org/" target="_blank" rel="external">fedora中文社区软件源</a>中就有，你可以直接下载rpm包然后本地安装，也可以添加fedora中文社区的源，使用dnf命令安装。</p>
+</li>
+<li>尝试深度音乐<br>据说深度音乐和网易云音乐差不多，如果不喜欢命令行版本的也可以尝试深度音乐，<a href="https://repo.fdzh.org/" target="_blank" rel="external">fedora中文社区软件源</a>有提供。</li>
+</ul>
+<h3 id="NetWork"><a href="#NetWork" class="headerlink" title="NetWork"></a>NetWork</h3><h4 id="ss-qt5"><a href="#ss-qt5" class="headerlink" title="ss-qt5"></a>ss-qt5</h4><p>关于ss-qt5在<a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97" target="_blank" rel="external">github ss-qt5 wiki</a>上有详细说明。</p>
+<ul>
+<li><p>Fedora下安装<br>目前支持RHEL 7, Fedora</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">使用dnf添加shadowsocks的Copr源</div><div class="line">sudo dnf copr <span class="built_in">enable</span> librehat/shadowsocks</div><div class="line">sudo dnf update</div><div class="line">sudo dnf install shadowsocks-qt5</div></pre></td></tr></table></figure>
+</li>
+<li><p>Ubuntu下安装<br>通过PPA源安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install shadowsocks-qt5</div></pre></td></tr></table></figure>
+</li>
+<li><p>Debian下安装</p>
+<ul>
+<li>methed1 尝试安装Ubuntu PPA源的deb包，</li>
+<li>methed2 自行编译（dpkg-buildpackage -uc -us -b），在上级目录中将会生成shadowsocks-qt5的deb包，通过sudo dpkg -i来安装。<blockquote>
+<p>注意：你可能需要安装好的依赖关系：sudo apt-get install qt5-qmake qtbase5-dev libqrencode-dev libqtshadowsocks-dev libappindicator-dev libzbar-dev libbotan1.10-dev</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Fedora/" rel="tag"># Fedora</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Linux/Linux-Distributions/Fedora-System-Config-Repair/Boot-Config/Linux/Linux Distributions/Fedora System Config & Repair/Grub2-Theme-Replacement/" rel="next" title="Grub2 Theme Replacement">
+                <i class="fa fa-chevron-left"></i> Grub2 Theme Replacement
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/C-C/C-C-Project/ProcessManager/C_Cpp/C_Cpp Project/ProcessManager-II-sstream/" rel="prev" title="ProcessManager II sstream">
+                ProcessManager II sstream <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Linux/Linux-Distributions/Fedora-Software-Installation/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/"
+           data-title="Fedora Common Software Installation" data-url="http://Crepuscule.com/Linux/Linux-Distributions/Fedora-Software-Installation/Linux/Linux Distributions/Fedora Software Installation/Fedora-Common-Software-Installation/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule_scintillant" />
+          <p class="site-author-name" itemprop="name">crepuscule_scintillant</p>
+          <p class="site-description motion-element" itemprop="description">a brony's Tech blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crepuscule" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/glimmer-twilight" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2495066253/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#fedora常用软件的安装"><span class="nav-number">1.</span> <span class="nav-text">fedora常用软件的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-Methods"><span class="nav-number">1.1.</span> <span class="nav-text">Input Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Rime-中州韵"><span class="nav-number">1.1.1.</span> <span class="nav-text">Rime(中州韵)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜狗输入法"><span class="nav-number">1.1.2.</span> <span class="nav-text">搜狗输入法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Programming"><span class="nav-number">1.2.</span> <span class="nav-text">Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#atom"><span class="nav-number">1.2.1.</span> <span class="nav-text">atom</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Music"><span class="nav-number">1.3.</span> <span class="nav-text">Music</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MP3插件"><span class="nav-number">1.3.1.</span> <span class="nav-text">MP3插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网易云音乐"><span class="nav-number">1.3.2.</span> <span class="nav-text">网易云音乐</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NetWork"><span class="nav-number">1.4.</span> <span class="nav-text">NetWork</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ss-qt5"><span class="nav-number">1.4.1.</span> <span class="nav-text">ss-qt5</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule_scintillant</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"crepuscule"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
