@@ -1,0 +1,871 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="RoR," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Crepuscule" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Rails on Ruby 1Installation
+安装RVM ruby版本管理器在该网站下载脚本，使用脚本进行安装。或者直接复制后保存为rvm-installer.sh文件，然后使用命令sh rvm-installer.sh进行安装。安装完成后使用source ~/.rvm/scripts/rvm使rvm命令可以全局使用。
+安装ruby
+1234$ rvm list known# 列出所有可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rails on Ruby 1">
+<meta property="og:url" content="http://Crepuscule.com/Ruby/Rails-on-Ruby/Ruby/Rails on Ruby/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="Rails on Ruby 1Installation
+安装RVM ruby版本管理器在该网站下载脚本，使用脚本进行安装。或者直接复制后保存为rvm-installer.sh文件，然后使用命令sh rvm-installer.sh进行安装。安装完成后使用source ~/.rvm/scripts/rvm使rvm命令可以全局使用。
+安装ruby
+1234$ rvm list known# 列出所有可">
+<meta property="og:updated_time" content="2017-05-09T13:59:29.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rails on Ruby 1">
+<meta name="twitter:description" content="Rails on Ruby 1Installation
+安装RVM ruby版本管理器在该网站下载脚本，使用脚本进行安装。或者直接复制后保存为rvm-installer.sh文件，然后使用命令sh rvm-installer.sh进行安装。安装完成后使用source ~/.rvm/scripts/rvm使rvm命令可以全局使用。
+安装ruby
+1234$ rvm list known# 列出所有可">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/Ruby/Rails-on-Ruby/Ruby/Rails on Ruby/"/>
+
+
+
+
+
+  <title> Rails on Ruby 1 | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3ef101c4ba97bd169b7be0f2ef5d1d6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            A propos
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Ruby/Rails-on-Ruby/Ruby/Rails on Ruby/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule_scintillant">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Rails on Ruby 1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T08:54:29+08:00">
+                2017-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Ruby</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby/Rails-on-Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Rails on Ruby</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Ruby/Rails-on-Ruby/Ruby/Rails on Ruby/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Ruby/Rails-on-Ruby/Ruby/Rails on Ruby/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Rails-on-Ruby-1"><a href="#Rails-on-Ruby-1" class="headerlink" title="Rails on Ruby 1"></a>Rails on Ruby 1</h2><h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><ol>
+<li>安装RVM ruby版本管理器<br>在<a href="https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer" target="_blank" rel="external">该网站</a>下载脚本，使用脚本进行安装。<br>或者直接复制后保存为rvm-installer.sh文件，然后使用命令<code>sh rvm-installer.sh</code>进行安装。<br>安装完成后使用source ~/.rvm/scripts/rvm使rvm命令可以全局使用。</li>
+<li><p>安装ruby</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ rvm list known</div><div class="line"><span class="comment"># 列出所有可用版本</span></div><div class="line">$ rvm install 2.3</div><div class="line"><span class="comment"># 安装2.3版本</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>安装rails</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#首先更改gem的源，改为淘宝源，去掉官网的源</span></div><div class="line">gem sources --add https://ruby.taobao.org/  --remove https://rubygems.org/</div><div class="line">gem install rails -V</div><div class="line"><span class="comment">#-V参数查看详细的安装过程</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Structures"><a href="#Structures" class="headerlink" title="Structures"></a>Structures</h3><p>app/     包含应用的控制器、模型、视图、辅助方法、邮件程序和静态资源文件。这个文件夹是本文剩余内容关注的重点。<br>bin/     包含用于启动应用的 rails 脚本，以及用于安装、更新、部署或运行应用的其他脚本。<br>config/     配置应用的路由、数据库等。详情请参阅configuring.xml。<br>config.ru     基于 Rack 的服务器所需的 Rack 配置，用于启动应用。<br>db/     包含当前数据库的模式，以及数据库迁移文件。<br>Gemfile, Gemfile.lock     这两个文件用于指定 Rails 应用所需的 gem 依赖。Bundler gem 需要用到这两个文件。关于 Bundler 的更多介绍，请访问 Bundler 官网。<br>lib/     应用的扩展模块。<br>log/     应用日志文件。<br>public/     仅有的可以直接从外部访问的文件夹，包含静态文件和编译后的静态资源文件。<br>Rakefile     定位并加载可在命令行中执行的任务。这些任务在 Rails 的各个组件中定义。如果要添加自定义任务，请不要修改 Rakefile，真接把自定义任务保存在 lib/tasks 文件夹中即可。<br>README.md     应用的自述文件，说明应用的用途、安装方法等。<br>test/     单元测试、固件和其他测试装置。详情请参阅testing.xml。<br>tmp/     临时文件（如缓存和 PID 文件）。<br>vendor/     包含第三方代码，如第三方 gem。</p>
+<p>具体目录树如下：<br>blog/<br>├── app<br>│   ├── assets<br>│   │   ├── config<br>│   │   │   └── manifest.js<br>│   │   ├── images<br>│   │   ├── javascripts<br>│   │   │   ├── application.js<br>│   │   │   ├── cable.js<br>│   │   │   └── channels<br>│   │   └── stylesheets<br>│   │       └── application.css<br>│   ├── channels<br>│   │   └── application_cable<br>│   │       ├── channel.rb<br>│   │       └── connection.rb<br>│   ├── controllers (控制器)<br>│   │   ├── application_controller.rb<br>│   │   └── concerns<br>│   ├── helpers (辅助方法)<br>│   │   └── application_helper.rb<br>│   ├── jobs<br>│   │   └── application_job.rb<br>│   ├── mailers (邮件程序)<br>│   │   └── application_mailer.rb<br>│   ├── models  (模型)<br>│   │   ├── application_record.rb<br>│   │   └── concerns<br>│   └── views (视图)<br>│       └── layouts<br>│           ├── application.html.erb<br>│           ├── mailer.html.erb<br>│           └── mailer.text.erb<br>├── bin (安装、更新、部署或运行应用的脚本)<br>│   ├── bundle<br>│   ├── rails<br>│   ├── rake<br>│   ├── setup<br>│   ├── spring<br>│   ├── update<br>│   └── yarn<br>├── config  (配置应用的路由、数据库)<br>│   ├── application.rb<br>│   ├── boot.rb<br>│   ├── cable.yml<br>│   ├── database.yml<br>│   ├── environment.rb<br>│   ├── environments<br>│   │   ├── development.rb<br>│   │   ├── production.rb<br>│   │   └── test.rb<br>│   ├── initializers<br>│   │   ├── application_controller_renderer.rb<br>│   │   ├── assets.rb<br>│   │   ├── backtrace_silencers.rb<br>│   │   ├── cookies_serializer.rb<br>│   │   ├── filter_parameter_logging.rb<br>│   │   ├── inflections.rb<br>│   │   ├── mime_types.rb<br>│   │   └── wrap_parameters.rb<br>│   ├── locales<br>│   │   └── en.yml<br>│   ├── puma.rb<br>│   ├── routes.rb<br>│   ├── secrets.yml<br>│   └── spring.rb<br>├── config.ru (Rack 的服务器所需配置)<br>├── db  (数据库的模式，以及数据库迁移文件)<br>│   └── seeds.rb<br>├── Gemfile<br>├── Gemfile.lock<br>├── lib<br>│   ├── assets<br>│   └── tasks<br>├── log<br>├── package.json<br>├── public  (可以直接从外部访问的文件夹，包含静态文件和编译后的静态资源文件)<br>│   ├── 404.html<br>│   ├── 422.html<br>│   ├── 500.html<br>│   ├── apple-touch-icon.png<br>│   ├── apple-touch-icon-precomposed.png<br>│   ├── favicon.ico<br>│   └── robots.txt<br>├── Rakefile<br>├── README.md<br>├── test  (单元测试、固件和其他测试装置)<br>│   ├── application_system_test_case.rb<br>│   ├── controllers<br>│   ├── fixtures<br>│   │   └── files<br>│   ├── helpers<br>│   ├── integration<br>│   ├── mailers<br>│   ├── models<br>│   ├── system<br>│   └── test_helper.rb<br>├── tmp (临时文件（如缓存和 PID 文件）)<br>│   └── cache<br>│       └── assets<br>└── vendor</p>
+<h3 id="创建第一个”Hello-world”页面"><a href="#创建第一个”Hello-world”页面" class="headerlink" title="创建第一个”Hello world”页面"></a>创建第一个”Hello world”页面</h3><p>可以用控制器生成器来创建控制器。使用下面的命令告诉控制器生成器创建一个包含“index”动作的“Welcome”控制器：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/rails generate controller Welcome index</div></pre></td></tr></table></figure></p>
+<ol>
+<li>这样,rails首先会在config目录下的routes.rb文件中添加路由：<br>get ‘welcome/index’</li>
+<li><p>接着，在controllers目录下自动生成welcome_controller.rb控制器</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WelcomeController</span> &lt; ApplicationController</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>生成视图<br>创建app/views/welcome视图目录<br>创建app/views/welcome/index.html.erb视图文件<br>在这里可以自己写入一些视图<br>如：</p><h1>Hello, Rails!</h1><p></p>
+</li>
+<li>设置应用主页<br>编辑config/routes.rb，加入DSL <code>root &#39;welcome#index&#39;</code><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Rails.application.routes.draw <span class="keyword">do</span></div><div class="line">  get <span class="string">'welcome/index'</span></div><div class="line"></div><div class="line">  <span class="comment"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>修改完成之后,文件变为：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Rails.application.routes.draw <span class="keyword">do</span></div><div class="line">  get <span class="string">'welcome/index'</span></div><div class="line"></div><div class="line">  root <span class="string">'welcome#index'</span></div><div class="line">  <span class="comment"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li>加载资源<br>在 Blog 应用中创建一个资源（resource）。资源是一个术语，表示一系列类似对象的集合，如文章、人或动物。资源中的项目可以被创建、读取、更新和删除，这些操作简称 CRUD（Create, Read, Update, Delete）。</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Rails.application.routes.draw <span class="keyword">do</span></div><div class="line">  get <span class="string">'welcome/index'</span></div><div class="line"></div><div class="line">  resources <span class="symbol">:articles</span></div><div class="line"></div><div class="line">  root <span class="string">'welcome#index'</span></div><div class="line">  <span class="comment"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>执行bin/rails routes命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[crepuscule@bogon blog]$ bin/rails routes</div><div class="line">       Prefix Verb   URI Pattern                  Controller<span class="comment">#Action</span></div><div class="line">welcome_index GET    /welcome/index(.:format)     welcome<span class="comment">#index</span></div><div class="line">     articles GET    /articles(.:format)          articles<span class="comment">#index</span></div><div class="line">              POST   /articles(.:format)          articles<span class="comment">#create</span></div><div class="line">  new_article GET    /articles/new(.:format)      articles<span class="comment">#new</span></div><div class="line"> edit_article GET    /articles/:id/edit(.:format) articles<span class="comment">#edit</span></div><div class="line">      article GET    /articles/:id(.:format)      articles<span class="comment">#show</span></div><div class="line">              PATCH  /articles/:id(.:format)      articles<span class="comment">#update</span></div><div class="line">              PUT    /articles/:id(.:format)      articles<span class="comment">#update</span></div><div class="line">              DELETE /articles/:id(.:format)      articles<span class="comment">#destroy</span></div><div class="line">         root GET    /                            welcome<span class="comment">#index</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li>根据资源创建页面<br>因为上次已经创建过资源，所以对于创建新文章的路由localhost:3000/articles/new是存在的，但是如果在浏览器中打开对应的路由，rails会报错，提示Routing Error：ininitialzed  constant ArticlesController 因为该路由对应的控制器ArticlesController并未被定义。<br>所以在项目根目录执行<code>$ bin/rails generate controller Articles</code>将会自动生成控制器和对应视图等。<br>这时再次打开对应路由，报错变为：Unknown action，原因是new方法我们并未定义，打开articles_controller.rb文件在类中添加方法new：<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArticlesController</span> &lt; ApplicationController</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">new</span></span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>再次打开对应路由,此时有新的报错：<br>ActionController::UnknownFormat in ArticlesController#new<br>完整信息：</p>
+<blockquote>
+<p>ArticlesController#new is missing a template for this request format and variant. request.formats: [“text/html”] request.variant: [] NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you’re loading it in a web browser, we assume that you expected to actually render a template, not… nothing, so we’re showing an error to be extra-clear. If you expect 204 No Content, carry on. That’s what you’ll get from an XHR or API request. Give it a shot.</p>
+</blockquote>
+<p>首先，报错中说明了缺少哪个模版：articles/new<br>因为找不到 articles/new 模板，rails会再查找其父类内有没有该模板，即 application/new 模板。</p>
+<p>接着，报错中的request.formats，说明响应使用的模板格式。当在浏览器中请求页面时，request.formats 的值是 text/html，因此 Rails 会查找 HTML 模板。<br>在本例中，能够工作的最简单的模板位于 app/views/articles/new.html.erb 文件中</p>
+<blockquote>
+<p>文件的扩展名很重要：第一个扩展名是模板格式，第二个扩展名是模板处理器。Rails 会尝试在 app/views 文件夹中查找 articles/new 模板。这个模板的格式只能是 html，模板处理器只能是 erb、builder 和 coffee 中的一个。<br>其中， :erb 是最常用的 HTML 模板处理器，:builder 是 XML 模板处理器，:coffee 模板处理器用 CoffeeScript 创建 JavaScript 模板。因为我们要创建 HTML 表单，所以应该使用能够在 HTML 中嵌入 Ruby 的 ERB 语言。</p>
+</blockquote>
+<p>因此，这个报错提醒我们要在app/view/articles中创建视图模板文件 new.html.erb ,创建后写入以下内容：</p><h1>New Article</h1><p></p>
+<ol>
+<li><p>创建表单<br>在app/views/articles/new.html.erb文件中添加：<br>` ruby<br>&lt;%= form_for :article do |f| %&gt;</p>
+<p><br> &lt;%= f.label :title %&gt;<br><br> &lt;%= f.text_field :title %&gt;<br></p>
+
+<p><br> &lt;%= f.label :text %&gt;<br><br> &lt;%= f.text_area :text %&gt;<br></p>
+
+<p></p><p><br> &lt;%= f.submit %&gt;<br></p><br>&lt;% end %&gt;<p></p>
+</li>
+</ol>
+<p>`</p>
+<p>并修改<code>&lt;%= form_for :article do |f| %&gt;</code>为&lt;%= form_for :article, url: articles_path do |f| %&gt;<br>articles_path 辅助方法告诉 Rails 把表单指向和 articles 前缀相关联的 URI 模式。默认情况下，表单会向这个路由发起 POST 请求。这个路由和当前控制器 ArticlesController 的 create 动作相关联。</p>
+<ol>
+<li><p>创建文章<br>针对上节中的unknown action错误，创建create动作</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create</span></span></div><div class="line">  render <span class="symbol">plain:</span> params[<span class="symbol">:article</span>].inspect</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>创建模型<br>在 Rails 中，模型使用单数名称，对应的数据库表使用复数名称。<br><code>$ bin/rails generate model Article title:string text:text</code><br>关注 app/models/article.rb 和 db/migrate/20170509071706_create_articles.rb 这两个文件</p>
+</li>
+<li>运行迁移<br>bin/rails generate model 命令会在 db/migrate 文件夹中生成数据库迁移文件。迁移是用于简化创建和修改数据库表操作的 Ruby 类。<br>使用命令<code>$ bin/rails db:migrate</code>运行迁移</li>
+<li>在控制器中保存数据<br>修改create动作，使用新建的Article模型把数据存到数据库中。修改Article控制器：<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create</span></span></div><div class="line">  @article = Article.new(params[article])</div><div class="line"></div><div class="line">  @article.save</div><div class="line">  redirect_to @article</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Rails 模型可以用相应的属性初始化，它们会自动映射到对应的数据库字段。<br>@article.save 负责把模型保存到数据库</p>
+<ol>
+<li>显示文章<br>添加show方法<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Prefix Verb   URI Pattern                  Controller<span class="comment">#Action</span></div><div class="line">welcome_index GET    /welcome/index(.:format)     welcome<span class="comment">#index</span></div><div class="line">articles GET    /articles(.:format)          articles<span class="comment">#index</span></div><div class="line">       POST   /articles(.:format)          articles<span class="comment">#create</span></div><div class="line">new_article GET    /articles/new(.:format)      articles<span class="comment">#new</span></div><div class="line">edit_article GET    /articles/:id/edit(.:format) articles<span class="comment">#edit</span></div><div class="line">article GET    /articles/:id(.:format)      articles<span class="comment">#show</span></div><div class="line">       PATCH  /articles/:id(.:format)      articles<span class="comment">#update</span></div><div class="line">       PUT    /articles/:id(.:format)      articles<span class="comment">#update</span></div><div class="line">       DELETE /articles/:id(.:format)      articles<span class="comment">#destroy</span></div><div class="line">  root GET    /                            welcome<span class="comment">#index</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这里show路由期望接受id参数</p>
+<ol>
+<li>列出所有文章<br>我们在index方法中列出所有的文章，对应的路由为：<br>articles GET    /articles(.:format)          articles#index<br>将它作为控制器的第一个方法，如下：<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></div><div class="line">  @articles = Article.all</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>对应的视图为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Listing articles<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>Text<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">articles.each</span> <span class="attr">do</span> |<span class="attr">article</span>| %&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">article.title</span> %&gt;</span> <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">article.text</span> %&gt;</span> <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '<span class="attr">Show</span>',<span class="attr">article_path</span>(<span class="attr">article</span>) %&gt;</span> <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span>%&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li>添加链接</li>
+</ol>
+<h3 id="更新文章"><a href="#更新文章" class="headerlink" title="更新文章"></a>更新文章</h3><h3 id="局部视图的统一化"><a href="#局部视图的统一化" class="headerlink" title="局部视图的统一化"></a>局部视图的统一化</h3><p>按照约定，局部视图的文件名以下划线开头。<br>新建 app/views/articles/_form.html.erb 文件，添加下面的代码：</p>
+<h2 id="评论功能"><a href="#评论功能" class="headerlink" title="评论功能"></a>评论功能</h2><h3 id="生成模型"><a href="#生成模型" class="headerlink" title="生成模型"></a>生成模型</h3><p><code>$ bin/rails generate model Comment commenter:string body:text article:references</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RoR/" rel="tag"># RoR</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Ruby/Ruby-Basic/Ruby/Ruby-Learning-1/" rel="next" title="Ruby Learning 1">
+                <i class="fa fa-chevron-left"></i> Ruby Learning 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Linux/Linux-Distributions/Arch-Linux/Linux/Linux Distributions/Arch Linux/ArchLinuxConfig/" rel="prev" title="Arch Linux Config">
+                Arch Linux Config <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Ruby/Rails-on-Ruby/Ruby/Rails on Ruby/"
+           data-title="Rails on Ruby 1" data-url="http://Crepuscule.com/Ruby/Rails-on-Ruby/Ruby/Rails on Ruby/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule_scintillant" />
+          <p class="site-author-name" itemprop="name">crepuscule_scintillant</p>
+          <p class="site-description motion-element" itemprop="description">a brony's Tech blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crepuscule" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/glimmer-twilight" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2495066253/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rails-on-Ruby-1"><span class="nav-number">1.</span> <span class="nav-text">Rails on Ruby 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation"><span class="nav-number">1.1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Structures"><span class="nav-number">1.2.</span> <span class="nav-text">Structures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建第一个”Hello-world”页面"><span class="nav-number">1.3.</span> <span class="nav-text">创建第一个”Hello world”页面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">Hello, Rails!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">New Article</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新文章"><span class="nav-number">0.1.</span> <span class="nav-text">更新文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部视图的统一化"><span class="nav-number">0.2.</span> <span class="nav-text">局部视图的统一化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论功能"><span class="nav-number">1.</span> <span class="nav-text">评论功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成模型"><span class="nav-number">1.1.</span> <span class="nav-text">生成模型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule_scintillant</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"crepuscule"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -86,22 +86,22 @@
 
 
 
-<meta name="description" content="Laravel5 快速入门任务1.安装1composer create-project laravel/laravel ProjectName --prefer-dist
+<meta name="description" content="Laravel5 快速入门任务安装1composer create-project laravel/laravel ProjectName --prefer-dist
  进入工作目录，输入该命令，等待几分钟即可自动安装好一个空白应用，如果不指定名字默认为laravel
-2.准备数据库项目中需要的数据库需要事先设计好，在正式开始之前需要先将数据库使用migrate指令迁移至数据库系统之中。先在配">
+也可以使用laravel安装器进行安装：composer global require &amp;quot;laravel/install">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LaravelQuickStart">
 <meta property="og:url" content="http://Crepuscule.com/Web/PHP/Laravel/WEB/PHP/LaravelQuickStart/index.html">
 <meta property="og:site_name" content="Crepuscule">
-<meta property="og:description" content="Laravel5 快速入门任务1.安装1composer create-project laravel/laravel ProjectName --prefer-dist
+<meta property="og:description" content="Laravel5 快速入门任务安装1composer create-project laravel/laravel ProjectName --prefer-dist
  进入工作目录，输入该命令，等待几分钟即可自动安装好一个空白应用，如果不指定名字默认为laravel
-2.准备数据库项目中需要的数据库需要事先设计好，在正式开始之前需要先将数据库使用migrate指令迁移至数据库系统之中。先在配">
-<meta property="og:updated_time" content="2017-04-04T10:57:41.218Z">
+也可以使用laravel安装器进行安装：composer global require &amp;quot;laravel/install">
+<meta property="og:updated_time" content="2017-04-08T10:24:31.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaravelQuickStart">
-<meta name="twitter:description" content="Laravel5 快速入门任务1.安装1composer create-project laravel/laravel ProjectName --prefer-dist
+<meta name="twitter:description" content="Laravel5 快速入门任务安装1composer create-project laravel/laravel ProjectName --prefer-dist
  进入工作目录，输入该命令，等待几分钟即可自动安装好一个空白应用，如果不指定名字默认为laravel
-2.准备数据库项目中需要的数据库需要事先设计好，在正式开始之前需要先将数据库使用migrate指令迁移至数据库系统之中。先在配">
+也可以使用laravel安装器进行安装：composer global require &amp;quot;laravel/install">
 
 
 
@@ -417,26 +417,25 @@
       
 
       
-        <h3 id="Laravel5-快速入门任务"><a href="#Laravel5-快速入门任务" class="headerlink" title="Laravel5 快速入门任务"></a>Laravel5 快速入门任务</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel ProjectName --prefer-dist</div></pre></td></tr></table></figure>
+        <h3 id="Laravel5-快速入门任务"><a href="#Laravel5-快速入门任务" class="headerlink" title="Laravel5 快速入门任务"></a>Laravel5 快速入门任务</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel ProjectName --prefer-dist</div></pre></td></tr></table></figure>
 <p> 进入工作目录，输入该命令，等待几分钟即可自动安装好一个空白应用，如果不指定名字默认为laravel</p>
-<h4 id="2-准备数据库"><a href="#2-准备数据库" class="headerlink" title="2.准备数据库"></a>2.准备数据库</h4><p>项目中需要的数据库需要事先设计好，在正式开始之前需要先将数据库使用migrate指令迁移至数据库系统之中。<br>先在配置文件中修改数据库名称，数据库用户名及密码。只要成功链接数据库就可以使用laravel来在数据库中建表。</p>
+<p>也可以使用laravel安装器进行安装：<br><code>composer global require &quot;laravel/installer=~1.1&quot;</code><br>然后就可以通过命令<code>laravel new blog</code>来创建一个larvel应用，被创建的目录中已经包含了所有的依赖。</p>
+<h4 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h4><p>项目中需要的数据库需要事先设计好，在正式开始之前需要先将数据库使用migrate指令迁移至数据库系统之中。<br>先在配置文件中修改数据库名称，数据库用户名及密码。只要成功链接数据库就可以使用laravel来在数据库中建表。</p>
 <ul>
-<li>配置连接数据库的配置文件<br>如果使用上述方法成功创建项目，则在项目根目录下会有.env配置文件。打开后修改下面对应内容。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DB_CONNECTION=数据库类型（mysql）</div><div class="line">DB_HOST=数据据库服务器（一般默认127.0.0.1即可）</div><div class="line">DB_PORT=端口（一般默认为3306即可）</div><div class="line">DB_DATABASE=数据库名称</div><div class="line">DB_USERNAME=用户名</div><div class="line">DB_PASSWORD=该用户的密码</div></pre></td></tr></table></figure>
+<li>配置连接数据库的配置文件<br>如果使用上述方法成功创建项目，则在项目根目录下会有.env配置文件。打开后修改下面对应内容。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DB_CONNECTION=数据库类型（mysql）</div><div class="line">DB_HOST=数据库主机（默认127.0.0.1）</div><div class="line">DB_PORT=数据库端口（默认3306）</div><div class="line">DB_DATABASE=数据库名称</div><div class="line">DB_USERNAME=用户名</div><div class="line">DB_PASSWORD=该用户的密码</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <a id="more"></a>
 <ul>
-<li><p>建表<br>在命令行中使用下面命令即可创建新表。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_tasks_table --create=tasks</div></pre></td></tr></table></figure>
-<p>创建的表将自动加上自增主键和时间戳，我们加上自己需要的字段即可。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>   <span class="comment">##在这里定义设计数据库表，然后运用迁移将数据库实现，不过数据库需要预先定义好</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Schema</span>\<span class="title">Blueprint</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Migrations</span>\<span class="title">Migration</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateTasksTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::create(<span class="string">'tasks'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);   <span class="comment">//laravel 已经添加了自增ID和时间戳</span></div><div class="line">            $table-&gt;string(<span class="string">'name'</span>);    <span class="comment">//我们需要再定义一些必须的字段</span></div><div class="line">            $table-&gt;timestamps();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::dropIfExists(<span class="string">'tasks'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>数据库迁移<br>当以上准备工作完成之后，即可进行数据库迁移</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+<li>建表<br>在命令行中使用下面命令即可创建新表。<br><code>php artisan make:migration create_tasks_table --create=tasks</code></li>
+</ul>
+<p>创建的表将自动加上自增主键和时间戳，我们加上自己需要的字段即可。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>   <span class="comment">##在这里定义设计数据库表，然后运用迁移将数据库实现，不过数据库需要预先定义好</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Schema</span>\<span class="title">Blueprint</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Migrations</span>\<span class="title">Migration</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateTasksTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::create(<span class="string">'tasks'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);   <span class="comment">//laravel 已经添加了自增ID和时间戳</span></div><div class="line">            $table-&gt;string(<span class="string">'name'</span>);    <span class="comment">//我们需要再定义一些必须的字段</span></div><div class="line">            $table-&gt;timestamps();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::dropIfExists(<span class="string">'tasks'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>数据库迁移<br>当以上准备工作完成之后，即可进行数据库迁移<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>laravel将会根据/database/migrations内的内容在数据库中建立相应表格</p>
-<h4 id="3-Eloquent-Models"><a href="#3-Eloquent-Models" class="headerlink" title="3.Eloquent Models"></a>3.Eloquent Models</h4><p>Eloquent是Laravel的默认ORM（对象关系映射器）。 Eloquent使用清晰定义的“模型”，使得它在数据库中检索和存储数据变得很容易。 通常，每个Eloquent模型直接对应于单个数据库表。</p>
+<h4 id="Eloquent-Models"><a href="#Eloquent-Models" class="headerlink" title="Eloquent Models"></a>Eloquent Models</h4><p>Eloquent是Laravel的默认ORM（对象关系映射器）。 Eloquent使用清晰定义的“模型”，使得它在数据库中检索和存储数据变得很容易。 通常，每个Eloquent模型直接对应于单个数据库表。</p>
 <ul>
 <li>创建Eloquent模型<br>所以，在本例中可以创建一个Task模型对应tasks数据表，可以用artisan命令创建：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Task</div></pre></td></tr></table></figure>
 </li>
@@ -607,7 +606,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -616,7 +615,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -625,7 +624,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -696,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Laravel5-快速入门任务"><span class="nav-number">1.</span> <span class="nav-text">Laravel5 快速入门任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装"><span class="nav-number">1.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-准备数据库"><span class="nav-number">1.2.</span> <span class="nav-text">2.准备数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Eloquent-Models"><span class="nav-number">1.3.</span> <span class="nav-text">3.Eloquent Models</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由"><span class="nav-number">1.4.</span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建布局和视图"><span class="nav-number">1.5.</span> <span class="nav-text">构建布局和视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加任务"><span class="nav-number">1.6.</span> <span class="nav-text">增加任务</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Laravel5-快速入门任务"><span class="nav-number">1.</span> <span class="nav-text">Laravel5 快速入门任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备数据库"><span class="nav-number">1.2.</span> <span class="nav-text">准备数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Eloquent-Models"><span class="nav-number">1.3.</span> <span class="nav-text">Eloquent Models</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由"><span class="nav-number">1.4.</span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建布局和视图"><span class="nav-number">1.5.</span> <span class="nav-text">构建布局和视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加任务"><span class="nav-number">1.6.</span> <span class="nav-text">增加任务</span></a></li></ol></li></ol></div>
             
 
           </div>

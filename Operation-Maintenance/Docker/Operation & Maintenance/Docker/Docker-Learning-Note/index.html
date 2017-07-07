@@ -98,7 +98,7 @@
 
 仅fedora24以上版本支持docker，安装前卸载旧的版本
 123456$ sudo dnf remove docker \            docker-common \            container-selinux \            docker-selinux \">
-<meta property="og:updated_time" content="2017-04-04T10:48:24.392Z">
+<meta property="og:updated_time" content="2017-05-05T01:51:09.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Learning Note">
 <meta name="twitter:description" content="Docker学习笔记Docker的安装Docker官网本文在fedora中安装docker：
@@ -440,7 +440,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[user@~]$ docker version</div><div class="line">Client:</div><div class="line"> Version:      1.13.0</div><div class="line"> API version:  1.25</div><div class="line"> Go version:   go1.7.3</div><div class="line"> Git commit:   49bf474</div><div class="line"> Built:        Tue Jan 17 09:48:22 2017</div><div class="line"> OS/Arch:      linux/amd64</div><div class="line"></div><div class="line">Server:</div><div class="line"> Version:      1.13.0</div><div class="line"> API version:  1.25 (minimum version 1.12)</div><div class="line"> Go version:   go1.7.3</div><div class="line"> Git commit:   49bf474</div><div class="line"> Built:        Tue Jan 17 09:48:22 2017</div><div class="line"> OS/Arch:      linux/amd64</div><div class="line"> Experimental: <span class="literal">false</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>docker镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 搜索镜像</span></div><div class="line"> <span class="variable">$sudo</span> docker search  centos</div><div class="line"> NAME                                   DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</div><div class="line">centos                                 The official build of CentOS.                   3173      [OK]       </div><div class="line">jdeathe/centos-ssh                     CentOS-6 6.8 x86_64 / CentOS-7 7.3.1611 x8...   62                   [OK]</div><div class="line">jdeathe/centoser</div><div class="line">ssh-apache-php          CentOS-6 6.8 x86_64 - Apache / PHP-FPM / P...   25                   [OK]</div><div class="line">nimmis/java-centos                     This is docker images of CentOS 7 with dif...   23                   [OK]</div><div class="line">consol/centos-xfce-vnc                 Centos container with <span class="string">"headless"</span> VNC sessi...   22                   [OK]</div><div class="line">gluster/gluster-centos                 Official GlusterFS Image [ CentOS-7 +  Glu...   18                   [OK]</div><div class="line">million12/centos-supervisor            Base CentOS-7 with supervisord launcher, h...   13                   [OK]</div><div class="line">nickistre/centos-lamp                  LAMP on centos setup                            10                   [OK]</div><div class="line"></div><div class="line"><span class="comment"># 拉取镜像</span></div><div class="line">$ sudo docker pull jdeathe/centos-ssh</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 搜索镜像</span></div><div class="line">[root@remote ~]$ sudo docker search  centos</div><div class="line"> NAME                                   DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</div><div class="line">centos                                 The official build of CentOS.                   3173      [OK]       </div><div class="line">jdeathe/centos-ssh                     CentOS-6 6.8 x86_64 / CentOS-7 7.3.1611 x8...   62                   [OK]</div><div class="line">jdeathe/centoser</div><div class="line">ssh-apache-php          CentOS-6 6.8 x86_64 - Apache / PHP-FPM / P...   25                   [OK]</div><div class="line">nimmis/java-centos                     This is docker images of CentOS 7 with dif...   23                   [OK]</div><div class="line">consol/centos-xfce-vnc                 Centos container with <span class="string">"headless"</span> VNC sessi...   22                   [OK]</div><div class="line">gluster/gluster-centos                 Official GlusterFS Image [ CentOS-7 +  Glu...   18                   [OK]</div><div class="line">million12/centos-supervisor            Base CentOS-7 with supervisord launcher, h...   13                   [OK]</div><div class="line">nickistre/centos-lamp                  LAMP on centos setup                            10                   [OK]</div><div class="line"></div><div class="line"><span class="comment"># 拉取官方镜像</span></div><div class="line">[root@remote ~]$ sudo docker pull jdeathe/centos-ssh</div><div class="line"></div><div class="line"><span class="comment"># 由于官方镜像速度较慢，建议使用daocloud镜像。首先使用docker登录</span></div><div class="line">[root@remote ~]$ sudo docker login daocloud.io</div><div class="line">Username:</div><div class="line">Password:</div><div class="line">Login Succeeded</div><div class="line">[root@remote ~]$ sudo docker pull daocloud.io/library/centos:latest</div></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -567,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">articles</span>
               </a>
             </div>
@@ -576,7 +576,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -585,7 +585,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

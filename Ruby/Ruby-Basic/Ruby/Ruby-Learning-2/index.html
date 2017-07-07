@@ -1,0 +1,818 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Ruby," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Crepuscule" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Basic Ruby 2
+by RUNOOB.COM
+
+Ruby 方法1234567891011121314151617def method [( [arg [= default]]...[, * arg [, &amp;amp;expr ]])]  exprend#简单的方法：def fun  puts &apos;hello&apos;end#带参数和缺省值的方法def fun(var1=value1,var2=valu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby Learning 1">
+<meta property="og:url" content="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-2/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="Basic Ruby 2
+by RUNOOB.COM
+
+Ruby 方法1234567891011121314151617def method [( [arg [= default]]...[, * arg [, &amp;amp;expr ]])]  exprend#简单的方法：def fun  puts &apos;hello&apos;end#带参数和缺省值的方法def fun(var1=value1,var2=valu">
+<meta property="og:updated_time" content="2017-04-19T12:48:13.075Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ruby Learning 1">
+<meta name="twitter:description" content="Basic Ruby 2
+by RUNOOB.COM
+
+Ruby 方法1234567891011121314151617def method [( [arg [= default]]...[, * arg [, &amp;amp;expr ]])]  exprend#简单的方法：def fun  puts &apos;hello&apos;end#带参数和缺省值的方法def fun(var1=value1,var2=valu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-2/"/>
+
+
+
+
+
+  <title> Ruby Learning 1 | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3ef101c4ba97bd169b7be0f2ef5d1d6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            A propos
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule_scintillant">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ruby Learning 1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-12T22:00:29+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Ruby</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby/Ruby-Basic/" itemprop="url" rel="index">
+                    <span itemprop="name">Ruby Basic</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Ruby/Ruby-Basic/Ruby/Ruby-Learning-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Ruby/Ruby-Basic/Ruby/Ruby-Learning-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Basic-Ruby-2"><a href="#Basic-Ruby-2" class="headerlink" title="Basic Ruby 2"></a>Basic Ruby 2</h2><blockquote>
+<p>by RUNOOB.COM</p>
+</blockquote>
+<h2 id="Ruby-方法"><a href="#Ruby-方法" class="headerlink" title="Ruby 方法"></a>Ruby 方法</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">method</span> [<span class="params">( [arg [= default]]...[, * arg [, &amp;expr ]])</span></span>]</div><div class="line">  expr</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment">#简单的方法：</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span></span></div><div class="line">  puts <span class="string">'hello'</span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment">#带参数和缺省值的方法</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(var1=value1,var2=value2)</span></span></div><div class="line">  puts <span class="string">"hello <span class="subst">#&#123;var1,var&#125;</span>"</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment">#调用</span></div><div class="line">fun</div><div class="line"><span class="comment">#如果有参数，使用下面方式调用：</span></div><div class="line">fun <span class="number">25</span>,<span class="number">30</span></div></pre></td></tr></table></figure>
+<p>实例：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#!/usr/bin/ruby</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(v1=<span class="string">"C++"</span>, v2=<span class="string">"Java"</span>)</span></span></div><div class="line">   puts <span class="string">" <span class="subst">#&#123;a1,a2&#125;</span>"</span></div><div class="line"><span class="keyword">end</span></div><div class="line">test <span class="string">"C"</span>, <span class="string">"C++"</span></div><div class="line">test</div><div class="line"></div><div class="line"><span class="comment"># results:</span></div><div class="line">C++,Java</div><div class="line">C,C++</div></pre></td></tr></table></figure></p>
+<h3 id="可变数量的参数"><a href="#可变数量的参数" class="headerlink" title="可变数量的参数"></a>可变数量的参数</h3><p>ruby允许声明参数数量可变的方法<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(*para)</span></span></div><div class="line">  puts <span class="string">"参数个数为： <span class="subst">#&#123;para.length&#125;</span>"</span></div><div class="line">  puts <span class="string">"参数值为："</span></div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>...para.length</div><div class="line">    puts para[i]</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">test <span class="string">"wanf"</span>,<span class="string">"9"</span>,<span class="string">"L"</span></div><div class="line">test <span class="string">"windows"</span>,<span class="string">"linux"</span>,<span class="string">"mac"</span>,<span class="string">"unix"</span></div></pre></td></tr></table></figure></p>
+<h3 id="方法返回值"><a href="#方法返回值" class="headerlink" title="方法返回值"></a>方法返回值</h3><p>ruby中每个方法后默认有返回值，默认为方法中最后一个语句的值：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">ret</span></span></div><div class="line">  a=<span class="number">10</span></div><div class="line">  b=<span class="number">50</span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment">#将返回b=50的值，即50</span></div></pre></td></tr></table></figure></p>
+<h3 id="return-用于从ruby方法中返回一个或者多个值"><a href="#return-用于从ruby方法中返回一个或者多个值" class="headerlink" title="return 用于从ruby方法中返回一个或者多个值"></a>return 用于从ruby方法中返回一个或者多个值</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mutlireturn</span></span></div><div class="line">   i = <span class="number">100</span></div><div class="line">   j = <span class="number">200</span></div><div class="line">   k = <span class="number">300</span></div><div class="line"><span class="keyword">return</span> i, j, k</div><div class="line"><span class="keyword">end</span></div><div class="line">var = mutlireturn</div><div class="line">puts var</div><div class="line"></div><div class="line"><span class="comment">#结果：</span></div><div class="line"><span class="number">100</span></div><div class="line"><span class="number">200</span></div><div class="line"><span class="number">300</span></div></pre></td></tr></table></figure>
+<h3 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h3><p>当方法定义在类的外部，方法默认标记为 private，如果方法定义在类中的，则默认标记为 public。<br>使用<code>类名.方法</code>的形式声明的方法即为类方法<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClassFun</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">change</span></span></div><div class="line">  <span class="keyword">end</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">TestClassFun</span>.<span class="title">ClassFun</span></span></div><div class="line">    puts <span class="string">"class function"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># 同样，使用`类名.方法`的方法调用类方法</span></div><div class="line">TestClassFun.ClassFun</div></pre></td></tr></table></figure></p>
+<h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><p>用于为方法或全局变量起别名，bash中有实现类似作用的命令<br>别名不能在方法主体内定义。即使方法被重写，方法的别名也保持方法的当前定义。<br>为编号的全局变量（$1, $2,…）起别名是被禁止的。不可以重写内置的全局变量。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$name = <span class="string">"zhang"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span><span class="params">(var=<span class="string">"wang"</span>)</span></span></div><div class="line">  $name = var</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">alias</span> setName fun1</div><div class="line"></div><div class="line">puts $name</div><div class="line">setName <span class="string">"Li"</span></div><div class="line">puts $name</div></pre></td></tr></table></figure></p>
+<h3 id="undef"><a href="#undef" class="headerlink" title="undef"></a>undef</h3><p>取消方法的定义，它不可以出现在方法主体内<br><code>undef funtion1</code></p>
+<h2 id="Ruby块"><a href="#Ruby块" class="headerlink" title="Ruby块"></a>Ruby块</h2><p>ruby中块指包含在{}中的大量代码组成的代码块，块总是从与其具有相同名称的函数调用。如果块名称为 test，那么需要使用函数 test 来调用这个块。</p>
+<h3 id="yield-语句"><a href="#yield-语句" class="headerlink" title="yield 语句"></a>yield 语句</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span></span></div><div class="line">  puts <span class="string">"in funtion test"</span></div><div class="line">  <span class="keyword">yield</span></div><div class="line">  puts <span class="string">"back in funtion test"</span></div><div class="line">  <span class="keyword">yield</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">test &#123;puts <span class="string">"in block"</span>&#125;</div><div class="line"></div><div class="line"><span class="comment"># 块还可以有参数，多个参数也没问题</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">para</span></span></div><div class="line">   <span class="keyword">yield</span> <span class="string">"before"</span>,<span class="number">5</span></div><div class="line">   puts <span class="string">"in funtion para"</span></div><div class="line">   <span class="keyword">yield</span> <span class="string">"after"</span>,<span class="number">10</span></div><div class="line"><span class="keyword">end</span></div><div class="line">para &#123;<span class="params">|i,j|</span> puts <span class="string">"in block  <span class="subst">#&#123;i&#125;</span>,values <span class="subst">#&#123;j&#125;</span>"</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="BEGIN-和-END-块"><a href="#BEGIN-和-END-块" class="headerlink" title="BEGIN 和 END 块"></a>BEGIN 和 END 块</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">BEGIN</span> &#123;</div><div class="line">  puts <span class="string">"BEGIN "</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">END</span> &#123;</div><div class="line">  puts <span class="string">"END"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">puts <span class="string">"MAIN"</span></div></pre></td></tr></table></figure>
+<h2 id="ruby模块-Module"><a href="#ruby模块-Module" class="headerlink" title="ruby模块(Module)"></a>ruby模块(Module)</h2><p>Module 将方法，类和常量组合在一起，提供了一个命令空间，mixin装置。但是，模块不能被实例化，没有子类，也不可以被另一个模块定义<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Tring</span></span></div><div class="line">  PI = <span class="number">3.14</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Tring</span>.<span class="title">sin</span><span class="params">(x)</span></span></div><div class="line">    x</div><div class="line">  <span class="keyword">end</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Tring</span>.<span class="title">cos</span><span class="params">(x)</span></span></div><div class="line">    x</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">puts Tring.sin <span class="number">7</span></div><div class="line">puts Tring.cos <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<h3 id="require-和-incldue"><a href="#require-和-incldue" class="headerlink" title="require 和 incldue"></a>require 和 incldue</h3><ul>
+<li>require 类似与C++中的include ,用于引入ruby模块,require 的文件可以不写出后缀名<br><code>require filename[.rb]</code><br>值得注意的是，需要使用$LOAD_PATH &lt;&lt; ‘.’ 让 Ruby 知道必须在当前目录中搜索被引用的文件。使用 require_relative 来引入相对路径中的文件<br>文件 lib.rb<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Lib</span></span></div><div class="line">        NAME = <span class="string">"wang"</span></div><div class="line">        SEX = <span class="number">1</span></div><div class="line">        GRADE = <span class="number">40</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">Lib</span>.<span class="title">getName</span></span></div><div class="line">                puts NAME</div><div class="line">        <span class="keyword">end</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">Lib</span>.<span class="title">getGrade</span></span></div><div class="line">                GRADE</div><div class="line">        <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>文件 testRequire.rb<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$LOAD_PATH &lt;&lt; <span class="string">'.'</span></div><div class="line"><span class="keyword">require</span> <span class="string">'lib.rb'</span></div><div class="line"></div><div class="line">Lib.getName</div><div class="line">puts  Lib.getGrade</div></pre></td></tr></table></figure></p>
+<ul>
+<li>include用于在类中嵌入模块<br>文件support.rb<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Week</span></span></div><div class="line">   FIRST_DAY = <span class="string">"Sunday"</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">Week</span>.<span class="title">weeks_in_month</span></span></div><div class="line">      puts <span class="string">"You have four weeks in a month"</span></div><div class="line">   <span class="keyword">end</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">Week</span>.<span class="title">weeks_in_year</span></span></div><div class="line">      puts <span class="string">"You have 52 weeks in a year"</span></div><div class="line">   <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用上面的模块来定义类<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/ruby</span></div><div class="line">$LOAD_PATH &lt;&lt; <span class="string">'.'</span></div><div class="line"><span class="keyword">require</span> <span class="string">"support"</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Decade</span></span></div><div class="line"><span class="keyword">include</span> Week</div><div class="line">   no_of_yrs=<span class="number">10</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">no_of_months</span></span></div><div class="line">      puts Week::FIRST_DAY</div><div class="line">      number=<span class="number">10</span>*<span class="number">12</span></div><div class="line">      puts number</div><div class="line">   <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line">d1=Decade.new</div><div class="line">puts Week::FIRST_DAY</div><div class="line">Week.weeks_in_month</div><div class="line">Week.weeks_in_year</div><div class="line">d1.no_of_months</div></pre></td></tr></table></figure></p>
+<h3 id="Mixins"><a href="#Mixins" class="headerlink" title="Mixins"></a>Mixins</h3><p>ruby也不直接支持多重继承,但是moudle中的mixin技术实现了类似的功能<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">A</span></span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">a1</span></span></div><div class="line">     puts <span class="string">"in A"</span></div><div class="line">   <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">B</span></span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">b1</span></span></div><div class="line">     puts <span class="string">"in B"</span></div><div class="line">   <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span></div><div class="line"><span class="keyword">include</span> A</div><div class="line"><span class="keyword">include</span> B</div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">s1</span></span></div><div class="line">     puts <span class="string">"in Sample"</span></div><div class="line">   <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">samp=Sample.new</div><div class="line">samp.a1</div><div class="line">samp.b1</div><div class="line">samp.s1</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ruby/" rel="tag"># Ruby</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Linux/Linux-Distributions/CentOS/Linux/Linux Distributions/CentOS/CentOS-7-Config/" rel="next" title="CentOS 7 Config">
+                <i class="fa fa-chevron-left"></i> CentOS 7 Config
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Data-Structure-Algorithm/Introduction-to-Algorithms/DSandAl/Introduction to Algorithms/Math-Basic/" rel="prev" title="Math Basic">
+                Math Basic <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Ruby/Ruby-Basic/Ruby/Ruby-Learning-2/"
+           data-title="Ruby Learning 1" data-url="http://Crepuscule.com/Ruby/Ruby-Basic/Ruby/Ruby-Learning-2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule_scintillant" />
+          <p class="site-author-name" itemprop="name">crepuscule_scintillant</p>
+          <p class="site-description motion-element" itemprop="description">a brony's Tech blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crepuscule" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/glimmer-twilight" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2495066253/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Ruby-2"><span class="nav-number">1.</span> <span class="nav-text">Basic Ruby 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby-方法"><span class="nav-number">2.</span> <span class="nav-text">Ruby 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可变数量的参数"><span class="nav-number">2.1.</span> <span class="nav-text">可变数量的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法返回值"><span class="nav-number">2.2.</span> <span class="nav-text">方法返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#return-用于从ruby方法中返回一个或者多个值"><span class="nav-number">2.3.</span> <span class="nav-text">return 用于从ruby方法中返回一个或者多个值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类方法"><span class="nav-number">2.4.</span> <span class="nav-text">类方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias"><span class="nav-number">2.5.</span> <span class="nav-text">alias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undef"><span class="nav-number">2.6.</span> <span class="nav-text">undef</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby块"><span class="nav-number">3.</span> <span class="nav-text">Ruby块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#yield-语句"><span class="nav-number">3.1.</span> <span class="nav-text">yield 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BEGIN-和-END-块"><span class="nav-number">3.2.</span> <span class="nav-text">BEGIN 和 END 块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ruby模块-Module"><span class="nav-number">4.</span> <span class="nav-text">ruby模块(Module)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#require-和-incldue"><span class="nav-number">4.1.</span> <span class="nav-text">require 和 incldue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mixins"><span class="nav-number">4.2.</span> <span class="nav-text">Mixins</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule_scintillant</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"crepuscule"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

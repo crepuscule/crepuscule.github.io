@@ -1,0 +1,867 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="fr-FR">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Shell," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Crepuscule" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在线编译后台插件脚本Content
+底层编译脚本
+C/C++
+JAVA
+PHP
+Python
+
+
+调用Docker编译环境脚本
+拉取编译环境镜像
+编译环境架构
+调用脚本
+
+
+上层接口脚本
+
+底层编译脚本
+C/C++12345678910111213141516171819202122232425262728293031323334353637#!/bin/bashPATH=/bin:/sbin:/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在线编译后台插件脚本">
+<meta property="og:url" content="http://Crepuscule.com/Linux/Linux-Shell-Script/Linux/Linux Shell Script/在线编译后台插件脚本/index.html">
+<meta property="og:site_name" content="Crepuscule">
+<meta property="og:description" content="在线编译后台插件脚本Content
+底层编译脚本
+C/C++
+JAVA
+PHP
+Python
+
+
+调用Docker编译环境脚本
+拉取编译环境镜像
+编译环境架构
+调用脚本
+
+
+上层接口脚本
+
+底层编译脚本
+C/C++12345678910111213141516171819202122232425262728293031323334353637#!/bin/bashPATH=/bin:/sbin:/">
+<meta property="og:updated_time" content="2017-04-11T05:33:19.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在线编译后台插件脚本">
+<meta name="twitter:description" content="在线编译后台插件脚本Content
+底层编译脚本
+C/C++
+JAVA
+PHP
+Python
+
+
+调用Docker编译环境脚本
+拉取编译环境镜像
+编译环境架构
+调用脚本
+
+
+上层接口脚本
+
+底层编译脚本
+C/C++12345678910111213141516171819202122232425262728293031323334353637#!/bin/bashPATH=/bin:/sbin:/">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Crepuscule.com/Linux/Linux-Shell-Script/Linux/Linux Shell Script/在线编译后台插件脚本/"/>
+
+
+
+
+
+  <title> 在线编译后台插件脚本 | Crepuscule </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="fr-FR">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3ef101c4ba97bd169b7be0f2ef5d1d6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crepuscule</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Tech Blog</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            A propos
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://Crepuscule.com/Linux/Linux-Shell-Script/Linux/Linux Shell Script/在线编译后台插件脚本/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="crepuscule_scintillant">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Crepuscule">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Crepuscule" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                在线编译后台插件脚本
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-11T12:36:58+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Linux-Shell-Script/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux Shell Script</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Linux/Linux-Shell-Script/Linux/Linux Shell Script/在线编译后台插件脚本/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Linux/Linux-Shell-Script/Linux/Linux Shell Script/在线编译后台插件脚本/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="在线编译后台插件脚本"><a href="#在线编译后台插件脚本" class="headerlink" title="在线编译后台插件脚本"></a>在线编译后台插件脚本</h1><h2 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h2><ul>
+<li>底层编译脚本<ul>
+<li>C/C++</li>
+<li>JAVA</li>
+<li>PHP</li>
+<li>Python</li>
+</ul>
+</li>
+<li>调用Docker编译环境脚本<ul>
+<li>拉取编译环境镜像</li>
+<li>编译环境架构</li>
+<li>调用脚本</li>
+</ul>
+</li>
+<li>上层接口脚本</li>
+</ul>
+<h3 id="底层编译脚本"><a href="#底层编译脚本" class="headerlink" title="底层编译脚本"></a>底层编译脚本</h3><ol>
+<li>C/C++<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</div><div class="line">export PATH</div><div class="line">## 这是最终的的编译脚本，指定输入文件名xxx将会生成对应名称的4个文件，不指定则会生成默认名为demo的四个文件</div><div class="line"># 注意： make sure the g++ is installed 必须确保安装了g++编译器</div><div class="line"></div><div class="line">## basepath 用于求得CPP文件的根目录：</div><div class="line">basepath=$(cd `dirname $0`;cd ..;pwd)</div><div class="line"># echo &quot;source: $basepath&quot; # 测试CPP根目录是否正确</div><div class="line"></div><div class="line"># 如果参数个数为0，那么执行默认demo命名方案</div><div class="line">if [ $# == 0 ]; then</div><div class="line">	g++ $basepath/sources/demo.cpp -o $basepath/bin/demo.exe &amp;&gt; $basepath/results/demo.res</div><div class="line">	# 如果demo.log文件为空，则无错误，继续执行</div><div class="line">	if [ `cat $basepath/results/demo.res |wc -l` -eq 0 ] ; then</div><div class="line">		echo &quot;demo.cpp has benn comlied!&quot;</div><div class="line">		$basepath/bin/demo.exe &amp;&gt; $basepath/results/demo.res</div><div class="line">		echo &quot;result has been writen to results/demo.res&quot;</div><div class="line">	# 否则，demo.res不为空，里面是错误内容，提示错误内容在demo.res中</div><div class="line">	else</div><div class="line">		echo &quot;the error infos has writen into results/demo.res&quot;</div><div class="line">	fi</div><div class="line">## 如果有参数，用该名字命名各文件(只能有一个参数)</div><div class="line">elif [ $# == 1 ]; then</div><div class="line">	g++ $basepath/sources/$1.cpp -o $basepath/bin/$1.exe &amp;&gt; $basepath/results/$1.res</div><div class="line">	# 如果demo.log文件为空，则无错误，继续执行</div><div class="line">	if [ `cat $basepath/results/$1.res |wc -l` -eq 0 ] ; then</div><div class="line">		echo &quot;$1.cpp has benn comlied!&quot;</div><div class="line">		$basepath/bin/$1.exe &amp;&gt; $basepath/results/$1.res</div><div class="line">		echo &quot;result has been writen to results/$1.res&quot;</div><div class="line">	# 否则，demo.res不为空，里面是错误内容，提示错误内容在demo.res中</div><div class="line">	else</div><div class="line">		echo &quot;the error infos has writen into results/$1.res&quot;</div><div class="line">	fi</div><div class="line">else 	</div><div class="line">	echo &quot;please input correct parameter, 0 or 1&quot;</div><div class="line">fi</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>CPP编译脚本改进记录：<br>使用.log存放错误信息和.txt太过繁琐，不如将所有信息均写入一个文件$1.res</p>
+</blockquote>
+<p>CPP编译组件说明：<br><a href="">下载地址</a><br>首先，运行要求：</p>
+<ul>
+<li>仅可以在linux系统下运行</li>
+<li>要求安装g++编译器</li>
+<li>整个CPP目录的权限为可读可写<br>使用方法：<br>首先，在任意位置使用sh命令调用<code>CPP/scripts/buildCpp.sh</code>脚本；<br>该脚本可以接受0个或1个参数。如果不给出参数，脚本会读取sources目录下的demo.cpp,使用g++编译器编译出demo.exe可执行文件，并将demo.exe放在CPP/bin目录下。如果出现错误，编译中的错误会记录在CPP/results的demo.res文件中。如果成功编译,运行时终端的输出内容也将会存在CPP/results/demo.res中;<br>如果给出一个参数作为名字，那么脚本将会以给出的参数命名这三个文件，如运行<code>sh scripts/buildCppFile.sh test</code>,那么脚本会读取sources/test.cpp,生成可执行文件bin/test.exe，编译错误或者执行结果会写入到results/test.res</li>
+</ul>
+<ol>
+<li>JAVA<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</div><div class="line">export PATH</div><div class="line"></div><div class="line">#</div><div class="line"># 注意： make sure the JDK is installed 确保JDK已经安装</div><div class="line"></div><div class="line"># basepath 用于求得JAVA源文件的根目录：</div><div class="line">basepath=$(cd `dirname $0`;cd ..;pwd)</div><div class="line">echo &quot;source: $basepath&quot;</div><div class="line"></div><div class="line"></div><div class="line">if [ $# == 0 ]; then</div><div class="line">  # 使用javac的-d参数指定子节码存放位置为results/，错误存入文件demo.log</div><div class="line">	javac $basepath/sources/demo.java -d $basepath/results/ &amp;&gt; $basepath/logs/demo.log</div><div class="line">	# 如果demo.log文件为空，则无错误，继续执行</div><div class="line">	if [ `cat $basepath/logs/demo.log |wc -l` -eq 0 ] ; then</div><div class="line">		echo &quot;demo.java has benn comlied!&quot;</div><div class="line">		# 因为java的包机制，需要进入reults目录再用java命令运行</div><div class="line">		cd $basepath/results;		</div><div class="line">		java demo &amp;&gt; $basepath/results/demo.txt</div><div class="line">		echo &quot;result has been writen to results/demo.txt&quot;</div><div class="line">	# 否则，demo.log不为空，里面是错误内容，提示错误内容在demo.log中</div><div class="line">	else</div><div class="line">		echo &quot;the error infos has writen into logs/demo.log&quot;</div><div class="line">	fi</div><div class="line">elif [ $# == 1 ]; then</div><div class="line">	javac $basepath/sources/$1.java -d $basepath/results/ &amp;&gt; $basepath/logs/$1.log</div><div class="line">	# 如果demo.log文件为空，则无错误，继续执行</div><div class="line">	if [ `cat $basepath/logs/$1.log |wc -l` -eq 0 ] ; then</div><div class="line">		echo &quot;$1.java has benn comlied!&quot;</div><div class="line">		cd $basepath/results;</div><div class="line">		java $1 &amp;&gt; $basepath/results/$1.txt</div><div class="line">		echo &quot;result has been writen to results/$1.txt&quot;</div><div class="line">	# 否则，$1.log不为空，里面是错误内容，提示错误内容在$1.log中</div><div class="line">	else</div><div class="line">		echo &quot;the error infos has writen into logs/$1.log&quot;</div><div class="line">	fi</div><div class="line">fi</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Shell/" rel="tag"># Shell</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Database/mysql/Database/SQL/" rel="next" title="SQL">
+                <i class="fa fa-chevron-left"></i> SQL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Linux/Linux-Distributions/CentOS/Linux/Linux Distributions/CentOS/CentOS-7-Config/" rel="prev" title="CentOS 7 Config">
+                CentOS 7 Config <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Linux/Linux-Shell-Script/Linux/Linux Shell Script/在线编译后台插件脚本/"
+           data-title="在线编译后台插件脚本" data-url="http://Crepuscule.com/Linux/Linux-Shell-Script/Linux/Linux Shell Script/在线编译后台插件脚本/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://p4.music.126.net/fcZBM0ps-4RPnweE2FXCxg==/3426078241154644.jpg?param=180y180"
+               alt="crepuscule_scintillant" />
+          <p class="site-author-name" itemprop="name">crepuscule_scintillant</p>
+          <p class="site-description motion-element" itemprop="description">a brony's Tech blog</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">articles</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crepuscule" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/glimmer-twilight" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2495066253/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在线编译后台插件脚本"><span class="nav-number">1.</span> <span class="nav-text">在线编译后台插件脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Content"><span class="nav-number">1.1.</span> <span class="nav-text">Content</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#底层编译脚本"><span class="nav-number">1.1.1.</span> <span class="nav-text">底层编译脚本</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">crepuscule_scintillant</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"crepuscule"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
